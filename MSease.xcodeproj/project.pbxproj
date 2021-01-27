@@ -3,27 +3,75 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D21C20DC123E92BD7DCEDF6 /* Pods_MSease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5985A3334A06593A80337851 /* Pods_MSease.framework */; };
 		84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F2F25B9DFF200578C37 /* AppDelegate.swift */; };
 		84979F3225B9DFF200578C37 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3125B9DFF200578C37 /* art.scnassets */; };
 		84979F3425B9DFF200578C37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F3325B9DFF200578C37 /* ViewController.swift */; };
-		84979F3725B9DFF200578C37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3525B9DFF200578C37 /* Main.storyboard */; };
+		84979F3725B9DFF200578C37 /* Injection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3525B9DFF200578C37 /* Injection.storyboard */; };
 		84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3825B9DFF500578C37 /* Assets.xcassets */; };
 		84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */; };
+		84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4625BA37E200578C37 /* StatusViewController.swift */; };
+		84979F4A25BA3CDC00578C37 /* ViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4925BA3CDC00578C37 /* ViewController+Actions.swift */; };
+		84979F4F25BA3FE100578C37 /* VirtualObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4D25BA3FE100578C37 /* VirtualObjectLoader.swift */; };
+		84979F5025BA3FE100578C37 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4E25BA3FE100578C37 /* VirtualObject.swift */; };
+		84ACFB1425BE109200A09F67 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */; };
+		84ACFB1A25BE132D00A09F67 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1825BE132D00A09F67 /* FocusSquareSegment.swift */; };
+		84ACFB1B25BE132D00A09F67 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1925BE132D00A09F67 /* FocusSquare.swift */; };
+		84ACFB1F25BE139000A09F67 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* Utilities.swift */; };
+		84ACFB2225BE145800A09F67 /* VirtualObjectSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB2125BE145800A09F67 /* VirtualObjectSelectionViewController.swift */; };
+		84ACFB3825BE2C4E00A09F67 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3725BE2C4D00A09F67 /* VirtualObjectInteraction.swift */; };
+		84ACFB3C25BE2DA500A09F67 /* ViewController+ObjectSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* ViewController+ObjectSelection.swift */; };
+		84ACFB3F25BE2DD100A09F67 /* ThresholdPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */; };
+		84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */; };
+		84ACFB4625BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */; };
+		84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BBE21425C0BEC60046C24F /* Main.storyboard */; };
+		84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */; };
+		84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE21925C0BF700046C24F /* MainViewController.swift */; };
+		84BBE22225C0D63F0046C24F /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BBE22125C0D63F0046C24F /* Calendar.storyboard */; };
+		84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */; };
+		84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */; };
+		84BBE22B25C10E0C0046C24F /* UIView + animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22A25C10E0C0046C24F /* UIView + animation.swift */; };
+		84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22D25C1B46F0046C24F /* DateExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29CE2308B856F91845E34F83 /* Pods-MSease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.release.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.release.xcconfig"; sourceTree = "<group>"; };
+		44A4552385A1D8D2E8ED9AB0 /* Pods-MSease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.debug.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.debug.xcconfig"; sourceTree = "<group>"; };
+		5985A3334A06593A80337851 /* Pods_MSease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84979F2C25B9DFF200578C37 /* MSease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84979F2F25B9DFF200578C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84979F3125B9DFF200578C37 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		84979F3325B9DFF200578C37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		84979F3625B9DFF200578C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84979F3625B9DFF200578C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Injection.storyboard; sourceTree = "<group>"; };
 		84979F3825B9DFF500578C37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84979F3B25B9DFF500578C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84979F3D25B9DFF500578C37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84979F4625BA37E200578C37 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusViewController.swift; path = ../StatusViewController.swift; sourceTree = "<group>"; };
+		84979F4925BA3CDC00578C37 /* ViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Actions.swift"; sourceTree = "<group>"; };
+		84979F4D25BA3FE100578C37 /* VirtualObjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectLoader.swift; sourceTree = "<group>"; };
+		84979F4E25BA3FE100578C37 /* VirtualObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
+		84ACFB1825BE132D00A09F67 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		84ACFB1925BE132D00A09F67 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		84ACFB1E25BE139000A09F67 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		84ACFB2125BE145800A09F67 /* VirtualObjectSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectSelectionViewController.swift; sourceTree = "<group>"; };
+		84ACFB3725BE2C4D00A09F67 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
+		84ACFB3B25BE2DA500A09F67 /* ViewController+ObjectSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+ObjectSelection.swift"; sourceTree = "<group>"; };
+		84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdPanGesture.swift; sourceTree = "<group>"; };
+		84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+CoachingOverlay.swift"; sourceTree = "<group>"; };
+		84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
+		84BBE21425C0BEC60046C24F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
+		84BBE21925C0BF700046C24F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		84BBE22125C0D63F0046C24F /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsPopupViewController.swift; sourceTree = "<group>"; };
+		84BBE22A25C10E0C0046C24F /* UIView + animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + animation.swift"; sourceTree = "<group>"; };
+		84BBE22D25C1B46F0046C24F /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +79,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D21C20DC123E92BD7DCEDF6 /* Pods_MSease.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D9BB03B6F3DF6062BC62427 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5985A3334A06593A80337851 /* Pods_MSease.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84979F2325B9DFF200578C37 = {
 			isa = PBXGroup;
 			children = (
 				84979F2E25B9DFF200578C37 /* MSease */,
 				84979F2D25B9DFF200578C37 /* Products */,
+				AC14FAEF5471E8FF75A12B90 /* Pods */,
+				5D9BB03B6F3DF6062BC62427 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +115,86 @@
 		84979F2E25B9DFF200578C37 /* MSease */ = {
 			isa = PBXGroup;
 			children = (
+				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
+				84BBE21925C0BF700046C24F /* MainViewController.swift */,
+				84ACFB2E25BE2A0A00A09F67 /* Additional View Controllers */,
+				84ACFB1D25BE139000A09F67 /* Utilities */,
+				84ACFB1725BE132D00A09F67 /* Focus Square */,
+				84979F4C25BA3FE000578C37 /* Mascots */,
+				84979F4425B9E31200578C37 /* Resources */,
 				84979F2F25B9DFF200578C37 /* AppDelegate.swift */,
-				84979F3125B9DFF200578C37 /* art.scnassets */,
 				84979F3325B9DFF200578C37 /* ViewController.swift */,
-				84979F3525B9DFF200578C37 /* Main.storyboard */,
+				84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */,
+				84979F4925BA3CDC00578C37 /* ViewController+Actions.swift */,
+				84ACFB3B25BE2DA500A09F67 /* ViewController+ObjectSelection.swift */,
+				84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */,
+				84ACFB3725BE2C4D00A09F67 /* VirtualObjectInteraction.swift */,
+				84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */,
+				84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */,
+				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
+				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
+				84BBE22A25C10E0C0046C24F /* UIView + animation.swift */,
+				84BBE22D25C1B46F0046C24F /* DateExtensions.swift */,
+			);
+			path = MSease;
+			sourceTree = "<group>";
+		};
+		84979F4425B9E31200578C37 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84979F3125B9DFF200578C37 /* art.scnassets */,
+				84979F3525B9DFF200578C37 /* Injection.storyboard */,
 				84979F3825B9DFF500578C37 /* Assets.xcassets */,
 				84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */,
 				84979F3D25B9DFF500578C37 /* Info.plist */,
+				84BBE21425C0BEC60046C24F /* Main.storyboard */,
+				84BBE22125C0D63F0046C24F /* Calendar.storyboard */,
 			);
-			path = MSease;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84979F4C25BA3FE000578C37 /* Mascots */ = {
+			isa = PBXGroup;
+			children = (
+				84979F4D25BA3FE100578C37 /* VirtualObjectLoader.swift */,
+				84979F4E25BA3FE100578C37 /* VirtualObject.swift */,
+			);
+			path = Mascots;
+			sourceTree = "<group>";
+		};
+		84ACFB1725BE132D00A09F67 /* Focus Square */ = {
+			isa = PBXGroup;
+			children = (
+				84ACFB1825BE132D00A09F67 /* FocusSquareSegment.swift */,
+				84ACFB1925BE132D00A09F67 /* FocusSquare.swift */,
+			);
+			path = "Focus Square";
+			sourceTree = "<group>";
+		};
+		84ACFB1D25BE139000A09F67 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				84ACFB1E25BE139000A09F67 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		84ACFB2E25BE2A0A00A09F67 /* Additional View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84ACFB2125BE145800A09F67 /* VirtualObjectSelectionViewController.swift */,
+				84979F4625BA37E200578C37 /* StatusViewController.swift */,
+			);
+			path = "Additional View Controllers";
+			sourceTree = "<group>";
+		};
+		AC14FAEF5471E8FF75A12B90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44A4552385A1D8D2E8ED9AB0 /* Pods-MSease.debug.xcconfig */,
+				29CE2308B856F91845E34F83 /* Pods-MSease.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84979F4025B9DFF500578C37 /* Build configuration list for PBXNativeTarget "MSease" */;
 			buildPhases = (
+				73A37E3CE251C001A764C48C /* [CP] Check Pods Manifest.lock */,
 				84979F2825B9DFF200578C37 /* Sources */,
 				84979F2925B9DFF200578C37 /* Frameworks */,
 				84979F2A25B9DFF200578C37 /* Resources */,
+				05143D335F4508FA63965640 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,34 +256,98 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BBE22225C0D63F0046C24F /* Calendar.storyboard in Resources */,
 				84979F3225B9DFF200578C37 /* art.scnassets in Resources */,
 				84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */,
 				84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */,
-				84979F3725B9DFF200578C37 /* Main.storyboard in Resources */,
+				84979F3725B9DFF200578C37 /* Injection.storyboard in Resources */,
+				84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05143D335F4508FA63965640 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MSease/Pods-MSease-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MSease/Pods-MSease-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MSease/Pods-MSease-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73A37E3CE251C001A764C48C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MSease-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84979F2825B9DFF200578C37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84ACFB1425BE109200A09F67 /* VirtualObjectARView.swift in Sources */,
+				84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */,
+				84ACFB3F25BE2DD100A09F67 /* ThresholdPanGesture.swift in Sources */,
+				84ACFB3C25BE2DA500A09F67 /* ViewController+ObjectSelection.swift in Sources */,
 				84979F3425B9DFF200578C37 /* ViewController.swift in Sources */,
+				84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */,
+				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
+				84ACFB2225BE145800A09F67 /* VirtualObjectSelectionViewController.swift in Sources */,
+				84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */,
+				84979F5025BA3FE100578C37 /* VirtualObject.swift in Sources */,
+				84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */,
+				84ACFB4625BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift in Sources */,
+				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,
+				84ACFB1B25BE132D00A09F67 /* FocusSquare.swift in Sources */,
+				84BBE22B25C10E0C0046C24F /* UIView + animation.swift in Sources */,
+				84979F4F25BA3FE100578C37 /* VirtualObjectLoader.swift in Sources */,
+				84979F4A25BA3CDC00578C37 /* ViewController+Actions.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
+				84ACFB1F25BE139000A09F67 /* Utilities.swift in Sources */,
+				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
+				84ACFB1A25BE132D00A09F67 /* FocusSquareSegment.swift in Sources */,
+				84ACFB3825BE2C4E00A09F67 /* VirtualObjectInteraction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		84979F3525B9DFF200578C37 /* Main.storyboard */ = {
+		84979F3525B9DFF200578C37 /* Injection.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84979F3625B9DFF200578C37 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Injection.storyboard;
 			sourceTree = "<group>";
 		};
 		84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */ = {
@@ -283,12 +479,13 @@
 		};
 		84979F4125B9DFF500578C37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44A4552385A1D8D2E8ED9AB0 /* Pods-MSease.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
-				INFOPLIST_FILE = MSease/Info.plist;
+				INFOPLIST_FILE = MSease/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,12 +499,13 @@
 		};
 		84979F4225B9DFF500578C37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29CE2308B856F91845E34F83 /* Pods-MSease.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
-				INFOPLIST_FILE = MSease/Info.plist;
+				INFOPLIST_FILE = MSease/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

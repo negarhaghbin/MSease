@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eHN-LX-qOs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Calendar View Controller-->
+        <scene sceneID="Lea-4g-HTO">
+            <objects>
+                <viewController storyboardIdentifier="calendarVC" id="eHN-LX-qOs" customClass="CalendarViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T3u-Jl-x5V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpB-66-kiw" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <containerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbm-Hg-f0a">
+                                <rect key="frame" x="0.0" y="862" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="1VT-eF-J03"/>
+                                    <constraint firstAttribute="height" constant="200" id="6WO-BG-5NI"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Y6e-qz-KA8" kind="embed" identifier="containerViewSegue" id="7GV-mz-V3K"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bka-gJ-vyL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MpB-66-kiw" firstAttribute="leading" secondItem="bka-gJ-vyL" secondAttribute="leading" id="6h5-vW-vjg"/>
+                            <constraint firstItem="bka-gJ-vyL" firstAttribute="bottom" secondItem="Bbm-Hg-f0a" secondAttribute="bottom" constant="-200" id="J6G-EB-wM7"/>
+                            <constraint firstItem="MpB-66-kiw" firstAttribute="top" secondItem="bka-gJ-vyL" secondAttribute="top" id="MzW-KP-kW3"/>
+                            <constraint firstItem="Bbm-Hg-f0a" firstAttribute="trailing" secondItem="bka-gJ-vyL" secondAttribute="trailing" id="RDi-Jo-WBS"/>
+                            <constraint firstItem="MpB-66-kiw" firstAttribute="centerX" secondItem="T3u-Jl-x5V" secondAttribute="centerX" id="RP3-Ax-vuU"/>
+                            <constraint firstItem="Bbm-Hg-f0a" firstAttribute="leading" secondItem="bka-gJ-vyL" secondAttribute="leading" id="akY-zF-Xq6"/>
+                            <constraint firstItem="bka-gJ-vyL" firstAttribute="bottom" secondItem="MpB-66-kiw" secondAttribute="bottom" id="mIO-Lc-DRi"/>
+                            <constraint firstItem="bka-gJ-vyL" firstAttribute="trailing" secondItem="MpB-66-kiw" secondAttribute="trailing" id="uIK-od-Xs8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendar" destination="MpB-66-kiw" id="7Nj-jd-N4D"/>
+                        <outlet property="symptomsView" destination="Bbm-Hg-f0a" id="9OK-eB-X2Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xh1-AP-Pxn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="173.91304347826087" y="136.60714285714286"/>
+        </scene>
+        <!--Symptoms Popup View Controller-->
+        <scene sceneID="XQd-kk-hjz">
+            <objects>
+                <viewController id="Y6e-qz-KA8" customClass="SymptomsPopupViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bgN-FV-QiL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAy-ih-rKt">
+                                <rect key="frame" x="374" y="20" width="20" height="22"/>
+                                <color key="tintColor" systemColor="systemGray2Color"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePopup:" destination="Y6e-qz-KA8" eventType="touchUpInside" id="6Gy-iu-Lv3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjZ-bT-LrF">
+                                <rect key="frame" x="155" y="20" width="104.5" height="26"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atV-GR-kD7">
+                                <rect key="frame" x="348" y="134" width="46" height="46"/>
+                                <state key="normal" image="addButton"/>
+                                <connections>
+                                    <action selector="addSymptom:" destination="Y6e-qz-KA8" eventType="touchUpInside" id="6qV-r6-b77"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="atV-GR-kD7" firstAttribute="height" secondItem="bgN-FV-QiL" secondAttribute="height" multiplier="0.23" id="34C-nK-bC8"/>
+                            <constraint firstItem="KAy-ih-rKt" firstAttribute="top" secondItem="bgN-FV-QiL" secondAttribute="top" constant="20" id="Ehu-6e-ZHl"/>
+                            <constraint firstAttribute="bottom" secondItem="atV-GR-kD7" secondAttribute="bottom" constant="20" id="MAv-2d-otU"/>
+                            <constraint firstItem="VjZ-bT-LrF" firstAttribute="centerX" secondItem="bgN-FV-QiL" secondAttribute="centerX" id="Pag-jq-UDb"/>
+                            <constraint firstItem="atV-GR-kD7" firstAttribute="width" secondItem="bgN-FV-QiL" secondAttribute="width" multiplier="0.111111" id="RFi-Qq-Z6M"/>
+                            <constraint firstAttribute="trailing" secondItem="atV-GR-kD7" secondAttribute="trailing" constant="20" id="UcB-gz-On9"/>
+                            <constraint firstAttribute="trailing" secondItem="KAy-ih-rKt" secondAttribute="trailing" constant="20" id="mvS-wr-GF0"/>
+                            <constraint firstItem="VjZ-bT-LrF" firstAttribute="top" secondItem="bgN-FV-QiL" secondAttribute="top" constant="20" id="zTv-wW-J4A"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="KAy-ih-rKt" id="E3A-gx-rAW"/>
+                        <outlet property="popUpTitle" destination="VjZ-bT-LrF" id="gKk-XW-5cV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hqK-jT-IZ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="173.91304347826087" y="720.53571428571422"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="addButton" width="359" height="352"/>
+        <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

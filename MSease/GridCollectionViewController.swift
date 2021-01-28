@@ -34,7 +34,7 @@ class GridCollectionViewController: UICollectionViewController {
         case rightButtock = 5
     }
 
-    private let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
+    private let sectionInsets = UIEdgeInsets(top: 5.0, left: 3.0, bottom: 5.0, right: 4.0)
     private var itemsPerRow: CGFloat = 1
     var cgsize : CGSize? = nil
     
@@ -85,16 +85,22 @@ class GridCollectionViewController: UICollectionViewController {
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
                 cell.textLabel.text = "Left Thigh"
+                cell.bodyImage.image = imageWithImage(image: UIImage(named: "leftThigh")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
                 cell.textLabel.text = "Right Thigh"
+                cell.bodyImage.image = imageWithImage(image: UIImage(named: "rightThigh")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
             case gridNotAbdomenSectionItems.leftArm.rawValue:
                 cell.textLabel.text = "Left Arm"
+                cell.bodyImage.image = imageWithImage(image: UIImage(named: "leftArm")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
             case gridNotAbdomenSectionItems.rightArm.rawValue:
                 cell.textLabel.text = "Right Arm"
+                cell.bodyImage.image = imageWithImage(image: UIImage(named: "rightArm")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
                 cell.textLabel.text = "Left Buttock"
+                cell.bodyImage.image = imageWithImage(image: UIImage(named: "leftButt")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
                 cell.textLabel.text = "Right Buttock"
+                cell.bodyImage.image = imageWithImage(image: UIImage(named: "rightButt")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
             default:
                 cell.textLabel.text = ""
             }

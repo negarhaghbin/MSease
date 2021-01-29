@@ -10,11 +10,25 @@ import UIKit
 
 private let GridRectViewCellIdentifier = "GridRectViewCell"
 private let GridSquareViewCellIdentifier = "GridSquareViewCell"
+private let sectionInsets = UIEdgeInsets(top: 5.0, left: 3.0, bottom: 5.0, right: 4.0)
+
+var cgsize : CGSize? = nil
 
 struct LimbGridSize {
     static let thigh = (row: 7, col: 5)
     static let arm = (row: 6, col: 3)
     static let buttock = (row: 6, col: 4)
+    
+    static func gridSize() -> (row: Int, col: Int){
+        let row = max(
+            LimbGridSize.thigh.row,
+            LimbGridSize.arm.row,
+            LimbGridSize.buttock.row)
+        let col = max(LimbGridSize.thigh.col,
+                      LimbGridSize.arm.col,
+                      LimbGridSize.buttock.col)
+        return (row, col)
+    }
 }
 
 class GridCollectionViewCell: UICollectionViewCell {
@@ -23,16 +37,34 @@ class GridCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet var grid: Array<UIImageView>?
     
-    var grid2D : [[UIImageView]] = []
+    var grid2D : [[UIImageView]] = Array(repeating: Array(repeating: UIImageView(), count: LimbGridSize.gridSize().col), count: LimbGridSize.gridSize().row)
     
-    func viewDidLoad() {
-        textLabel.adjustsFontSizeToFitWidth = true
-        textLabel.minimumScaleFactor = 0.5
-        
-        for i in 0...3{
-            for j in 0...3{
-                grid2D[i][j] = grid![i*4+j]
-                grid2D[i][j].isHidden = false
+    func setCellValues(title: String, imageName: String){
+        self.textLabel.text = title
+        self.bodyImage.image = imageWithImage(image: UIImage(named: imageName)!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+    }
+    
+    func initiate(){
+        self.textLabel.adjustsFontSizeToFitWidth = true
+        self.textLabel.minimumScaleFactor = 0.5
+        self.grid = self.grid!.sorted { $0.tag < $1.tag }
+        for i in 0..<LimbGridSize.gridSize().row{
+            for j in 0..<LimbGridSize.gridSize().col{
+                self.grid2D[i][j] = self.grid![i*LimbGridSize.gridSize().col+j]
+                self.grid2D[i][j].isHidden = false
+            }
+        }
+    }
+    
+    func hideExtraRowsAndCols(row: Int, col: Int){
+        for i in row..<LimbGridSize.gridSize().row{
+            for j in 0..<LimbGridSize.gridSize().col{
+                self.grid2D[i][j].isHidden = true
+            }
+        }
+        for i in col..<LimbGridSize.gridSize().col{
+            for j in 0..<LimbGridSize.gridSize().row{
+                self.grid2D[j][i].isHidden = true
             }
         }
     }
@@ -46,7 +78,7 @@ class GridCollectionViewController: UICollectionViewController {
         case notAbdomen = 1
     }
     
-    enum gridNotAbdomenSectionItems : Int{
+    enum gridNotAbdomenSectionItems : Int, CaseIterable{
         case leftThigh = 0
         case rightThigh = 1
         case leftArm = 2
@@ -55,72 +87,37 @@ class GridCollectionViewController: UICollectionViewController {
         case rightButtock = 5
     }
 
-    private let sectionInsets = UIEdgeInsets(top: 5.0, left: 3.0, bottom: 5.0, right: 4.0)
     private var itemsPerRow: CGFloat = 1
-    var cgsize : CGSize? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     func prepareGrid(cell: GridCollectionViewCell, indexPath: IndexPath){
         if indexPath.section == gridSections.abdomen.rawValue{
-            
+            //TODO
         }
         else{
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
-                for i in LimbGridSize.thigh.row..<cell.grid2D.count{
-                    for j in LimbGridSize.thigh.col..<cell.grid2D[i].count{
-                        cell.grid2D[i][j].isHidden = true
-                    }
-                }
+                cell.hideExtraRowsAndCols(row: LimbGridSize.thigh.row, col:LimbGridSize.thigh.col)
                 cell.grid2D[6][0].isHidden = true
                 cell.grid2D[6][4].isHidden = true
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
-                for i in LimbGridSize.thigh.row..<cell.grid2D.count{
-                    for j in LimbGridSize.thigh.col..<cell.grid2D[i].count{
-                        cell.grid2D[i][j].isHidden = true
-                    }
-                }
+                cell.hideExtraRowsAndCols(row: LimbGridSize.thigh.row, col:LimbGridSize.thigh.col)
                 cell.grid2D[6][0].isHidden = true
                 cell.grid2D[6][4].isHidden = true
             case gridNotAbdomenSectionItems.leftArm.rawValue:
-                for i in LimbGridSize.arm.row..<cell.grid2D.count{
-                    for j in LimbGridSize.arm.col..<cell.grid2D[i].count{
-                        cell.grid2D[i][j].isHidden = true
-                    }
-                }
+                cell.hideExtraRowsAndCols(row: LimbGridSize.arm.row, col:LimbGridSize.arm.col)
             case gridNotAbdomenSectionItems.rightArm.rawValue:
-                for i in LimbGridSize.arm.row..<cell.grid2D.count{
-                    for j in LimbGridSize.arm.col..<cell.grid2D[i].count{
-                        cell.grid2D[i][j].isHidden = true
-                    }
-                }
+                cell.hideExtraRowsAndCols(row: LimbGridSize.arm.row, col:LimbGridSize.arm.col)
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
-                for i in LimbGridSize.buttock.row..<cell.grid2D.count{
-                    for j in LimbGridSize.buttock.col..<cell.grid2D[i].count{
-                        cell.grid2D[i][j].isHidden = true
-                    }
-                }
+                cell.hideExtraRowsAndCols(row: LimbGridSize.buttock.row, col:LimbGridSize.buttock.col)
                 cell.grid2D[0][3].isHidden = true
                 cell.grid2D[3][0].isHidden = true
                 cell.grid2D[4][0].isHidden = true
@@ -129,11 +126,7 @@ class GridCollectionViewController: UICollectionViewController {
                 cell.grid2D[5][1].isHidden = true
                 cell.grid2D[5][2].isHidden = true
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
-                for i in LimbGridSize.buttock.row..<cell.grid2D.count{
-                    for j in LimbGridSize.buttock.col..<cell.grid2D[i].count{
-                        cell.grid2D[i][j].isHidden = true
-                    }
-                }
+                cell.hideExtraRowsAndCols(row: LimbGridSize.buttock.row, col:LimbGridSize.buttock.col)
                 cell.grid2D[0][0].isHidden = true
                 cell.grid2D[5][1].isHidden = true
                 cell.grid2D[4][2].isHidden = true
@@ -159,38 +152,34 @@ class GridCollectionViewController: UICollectionViewController {
         case 0:
             return 1
         default:
-            return 6
+            return gridNotAbdomenSectionItems.allCases.count
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> GridCollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridSquareViewCellIdentifier, for: indexPath) as! GridCollectionViewCell
         
+        cell.initiate()
+        
         if indexPath.section == gridSections.abdomen.rawValue{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridRectViewCellIdentifier, for: indexPath) as! GridCollectionViewCell
-            cell.textLabel.text = "Abdomen"
-            cell.bodyImage.image = imageWithImage(image: UIImage(named: "abdomen")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+            
+            cell.setCellValues(title: "Abdomen", imageName: "abdomen")
         }
         else{
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
-                cell.textLabel.text = "Left Thigh"
-                cell.bodyImage.image = imageWithImage(image: UIImage(named: "leftThigh")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+                cell.setCellValues(title: "Left Thigh", imageName: "leftThigh")
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
-                cell.textLabel.text = "Right Thigh"
-                cell.bodyImage.image = imageWithImage(image: UIImage(named: "rightThigh")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+                cell.setCellValues(title: "Right Thigh", imageName: "rightThigh")
             case gridNotAbdomenSectionItems.leftArm.rawValue:
-                cell.textLabel.text = "Left Arm"
-                cell.bodyImage.image = imageWithImage(image: UIImage(named: "leftArm")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+                cell.setCellValues(title: "Left Arm", imageName: "leftArm")
             case gridNotAbdomenSectionItems.rightArm.rawValue:
-                cell.textLabel.text = "Right Arm"
-                cell.bodyImage.image = imageWithImage(image: UIImage(named: "rightArm")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+                cell.setCellValues(title: "Right Arm", imageName: "rightArm")
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
-                cell.textLabel.text = "Left Buttock"
-                cell.bodyImage.image = imageWithImage(image: UIImage(named: "leftButt")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+                cell.setCellValues(title: "Left Buttock", imageName: "leftButt")
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
-                cell.textLabel.text = "Right Buttock"
-                cell.bodyImage.image = imageWithImage(image: UIImage(named: "rightButt")!, scaledToSize:CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom))
+                cell.setCellValues(title: "Right Buttock", imageName: "rightButt")
             default:
                 cell.textLabel.text = ""
             }
@@ -200,37 +189,6 @@ class GridCollectionViewController: UICollectionViewController {
     
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }
 

@@ -11,10 +11,31 @@ import UIKit
 private let GridRectViewCellIdentifier = "GridRectViewCell"
 private let GridSquareViewCellIdentifier = "GridSquareViewCell"
 
+struct LimbGridSize {
+    static let thigh = (row: 7, col: 5)
+    static let arm = (row: 6, col: 3)
+    static let buttock = (row: 6, col: 4)
+}
+
 class GridCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var bodyImage: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet var grid: Array<UIImageView>?
+    
+    var grid2D : [[UIImageView]] = []
+    
+    func viewDidLoad() {
+        textLabel.adjustsFontSizeToFitWidth = true
+        textLabel.minimumScaleFactor = 0.5
+        
+        for i in 0...3{
+            for j in 0...3{
+                grid2D[i][j] = grid![i*4+j]
+                grid2D[i][j].isHidden = false
+            }
+        }
+    }
     
 }
 
@@ -56,7 +77,76 @@ class GridCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func prepareGrid(cell: GridCollectionViewCell, indexPath: IndexPath){
+        if indexPath.section == gridSections.abdomen.rawValue{
+            
+        }
+        else{
+            switch indexPath.row {
+            case gridNotAbdomenSectionItems.leftThigh.rawValue:
+                for i in LimbGridSize.thigh.row..<cell.grid2D.count{
+                    for j in LimbGridSize.thigh.col..<cell.grid2D[i].count{
+                        cell.grid2D[i][j].isHidden = true
+                    }
+                }
+                cell.grid2D[6][0].isHidden = true
+                cell.grid2D[6][4].isHidden = true
+            case gridNotAbdomenSectionItems.rightThigh.rawValue:
+                for i in LimbGridSize.thigh.row..<cell.grid2D.count{
+                    for j in LimbGridSize.thigh.col..<cell.grid2D[i].count{
+                        cell.grid2D[i][j].isHidden = true
+                    }
+                }
+                cell.grid2D[6][0].isHidden = true
+                cell.grid2D[6][4].isHidden = true
+            case gridNotAbdomenSectionItems.leftArm.rawValue:
+                for i in LimbGridSize.arm.row..<cell.grid2D.count{
+                    for j in LimbGridSize.arm.col..<cell.grid2D[i].count{
+                        cell.grid2D[i][j].isHidden = true
+                    }
+                }
+            case gridNotAbdomenSectionItems.rightArm.rawValue:
+                for i in LimbGridSize.arm.row..<cell.grid2D.count{
+                    for j in LimbGridSize.arm.col..<cell.grid2D[i].count{
+                        cell.grid2D[i][j].isHidden = true
+                    }
+                }
+            case gridNotAbdomenSectionItems.leftButtock.rawValue:
+                for i in LimbGridSize.buttock.row..<cell.grid2D.count{
+                    for j in LimbGridSize.buttock.col..<cell.grid2D[i].count{
+                        cell.grid2D[i][j].isHidden = true
+                    }
+                }
+                cell.grid2D[0][3].isHidden = true
+                cell.grid2D[3][0].isHidden = true
+                cell.grid2D[4][0].isHidden = true
+                cell.grid2D[5][0].isHidden = true
+                cell.grid2D[4][1].isHidden = true
+                cell.grid2D[5][1].isHidden = true
+                cell.grid2D[5][2].isHidden = true
+            case gridNotAbdomenSectionItems.rightButtock.rawValue:
+                for i in LimbGridSize.buttock.row..<cell.grid2D.count{
+                    for j in LimbGridSize.buttock.col..<cell.grid2D[i].count{
+                        cell.grid2D[i][j].isHidden = true
+                    }
+                }
+                cell.grid2D[0][0].isHidden = true
+                cell.grid2D[5][1].isHidden = true
+                cell.grid2D[4][2].isHidden = true
+                cell.grid2D[5][2].isHidden = true
+                cell.grid2D[3][3].isHidden = true
+                cell.grid2D[4][3].isHidden = true
+                cell.grid2D[5][3].isHidden = true
+            default:
+                print("unknown limb")
+            }
+        }
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -104,6 +194,8 @@ class GridCollectionViewController: UICollectionViewController {
             default:
                 cell.textLabel.text = ""
             }
+            //move it before return afterrrr creating abdomen grid
+            prepareGrid(cell: cell, indexPath: indexPath)
         }
     
         return cell

@@ -25,6 +25,16 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <containerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbm-Hg-f0a">
@@ -54,17 +64,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P05-yD-Tcc">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="fe9-9j-K9a">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6PY-ah-bYG">
-                                <rect key="frame" x="20" y="11" width="14.5" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="chevron.backward" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                </state>
-                                <connections>
-                                    <action selector="goBack:" destination="eHN-LX-qOs" eventType="touchUpInside" id="MQi-Bg-fwD"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="1rq-AW-t2q">
+                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large"/>
+                            <connections>
+                                <action selector="goBack:" destination="eHN-LX-qOs" id="axo-c3-gF6"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -85,10 +89,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAy-ih-rKt">
-                                <rect key="frame" x="374" y="20" width="20" height="22"/>
+                                <rect key="frame" x="373.5" y="20" width="20.5" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KAy-ih-rKt" secondAttribute="height" multiplier="1:1" id="vvM-HU-Nbj"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemGray2Color"/>
                                 <state key="normal">
                                     <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                    </preferredSymbolConfiguration>
                                 </state>
                                 <connections>
                                     <action selector="closePopup:" destination="Y6e-qz-KA8" eventType="touchUpInside" id="6Gy-iu-Lv3"/>
@@ -120,6 +130,7 @@
                             <constraint firstItem="VjZ-bT-LrF" firstAttribute="centerX" secondItem="bgN-FV-QiL" secondAttribute="centerX" id="Pag-jq-UDb"/>
                             <constraint firstAttribute="trailing" secondItem="atV-GR-kD7" secondAttribute="trailing" constant="20" id="UcB-gz-On9"/>
                             <constraint firstAttribute="trailing" secondItem="KAy-ih-rKt" secondAttribute="trailing" constant="20" id="mvS-wr-GF0"/>
+                            <constraint firstItem="KAy-ih-rKt" firstAttribute="width" secondItem="bgN-FV-QiL" secondAttribute="width" multiplier="0.05" id="rxA-wn-qyQ"/>
                             <constraint firstItem="VjZ-bT-LrF" firstAttribute="top" secondItem="bgN-FV-QiL" secondAttribute="top" constant="20" id="zTv-wW-J4A"/>
                         </constraints>
                     </view>
@@ -130,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqK-jT-IZ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173.91304347826087" y="720.53571428571422"/>
+            <point key="canvasLocation" x="1084" y="532"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s83-Cf-CYl">
@@ -153,7 +164,7 @@
     </scenes>
     <resources>
         <image name="addButton" width="1088" height="1080"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

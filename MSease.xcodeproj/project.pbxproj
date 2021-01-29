@@ -36,6 +36,9 @@
 		84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */; };
 		84BBE22B25C10E0C0046C24F /* UIView + animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22A25C10E0C0046C24F /* UIView + animation.swift */; };
 		84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22D25C1B46F0046C24F /* DateExtensions.swift */; };
+		84F5E79125C4482900EED24C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5E79025C4482900EED24C /* Profile.storyboard */; };
+		84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79925C44A7300EED24C /* ProfileViewController.swift */; };
+		84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsPopupViewController.swift; sourceTree = "<group>"; };
 		84BBE22A25C10E0C0046C24F /* UIView + animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + animation.swift"; sourceTree = "<group>"; };
 		84BBE22D25C1B46F0046C24F /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		84F5E79025C4482900EED24C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		84F5E79925C44A7300EED24C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +121,7 @@
 		84979F2E25B9DFF200578C37 /* MSease */ = {
 			isa = PBXGroup;
 			children = (
-				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
-				84BBE21925C0BF700046C24F /* MainViewController.swift */,
+				84F5E79625C44A2C00EED24C /* ViewControllers */,
 				84ACFB2E25BE2A0A00A09F67 /* Additional View Controllers */,
 				84ACFB1D25BE139000A09F67 /* Utilities */,
 				84ACFB1725BE132D00A09F67 /* Focus Square */,
@@ -131,8 +136,6 @@
 				84ACFB3725BE2C4D00A09F67 /* VirtualObjectInteraction.swift */,
 				84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */,
 				84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */,
-				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
-				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
 				84BBE22A25C10E0C0046C24F /* UIView + animation.swift */,
 				84BBE22D25C1B46F0046C24F /* DateExtensions.swift */,
 			);
@@ -143,12 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				84979F3125B9DFF200578C37 /* art.scnassets */,
-				84979F3525B9DFF200578C37 /* Injection.storyboard */,
+				84F5E79325C4483500EED24C /* Storyboards */,
 				84979F3825B9DFF500578C37 /* Assets.xcassets */,
-				84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */,
 				84979F3D25B9DFF500578C37 /* Info.plist */,
-				84BBE21425C0BEC60046C24F /* Main.storyboard */,
-				84BBE22125C0D63F0046C24F /* Calendar.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -186,6 +186,31 @@
 				84979F4625BA37E200578C37 /* StatusViewController.swift */,
 			);
 			path = "Additional View Controllers";
+			sourceTree = "<group>";
+		};
+		84F5E79325C4483500EED24C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */,
+				84BBE21425C0BEC60046C24F /* Main.storyboard */,
+				84F5E79025C4482900EED24C /* Profile.storyboard */,
+				84BBE22125C0D63F0046C24F /* Calendar.storyboard */,
+				84979F3525B9DFF200578C37 /* Injection.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		84F5E79625C44A2C00EED24C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				84BBE21925C0BF700046C24F /* MainViewController.swift */,
+				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
+				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
+				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
+				84F5E79925C44A7300EED24C /* ProfileViewController.swift */,
+				84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		AC14FAEF5471E8FF75A12B90 /* Pods */ = {
@@ -261,6 +286,7 @@
 				84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */,
 				84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */,
 				84979F3725B9DFF200578C37 /* Injection.storyboard in Resources */,
+				84F5E79125C4482900EED24C /* Profile.storyboard in Resources */,
 				84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +346,7 @@
 				84ACFB3C25BE2DA500A09F67 /* ViewController+ObjectSelection.swift in Sources */,
 				84979F3425B9DFF200578C37 /* ViewController.swift in Sources */,
 				84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */,
+				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
 				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
 				84ACFB2225BE145800A09F67 /* VirtualObjectSelectionViewController.swift in Sources */,
 				84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */,
@@ -329,6 +356,7 @@
 				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,
 				84ACFB1B25BE132D00A09F67 /* FocusSquare.swift in Sources */,
 				84BBE22B25C10E0C0046C24F /* UIView + animation.swift in Sources */,
+				84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */,
 				84979F4F25BA3FE100578C37 /* VirtualObjectLoader.swift in Sources */,
 				84979F4A25BA3CDC00578C37 /* ViewController+Actions.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,

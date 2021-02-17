@@ -12,7 +12,7 @@ extension UIView{
     func animShow(){
         UIView.animate(withDuration: 0.25, delay: 0, options: [.transitionFlipFromBottom],
                        animations: {
-                        self.center.y -= self.bounds.height*0.8
+                        self.center.y = (self.superview?.center.y)!
                         self.layoutIfNeeded()
         }, completion: nil)
         self.isHidden = false
@@ -37,4 +37,5 @@ extension UIView{
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
     }
+    
 }

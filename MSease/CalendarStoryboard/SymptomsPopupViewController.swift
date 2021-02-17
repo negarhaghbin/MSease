@@ -10,7 +10,6 @@ import UIKit
 
 class SymptomsPopupViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var popUpTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,26 +18,33 @@ class SymptomsPopupViewController: UIViewController {
     
     
     @IBAction func closePopup(_ sender: Any) {
-        let calendarVC = parent as! CalendarViewController
-        calendarVC.symptomsView.animHide()
-        calendarVC.calendar.deselect(calendarVC.calendar.selectedDate!)
+        let notesVC = parent as! NotesTableViewController
+        notesVC.symptomsView.animHide()
+        notesVC.shadowView.isHidden = true
+//        dismiss(animated: true)
     }
     
-    @IBAction func addSymptom(_ sender: Any) {
+    @IBAction func addInjectionLogTapped(_ sender: Any) {
     }
     
-    func changeTitle(newTitle: String){
-        popUpTitle.text = newTitle
+    @IBAction func addSymptomsLogTapped(_ sender: Any) {
     }
     
-    /*
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let notesVC = parent as! NotesTableViewController
+        notesVC.symptomsView.animHide()
+        notesVC.shadowView.isHidden = true
+        
+        if segue.identifier == "showAddSymptoms" {
+            let symptomsVC = segue.destination as? SymptomsCollectionViewController
+            symptomsVC!.date = notesVC.date
+        }
     }
-    */
+    
 
 }

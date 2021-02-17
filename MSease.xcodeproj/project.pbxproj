@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5D21C20DC123E92BD7DCEDF6 /* Pods_MSease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5985A3334A06593A80337851 /* Pods_MSease.framework */; };
+		8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */; };
+		8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407F6A125D9B0420015666A /* NotesTableViewCell.swift */; };
+		840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */; };
+		840C1E6925D36BED00AD339E /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6825D36BED00AD339E /* Symptom.swift */; };
+		840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6D25D36E9400AD339E /* RealmManager.swift */; };
+		8448884225D6C48200F5FBBA /* addSymptomContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* addSymptomContainerViewController.swift */; };
+		8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */; };
+		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
+		8448884B25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */; };
 		84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F2F25B9DFF200578C37 /* AppDelegate.swift */; };
 		84979F3225B9DFF200578C37 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3125B9DFF200578C37 /* art.scnassets */; };
 		84979F3425B9DFF200578C37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F3325B9DFF200578C37 /* ViewController.swift */; };
@@ -28,6 +37,11 @@
 		84ACFB3F25BE2DD100A09F67 /* ThresholdPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */; };
 		84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */; };
 		84ACFB4625BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */; };
+		84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */; };
+		84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF3E0225DC3B640083E9F0 /* reminderSettingsViewController.swift */; };
+		84AF3E0B25DC67300083E9F0 /* AddNewReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF3E0A25DC67300083E9F0 /* AddNewReminderViewController.swift */; };
+		84AF3E1D25DC84600083E9F0 /* AddNewReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF3E1C25DC84600083E9F0 /* AddNewReminderTableViewCell.swift */; };
+		84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF3E1F25DCBDB80083E9F0 /* Reminder.swift */; };
 		84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BBE21425C0BEC60046C24F /* Main.storyboard */; };
 		84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */; };
 		84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE21925C0BF700046C24F /* MainViewController.swift */; };
@@ -45,6 +59,15 @@
 		29CE2308B856F91845E34F83 /* Pods-MSease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.release.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.release.xcconfig"; sourceTree = "<group>"; };
 		44A4552385A1D8D2E8ED9AB0 /* Pods-MSease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.debug.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.debug.xcconfig"; sourceTree = "<group>"; };
 		5985A3334A06593A80337851 /* Pods_MSease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		8407F6A125D9B0420015666A /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
+		840C1E6825D36BED00AD339E /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
+		840C1E6D25D36E9400AD339E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		8448884125D6C48200F5FBBA /* addSymptomContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addSymptomContainerViewController.swift; sourceTree = "<group>"; };
+		8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionReusableView.swift; sourceTree = "<group>"; };
+		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		84979F2C25B9DFF200578C37 /* MSease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84979F2F25B9DFF200578C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84979F3125B9DFF200578C37 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -67,6 +90,11 @@
 		84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdPanGesture.swift; sourceTree = "<group>"; };
 		84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+CoachingOverlay.swift"; sourceTree = "<group>"; };
 		84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
+		84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
+		84AF3E0225DC3B640083E9F0 /* reminderSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reminderSettingsViewController.swift; sourceTree = "<group>"; };
+		84AF3E0A25DC67300083E9F0 /* AddNewReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewReminderViewController.swift; sourceTree = "<group>"; };
+		84AF3E1C25DC84600083E9F0 /* AddNewReminderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewReminderTableViewCell.swift; sourceTree = "<group>"; };
+		84AF3E1F25DCBDB80083E9F0 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		84BBE21425C0BEC60046C24F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewController.swift; sourceTree = "<group>"; };
 		84BBE21925C0BF700046C24F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +128,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		840C1E6B25D36E1C00AD339E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				840C1E6825D36BED00AD339E /* Symptom.swift */,
+				8448884725D6E13900F5FBBA /* Note.swift */,
+				84AF3E1F25DCBDB80083E9F0 /* Reminder.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		84979F2325B9DFF200578C37 = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +159,10 @@
 		84979F2E25B9DFF200578C37 /* MSease */ = {
 			isa = PBXGroup;
 			children = (
-				84F5E79625C44A2C00EED24C /* ViewControllers */,
+				84F5E79625C44A2C00EED24C /* CalendarStoryboard */,
+				84AF3E1025DC68720083E9F0 /* MainStoryboard */,
+				84AF3E0E25DC67BE0083E9F0 /* ProfileStoryboard */,
+				840C1E6B25D36E1C00AD339E /* Objects */,
 				84ACFB2E25BE2A0A00A09F67 /* Additional View Controllers */,
 				84ACFB1D25BE139000A09F67 /* Utilities */,
 				84ACFB1725BE132D00A09F67 /* Focus Square */,
@@ -138,6 +179,7 @@
 				84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */,
 				84BBE22A25C10E0C0046C24F /* UIView + animation.swift */,
 				84BBE22D25C1B46F0046C24F /* DateExtensions.swift */,
+				840C1E6D25D36E9400AD339E /* RealmManager.swift */,
 			);
 			path = MSease;
 			sourceTree = "<group>";
@@ -188,29 +230,53 @@
 			path = "Additional View Controllers";
 			sourceTree = "<group>";
 		};
+		84AF3E0E25DC67BE0083E9F0 /* ProfileStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				84AF3E1C25DC84600083E9F0 /* AddNewReminderTableViewCell.swift */,
+				84AF3E0A25DC67300083E9F0 /* AddNewReminderViewController.swift */,
+				84F5E79925C44A7300EED24C /* ProfileViewController.swift */,
+				84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */,
+				84AF3E0225DC3B640083E9F0 /* reminderSettingsViewController.swift */,
+			);
+			path = ProfileStoryboard;
+			sourceTree = "<group>";
+		};
+		84AF3E1025DC68720083E9F0 /* MainStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				84BBE21925C0BF700046C24F /* MainViewController.swift */,
+				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
+			);
+			path = MainStoryboard;
+			sourceTree = "<group>";
+		};
 		84F5E79325C4483500EED24C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */,
-				84BBE21425C0BEC60046C24F /* Main.storyboard */,
-				84F5E79025C4482900EED24C /* Profile.storyboard */,
 				84BBE22125C0D63F0046C24F /* Calendar.storyboard */,
 				84979F3525B9DFF200578C37 /* Injection.storyboard */,
+				84BBE21425C0BEC60046C24F /* Main.storyboard */,
+				84F5E79025C4482900EED24C /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		84F5E79625C44A2C00EED24C /* ViewControllers */ = {
+		84F5E79625C44A2C00EED24C /* CalendarStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				84BBE21925C0BF700046C24F /* MainViewController.swift */,
 				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
 				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
-				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
-				84F5E79925C44A7300EED24C /* ProfileViewController.swift */,
-				84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */,
+				840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */,
+				8448884125D6C48200F5FBBA /* addSymptomContainerViewController.swift */,
+				8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */,
+				8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */,
+				8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */,
+				8407F6A125D9B0420015666A /* NotesTableViewCell.swift */,
+				84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */,
 			);
-			path = ViewControllers;
+			path = CalendarStoryboard;
 			sourceTree = "<group>";
 		};
 		AC14FAEF5471E8FF75A12B90 /* Pods */ = {
@@ -343,26 +409,40 @@
 				84ACFB1425BE109200A09F67 /* VirtualObjectARView.swift in Sources */,
 				84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */,
 				84ACFB3F25BE2DD100A09F67 /* ThresholdPanGesture.swift in Sources */,
+				840C1E6925D36BED00AD339E /* Symptom.swift in Sources */,
 				84ACFB3C25BE2DA500A09F67 /* ViewController+ObjectSelection.swift in Sources */,
+				8448884825D6E13900F5FBBA /* Note.swift in Sources */,
+				84AF3E1D25DC84600083E9F0 /* AddNewReminderTableViewCell.swift in Sources */,
+				8448884B25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift in Sources */,
 				84979F3425B9DFF200578C37 /* ViewController.swift in Sources */,
 				84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */,
+				8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */,
+				84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */,
 				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
 				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
+				84AF3E0B25DC67300083E9F0 /* AddNewReminderViewController.swift in Sources */,
 				84ACFB2225BE145800A09F67 /* VirtualObjectSelectionViewController.swift in Sources */,
 				84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */,
+				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
+				8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */,
 				84979F5025BA3FE100578C37 /* VirtualObject.swift in Sources */,
 				84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */,
+				840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */,
+				840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */,
 				84ACFB4625BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift in Sources */,
 				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,
 				84ACFB1B25BE132D00A09F67 /* FocusSquare.swift in Sources */,
 				84BBE22B25C10E0C0046C24F /* UIView + animation.swift in Sources */,
 				84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */,
 				84979F4F25BA3FE100578C37 /* VirtualObjectLoader.swift in Sources */,
+				84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */,
 				84979F4A25BA3CDC00578C37 /* ViewController+Actions.swift in Sources */,
+				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
 				84ACFB1F25BE139000A09F67 /* Utilities.swift in Sources */,
 				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
 				84ACFB1A25BE132D00A09F67 /* FocusSquareSegment.swift in Sources */,
+				8448884225D6C48200F5FBBA /* addSymptomContainerViewController.swift in Sources */,
 				84ACFB3825BE2C4E00A09F67 /* VirtualObjectInteraction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

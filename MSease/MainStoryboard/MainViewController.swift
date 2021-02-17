@@ -9,17 +9,30 @@
 import UIKit
 import FSCalendar
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, FSCalendarDelegate {
 
+    @IBOutlet weak var injectButton: UIButton!
     @IBOutlet var calendar : FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendar.delegate = self
         calendar.pagingEnabled = true
         calendar.scope = .week
         calendar.scrollDirection = .horizontal
+        calendar.select(calendar.today)
         // Do any additional setup after loading the view.
     }
     
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("here")
+        if calendar.today != date{
+            injectButton.setTitle("Log Symptoms", for: .normal)
+        }
+        else{
+            injectButton.setTitle("Inject", for: .normal)
+        }
+    }
 
     /*
     // MARK: - Navigation

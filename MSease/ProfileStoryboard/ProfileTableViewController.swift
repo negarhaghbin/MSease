@@ -18,7 +18,7 @@ class ProfileTableViewController: UITableViewController {
     
     enum cellRow : Int{
         case reminder = 0
-        case settings = 1
+        case settings
     }
     
     override func viewDidLoad() {
@@ -57,6 +57,7 @@ class ProfileTableViewController: UITableViewController {
         return cell
     }
     
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -93,14 +94,18 @@ class ProfileTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showReminderSettings"{
+            let vc = segue.destination as! reminderSettingsViewController
+        }
+//        else if segue.identifier == "showOtherSettings"{
+//            
+//        }
     }
-    */
+    
 
 }

@@ -21,7 +21,7 @@ class Reminder: Object{
     
     @objc dynamic var _id: ObjectId = ObjectId.generate()
     
-    convenience init(name: String, mon: Bool, tue: Bool, wed: Bool, thu: Bool, fri: Bool, sat: Bool, sun: Bool, time: Date, message: String?){
+    convenience init(name: String, mon: Bool, tue: Bool, wed: Bool, thu: Bool, fri: Bool, sat: Bool, sun: Bool, time: String, message: String?){
         self.init()
         self.name = name
         self.mon = mon
@@ -31,7 +31,7 @@ class Reminder: Object{
         self.fri = fri
         self.sat = sat
         self.sun = sun
-        self.time = time.getTime()
+        self.time = time
         self.message = message ?? "Have you write in your journal today?"
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddNewReminderViewController: UITableViewController, UITextFieldDelegate {
+class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -19,16 +19,11 @@ class AddNewReminderViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet var days: Array<UITableViewCell>?
     
     var reminder : Reminder?
+    var repeatDays : [Bool] = []
     
-    enum daysOfTheWeek : Int{
-        case mon = 0
-        case tue
-        case wed
-        case thu
-        case fri
-        case sat
-        case sun
-    }
+    var repeatValue : String = "" //TODO: should be from db
+    
+    let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     enum rows : Int{
         case name = 0
@@ -49,8 +44,21 @@ class AddNewReminderViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        timeLabel.text = Date().getTime()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        repeatLabel.text = repeatValue
+        for cell in days!{
+            if cell.accessoryType == .checkmark{
+                repeatDays.append(true)
+            }
+            else{
+                repeatDays.append(false)
+            }
+        }
     }
     
     func AnimateTableCell(indexPath: IndexPath){
@@ -61,38 +69,67 @@ class AddNewReminderViewController: UITableViewController, UITextFieldDelegate {
         })
     }
     
+    func setRepeatLabel(){
+        repeatValue = ""
+        var counter = 0
+        for (i,day) in repeatDays.enumerated(){
+            if day == true{
+                repeatValue += "\(daysOfTheWeek[i]), "
+                counter += 1
+            }
+        }
+        if counter == 0{
+            repeatValue = "None"
+        }
+        else if counter == 7{
+            repeatValue = "Daily"
+        }
+        else{
+            repeatValue.remove(at: repeatValue.index(before: repeatValue.endIndex))
+            repeatValue.remove(at: repeatValue.index(before: repeatValue.endIndex))
+        }
+        
+        repeatLabel.text = repeatValue
+
+    }
+    
     // MARK: - Actions
     
     @IBAction func addReminder(_ sender: Any) {
-        var repeatDays : [Bool] = []
-        
-        for cell in days!{
-            if cell.accessoryType == .checkmark{
-                repeatDays.append(true)
-            }
-            else{
-                repeatDays.append(false)
-            }
-        }
-        
         reminder = Reminder(name: nameLabel.text ?? "",
-                            mon: repeatDays[daysOfTheWeek.mon.rawValue],
-                            tue: repeatDays[daysOfTheWeek.tue.rawValue],
-                            wed: repeatDays[daysOfTheWeek.wed.rawValue],
-                            thu: repeatDays[daysOfTheWeek.thu.rawValue],
-                            fri: repeatDays[daysOfTheWeek.fri.rawValue],
-                            sat: repeatDays[daysOfTheWeek.sat.rawValue],
-                            sun: repeatDays[daysOfTheWeek.sun.rawValue],
-                            time: timePicker.date,
+                            mon: repeatDays[0],
+                            tue: repeatDays[1],
+                            wed: repeatDays[2],
+                            thu: repeatDays[3],
+                            fri: repeatDays[4],
+                            sat: repeatDays[5],
+                            sun: repeatDays[6],
+                            time: timeLabel.text!,
                             message: textView.text)
         
         RealmManager.shared.addRemidner(newReminder: reminder!)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - UIDatePickerView
+    
+    @IBAction func timePickerChanged(_ sender: UIDatePicker) {
+//        print(sender.date)
+        timeLabel.text = sender.date.getTime()
     }
     
     // MARK: - Text Field
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        nameLabel.text = textField.text
+    @IBAction func textFieldChanged(_ sender: Any) {
+        nameLabel.text = nameTextField.text
+    }
+    
+    
+    // MARK: - Text View
+    
+    func textViewDidChange(_ textView: UITextView) {
+        messageLabel.text = "Customized"
     }
     
     // MARK: - Table View
@@ -110,6 +147,20 @@ class AddNewReminderViewController: UITableViewController, UITextFieldDelegate {
             for cell in days!{
                 cell.isHidden = !cell.isHidden
             }
+        case rows.mon.rawValue...rows.sun.rawValue:
+            let dayIndex = indexPath.row-rows.mon.rawValue
+            let cell = days![dayIndex]
+            if cell.accessoryType == .checkmark{
+                cell.accessoryType = .none
+                repeatDays[dayIndex] = false
+            }
+            else{
+                cell.accessoryType = .checkmark
+                repeatDays[dayIndex] = true
+            }
+            
+            setRepeatLabel()
+            
             
         case rows.name.rawValue:
             nameTextField.isHidden = !nameTextField.isHidden
@@ -120,15 +171,6 @@ class AddNewReminderViewController: UITableViewController, UITextFieldDelegate {
         }
         AnimateTableCell(indexPath: indexPath)
         
-        if (rows.mon.rawValue...rows.sun.rawValue).contains(indexPath.row){
-            let cell = days![indexPath.row-rows.mon.rawValue]
-            if cell.accessoryType == .checkmark{
-                cell.accessoryType = .none
-            }
-            else{
-                cell.accessoryType = .checkmark
-            }
-        }
         
     }
     

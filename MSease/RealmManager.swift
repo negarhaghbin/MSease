@@ -71,4 +71,9 @@ extension RealmManager{
             realm.add(newReminder)
         }
     }
+    
+    func getReminders()->[Reminder]{
+        let reminders = realm.objects(Reminder.self)
+        return Array(reminders)
+    }
 }

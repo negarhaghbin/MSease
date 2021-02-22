@@ -17,13 +17,13 @@ extension Date{
     }
     
     func getTime()->String{
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: Date())
-        let minutes = calendar.component(.minute, from: Date())
+//        let calendar = Calendar.current
+//        let hour = calendar.component(.hour, from: self)
+//        let minutes = calendar.component(.minute, from: self)
         let formatter = DateFormatter()
-        formatter.dateFormat = "a"
-
-        return "\(hour):\(minutes) \(formatter.string(from: Date()))"
+        formatter.dateFormat = "hh:mm a"
+        return "\(formatter.string(from: self))"
+//        return "\(self.):\(minutes) \(formatter.string(from: self))"
     }
     
     func printFullTime(){

@@ -24,6 +24,7 @@ class reminderSettingsTableViewCell: UITableViewCell {
 class reminderSettingsViewController: UIViewController {
 
     let cellIdentifier = "reminderSettingsCell"
+    let reminders = RealmManager.shared.getReminders()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +59,13 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return reminders.count
-        return 2
+        if section == 0{
+            return 1
+        }
+        else{
+            return reminders.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,8 +75,8 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
             }
             else if indexPath.section == 1{
                 cell.setup(isReminderInstance: true)
-                cell.reminderNameLabel.text = "New Reminder"
-                cell.reminderTimeLabel.text = "1:24 PM"
+                cell.reminderNameLabel.text = reminders[indexPath.row].name
+                cell.reminderTimeLabel.text = reminders[indexPath.row].time
             }
             return cell
         }

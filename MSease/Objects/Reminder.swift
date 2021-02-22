@@ -35,6 +35,48 @@ class Reminder: Object{
         self.message = message ?? "Have you write in your journal today?"
     }
     
+    func getRepeatDaysList()->[Bool]{
+        var result : [Bool] = []
+        result.append(mon)
+        result.append(tue)
+        result.append(wed)
+        result.append(thu)
+        result.append(fri)
+        result.append(sat)
+        result.append(sun)
+        
+        return result
+    }
+    
+    func getRepeatationDays()->String{
+        let repeatDays = getRepeatDaysList()
+        var repeatValue = ""
+        var counter = 0
+        
+        for (i,day) in repeatDays.enumerated(){
+            if day == true{
+                repeatValue += "\(daysOfTheWeek[i]), "
+                counter += 1
+            }
+        }
+        if counter == 0{
+            repeatValue = "None"
+        }
+        else if counter == 7{
+            repeatValue = "Daily"
+        }
+        else{
+            repeatValue.remove(at: repeatValue.index(before: repeatValue.endIndex))
+            repeatValue.remove(at: repeatValue.index(before: repeatValue.endIndex))
+        }
+        
+        return repeatValue
+    }
+    
+    func setId(id:ObjectId){
+        self._id = id
+    }
+    
     override static func primaryKey() -> String{
         return "_id"
     }

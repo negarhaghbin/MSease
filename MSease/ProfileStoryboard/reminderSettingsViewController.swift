@@ -23,8 +23,13 @@ class reminderSettingsTableViewCell: UITableViewCell {
 
 class reminderSettingsViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "reminderSettingsCell"
-    let reminders = RealmManager.shared.getReminders()
+    
+    var reminders = RealmManager.shared.getReminders()
+    var selectedReminder : Reminder? = Reminder()
+    var isNewReminder = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +37,23 @@ class reminderSettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        reminders = RealmManager.shared.getReminders()
+        tableView.reloadData()
+    }
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
+        let vc = segue.destination as! AddNewReminderViewController
+        vc.reminder = selectedReminder
+        vc.isNewReminder = isNewReminder
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
 
@@ -77,6 +89,7 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
                 cell.setup(isReminderInstance: true)
                 cell.reminderNameLabel.text = reminders[indexPath.row].name
                 cell.reminderTimeLabel.text = reminders[indexPath.row].time
+                cell.reminderRepeatLabel.text = reminders[indexPath.row].getRepeatationDays()
             }
             return cell
         }
@@ -86,6 +99,22 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(100)
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 1{
+            selectedReminder = reminders[indexPath.row]
+            isNewReminder = false
+        }
+        else{
+            selectedReminder = Reminder()
+            isNewReminder = true
+        }
+        return indexPath
     }
     
 }

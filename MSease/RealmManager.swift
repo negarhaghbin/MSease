@@ -66,7 +66,7 @@ class RealmManager{
 }
 
 extension RealmManager{
-    func addRemidner(newReminder: Reminder){
+    func addReminder(newReminder: Reminder){
         try! realm.write{
             realm.add(newReminder)
         }
@@ -75,5 +75,22 @@ extension RealmManager{
     func getReminders()->[Reminder]{
         let reminders = realm.objects(Reminder.self)
         return Array(reminders)
+    }
+    
+    func editReminder(_ newReminder: Reminder){
+        let oldReminder = realm.object(ofType: Reminder.self, forPrimaryKey: newReminder._id)
+        print(oldReminder)
+        try! realm.write{
+            oldReminder?.name = newReminder.name
+            oldReminder?.mon = newReminder.mon
+            oldReminder?.tue = newReminder.tue
+            oldReminder?.wed = newReminder.wed
+            oldReminder?.thu = newReminder.thu
+            oldReminder?.fri = newReminder.fri
+            oldReminder?.sat = newReminder.sat
+            oldReminder?.sun = newReminder.sun
+            oldReminder?.time = newReminder.time
+            oldReminder?.message = newReminder.message
+        }
     }
 }

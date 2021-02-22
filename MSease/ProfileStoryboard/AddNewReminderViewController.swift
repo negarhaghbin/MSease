@@ -7,6 +7,7 @@
 
 import UIKit
 
+let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var messageLabel: UILabel!
@@ -18,12 +19,15 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet var days: Array<UITableViewCell>?
     
-    var reminder : Reminder?
+    var isNewReminder = false
     var repeatDays : [Bool] = []
+    var reminder : Reminder? {
+        didSet {
+            refreshUI()
+        }
+    }
     
-    var repeatValue : String = "" //TODO: should be from db
     
-    let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     enum rows : Int{
         case name = 0
@@ -44,21 +48,57 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.na.topItem.title = "some title"
 //        timeLabel.text = Date().getTime()
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        repeatLabel.text = repeatValue
-        for cell in days!{
-            if cell.accessoryType == .checkmark{
-                repeatDays.append(true)
+        for (i,day) in repeatDays.enumerated(){
+            if day == true{
+                days![i].accessoryType = .checkmark
             }
             else{
-                repeatDays.append(false)
+                days![i].accessoryType = .none
             }
         }
+    }
+    
+    private func refreshUI(){
+        loadView()
+        nameLabel.text = reminder?.name
+        repeatLabel.text = reminder?.getRepeatationDays()
+        timeLabel.text = reminder?.time
+        messageLabel.text = reminder?.message
+        
+        nameTextField.text = reminder?.name
+        repeatDays = (reminder?.getRepeatDaysList())!
+        timePicker.date = getTimeFromString(reminder!.time)
+        textView.text = reminder?.message
+        tableView.reloadData()
+    }
+    
+    func getTimeFromString(_ time: String)->Date{
+        var index = time.firstIndex(of: ":")!
+        let hour = time[..<index]
+        index = time.index(after: index)
+        let minute = time[index..<time.firstIndex(of: " ")!]
+        index = time.firstIndex(of: " ")!
+        index = time.index(after: index)
+        let ampm = time[index...]
+        
+        var hourInt = Int(hour)!
+        
+        if ampm == "PM"{
+            hourInt += 12
+        }
+        
+        var dateComponents = Calendar.current.dateComponents([.minute, .hour], from: Date())
+        dateComponents.minute = Int(minute)!
+        dateComponents.hour = hourInt
+        
+        return Calendar.current.date(from: dateComponents)!
     }
     
     func AnimateTableCell(indexPath: IndexPath){
@@ -70,7 +110,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     }
     
     func setRepeatLabel(){
-        repeatValue = ""
+        var repeatValue = ""
         var counter = 0
         for (i,day) in repeatDays.enumerated(){
             if day == true{
@@ -90,12 +130,12 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         }
         
         repeatLabel.text = repeatValue
-
     }
     
     // MARK: - Actions
     
     @IBAction func addReminder(_ sender: Any) {
+        let reminderId = (reminder?._id)!
         reminder = Reminder(name: nameLabel.text ?? "",
                             mon: repeatDays[0],
                             tue: repeatDays[1],
@@ -106,8 +146,14 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             sun: repeatDays[6],
                             time: timeLabel.text!,
                             message: textView.text)
+        if isNewReminder{
+            RealmManager.shared.addReminder(newReminder: reminder!)
+        }
+        else{
+            reminder?.setId(id: reminderId)
+            RealmManager.shared.editReminder(reminder!)
+        }
         
-        RealmManager.shared.addRemidner(newReminder: reminder!)
         
         self.navigationController?.popViewController(animated: true)
     }
@@ -129,7 +175,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     // MARK: - Text View
     
     func textViewDidChange(_ textView: UITextView) {
-        messageLabel.text = "Customized"
+        messageLabel.text = textView.text
     }
     
     // MARK: - Table View

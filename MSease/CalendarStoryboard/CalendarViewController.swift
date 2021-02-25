@@ -12,7 +12,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet var calendar : FSCalendar!
     var notesViewController: NotesTableViewController?
     var selectedDate : Date?
-    var notes : [Note]?
+    var notes : [Note] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,20 +25,31 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        selectedDate = calendar.selectedDate
+        
+        let currentHour = Calendar.current.component(.hour, from: Date())
+        let currentMinutes = Calendar.current.component(.minute, from: Date())
+        
+        selectedDate = Calendar.current.date(bySetting: .hour, value: currentHour, of: calendar.selectedDate!)
+        
+        selectedDate = Calendar.current.date(bySetting: .minute, value: currentMinutes, of: selectedDate!)
+        
+//        print(selectedDate)
+        
         performSegue(withIdentifier: "viewDateSegue", sender: nil)
     }
     
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        print(date)
-        notes = RealmManager.shared.getNotes(for: date as Date)
-        return notes!.count == 0 ? 0 : 1
+        if RealmManager.shared.haveNotes(for: date as Date){
+            return 1
+        }
+        else{
+            return 0
+        }
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        notes = RealmManager.shared.getNotes(for: date as Date)
-        if notes!.count != 0{
+        if RealmManager.shared.haveNotes(for: date as Date){
             cell.eventIndicator.isHidden = false
             cell.eventIndicator.numberOfEvents = 1
         }
@@ -55,14 +66,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewDateSegue" {
             notesViewController = segue.destination as? NotesTableViewController
             notesViewController?.date = selectedDate!
-            notesViewController?.notes = notes!
         }
-        // Pass the selected object to the new view controller.
     }
     
 

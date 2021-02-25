@@ -10,41 +10,43 @@ import UIKit
 class NotesTableViewController: UIViewController {
     
     let cellIdentifier = "notesTableViewCell"
-    var date : Date?
     var notes : [Note] = []
+    var date : Date?{
+        didSet{
+            notes = RealmManager.shared.getNotes(for: date!)
+        }
+    }
     
+    
+    // MARK: - IBOutlet
     @IBOutlet weak var titleDateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var symptomsView : UIView!
     @IBOutlet weak var shadowView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        titleDateLabel.text = date?.getUSFormat()
-//        date?.printFullTime()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.navigationItem.title = "Cancel"
-//        print(self.navigationController?.navigationItem.title)
         self.title = date?.getUSFormat()
-        notes = RealmManager.shared.getNotes(for: date!)
         tableView.reloadData()
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//        if segue.identifier == "editSymptom" {
+//            let symptomsVC = segue.destination as? SymptomsCollectionViewController
+//            symptomsVC!.date = date
+//        }
     }
-    */
+    
 
 }
 
+// MARK: - UITableViewController
 extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -83,15 +85,22 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
         }
         else{
             cell.setup(isNoteInstance: true)
+             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCollectionView(sender:)))
+            cell.collectionView.isUserInteractionEnabled = true
+            cell.collectionView.addGestureRecognizer(tapGestureRecognizer)
+            
             cell.contentLabel.text = notes[indexPath.row].textContent
             cell.timeLabel.text = notes[indexPath.row].time
+            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             
-//            let exercise = sections[indexPath.section-1].exercises[indexPath.row]
-//            cell.titleLabel.text = exercise.exercise?.name
-//            cell.previewImageView.image = UIImage(named: (exercise.gifName + ".gif"))
         }
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotesTableViewCell
+//        cell!.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
@@ -106,10 +115,52 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == 0{
             shadowView.isHidden = false
             symptomsView.animShow()
-//            let selectedExercise = sections[indexPath.section-1].exercises[indexPath.row]
-//            delegate?.exerciseSelected(selectedExercise)
+        }
+        else if indexPath.section == 1{
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Symptom", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "SymptomCollectionVC") as! SymptomsCollectionViewController
+            
+            vc.note = notes[indexPath.row]
+            
+//            var dateComponents = Calendar.current.dateComponents([.hour,.minute], from: date!)
+//            dateComponents.hour = Calendar.current.component(.hour, from: notes[indexPath.row].date)
+//            dateComponents.minute = Calendar.current.component(.minute, from: notes[indexPath.row].date)
+//
+//            date = Calendar.current.date(from: dateComponents)
+            
+//            vc.date = notes[indexPath.row].date
+            
+            vc.isNewNote = false
+            
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
+    }
+    
+    
+}
+
+extension NotesTableViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return notes[collectionView.tag].symptoms.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "miniSymptomsCell",
+                                                      for: indexPath) as! MiniSymptomsCollectionViewCell
+
+        cell.imageView.image = UIImage(named: notes[collectionView.tag].symptoms[indexPath.row].imageName)
+        
+        return cell
+    }
+    
+    @objc func didTapCollectionView(sender: UITapGestureRecognizer){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Symptom", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "SymptomCollectionVC") as! SymptomsCollectionViewController
+        vc.note = notes[sender.view!.tag]
+        vc.isNewNote = false
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

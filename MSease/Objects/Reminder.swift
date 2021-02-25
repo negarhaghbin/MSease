@@ -59,10 +59,7 @@ class Reminder: Object{
                 counter += 1
             }
         }
-        if counter == 0{
-            repeatValue = "None"
-        }
-        else if counter == 7{
+        if counter == 7{
             repeatValue = "Daily"
         }
         else{

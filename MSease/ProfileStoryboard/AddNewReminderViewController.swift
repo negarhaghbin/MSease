@@ -19,6 +19,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet var days: Array<UITableViewCell>?
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     var isNewReminder = false
     var repeatDays : [Bool] = []
     var reminder : Reminder? {
@@ -26,8 +27,6 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
             refreshUI()
         }
     }
-    
-    
     
     enum rows : Int{
         case name = 0
@@ -55,6 +54,12 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if isNewReminder{
+            self.navigationItem.title = "Add a new reminder"
+        }
+        else{
+            self.navigationItem.title = "Edit reminder"
+        }
         for (i,day) in repeatDays.enumerated(){
             if day == true{
                 days![i].accessoryType = .checkmark
@@ -74,31 +79,10 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         
         nameTextField.text = reminder?.name
         repeatDays = (reminder?.getRepeatDaysList())!
-        timePicker.date = getTimeFromString(reminder!.time)
+        let time = getTimeFromString(reminder!.time)
+        timePicker.date = Date().setTime(h: time.h, m: time.m)
         textView.text = reminder?.message
         tableView.reloadData()
-    }
-    
-    func getTimeFromString(_ time: String)->Date{
-        var index = time.firstIndex(of: ":")!
-        let hour = time[..<index]
-        index = time.index(after: index)
-        let minute = time[index..<time.firstIndex(of: " ")!]
-        index = time.firstIndex(of: " ")!
-        index = time.index(after: index)
-        let ampm = time[index...]
-        
-        var hourInt = Int(hour)!
-        
-        if ampm == "PM"{
-            hourInt += 12
-        }
-        
-        var dateComponents = Calendar.current.dateComponents([.minute, .hour], from: Date())
-        dateComponents.minute = Int(minute)!
-        dateComponents.hour = hourInt
-        
-        return Calendar.current.date(from: dateComponents)!
     }
     
     func AnimateTableCell(indexPath: IndexPath){
@@ -119,12 +103,16 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
             }
         }
         if counter == 0{
-            repeatValue = "None"
+            repeatValue = "Choose a day"
+            saveButton.isEnabled = false
+            
         }
         else if counter == 7{
             repeatValue = "Daily"
+            saveButton.isEnabled = true
         }
         else{
+            saveButton.isEnabled = true
             repeatValue.remove(at: repeatValue.index(before: repeatValue.endIndex))
             repeatValue.remove(at: repeatValue.index(before: repeatValue.endIndex))
         }
@@ -154,6 +142,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
             RealmManager.shared.editReminder(reminder!)
         }
         
+        self.scheduleNotification(name: nameLabel.text ?? "", message: textView.text)
         
         self.navigationController?.popViewController(animated: true)
     }
@@ -161,7 +150,6 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     // MARK: - UIDatePickerView
     
     @IBAction func timePickerChanged(_ sender: UIDatePicker) {
-//        print(sender.date)
         timeLabel.text = sender.date.getTime()
     }
     
@@ -260,3 +248,43 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
 
 }
 
+// MARK: - Push Notifications
+extension AddNewReminderViewController{
+    
+    func scheduleNotification(name: String, message: String){
+        let time = getTimeFromString(timeLabel.text!)
+        let content = UNMutableNotificationContent()
+        content.title = name
+        content.subtitle = message
+        content.sound = UNNotificationSound.default
+
+        // i = 0,monday
+        // weekday = 1, sunday
+        
+        //i = 6, weekday = 1
+        var triggerRepeat = Calendar.current.dateComponents([.weekday,.hour, .minute], from: Date())
+        triggerRepeat.hour = time.h
+        triggerRepeat.minute = time.m
+        
+        for (i,day) in repeatDays.enumerated(){
+            if day{
+                if (0...5).contains(i){
+                    triggerRepeat.weekday = i + 2
+                }
+                else if i == 6{
+                    triggerRepeat.weekday = 1
+                }
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+                UNUserNotificationCenter.current().add(request)
+            }
+        }
+        
+    }
+    
+    //TODO: add notification actions
+    
+}

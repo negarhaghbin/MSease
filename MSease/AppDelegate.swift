@@ -16,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         RealmManager.shared.printPath()
-        RealmManager.shared.fillSymptomsTable()
+        if isNewUser(){
+            UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            RealmManager.shared.fillSymptomsTable()
+            
+            RealmManager.shared.connectToMongoDB()
+        }
+        
         return true
     }
 
@@ -39,7 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-
+    
+    func isNewUser()->Bool{
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
+            return false
+        }
+        else{
+            return true
+        }
+    }
 
 }
 

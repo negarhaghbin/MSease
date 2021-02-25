@@ -13,7 +13,8 @@
 		840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */; };
 		840C1E6925D36BED00AD339E /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6825D36BED00AD339E /* Symptom.swift */; };
 		840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6D25D36E9400AD339E /* RealmManager.swift */; };
-		8448884225D6C48200F5FBBA /* addSymptomContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* addSymptomContainerViewController.swift */; };
+		842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D68F425E544BE0056D963 /* Symptom.storyboard */; };
+		8448884225D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */; };
 		8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
 		8448884B25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */; };
@@ -50,6 +51,9 @@
 		84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */; };
 		84BBE22B25C10E0C0046C24F /* UIView + animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22A25C10E0C0046C24F /* UIView + animation.swift */; };
 		84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22D25C1B46F0046C24F /* DateExtensions.swift */; };
+		84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */; };
+		84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */; };
+		84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */; };
 		84F5E79125C4482900EED24C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5E79025C4482900EED24C /* Profile.storyboard */; };
 		84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79925C44A7300EED24C /* ProfileViewController.swift */; };
 		84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */; };
@@ -64,7 +68,8 @@
 		840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		840C1E6825D36BED00AD339E /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		840C1E6D25D36E9400AD339E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		8448884125D6C48200F5FBBA /* addSymptomContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addSymptomContainerViewController.swift; sourceTree = "<group>"; };
+		842D68F425E544BE0056D963 /* Symptom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Symptom.storyboard; sourceTree = "<group>"; };
+		8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalSymptomInfoTableViewController.swift; sourceTree = "<group>"; };
 		8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionReusableView.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +108,9 @@
 		84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsPopupViewController.swift; sourceTree = "<group>"; };
 		84BBE22A25C10E0C0046C24F /* UIView + animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + animation.swift"; sourceTree = "<group>"; };
 		84BBE22D25C1B46F0046C24F /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
+		84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenImageViewController.swift; sourceTree = "<group>"; };
+		84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSymptomsCollectionViewCell.swift; sourceTree = "<group>"; };
 		84F5E79025C4482900EED24C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		84F5E79925C44A7300EED24C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +267,7 @@
 				84979F3525B9DFF200578C37 /* Injection.storyboard */,
 				84BBE21425C0BEC60046C24F /* Main.storyboard */,
 				84F5E79025C4482900EED24C /* Profile.storyboard */,
+				842D68F425E544BE0056D963 /* Symptom.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -269,12 +278,15 @@
 				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
 				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
 				840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */,
-				8448884125D6C48200F5FBBA /* addSymptomContainerViewController.swift */,
+				8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */,
 				8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */,
 				8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */,
 				8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */,
 				8407F6A125D9B0420015666A /* NotesTableViewCell.swift */,
 				84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */,
+				84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */,
+				84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */,
+				84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */,
 			);
 			path = CalendarStoryboard;
 			sourceTree = "<group>";
@@ -349,6 +361,7 @@
 			files = (
 				84BBE22225C0D63F0046C24F /* Calendar.storyboard in Resources */,
 				84979F3225B9DFF200578C37 /* art.scnassets in Resources */,
+				842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */,
 				84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */,
 				84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */,
 				84979F3725B9DFF200578C37 /* Injection.storyboard in Resources */,
@@ -417,6 +430,7 @@
 				84979F3425B9DFF200578C37 /* ViewController.swift in Sources */,
 				84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */,
 				8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */,
+				84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */,
 				84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */,
 				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
 				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
@@ -424,6 +438,7 @@
 				84ACFB2225BE145800A09F67 /* VirtualObjectSelectionViewController.swift in Sources */,
 				84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */,
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
+				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
 				8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */,
 				84979F5025BA3FE100578C37 /* VirtualObject.swift in Sources */,
 				84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */,
@@ -441,8 +456,9 @@
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
 				84ACFB1F25BE139000A09F67 /* Utilities.swift in Sources */,
 				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
+				84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */,
 				84ACFB1A25BE132D00A09F67 /* FocusSquareSegment.swift in Sources */,
-				8448884225D6C48200F5FBBA /* addSymptomContainerViewController.swift in Sources */,
+				8448884225D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift in Sources */,
 				84ACFB3825BE2C4E00A09F67 /* VirtualObjectInteraction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

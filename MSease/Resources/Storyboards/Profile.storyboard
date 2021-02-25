@@ -600,6 +600,7 @@
                         <outlet property="nameLabel" destination="J01-xc-Aac" id="x7S-Jg-n7I"/>
                         <outlet property="nameTextField" destination="rVp-TK-CGy" id="nZ0-d7-pda"/>
                         <outlet property="repeatLabel" destination="AOP-jn-J9c" id="l2w-k9-9LK"/>
+                        <outlet property="saveButton" destination="Qpm-3u-yYU" id="M5g-vq-EOw"/>
                         <outlet property="textView" destination="PUo-HN-zlb" id="u4l-o0-Ici"/>
                         <outlet property="timeLabel" destination="64W-CL-ahk" id="7s9-eM-OCQ"/>
                         <outlet property="timePicker" destination="OnX-ec-a60" id="dgL-dQ-iOL"/>

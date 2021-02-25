@@ -12,6 +12,8 @@ class NotesTableViewCell: UITableViewCell {
     @IBOutlet weak var addNewNoteLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +30,13 @@ class NotesTableViewCell: UITableViewCell {
         self.addNewNoteLabel.isHidden = isNoteInstance
         self.contentLabel.isHidden = !isNoteInstance
         self.timeLabel.isHidden = !isNoteInstance
+    }
+    
+    func setCollectionViewDataSourceDelegate(dataSourceDelegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
+        collectionView.delegate = dataSourceDelegate
+        collectionView.dataSource = dataSourceDelegate
+        collectionView.tag = row
+        collectionView.reloadData()
     }
 
 }

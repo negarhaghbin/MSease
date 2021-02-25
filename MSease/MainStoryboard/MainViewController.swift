@@ -8,6 +8,7 @@
 
 import UIKit
 import FSCalendar
+import UserNotifications
 
 class MainViewController: UIViewController, FSCalendarDelegate {
 
@@ -15,12 +16,17 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet var calendar : FSCalendar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCalendar()
+        requestNotificationPermission()
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func setupCalendar(){
         calendar.delegate = self
         calendar.pagingEnabled = true
         calendar.scope = .week
         calendar.scrollDirection = .horizontal
         calendar.select(calendar.today)
-        // Do any additional setup after loading the view.
     }
     
     
@@ -33,6 +39,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             injectButton.setTitle("Inject", for: .normal)
         }
     }
+    
 
     /*
     // MARK: - Navigation
@@ -44,4 +51,25 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
     */
 
+}
+
+// MARK: - Push Notifications
+
+extension MainViewController : UNUserNotificationCenterDelegate{
+    
+    func requestNotificationPermission(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner,.sound])
+    }
+    
+    
 }

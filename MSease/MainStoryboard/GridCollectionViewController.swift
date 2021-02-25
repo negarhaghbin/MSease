@@ -10,9 +10,21 @@ import UIKit
 
 private let GridRectViewCellIdentifier = "GridRectViewCell"
 private let GridSquareViewCellIdentifier = "GridSquareViewCell"
-private let sectionInsets = UIEdgeInsets(top: 5.0, left: 3.0, bottom: 5.0, right: 4.0)
+private let sectionInsets = UIEdgeInsets(top: 5.0, left: 4.0, bottom: 5.0, right: 4.0)
 
 var cgsize : CGSize? = nil
+
+enum limb{
+    case abdomen
+    case leftThigh
+    case rightThigh
+    case leftArm
+    case rightArm
+    case leftButtock
+    case rightButtock
+}
+
+var selectedLimb : limb?
 
 struct LimbGridSize {
     static let thigh = (row: 7, col: 5)
@@ -142,6 +154,32 @@ class GridCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == gridSections.abdomen.rawValue{
+            selectedLimb = limb.abdomen
+        }
+        else{
+            switch indexPath.row {
+            case gridNotAbdomenSectionItems.leftArm.rawValue:
+                selectedLimb = limb.leftArm
+            case gridNotAbdomenSectionItems.rightArm.rawValue:
+                selectedLimb = limb.rightArm
+            case gridNotAbdomenSectionItems.leftThigh.rawValue:
+                selectedLimb = limb.leftThigh
+            case gridNotAbdomenSectionItems.rightThigh.rawValue:
+                selectedLimb = limb.rightThigh
+            case gridNotAbdomenSectionItems.leftButtock.rawValue:
+                selectedLimb = limb.leftButtock
+            case gridNotAbdomenSectionItems.rightButtock.rawValue:
+                selectedLimb = limb.rightButtock
+            default:
+                "unknown limb"
+            }
+            
+        }
+        
+    }
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -189,6 +227,14 @@ class GridCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let vc = segue.destination as! ARViewController
+//        vc.selectedLimb = selectedLimb
+    }
 
 }
 
@@ -208,7 +254,7 @@ extension GridCollectionViewController : UICollectionViewDelegateFlowLayout {
         divider = 1
     }
     
-    let paddingSpace = sectionInsets.left * (itemsPerRow + 1) + sectionInsets.right * (itemsPerRow + 1)
+    let paddingSpace = sectionInsets.left * (itemsPerRow) + sectionInsets.right * (itemsPerRow)
     let availableWidth = view.frame.width - paddingSpace
     let widthPerItem = availableWidth / itemsPerRow
     cgsize=CGSize(width: widthPerItem, height: widthPerItem/CGFloat(divider))
@@ -216,18 +262,6 @@ extension GridCollectionViewController : UICollectionViewDelegateFlowLayout {
     
     
   }
-
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      insetForSectionAt section: Int) -> UIEdgeInsets {
-//    return sectionInsets
-//  }
-//
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    return sectionInsets.left
-//  }
 }
 
 func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{

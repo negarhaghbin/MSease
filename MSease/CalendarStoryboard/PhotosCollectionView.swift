@@ -7,52 +7,70 @@
 
 import UIKit
 
-class PhotosCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - Cell
+class photoCollectionViewCell: UICollectionViewCell, CollectionCellAutoLayout {
+    var cachedSize: CGSize?
     
-    let PhotosCollectionViewCell = "imageCollectionCell"
+    @IBOutlet weak var imageView: UIImageView!
     
-    private var rows: CGFloat = 1
-    private let sectionInsets = UIEdgeInsets(top: 5.0, left: 3.0, bottom: 5.0, right: 4.0)
-
-    var cgsize : CGSize? = nil
-    
-    required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
-        self.delegate = self
-        self.dataSource = self
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell, for: indexPath) as! photoCollectionViewCell
-        if indexPath.row == 0{
-            cell.imageView.image = UIImage(systemName: "camera.fill")
-        }
-        return cell
-    }
-    
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-}
-
-extension PhotosCollectionView: UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = sectionInsets.top * (rows + 1) + sectionInsets.bottom * (rows + 1)
-        let availableHeight = self.frame.height - paddingSpace
-        let heightPerItem = availableHeight / rows
-        cgsize=CGSize(width: heightPerItem, height: heightPerItem)
-        return cgsize!
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        return preferredLayoutAttributes(layoutAttributes)
     }
 }
+
+// MARK: - CollectionView
+//class PhotosCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+//
+////    let PhotosCollectionViewCell = "imageCollectionCell"
+////    let sectionInsets = UIEdgeInsets(top: 5.0, left: 4.0, bottom: 5.0, right: 4.0)
+//
+//    var cgsize : CGSize? = nil
+//    var note : Note?
+//    var isNewNote = true
+//
+//    required init?(coder aDecoder: NSCoder) {
+//       super.init(coder: aDecoder)
+//        self.delegate = self
+//        self.dataSource = self
+//    }
+    
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if isNewNote{
+//            return 1
+//        }
+//        else{
+//            return (note?.images.count)!
+//        }
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = self.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell, for: indexPath) as! photoCollectionViewCell
+//        cell.imageView.image = UIImage(systemName: "camera.fill")
+//        return cell
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if indexPath.row == 0{
+//            let notesVC = parent
+//            let picker = UIImagePickerController()
+//            picker.sourceType = .camera
+//            picker.delegate = self
+//            present(picker, animated: true)
+//            
+//        }
+//    }
+
+//}
+
+//extension PhotosCollectionView: UICollectionViewDelegateFlowLayout{
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let itemsPerRow: CGFloat = 4
+//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1) + sectionInsets.right * (itemsPerRow + 1)
+//        let availableWidth = self.frame.width - paddingSpace
+//        let widthPerItem = availableWidth / itemsPerRow
+//        cgsize=CGSize(width: widthPerItem, height: widthPerItem)
+//        return cgsize!
+//    }
+//}

@@ -42,7 +42,9 @@ class SymptomsPopupViewController: UIViewController {
         
         if segue.identifier == "showAddSymptoms" {
             let symptomsVC = segue.destination as? SymptomsCollectionViewController
-            symptomsVC!.date = notesVC.date
+//            symptomsVC!.date = notesVC.date
+            symptomsVC!.isNewNote = true
+            symptomsVC!.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [])
         }
     }
     

@@ -46,25 +46,57 @@ class RealmManager{
         }
         
     }
-    
-    func getNoteImages() -> [String]{
-        //TODO
-        return []
-    }
-    
+}
+
+// MARK: - Note
+extension RealmManager{
     func addNote(newNote: Note){
         try! realm.write{
             realm.add(newNote)
         }
     }
     
+//    func getNoteImages(noteId: ObjectId) -> [String]{
+//        let predicate = NSPredicate(format: "noteId = %@", "\(noteId)")
+//        let result = realm.objects(NotePhoto.self).filter(predicate)
+//        var imageNames : [String] = []
+//        for image in result{
+//            imageNames.append(image.name)
+//        }
+//        return Array(imageNames)
+//    }
+    
     func getNotes(for date: Date) -> [Note]{
         let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
         let result = realm.objects(Note.self).filter(predicate)
+//        var photos : [String] = []
+//        for note in result{
+//            photos = getNoteImages(noteId: note._id)
+//            note.setImages(imageNames: photos)
+//        }
         return Array(result)
+    }
+    
+    func haveNotes(for date: Date) -> Bool{
+        let predicate = NSPredicate(format: "date beginswith %@", date.getUSFormat())
+        let result = realm.objects(Note.self).filter(predicate)
+        return result.count == 0 ? false : true
+    }
+    
+    func editNote(newNote: Note){
+        let oldNote = realm.object(ofType: Note.self, forPrimaryKey: newNote._id)
+        try! realm.write{
+            oldNote?.textContent = newNote.textContent
+            oldNote?.date = newNote.date
+            oldNote?.time = newNote.time
+            oldNote?.images = newNote.images
+            oldNote?.symptoms.removeAll()
+            oldNote?.symptoms.append(objectsIn: newNote.symptoms)
+        }
     }
 }
 
+// MARK: - Reminder
 extension RealmManager{
     func addReminder(newReminder: Reminder){
         try! realm.write{
@@ -79,7 +111,6 @@ extension RealmManager{
     
     func editReminder(_ newReminder: Reminder){
         let oldReminder = realm.object(ofType: Reminder.self, forPrimaryKey: newReminder._id)
-        print(oldReminder)
         try! realm.write{
             oldReminder?.name = newReminder.name
             oldReminder?.mon = newReminder.mon
@@ -92,5 +123,9 @@ extension RealmManager{
             oldReminder?.time = newReminder.time
             oldReminder?.message = newReminder.message
         }
+    }
+    
+    func connectToMongoDB(){
+        let app = App(id: "mseaseapp-wrhfs")
     }
 }

@@ -31,7 +31,6 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("here")
         if calendar.today != date{
             injectButton.setTitle("Log Symptoms", for: .normal)
         }
@@ -41,15 +40,13 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
     
 
-    /*
     // MARK: - Navigation
-
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
+    }*/
 
 }
 

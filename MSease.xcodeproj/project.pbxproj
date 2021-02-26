@@ -28,6 +28,7 @@
 		84979F4A25BA3CDC00578C37 /* ViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4925BA3CDC00578C37 /* ViewController+Actions.swift */; };
 		84979F4F25BA3FE100578C37 /* VirtualObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4D25BA3FE100578C37 /* VirtualObjectLoader.swift */; };
 		84979F5025BA3FE100578C37 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4E25BA3FE100578C37 /* VirtualObject.swift */; };
+		84A4013A25E86DD800AB474D /* GridData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4013925E86DD800AB474D /* GridData.swift */; };
 		84ACFB1425BE109200A09F67 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */; };
 		84ACFB1A25BE132D00A09F67 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1825BE132D00A09F67 /* FocusSquareSegment.swift */; };
 		84ACFB1B25BE132D00A09F67 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1925BE132D00A09F67 /* FocusSquare.swift */; };
@@ -54,6 +55,11 @@
 		84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */; };
 		84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */; };
 		84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */; };
+		84D4E72525E7F1F800DB75B4 /* AR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72425E7F1F800DB75B4 /* AR.storyboard */; };
+		84D4E72925E7F6AB00DB75B4 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E72825E7F6AB00DB75B4 /* ARViewController.swift */; };
+		84D4E73025E812E800DB75B4 /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72D25E812E700DB75B4 /* toy_robot_vintage.usdz */; };
+		84D4E73125E812E800DB75B4 /* toy_drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72E25E812E700DB75B4 /* toy_drummer.usdz */; };
+		84D4E73225E812E800DB75B4 /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72F25E812E700DB75B4 /* toy_biplane.usdz */; };
 		84F5E79125C4482900EED24C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5E79025C4482900EED24C /* Profile.storyboard */; };
 		84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79925C44A7300EED24C /* ProfileViewController.swift */; };
 		84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */; };
@@ -85,6 +91,7 @@
 		84979F4925BA3CDC00578C37 /* ViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Actions.swift"; sourceTree = "<group>"; };
 		84979F4D25BA3FE100578C37 /* VirtualObjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectLoader.swift; sourceTree = "<group>"; };
 		84979F4E25BA3FE100578C37 /* VirtualObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		84A4013925E86DD800AB474D /* GridData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridData.swift; sourceTree = "<group>"; };
 		84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
 		84ACFB1825BE132D00A09F67 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
 		84ACFB1925BE132D00A09F67 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
@@ -111,6 +118,11 @@
 		84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
 		84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenImageViewController.swift; sourceTree = "<group>"; };
 		84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSymptomsCollectionViewCell.swift; sourceTree = "<group>"; };
+		84D4E72425E7F1F800DB75B4 /* AR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AR.storyboard; sourceTree = "<group>"; };
+		84D4E72825E7F6AB00DB75B4 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		84D4E72D25E812E700DB75B4 /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = toy_robot_vintage.usdz; path = Untitled/toy_robot_vintage.usdz; sourceTree = SOURCE_ROOT; };
+		84D4E72E25E812E700DB75B4 /* toy_drummer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = toy_drummer.usdz; path = Untitled/toy_drummer.usdz; sourceTree = SOURCE_ROOT; };
+		84D4E72F25E812E700DB75B4 /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = toy_biplane.usdz; path = Untitled/toy_biplane.usdz; sourceTree = SOURCE_ROOT; };
 		84F5E79025C4482900EED24C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		84F5E79925C44A7300EED24C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +179,7 @@
 		84979F2E25B9DFF200578C37 /* MSease */ = {
 			isa = PBXGroup;
 			children = (
+				84D4E72725E7F67C00DB75B4 /* ARStoryboard */,
 				84F5E79625C44A2C00EED24C /* CalendarStoryboard */,
 				84AF3E1025DC68720083E9F0 /* MainStoryboard */,
 				84AF3E0E25DC67BE0083E9F0 /* ProfileStoryboard */,
@@ -195,6 +208,7 @@
 		84979F4425B9E31200578C37 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84D4E72C25E812CC00DB75B4 /* Models */,
 				84979F3125B9DFF200578C37 /* art.scnassets */,
 				84F5E79325C4483500EED24C /* Storyboards */,
 				84979F3825B9DFF500578C37 /* Assets.xcassets */,
@@ -255,8 +269,27 @@
 			children = (
 				84BBE21925C0BF700046C24F /* MainViewController.swift */,
 				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
+				84A4013925E86DD800AB474D /* GridData.swift */,
 			);
 			path = MainStoryboard;
+			sourceTree = "<group>";
+		};
+		84D4E72725E7F67C00DB75B4 /* ARStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				84D4E72825E7F6AB00DB75B4 /* ARViewController.swift */,
+			);
+			path = ARStoryboard;
+			sourceTree = "<group>";
+		};
+		84D4E72C25E812CC00DB75B4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84D4E72F25E812E700DB75B4 /* toy_biplane.usdz */,
+				84D4E72E25E812E700DB75B4 /* toy_drummer.usdz */,
+				84D4E72D25E812E700DB75B4 /* toy_robot_vintage.usdz */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		84F5E79325C4483500EED24C /* Storyboards */ = {
@@ -268,6 +301,7 @@
 				84BBE21425C0BEC60046C24F /* Main.storyboard */,
 				84F5E79025C4482900EED24C /* Profile.storyboard */,
 				842D68F425E544BE0056D963 /* Symptom.storyboard */,
+				84D4E72425E7F1F800DB75B4 /* AR.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -359,14 +393,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D4E73125E812E800DB75B4 /* toy_drummer.usdz in Resources */,
 				84BBE22225C0D63F0046C24F /* Calendar.storyboard in Resources */,
 				84979F3225B9DFF200578C37 /* art.scnassets in Resources */,
 				842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */,
 				84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */,
 				84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */,
+				84D4E73225E812E800DB75B4 /* toy_biplane.usdz in Resources */,
 				84979F3725B9DFF200578C37 /* Injection.storyboard in Resources */,
+				84D4E73025E812E800DB75B4 /* toy_robot_vintage.usdz in Resources */,
 				84F5E79125C4482900EED24C /* Profile.storyboard in Resources */,
 				84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */,
+				84D4E72525E7F1F800DB75B4 /* AR.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +478,7 @@
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
 				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
 				8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */,
+				84D4E72925E7F6AB00DB75B4 /* ARViewController.swift in Sources */,
 				84979F5025BA3FE100578C37 /* VirtualObject.swift in Sources */,
 				84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */,
 				840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */,
@@ -448,6 +487,7 @@
 				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,
 				84ACFB1B25BE132D00A09F67 /* FocusSquare.swift in Sources */,
 				84BBE22B25C10E0C0046C24F /* UIView + animation.swift in Sources */,
+				84A4013A25E86DD800AB474D /* GridData.swift in Sources */,
 				84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */,
 				84979F4F25BA3FE100578C37 /* VirtualObjectLoader.swift in Sources */,
 				84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */,

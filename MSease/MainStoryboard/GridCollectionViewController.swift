@@ -8,40 +8,8 @@
 
 import UIKit
 
-private let GridRectViewCellIdentifier = "GridRectViewCell"
-private let GridSquareViewCellIdentifier = "GridSquareViewCell"
 private let sectionInsets = UIEdgeInsets(top: 5.0, left: 4.0, bottom: 5.0, right: 4.0)
-
 var cgsize : CGSize? = nil
-
-enum limb{
-    case abdomen
-    case leftThigh
-    case rightThigh
-    case leftArm
-    case rightArm
-    case leftButtock
-    case rightButtock
-}
-
-var selectedLimb : limb?
-
-struct LimbGridSize {
-    static let thigh = (row: 7, col: 5)
-    static let arm = (row: 6, col: 3)
-    static let buttock = (row: 6, col: 4)
-    
-    static func gridSize() -> (row: Int, col: Int){
-        let row = max(
-            LimbGridSize.thigh.row,
-            LimbGridSize.arm.row,
-            LimbGridSize.buttock.row)
-        let col = max(LimbGridSize.thigh.col,
-                      LimbGridSize.arm.col,
-                      LimbGridSize.buttock.col)
-        return (row, col)
-    }
-}
 
 class GridCollectionViewCell: UICollectionViewCell {
     
@@ -84,6 +52,11 @@ class GridCollectionViewCell: UICollectionViewCell {
 }
 
 class GridCollectionViewController: UICollectionViewController {
+    private let GridRectViewCellIdentifier = "GridRectViewCell"
+    private let GridSquareViewCellIdentifier = "GridSquareViewCell"
+    
+    var selectedLimb : limb?
+//    var delegate : SelectedLimbDelegateProtocol? = nil
     
     enum gridSections : Int {
         case abdomen = 0
@@ -103,6 +76,7 @@ class GridCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print("loading")
 
     }
 
@@ -173,12 +147,18 @@ class GridCollectionViewController: UICollectionViewController {
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
                 selectedLimb = limb.rightButtock
             default:
-                "unknown limb"
+                print("unknown limb")
             }
             
         }
         
+        let storyboard = UIStoryboard(name: "AR", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "ARVC") as! ARViewController
+        vc.selectedLimb = selectedLimb
+        present(vc, animated: true)
     }
+    
+    
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -231,10 +211,11 @@ class GridCollectionViewController: UICollectionViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let vc = segue.destination as! ARViewController
 //        vc.selectedLimb = selectedLimb
-    }
+//        vc.selectedLimb = .leftThigh
+//    }
 
 }
 

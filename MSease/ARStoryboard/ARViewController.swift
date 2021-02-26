@@ -7,6 +7,7 @@
 
 import UIKit
 import RealityKit
+import ARKit
 import Combine
 
 class ARViewController: UIViewController {
@@ -14,44 +15,87 @@ class ARViewController: UIViewController {
     @IBOutlet var arview : ARView!
     
     let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.2, 0.2])
+    let coachingOverlay = ARCoachingOverlayView()
     
-    var cards : [Entity] = []
-    var tappedCards : [Entity] = []
-    var numberOfCells : Int = 0
+    var cards : [[Entity]] = []
+    var tappedCards : [[Entity]] = []
+    var currentTappedCardIndices : (Int, Int)?
     var selectedLimb : limb?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCoachingOverlay()
         arview.scene.addAnchor(anchor)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        createGrid(completionHandler: {
-            placeGrid()
+        createGrid(completionHandler: { hidden in
+            placeGrid(hidden: hidden)
+            placeMascot()
         })
-        placeMascot()
     }
     
-    func createGrid(completionHandler: ()->()){
+    func createGrid(completionHandler: ([(Int, Int)])->()){
+        var row = 0
+        var col = 0
+        var hidden : [(Int, Int)]?
         switch selectedLimb{
         case .none:
             print("unknown limb")
         case .abdomen:
-            print("TODO")
-        case .leftThigh:
-            numberOfCells = (LimbGridSize.thigh.row * LimbGridSize.thigh.col) - 2 //the hidden ones
-        case .rightThigh:
-            print("TODO")
-        case .leftArm:
-            print("TODO")
-        case .rightArm:
-            print("TODO")
+            row = LimbGridSize.abdomen.row
+            col = LimbGridSize.abdomen.col
+            hidden = LimbGridSize.abdomen.hidden
+            
+        case .leftThigh, .rightThigh:
+            row = LimbGridSize.thigh.row
+            col = LimbGridSize.thigh.col
+            hidden = LimbGridSize.thigh.hidden
+
+        case .leftArm, .rightArm:
+            row = LimbGridSize.arm.row
+            col = LimbGridSize.arm.col
+            hidden = []
+            
         case .leftButtock:
-            print("TODO")
+            row = LimbGridSize.leftButtock.row
+            col = LimbGridSize.leftButtock.col
+            hidden = LimbGridSize.leftButtock.hidden
+            
         case .rightButtock:
-            print("TODO")
+            row = LimbGridSize.rightButtock.row
+            col = LimbGridSize.rightButtock.col
+            hidden = LimbGridSize.rightButtock.hidden
         }
-        for _ in 1...numberOfCells{
+        
+        for i in 0..<row{
+            for _ in 0..<col{
+                let box = MeshResource.generateBox(width: 0.03, height: 0.002, depth: 0.03)
+                let cellMaterial = SimpleMaterial(color: UIColor(red: 0.32, green: 0.625, blue: 0.746, alpha: 1), isMetallic: false)
+                let model = ModelEntity(mesh: box, materials: [cellMaterial])
+                
+                model.generateCollisionShapes(recursive: true)
+                if cards.count-1 < i{
+                    cards.append([])
+                }
+                cards[i].append(model)
+                
+                let selectedBoxMaterial = SimpleMaterial(color: .yellow, isMetallic: false)
+                let selectedModel = ModelEntity(mesh: box, materials: [selectedBoxMaterial])
+                selectedModel.generateCollisionShapes(recursive: true)
+                if tappedCards.count-1 < i{
+                    tappedCards.append([])
+                }
+                tappedCards[i].append(selectedModel)
+                
+                /*self.grid2D[i][j] = self.grid![i*LimbGridSize.gridSize().col+j]
+                self.grid2D[i][j].isHidden = false*/
+            }
+        }
+        
+        
+        
+        /*for _ in 1...numberOfCells{
             let box = MeshResource.generateBox(width: 0.03, height: 0.002, depth: 0.03)
             let cellMaterial = SimpleMaterial(color: UIColor(red: 0.32, green: 0.625, blue: 0.746, alpha: 1), isMetallic: false)
             let model = ModelEntity(mesh: box, materials: [cellMaterial])
@@ -63,45 +107,23 @@ class ARViewController: UIViewController {
             let selectedModel = ModelEntity(mesh: box, materials: [selectedBoxMaterial])
             selectedModel.generateCollisionShapes(recursive: true)
             tappedCards.append(selectedModel)
-        }
+        }*/
         
-        completionHandler()
+        completionHandler(hidden!)
     }
     
-    func placeGrid(){
-        for (index, card) in cards.enumerated(){
-            var x : Float?
-            var z : Float?
-            
-            switch selectedLimb{
-            case .none:
-                print("unknown limb")
-            case .abdomen:
-                print("TODO")
-            case .leftThigh:
-                if index > cards.count-4{
-                    x = Float((index+1) % LimbGridSize.thigh.col)
-                    z = Float((index+1) / LimbGridSize.thigh.row)
+    func placeGrid(hidden: [(Int, Int)]){
+        for (i,cardRow) in cards.enumerated(){
+            for (j, card) in cardRow.enumerated(){
+                if hidden.contains(where: {
+                    return i==$0 && j == $1
+                }){
+                    continue
                 }
-                else{
-                    x = Float(index % LimbGridSize.thigh.col)
-                    z = Float(index / LimbGridSize.thigh.row)
-                }
-            case .rightThigh:
-                print("TODO")
-            case .leftArm:
-                print("TODO")
-            case .rightArm:
-                print("TODO")
-            case .leftButtock:
-                print("TODO")
-            case .rightButtock:
-                print("TODO")
+                card.position = [Float(i)*0.045, 0, Float(j)*0.045]
+                tappedCards[i][j].position = card.position
+                anchor.addChild(card)
             }
-            card.position = [x!*0.045, 0, z!*0.045]
-            tappedCards[index].position = card.position
-            
-            anchor.addChild(card)
         }
     }
     
@@ -134,27 +156,35 @@ class ARViewController: UIViewController {
             })
     }
     
-    func turnOtherSelectedCells(){
-        for tappedCard in tappedCards{
-            if anchor.children.contains(tappedCard){
-                anchor.addChild(cards[tappedCards.firstIndex(of: tappedCard)!])
-                anchor.removeChild(tappedCard)
-                break
+    func indices(of x: Entity, in array:[[Entity]]) -> (Int, Int)? {
+        for (i, row) in array.enumerated() {
+            if let j = row.firstIndex(of: x) {
+                return (i, j)
             }
         }
+        return nil
+    }
+    
+    func turnLastTappedCell(){
+        anchor.addChild(cards[currentTappedCardIndices!.0][currentTappedCardIndices!.1])
+        anchor.removeChild(tappedCards[currentTappedCardIndices!.0][currentTappedCardIndices!.1])
     }
     
     @IBAction func cardTapped(_ sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: arview)
         if let card = arview.entity(at: tapLocation){
-            if cards.contains(card){
-                turnOtherSelectedCells()
-                anchor.addChild(tappedCards[cards.firstIndex(of: card)!])
+            if let indices = indices(of: card, in: cards){
+                if currentTappedCardIndices != nil{
+                    turnLastTappedCell()
+                }
+                anchor.addChild(tappedCards[indices.0][indices.1])
+                currentTappedCardIndices = indices
                 anchor.removeChild(card)
             }
-            else if tappedCards.contains(card){
-                anchor.addChild(cards[tappedCards.firstIndex(of: card)!])
+            else if let indices = indices(of: card, in: tappedCards){
+                anchor.addChild(cards[indices.0][indices.1])
                 anchor.removeChild(card)
+                currentTappedCardIndices = nil
             }
             else{
                 print("unknown object tapped")
@@ -185,11 +215,4 @@ class ARViewController: UIViewController {
     }
     */
 
-}
-
-extension ARViewController : SelectedLimbDelegateProtocol{
-    func selectedLimb(newLimb: limb) {
-        self.selectedLimb = newLimb
-    }
-    
 }

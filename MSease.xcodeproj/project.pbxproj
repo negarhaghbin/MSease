@@ -37,7 +37,7 @@
 		84ACFB3825BE2C4E00A09F67 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3725BE2C4D00A09F67 /* VirtualObjectInteraction.swift */; };
 		84ACFB3C25BE2DA500A09F67 /* ViewController+ObjectSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* ViewController+ObjectSelection.swift */; };
 		84ACFB3F25BE2DD100A09F67 /* ThresholdPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */; };
-		84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */; };
+		84ACFB4225BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4125BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift */; };
 		84ACFB4625BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */; };
 		84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */; };
 		84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF3E0225DC3B640083E9F0 /* reminderSettingsViewController.swift */; };
@@ -100,7 +100,7 @@
 		84ACFB3725BE2C4D00A09F67 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
 		84ACFB3B25BE2DA500A09F67 /* ViewController+ObjectSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+ObjectSelection.swift"; sourceTree = "<group>"; };
 		84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdPanGesture.swift; sourceTree = "<group>"; };
-		84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+CoachingOverlay.swift"; sourceTree = "<group>"; };
+		84ACFB4125BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARViewController+CoachingOverlay.swift"; sourceTree = "<group>"; };
 		84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
 		84AF3E0225DC3B640083E9F0 /* reminderSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reminderSettingsViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +194,6 @@
 				84ACFB4525BE2F3500A09F67 /* ViewController+ARSCNViewDelegate.swift */,
 				84979F4925BA3CDC00578C37 /* ViewController+Actions.swift */,
 				84ACFB3B25BE2DA500A09F67 /* ViewController+ObjectSelection.swift */,
-				84ACFB4125BE2EC400A09F67 /* ViewController+CoachingOverlay.swift */,
 				84ACFB3725BE2C4D00A09F67 /* VirtualObjectInteraction.swift */,
 				84ACFB3E25BE2DD100A09F67 /* ThresholdPanGesture.swift */,
 				84ACFB1325BE109200A09F67 /* VirtualObjectARView.swift */,
@@ -278,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				84D4E72825E7F6AB00DB75B4 /* ARViewController.swift */,
+				84ACFB4125BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift */,
 			);
 			path = ARStoryboard;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
 				84AF3E0B25DC67300083E9F0 /* AddNewReminderViewController.swift in Sources */,
 				84ACFB2225BE145800A09F67 /* VirtualObjectSelectionViewController.swift in Sources */,
-				84ACFB4225BE2EC400A09F67 /* ViewController+CoachingOverlay.swift in Sources */,
+				84ACFB4225BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift in Sources */,
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
 				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
 				8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */,

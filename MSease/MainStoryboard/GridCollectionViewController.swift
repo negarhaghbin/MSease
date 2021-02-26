@@ -27,16 +27,10 @@ class GridCollectionViewCell: UICollectionViewCell {
     func initiate(){
         self.textLabel.adjustsFontSizeToFitWidth = true
         self.textLabel.minimumScaleFactor = 0.5
-        self.grid = self.grid!.sorted { $0.tag < $1.tag }
-        for i in 0..<LimbGridSize.gridSize().row{
-            for j in 0..<LimbGridSize.gridSize().col{
-                self.grid2D[i][j] = self.grid![i*LimbGridSize.gridSize().col+j]
-                self.grid2D[i][j].isHidden = false
-            }
-        }
+        create2DGridFrom1D()
     }
     
-    func hideExtraRowsAndCols(row: Int, col: Int){
+    func hideExtraRowsAndCols(row: Int, col: Int, hidden:[(Int, Int)]){
         for i in row..<LimbGridSize.gridSize().row{
             for j in 0..<LimbGridSize.gridSize().col{
                 self.grid2D[i][j].isHidden = true
@@ -45,6 +39,19 @@ class GridCollectionViewCell: UICollectionViewCell {
         for i in col..<LimbGridSize.gridSize().col{
             for j in 0..<LimbGridSize.gridSize().row{
                 self.grid2D[j][i].isHidden = true
+            }
+        }
+        for block in hidden{
+            self.grid2D[block.0][block.1].isHidden = true
+        }
+    }
+    
+    func create2DGridFrom1D(){
+        self.grid = self.grid!.sorted { $0.tag < $1.tag }
+        for i in 0..<LimbGridSize.gridSize().row{
+            for j in 0..<LimbGridSize.gridSize().col{
+                self.grid2D[i][j] = self.grid![i*LimbGridSize.gridSize().col+j]
+                self.grid2D[i][j].isHidden = false
             }
         }
     }
@@ -76,7 +83,6 @@ class GridCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("loading")
 
     }
 
@@ -91,35 +97,17 @@ class GridCollectionViewController: UICollectionViewController {
         else{
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
-                cell.hideExtraRowsAndCols(row: LimbGridSize.thigh.row, col:LimbGridSize.thigh.col)
-                cell.grid2D[6][0].isHidden = true
-                cell.grid2D[6][4].isHidden = true
+                cell.hideExtraRowsAndCols(row: LimbGridSize.thigh.row, col:LimbGridSize.thigh.col, hidden: LimbGridSize.thigh.hidden)
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
-                cell.hideExtraRowsAndCols(row: LimbGridSize.thigh.row, col:LimbGridSize.thigh.col)
-                cell.grid2D[6][0].isHidden = true
-                cell.grid2D[6][4].isHidden = true
+                cell.hideExtraRowsAndCols(row: LimbGridSize.thigh.row, col:LimbGridSize.thigh.col, hidden: LimbGridSize.thigh.hidden)
             case gridNotAbdomenSectionItems.leftArm.rawValue:
-                cell.hideExtraRowsAndCols(row: LimbGridSize.arm.row, col:LimbGridSize.arm.col)
+                cell.hideExtraRowsAndCols(row: LimbGridSize.arm.row, col:LimbGridSize.arm.col, hidden: [])
             case gridNotAbdomenSectionItems.rightArm.rawValue:
-                cell.hideExtraRowsAndCols(row: LimbGridSize.arm.row, col:LimbGridSize.arm.col)
+                cell.hideExtraRowsAndCols(row: LimbGridSize.arm.row, col:LimbGridSize.arm.col, hidden: [])
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
-                cell.hideExtraRowsAndCols(row: LimbGridSize.buttock.row, col:LimbGridSize.buttock.col)
-                cell.grid2D[0][3].isHidden = true
-                cell.grid2D[3][0].isHidden = true
-                cell.grid2D[4][0].isHidden = true
-                cell.grid2D[5][0].isHidden = true
-                cell.grid2D[4][1].isHidden = true
-                cell.grid2D[5][1].isHidden = true
-                cell.grid2D[5][2].isHidden = true
+                cell.hideExtraRowsAndCols(row: LimbGridSize.leftButtock.row, col:LimbGridSize.leftButtock.col, hidden: LimbGridSize.leftButtock.hidden)
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
-                cell.hideExtraRowsAndCols(row: LimbGridSize.buttock.row, col:LimbGridSize.buttock.col)
-                cell.grid2D[0][0].isHidden = true
-                cell.grid2D[5][1].isHidden = true
-                cell.grid2D[4][2].isHidden = true
-                cell.grid2D[5][2].isHidden = true
-                cell.grid2D[3][3].isHidden = true
-                cell.grid2D[4][3].isHidden = true
-                cell.grid2D[5][3].isHidden = true
+                cell.hideExtraRowsAndCols(row: LimbGridSize.rightButtock.row, col:LimbGridSize.rightButtock.col, hidden: LimbGridSize.rightButtock.hidden)
             default:
                 print("unknown limb")
             }
@@ -155,7 +143,7 @@ class GridCollectionViewController: UICollectionViewController {
         let storyboard = UIStoryboard(name: "AR", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "ARVC") as! ARViewController
         vc.selectedLimb = selectedLimb
-        present(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

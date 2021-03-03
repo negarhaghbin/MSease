@@ -33,7 +33,7 @@ class reminderSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Reminders"
         // Do any additional setup after loading the view.
     }
     

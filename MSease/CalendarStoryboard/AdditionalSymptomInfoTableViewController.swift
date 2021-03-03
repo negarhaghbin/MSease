@@ -65,8 +65,8 @@ class AdditionalSymptomInfoTableViewController: UITableViewController, UITextVie
     
     // MARK: - Action
     @IBAction func saveButtonTapped(_ sender: Any) {
-        print(selectedSymptoms)
-        let note = Note(textContent: textView.text, date: timePicker.date, images: selectedImages, symptoms: selectedSymptoms)
+        let content = (textView.text == "Add a note..." ? "" : textView.text)!
+        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptoms)
         
         if isNewNote!{
             RealmManager.shared.addNote(newNote: note)

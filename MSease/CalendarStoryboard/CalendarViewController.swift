@@ -14,6 +14,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var selectedDate : Date?
     var notes : [Note] = []
     
+    enum SegueIdentifier: String {
+        case viewDateSegue
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.delegate = self
@@ -67,7 +71,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "viewDateSegue" {
+        if segue.identifier == SegueIdentifier.viewDateSegue.rawValue {
             notesViewController = segue.destination as? NotesTableViewController
             notesViewController?.date = selectedDate!
         }

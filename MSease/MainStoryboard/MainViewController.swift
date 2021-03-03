@@ -27,6 +27,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         calendar.scope = .week
         calendar.scrollDirection = .horizontal
         calendar.select(calendar.today)
+//        calendar.appearance.borderRadius = 0.5
     }
     
     

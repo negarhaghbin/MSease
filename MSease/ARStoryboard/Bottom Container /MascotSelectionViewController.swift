@@ -73,7 +73,7 @@ class MascotSelectionViewController: UITableViewController {
             fatalError("Did not find `\(MascotCell.self)` type for reuseIdentifier \(MascotCell.reuseIdentifier).")
         }
         
-        cell.modelName = mascotNames[indexPath.row]
+        cell.modelName = mascotNames[indexPath.row].0
 
         if (selectedMascotRow == indexPath.row) {
             cell.accessoryType = .checkmark

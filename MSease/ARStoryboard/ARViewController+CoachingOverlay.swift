@@ -11,17 +11,22 @@ import ARKit
 extension ARViewController: ARCoachingOverlayViewDelegate {
     func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
         statusContainerView.isHidden = true
+        bottomContainerView.isHidden = true
+        focusSquare?.isEnabled = false
     }
     
     func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
         statusContainerView.isHidden = false
+        bottomContainerView.isHidden = false
+        focusSquare?.isEnabled = true
     }
 
-//    func coachingOverlayViewDidRequestSessionReset(_ coachingOverlayView: ARCoachingOverlayView) {
-//        restartExperience()
-//    }
+    func coachingOverlayViewDidRequestSessionReset(_ coachingOverlayView: ARCoachingOverlayView) {
+        restartExperience()
+    }
 
     func setupCoachingOverlay() {
+        
         coachingOverlay.session = arview.session
         coachingOverlay.delegate = self
         
@@ -38,11 +43,11 @@ extension ARViewController: ARCoachingOverlayViewDelegate {
         coachingOverlay.activatesAutomatically = true
         
         //TODO: change to something meaningful
-        if selectedLimb == limb.leftThigh || selectedLimb == limb.rightThigh{
+        if selectedLimb!.name == limb.leftThigh.rawValue || selectedLimb!.name == limb.rightThigh.rawValue{
             coachingOverlay.goal = .horizontalPlane
         }
         else{
-            coachingOverlay.goal = .verticalPlane
+            coachingOverlay.goal = .tracking
         }
         
     }

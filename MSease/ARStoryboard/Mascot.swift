@@ -6,8 +6,9 @@
 //
 
 
-let mascotNames = ["drummer", "plane", "robot"]
+let mascotNames = [("drummer",Float(0.008)), ("plane",Float(0.004)), ("robot",Float(0.005))]
 
 class Mascot{
     var name : String?
+    var scale : Float?
 }

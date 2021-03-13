@@ -19,10 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if isNewUser(){
             UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
             RealmManager.shared.fillSymptomsTable()
-            
-            RealmManager.shared.connectToMongoDB()
+            RealmManager.shared.fillLimbTable()
         }
-        
         return true
     }
 
@@ -45,16 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-    
-    func isNewUser()->Bool{
-        let defaults = UserDefaults.standard
-        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
-            return false
-        }
-        else{
-            return true
-        }
-    }
 
+}
+
+func isNewUser()->Bool{
+    let defaults = UserDefaults.standard
+    if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
+        return false
+    }
+    else{
+        return true
+    }
 }
 

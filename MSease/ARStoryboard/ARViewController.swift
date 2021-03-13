@@ -9,56 +9,41 @@ import UIKit
 import RealityKit
 import ARKit
 import Combine
+import FocusEntity
 
 class ARViewController: UIViewController {
     @IBOutlet var arview : ARView!
     @IBOutlet weak var statusContainerView: UIView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var addMascotButton: UIButton!
+    @IBOutlet weak var bottomContainerView: UIView!
     
-    let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.2, 0.2])
+    let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.1, 0.1])
     
     let coachingOverlay = ARCoachingOverlayView()
     lazy var statusViewController: StatusViewController = {
         return children.lazy.compactMap({ $0 as? StatusViewController }).first!
     }()
-    var mascotsViewController: MascotSelectionViewController?
+//    var mascotsViewController: MascotSelectionViewController?
     
     var cards : [[Entity]] = []
     var tappedCards : [[Entity]] = []
     var currentTappedCardIndices : (Int, Int)?
-    var selectedLimb : limb?
-    
-    var availableMascots : [Mascot] {
-        var mascots : [Mascot] = []
-        for mascotName in mascotNames{
-            let mascot = Mascot()
-            mascot.name = mascotName
-            
-            mascots.append(mascot)
-        }
-        return mascots
-    }
+    var selectedLimb : Limb?
+    var focusSquare : FocusEntity?
     
     var loadedMascot : ModelEntity?
-    var session: ARSession {
-        return arview.session
-    }
     
     var isLoading = false
     var isRestartAvailable = true
     
-    enum SegueIdentifier: String {
-        case showMascots
-    }
-    
+    //TODO: save the previous selected mascot in db and put that the default value
     var selectedMascotIndex = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        focusSquare = FocusEntity(on: arview, style: .classic(color: .yellow))
 //        arview.delegate = self
 //        arview.session.delegate = self
         setupCoachingOverlay()
@@ -66,14 +51,15 @@ class ARViewController: UIViewController {
 //        arview.scene.rootNode.addChildNode(focusSquare)
 
         statusViewController.restartExperienceHandler = { [unowned self] in
-//            self.restartExperience()
+            self.restartExperience()
         }
         
-        arview.scene.addAnchor(anchor)
+//        anchor.addChild(focusSquare)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        arview.debugOptions.insert(.showStatistics)
         UIApplication.shared.isIdleTimerDisabled = true
         resetTracking()
     }
@@ -93,63 +79,39 @@ class ARViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        session.pause()
+        arview.session.pause()
     }
 
     // MARK: - Session management
     
     func resetTracking() {
-//        selectedMascot = nil
-//        
-//        let configuration = ARWorldTrackingConfiguration()
-//        configuration.planeDetection = [.horizontal, .vertical]
-//        if #available(iOS 12.0, *) {
-//            configuration.environmentTexturing = .automatic
-//        }
-//        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        loadedMascot = nil
+        arview.automaticallyConfigureSession = false
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        if #available(iOS 12.0, *) {
+            configuration.environmentTexturing = .automatic
+        }
+        arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
 
-        statusViewController.scheduleMessage("Point the camera to your \(selectedLimb?.rawValue ?? "") to place grid", inSeconds: 7.5, messageType: .planeEstimation)
+        statusViewController.scheduleMessage("Select a mascot to begin.", inSeconds: 7.5, messageType: .mascotSelection)
+        arview.scene.addAnchor(anchor)
     }
     
     
-    func createGrid(completionHandler: ([(Int, Int)])->()){
-        var row = 0
-        var col = 0
-        var hidden : [(Int, Int)]?
-        switch selectedLimb{
-        case .none:
-            print("unknown limb")
-        case .abdomen:
-            row = LimbGridSize.abdomen.row
-            col = LimbGridSize.abdomen.col
-            hidden = LimbGridSize.abdomen.hidden
-            
-        case .leftThigh, .rightThigh:
-            row = LimbGridSize.thigh.row
-            col = LimbGridSize.thigh.col
-            hidden = LimbGridSize.thigh.hidden
-
-        case .leftArm, .rightArm:
-            row = LimbGridSize.arm.row
-            col = LimbGridSize.arm.col
-            hidden = []
-            
-        case .leftButtock:
-            row = LimbGridSize.leftButtock.row
-            col = LimbGridSize.leftButtock.col
-            hidden = LimbGridSize.leftButtock.hidden
-            
-        case .rightButtock:
-            row = LimbGridSize.rightButtock.row
-            col = LimbGridSize.rightButtock.col
-            hidden = LimbGridSize.rightButtock.hidden
-        }
+    func createGrid(completionHandler: ([Pair])->()){
+        let row = selectedLimb!.numberOfRows
+        let col = selectedLimb!.numberOfCols
+        let hidden : [Pair] = Array(selectedLimb!.hiddenCells)
         
         for i in 0..<row{
             for _ in 0..<col{
                 let box = MeshResource.generateBox(width: 0.03, height: 0.002, depth: 0.03)
                 let cellMaterial = SimpleMaterial(color: UIColor(red: 0.32, green: 0.625, blue: 0.746, alpha: 1), isMetallic: false)
                 let model = ModelEntity(mesh: box, materials: [cellMaterial])
+                
+                
                 
                 model.generateCollisionShapes(recursive: true)
                 if cards.count-1 < i{
@@ -167,18 +129,29 @@ class ARViewController: UIViewController {
             }
         }
         
-        completionHandler(hidden!)
+        completionHandler(hidden)
     }
     
-    func placeGrid(hidden: [(Int, Int)]){
+    func placeGrid(hidden: [Pair]){
         for (i,cardRow) in cards.enumerated(){
             for (j, card) in cardRow.enumerated(){
-                if hidden.contains(where: {
-                    return i==$0 && j == $1
+                if hidden.contains(where: { pair in
+                    let result = ((pair.x == i) && (pair.y == j))
+                    return result
                 }){
                     continue
                 }
-                card.position = [Float(j)*0.035, 0, Float(i)*0.035]
+                /*if j<cardRow.count/2{
+                    card.position = [-Float(j/2)*0.035, 0, Float(i)*0.035]
+                }
+                else{
+                    card.position = [Float(j/2)*0.035, 0, Float(i)*0.035]
+                }*/
+                
+                let r = cardRow.count%2 == 0 ? Float(0.5) : Float(0)
+                
+                card.position = [(Float(j-cardRow.count/2)+r)*0.035, 0, 0.05 + Float(i)*0.035]
+                
                 tappedCards[i][j].position = card.position
                 anchor.addChild(card)
             }
@@ -194,23 +167,62 @@ class ARViewController: UIViewController {
         return nil
     }
     
-    func turnLastTappedCell(){
-        anchor.addChild(cards[currentTappedCardIndices!.0][currentTappedCardIndices!.1])
-        anchor.removeChild(tappedCards[currentTappedCardIndices!.0][currentTappedCardIndices!.1])
+    
+    // MARK: Object Loading UI
+
+    func displayObjectLoadingUI() {
+        for child in children{
+            if let childVC = child as? BottomContainerViewController{
+                childVC.spinner.startAnimating()
+                childVC.addMascotButton.isEnabled = false
+            }
+        }
+        isRestartAvailable = false
+    }
+
+    func hideObjectLoadingUI() {
+        for child in children{
+            if let childVC = child as? BottomContainerViewController{
+                childVC.spinner.stopAnimating()
+                childVC.addMascotButton.isEnabled = true
+            }
+        }
+        
+        isRestartAvailable = true
+    }
+    
+    func selectCell(card: Entity, index: (Int, Int)){
+        anchor.addChild(tappedCards[index.0][index.1])
+        currentTappedCardIndices = index
+        anchor.removeChild(card)
+    }
+    
+    func deselectCell(card: Entity, index: (Int,Int)){
+        anchor.addChild(cards[index.0][index.1])
+        anchor.removeChild(card)
+        currentTappedCardIndices = nil
+    }
+    
+    func isShowingGrid() -> Bool{
+        return anchor.children.count > 1
     }
     
     @IBAction func cardTapped(_ sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: arview)
         if loadedMascot == nil {
-            statusViewController.scheduleMessage("Select a mascot.", inSeconds: 7.5, messageType: .mascotSelection)
+            statusViewController.scheduleMessage("First select a mascot.", inSeconds: 7.5, messageType: .mascotSelection)
             return
         }
         
-        if anchor.children.count == 0{
+        if !isShowingGrid(){
+            displayObjectLoadingUI()
             createGrid(completionHandler: { hidden in
                 placeGrid(hidden: hidden)
                 if let mascot = loadedMascot{
                     placeMascot(mascot)
+                    DispatchQueue.main.async {
+                        self.hideObjectLoadingUI()
+                    }
                 }
             })
         }
@@ -218,59 +230,54 @@ class ARViewController: UIViewController {
         else if let card = arview.entity(at: tapLocation){
             if let indices = indices(of: card, in: cards){
                 if currentTappedCardIndices != nil{
-                    turnLastTappedCell()
+                    deselectCell(card: tappedCards[currentTappedCardIndices!.0][currentTappedCardIndices!.1], index: currentTappedCardIndices!)
                 }
-                anchor.addChild(tappedCards[indices.0][indices.1])
-                currentTappedCardIndices = indices
-                anchor.removeChild(card)
+                selectCell(card: card, index: indices)
+                showConfirmationUI()
             }
             else if let indices = indices(of: card, in: tappedCards){
-                anchor.addChild(cards[indices.0][indices.1])
-                anchor.removeChild(card)
-                currentTappedCardIndices = nil
+                deselectCell(card: card, index: indices)
+                hideConfirmationUI()
             }
-            else{
-                print("unknown object tapped")
-            }
-//            if card.transform.rotation.angle == .pi{
-//                var flipDownTransform = card.transform
-//                flipDownTransform.rotation = simd_quatf(angle: 0, axis: [1, 0, 0])
-//                card.move(to: flipDownTransform, relativeTo: card.parent, duration: 0.25, timingFunction: .easeInOut)
-//            }
-//            else{
-//                var flipUpTransform = card.transform
-//                flipUpTransform.rotation = simd_quatf(angle: .pi, axis: [1, 0, 0])
-//                card.move(to: flipUpTransform, relativeTo: card.parent, duration: 0.25, timingFunction: .easeInOut)
-//            }
-            
-            
-            
         }
         
     }
     
-    @IBAction func showMascotSelectionViewController() {
-        guard !addMascotButton.isHidden && !isLoading else { return }
+    /*func removeObjects(){
+        removeMascot(at: selectedMascotIndex)
         
-        statusViewController.cancelScheduledMessage(for: .contentPlacement)
-        performSegue(withIdentifier: SegueIdentifier.showMascots.rawValue, sender: addMascotButton)
+        arview.scene.removeAnchor(anchor)
+    }*/
+    
+    func restartExperience() {
+        guard isRestartAvailable, !isLoading else { return }
+        isRestartAvailable = false
+
+        statusViewController.cancelAllScheduledMessages()
+        resetTracking()
+
+        // Disable restart for a while in order to give the session time to restart.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.isRestartAvailable = true
+            self.statusContainerView.isHidden = false
+        }
     }
     
     // MARK: Mascot anchors
-    func addOrUpdateAnchor(for object: ModelEntity) {
+    /*func addOrUpdateAnchor(for object: ModelEntity) {
         if let anchor = object.anchor {
             //might need updating the view
             arview.scene.removeAnchor(anchor)
 //            session.remove(anchor: anchor)
         }
         
-        let newAnchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.2, 0.2])
+        let newAnchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.1, 0.1])
 //        let newAnchor = ARAnchor(transform: object.simdWorldTransform)
         newAnchor.addChild(object)
 //        object.anchor = newAnchor
         arview.scene.addAnchor(newAnchor)
 //        session.add(anchor: newAnchor)
-    }
+    }*/
     
     // MARK: - Error handling
     

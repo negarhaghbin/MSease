@@ -1,5 +1,5 @@
 //
-//  ViewController+Actions.swift
+//  BottomContainerViewController+Actions.swift
 //  MSease
 //
 //  Created by Negar on 2021-01-21.
@@ -8,7 +8,7 @@
 import UIKit
 import SceneKit
 
-extension ARViewController: UIPopoverPresentationControllerDelegate {
+extension BottomContainerViewController: UIPopoverPresentationControllerDelegate {
     
     // MARK: - UIPopoverPresentationControllerDelegate
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -26,14 +26,14 @@ extension ARViewController: UIPopoverPresentationControllerDelegate {
               let segueIdentifer = SegueIdentifier(rawValue: identifier),
               segueIdentifer == .showMascots else { return }
         
+        let parent = self.parent as! ARViewController
         let mascotsViewController = segue.destination as! MascotSelectionViewController
-        print(availableMascots)
         mascotsViewController.mascots = availableMascots
         mascotsViewController.delegate = self
-        mascotsViewController.sceneView = arview
+        mascotsViewController.sceneView = parent.arview
         self.mascotsViewController = mascotsViewController
         
-        mascotsViewController.selectedMascotRow = selectedMascotIndex
+        mascotsViewController.selectedMascotRow = parent.selectedMascotIndex
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {

@@ -118,7 +118,7 @@ class AdditionalSymptomInfoTableViewController: UITableViewController, UITextVie
 // MARK: - UICollectionViewDelegate
 extension AdditionalSymptomInfoTableViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(selectedImages.count)
+//        print(selectedImages.count)
         return selectedImages.count+1
 //        return 20
     }
@@ -129,7 +129,7 @@ extension AdditionalSymptomInfoTableViewController : UICollectionViewDelegate, U
             cell.imageView.image = UIImage(systemName: "camera.fill")
         }
         else{
-            print("photo")
+//            print("photo")
             let url = URL(string: selectedImages[indexPath.row-1])
             let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
             cell.imageView.image = UIImage(data: data!)
@@ -173,7 +173,7 @@ extension AdditionalSymptomInfoTableViewController : UIImagePickerControllerDele
             collectionView.reloadData()
             tableView.reloadData()
         }
-        print(selectedImages)
+//        print(selectedImages)
         picker.dismiss(animated: true, completion: nil)
     }
     

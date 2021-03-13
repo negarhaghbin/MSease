@@ -14,11 +14,23 @@ class MainViewController: UIViewController, FSCalendarDelegate {
 
     @IBOutlet weak var injectButton: UIButton!
     @IBOutlet var calendar : FSCalendar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendar()
         requestNotificationPermission()
         UNUserNotificationCenter.current().delegate = self
+    }
+    
+    //TODO: move this for first time users
+    override func viewDidAppear(_ animated: Bool) {
+        if !isNewUser(){
+            return
+        }
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let walkthroughViewController = storyboard.instantiateViewController(identifier: "WalkthroughViewController") as? WalkthroughViewController{
+            present(walkthroughViewController, animated: true)
+        }
     }
     
     func setupCalendar(){
@@ -56,10 +68,8 @@ class MainViewController: UIViewController, FSCalendarDelegate {
 extension MainViewController : UNUserNotificationCenterDelegate{
     
     func requestNotificationPermission(){
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                print("All set!")
-            } else if let error = error {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, error in
+            if let error = error {
                 print(error.localizedDescription)
             }
         }

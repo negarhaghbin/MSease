@@ -22,7 +22,8 @@ class StatusViewController: UIViewController {
             .trackingStateEscalation,
             .planeEstimation,
             .contentPlacement,
-            .focusSquare
+            .focusSquare,
+            .mascotSelection
         ]
     }
 

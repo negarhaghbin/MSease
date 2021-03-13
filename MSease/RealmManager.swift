@@ -125,7 +125,36 @@ extension RealmManager{
         }
     }
     
-    func connectToMongoDB(){
-        let app = App(id: "mseaseapp-wrhfs")
+    func connectToMongoDB()->App{
+        return App(id: "mseaseapp-wrhfs")
+    }
+}
+
+// MARK: -Limb
+extension RealmManager{
+    func getLimb(name: String)->Limb{
+        return realm.object(ofType: Limb.self, forPrimaryKey: name)!
+    }
+    
+    func fillLimbTable(){
+        Limb.initTable()
+    }
+}
+
+// MARK: -Injection
+extension RealmManager{
+    func addInjection(newInjection: Injection){
+        try! realm.write{
+            realm.add(newInjection)
+        }
+    }
+    
+    func getInjectionsForLimb(limb: Limb)->[Injection]{
+        var predicate = NSPredicate(format: "name = %@", limb.name!)
+        let injectionLimb = realm.objects(Limb.self).filter(predicate).first!
+        
+        predicate = NSPredicate(format: "limb = %@", injectionLimb)
+        let result = realm.objects(Injection.self).filter(predicate)
+        return Array(result)
     }
 }

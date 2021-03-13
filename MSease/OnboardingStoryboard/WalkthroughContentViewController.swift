@@ -1,21 +1,31 @@
 //
-//  FullscreenImageViewController.swift
+//  WalkthroughContentViewController.swift
 //  MSease
 //
-//  Created by Negar on 2021-02-24.
+//  Created by Negar on 2021-03-11.
 //
 
 import UIKit
 
-class FullscreenImageViewController: UIViewController {
+class WalkthroughContentViewController: UIViewController {
 
-    var imageViewURL : URL?
+    
+    // MARK: -Outlets
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLable: UILabel!
+    @IBOutlet weak var descriptionLable: UILabel!
+    
+    // MARK: -Properties
+    var index = 0
+    var titleText = ""
+    var descriptionText = ""
+    var imageName = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("here")
-        let data = try? Data(contentsOf: imageViewURL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        imageView.image = UIImage(data: data!)
+        titleLable.text = titleText
+        descriptionLable.text = descriptionText
+        imageView.image = UIImage(named: imageName)
         // Do any additional setup after loading the view.
     }
     

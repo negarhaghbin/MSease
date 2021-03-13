@@ -37,8 +37,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         selectedDate = Calendar.current.date(bySetting: .minute, value: currentMinutes, of: selectedDate!)
         
-//        print(selectedDate)
-        
         performSegue(withIdentifier: "viewDateSegue", sender: nil)
     }
     

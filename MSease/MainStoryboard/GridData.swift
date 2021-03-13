@@ -9,7 +9,7 @@ protocol SelectedLimbDelegateProtocol {
     func selectedLimb(newLimb: limb)
 }
 
-enum limb : String{
+/*enum limb : String{
     case abdomen
     case leftThigh
     case rightThigh
@@ -43,25 +43,4 @@ struct LimbGridSize {
         )
         return (row, col)
     }
-}
-
-/*
- case gridNotAbdomenSectionItems.leftButtock.rawValue:
-     cell.hideExtraRowsAndCols(row: LimbGridSize.buttock.row, col:LimbGridSize.buttock.col)
-     cell.grid2D[0][3].isHidden = true
-     cell.grid2D[3][0].isHidden = true
-     cell.grid2D[4][0].isHidden = true
-     cell.grid2D[5][0].isHidden = true
-     cell.grid2D[4][1].isHidden = true
-     cell.grid2D[5][1].isHidden = true
-     cell.grid2D[5][2].isHidden = true
- case gridNotAbdomenSectionItems.rightButtock.rawValue:
-     cell.hideExtraRowsAndCols(row: LimbGridSize.buttock.row, col:LimbGridSize.buttock.col)
-     cell.grid2D[0][0].isHidden = true
-     cell.grid2D[5][1].isHidden = true
-     cell.grid2D[4][2].isHidden = true
-     cell.grid2D[5][2].isHidden = true
-     cell.grid2D[3][3].isHidden = true
-     cell.grid2D[4][3].isHidden = true
-     cell.grid2D[5][3].isHidden = true
- */
+}*/

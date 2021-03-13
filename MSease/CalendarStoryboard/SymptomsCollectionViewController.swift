@@ -51,7 +51,6 @@ class SymptomsCollectionViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         self.title = note?.date
         mainCollectionView.reloadData()
-//        print(selectedSymptoms)
     }
     
     func refreshUI(){
@@ -108,7 +107,6 @@ extension SymptomsCollectionViewController: UICollectionViewDataSource, UICollec
             if cell.checkmarkImage.isHidden{
                 cell.checkmarkImage.isHidden = false
                 selectedSymptoms.append(symptoms[indexPath.row])
-//                print(selectedSymptoms)
             }
             else{
                 cell.checkmarkImage.isHidden = true

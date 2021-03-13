@@ -18,25 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-YW-WY1">
-                                <rect key="frame" x="124" y="423" width="166" height="50"/>
-                                <color key="backgroundColor" red="0.32156862745098036" green="0.62745098039215685" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="F5U-qb-GmG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
-                                <state key="normal" title="Inject">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="3hF-gc-fZh" kind="show" identifier="inject" id="DXE-ec-pio"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caK-Cr-g3m" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="94" width="414" height="269"/>
                                 <userDefinedRuntimeAttributes>
@@ -73,20 +54,69 @@
                                     <segue destination="VaA-vM-qek" kind="embed" id="ffa-uP-u0s"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-P4-FC8" customClass="circle" customModule="MSease" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="306.5" width="373" height="372.5"/>
+                                <color key="backgroundColor" red="0.66274509803921566" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xdS-P4-FC8" secondAttribute="height" multiplier="1:1" id="c7h-TR-5Hg"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xk7-Il-A3Z">
+                                <rect key="frame" x="20.5" y="424" width="373" height="138"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treatment in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-tg-k7V">
+                                        <rect key="frame" x="139.5" y="0.0" width="94" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Va-TR-NIq">
+                                        <rect key="frame" x="132.5" y="32.5" width="108" height="45.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-YW-WY1">
+                                        <rect key="frame" x="74.5" y="88" width="224" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="F5U-qb-GmG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Inject">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="3hF-gc-fZh" kind="show" identifier="inject" id="DXE-ec-pio"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="m4c-YW-WY1" firstAttribute="width" secondItem="xk7-Il-A3Z" secondAttribute="width" multiplier="0.6" id="8rx-ey-RSM"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jCs-Hz-Cc2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.66274509803921566" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="xdS-P4-FC8" firstAttribute="width" secondItem="YcI-zZ-WvY" secondAttribute="width" multiplier="0.9" id="0a3-tf-3Uz"/>
+                            <constraint firstItem="xdS-P4-FC8" firstAttribute="centerY" secondItem="YcI-zZ-WvY" secondAttribute="centerY" multiplier="1.1" id="5Wk-5h-o7Y"/>
                             <constraint firstItem="caK-Cr-g3m" firstAttribute="top" secondItem="evW-nU-lxS" secondAttribute="bottom" id="625-yV-6to"/>
                             <constraint firstItem="evW-nU-lxS" firstAttribute="leading" secondItem="jCs-Hz-Cc2" secondAttribute="leading" id="AMb-YC-rp9"/>
+                            <constraint firstItem="xdS-P4-FC8" firstAttribute="centerX" secondItem="YcI-zZ-WvY" secondAttribute="centerX" id="B89-zK-oTG"/>
+                            <constraint firstItem="xk7-Il-A3Z" firstAttribute="width" secondItem="xdS-P4-FC8" secondAttribute="width" id="Gk6-DI-PU9"/>
                             <constraint firstItem="evW-nU-lxS" firstAttribute="trailing" secondItem="jCs-Hz-Cc2" secondAttribute="trailing" id="I2I-bH-t1N"/>
-                            <constraint firstItem="m4c-YW-WY1" firstAttribute="centerY" secondItem="YcI-zZ-WvY" secondAttribute="centerY" id="VRj-WG-h8T"/>
-                            <constraint firstItem="m4c-YW-WY1" firstAttribute="width" secondItem="YcI-zZ-WvY" secondAttribute="width" multiplier="0.4" id="bOT-6N-TRK"/>
+                            <constraint firstItem="xk7-Il-A3Z" firstAttribute="centerX" secondItem="xdS-P4-FC8" secondAttribute="centerX" id="LGv-Fr-EgT"/>
+                            <constraint firstItem="xk7-Il-A3Z" firstAttribute="centerY" secondItem="xdS-P4-FC8" secondAttribute="centerY" id="aR2-dN-hgu"/>
                             <constraint firstItem="caK-Cr-g3m" firstAttribute="height" secondItem="YcI-zZ-WvY" secondAttribute="height" multiplier="0.3" id="d1o-9U-Bix"/>
                             <constraint firstItem="caK-Cr-g3m" firstAttribute="leading" secondItem="jCs-Hz-Cc2" secondAttribute="leading" id="fnq-8b-NxU"/>
                             <constraint firstItem="jCs-Hz-Cc2" firstAttribute="trailing" secondItem="caK-Cr-g3m" secondAttribute="trailing" id="mns-2q-giu"/>
                             <constraint firstItem="evW-nU-lxS" firstAttribute="top" secondItem="jCs-Hz-Cc2" secondAttribute="top" id="rma-Jy-mp8"/>
-                            <constraint firstItem="m4c-YW-WY1" firstAttribute="centerX" secondItem="YcI-zZ-WvY" secondAttribute="centerX" id="xrM-4M-PdJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -264,6 +294,9 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -272,6 +305,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>

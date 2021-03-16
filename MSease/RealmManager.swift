@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+let app = RealmManager.shared.connectToMongoDB()
 class RealmManager{
     static let shared = RealmManager()
     let realm = try! Realm()
@@ -130,7 +131,7 @@ extension RealmManager{
     }
 }
 
-// MARK: -Limb
+// MARK: - Limb
 extension RealmManager{
     func getLimb(name: String)->Limb{
         return realm.object(ofType: Limb.self, forPrimaryKey: name)!
@@ -141,7 +142,7 @@ extension RealmManager{
     }
 }
 
-// MARK: -Injection
+// MARK: - Injection
 extension RealmManager{
     func addInjection(newInjection: Injection){
         try! realm.write{
@@ -156,5 +157,16 @@ extension RealmManager{
         predicate = NSPredicate(format: "limb = %@", injectionLimb)
         let result = realm.objects(Injection.self).filter(predicate)
         return Array(result)
+    }
+}
+
+// MARK: - Login
+extension RealmManager{
+    func login(email: String, password: String, loginAction: @escaping (Result<RealmSwift.User,Error>) -> ()){
+        app.login(credentials: Credentials.emailPassword(email: email, password: password)) { result in
+            DispatchQueue.main.async {
+                loginAction(result)
+            }
+        }
     }
 }

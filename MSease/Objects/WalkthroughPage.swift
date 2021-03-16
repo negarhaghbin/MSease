@@ -29,5 +29,6 @@ func fillWalkthroughPages(){
     walkthroughPages.append(WalkthroughPage(heading: "Add injections and symptoms", subheading: "Record your daily symptoms effortlessly.", imageName: "page1", index: 1))
     walkthroughPages.append(WalkthroughPage(heading: "Set customizable reminders", subheading: "Never forget a thing.", imageName: "page2", index: 2))
     walkthroughPages.append(WalkthroughPage(heading: "Gain useful insights", subheading: "Spot patterns between your injections, your symptoms, and your mood.", imageName: "page3", index: 3))
+    walkthroughPages.append(WalkthroughPage(heading: "Get started", subheading: "Sign up for an account or login.", imageName: "page4", index: 4))
     
 }

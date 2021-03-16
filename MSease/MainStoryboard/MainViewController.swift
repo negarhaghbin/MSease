@@ -9,11 +9,43 @@
 import UIKit
 import FSCalendar
 import UserNotifications
+import RealmSwift
 
 class MainViewController: UIViewController, FSCalendarDelegate {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var injectButton: UIButton!
     @IBOutlet var calendar : FSCalendar!
+    
+    // MARK: - Variables
+//    let userRealm: Realm
+    var notificationToken: NotificationToken?
+    var userData: User?
+    
+    // MARK: - View controller initialization
+    /*init(userRealm: Realm) {
+        self.userRealm = userRealm
+
+        super.init(nibName: nil, bundle: nil)
+
+        let usersInRealm = userRealm.objects(User.self)
+
+        notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
+            self?.userData = usersInRealm.first
+//            guard let tableView = self?.tableView else { return }
+//            tableView.reloadData()
+        }
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        notificationToken?.invalidate()
+    }*/
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +56,14 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     //TODO: move this for first time users
     override func viewDidAppear(_ animated: Bool) {
-        if !isNewUser(){
-            return
-        }
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        if let walkthroughViewController = storyboard.instantiateViewController(identifier: "WalkthroughViewController") as? WalkthroughViewController{
-            present(walkthroughViewController, animated: true)
-        }
+        print("checking")
+//        if isNewUser(){
+            print("presenting")
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            if let walkthroughViewController = storyboard.instantiateViewController(identifier: "WalkthroughViewController") as? WalkthroughViewController{
+                present(walkthroughViewController, animated: true)
+            }
+//        }
     }
     
     func setupCalendar(){

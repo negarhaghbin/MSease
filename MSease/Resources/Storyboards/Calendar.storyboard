@@ -309,7 +309,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqA-qD-DaO">
                                 <rect key="frame" x="66" y="188" width="199" height="54"/>
-                                <color key="backgroundColor" red="0.40784313729999999" green="0.66274509800000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.6705882352941176" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Injection">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>

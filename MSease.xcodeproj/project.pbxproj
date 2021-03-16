@@ -13,6 +13,7 @@
 		840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */; };
 		840C1E6925D36BED00AD339E /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6825D36BED00AD339E /* Symptom.swift */; };
 		840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6D25D36E9400AD339E /* RealmManager.swift */; };
+		8414E4D725FFB18E00A84273 /* StylingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414E4D625FFB18E00A84273 /* StylingUtilities.swift */; };
 		841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */; };
 		841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE925F905FB00E4B519 /* Limb.swift */; };
 		841F9EED25F90DA200E4B519 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EEC25F90DA200E4B519 /* Pair.swift */; };
@@ -21,6 +22,7 @@
 		841F9EF825FA826600E4B519 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EF725FA826600E4B519 /* WalkthroughContentViewController.swift */; };
 		841F9EFC25FA97C100E4B519 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */; };
 		841F9EFF25FA981900E4B519 /* WalkthroughPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */; };
+		8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427EA2525FFB7B1003E6FAA /* ValidationUtilities.swift */; };
 		842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D68F425E544BE0056D963 /* Symptom.storyboard */; };
 		8448884225D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */; };
 		8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */; };
@@ -40,11 +42,10 @@
 		8499442A25FB272300AFB965 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499442925FB272300AFB965 /* WalkthroughViewController.swift */; };
 		8499442D25FB2ED400AFB965 /* UIColor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499442C25FB2ED400AFB965 /* UIColor + Hex.swift */; };
 		8499443425FBC5AD00AFB965 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443325FBC5AD00AFB965 /* User.swift */; };
-		8499443825FBC8FA00AFB965 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443725FBC8FA00AFB965 /* WelcomeViewController.swift */; };
 		8499443C25FBCD0000AFB965 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443B25FBCD0000AFB965 /* LoginViewController.swift */; };
 		8499443F25FBCDD200AFB965 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443E25FBCDD200AFB965 /* SignupViewController.swift */; };
 		84A4013A25E86DD800AB474D /* GridData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4013925E86DD800AB474D /* GridData.swift */; };
-		84ACFB1F25BE139000A09F67 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* Utilities.swift */; };
+		84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* ARUtilities.swift */; };
 		84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */; };
 		84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */; };
 		84ACFB4225BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB4125BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift */; };
@@ -83,6 +84,7 @@
 		840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		840C1E6825D36BED00AD339E /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		840C1E6D25D36E9400AD339E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		8414E4D625FFB18E00A84273 /* StylingUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingUtilities.swift; sourceTree = "<group>"; };
 		841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationUI.swift; sourceTree = "<group>"; };
 		841F9EE925F905FB00E4B519 /* Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limb.swift; sourceTree = "<group>"; };
 		841F9EEC25F90DA200E4B519 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		841F9EF725FA826600E4B519 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPage.swift; sourceTree = "<group>"; };
+		8427EA2525FFB7B1003E6FAA /* ValidationUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtilities.swift; sourceTree = "<group>"; };
 		842D68F425E544BE0056D963 /* Symptom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Symptom.storyboard; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalSymptomInfoTableViewController.swift; sourceTree = "<group>"; };
 		8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -111,11 +114,10 @@
 		8499442925FB272300AFB965 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		8499442C25FB2ED400AFB965 /* UIColor + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Hex.swift"; sourceTree = "<group>"; };
 		8499443325FBC5AD00AFB965 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		8499443725FBC8FA00AFB965 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8499443B25FBCD0000AFB965 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8499443E25FBCDD200AFB965 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		84A4013925E86DD800AB474D /* GridData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridData.swift; sourceTree = "<group>"; };
-		84ACFB1E25BE139000A09F67 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		84ACFB1E25BE139000A09F67 /* ARUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARUtilities.swift; sourceTree = "<group>"; };
 		84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotSelectionViewController.swift; sourceTree = "<group>"; };
 		84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCVC+MascotSelection.swift"; sourceTree = "<group>"; };
 		84ACFB4125BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARViewController+CoachingOverlay.swift"; sourceTree = "<group>"; };
@@ -184,12 +186,11 @@
 		841F9EF625FA823C00E4B519 /* OnboardingStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				8499443B25FBCD0000AFB965 /* LoginViewController.swift */,
+				8499443E25FBCDD200AFB965 /* SignupViewController.swift */,
 				841F9EF725FA826600E4B519 /* WalkthroughContentViewController.swift */,
 				841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */,
 				8499442925FB272300AFB965 /* WalkthroughViewController.swift */,
-				8499443725FBC8FA00AFB965 /* WelcomeViewController.swift */,
-				8499443B25FBCD0000AFB965 /* LoginViewController.swift */,
-				8499443E25FBCDD200AFB965 /* SignupViewController.swift */,
 			);
 			path = OnboardingStoryboard;
 			sourceTree = "<group>";
@@ -258,7 +259,9 @@
 		84ACFB1D25BE139000A09F67 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				84ACFB1E25BE139000A09F67 /* Utilities.swift */,
+				84ACFB1E25BE139000A09F67 /* ARUtilities.swift */,
+				8414E4D625FFB18E00A84273 /* StylingUtilities.swift */,
+				8427EA2525FFB7B1003E6FAA /* ValidationUtilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -313,13 +316,13 @@
 		84F5E79325C4483500EED24C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */,
+				84D4E72425E7F1F800DB75B4 /* AR.storyboard */,
 				84BBE22125C0D63F0046C24F /* Calendar.storyboard */,
+				84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */,
 				84BBE21425C0BEC60046C24F /* Main.storyboard */,
+				841F9EF325FA6ADC00E4B519 /* Onboarding.storyboard */,
 				84F5E79025C4482900EED24C /* Profile.storyboard */,
 				842D68F425E544BE0056D963 /* Symptom.storyboard */,
-				84D4E72425E7F1F800DB75B4 /* AR.storyboard */,
-				841F9EF325FA6ADC00E4B519 /* Onboarding.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				841F9EFC25FA97C100E4B519 /* WalkthroughPageViewController.swift in Sources */,
 				84D4E72925E7F6AB00DB75B4 /* ARViewController.swift in Sources */,
 				84979F5025BA3FE100578C37 /* Mascot.swift in Sources */,
+				8414E4D725FFB18E00A84273 /* StylingUtilities.swift in Sources */,
 				84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */,
 				840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */,
 				840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */,
@@ -527,11 +531,11 @@
 				841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
 				8499443F25FBCDD200AFB965 /* SignupViewController.swift in Sources */,
-				84ACFB1F25BE139000A09F67 /* Utilities.swift in Sources */,
+				84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */,
 				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
+				8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */,
 				84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */,
 				8448884225D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift in Sources */,
-				8499443825FBC8FA00AFB965 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

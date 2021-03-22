@@ -6,15 +6,30 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var containerTableView: UIView!
+    // MARK: - Variables
+    var partitionValue : String?
+    
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        for child in children{
+            if let childVC = child as? ProfileTableViewController{
+                childVC.partitionValue = partitionValue
+            }
+        }
+    }
+    
+    // MARK: - Actions
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

@@ -8,50 +8,24 @@
 import Foundation
 import RealmSwift
 
-let app = RealmManager.shared.connectToMongoDB()
 class RealmManager{
     static let shared = RealmManager()
-    let realm = try! Realm()
     
     private init() {
     }
-    func getSymptoms() -> [Symptom]{
-        let symptoms = realm.objects(Symptom.self).sorted(byKeyPath: "name", ascending: true)
-        return Array(symptoms)
-    }
     
-    func addSymptom(newSymptom: Symptom){
-        try! realm.write{
-            realm.add(newSymptom)
-        }
-    }
-    
-    func printPath(){
+    func printPath(realm: Realm){
         let path = realm.configuration.fileURL!.path
         print("Path: \(String(describing: path))")
     }
-    
-    func fillSymptomsTable(){
-        if RealmManager.shared.getSymptoms().count == 0{
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Headache", imageName: "headache"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Diarrhea", imageName: "diarrhea"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Rash", imageName: "rash"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Nausea", imageName: "nausea"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Vomit", imageName: "vomit"))
-            
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Headache", imageName: "headache"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Diarrhea", imageName: "diarrhea"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Rash", imageName: "rash"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Nausea", imageName: "nausea"))
-            RealmManager.shared.addSymptom(newSymptom: Symptom(name: "Vomit", imageName: "vomit"))
-        }
-        
-    }
 }
+
+// FIXME: baraye hameye note ha realm e alaki gozashtam
 
 // MARK: - Note
 extension RealmManager{
     func addNote(newNote: Note){
+        let realm = try! Realm()
         try! realm.write{
             realm.add(newNote)
         }
@@ -68,6 +42,7 @@ extension RealmManager{
 //    }
     
     func getNotes(for date: Date) -> [Note]{
+        let realm = try! Realm()
         let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
         let result = realm.objects(Note.self).filter(predicate)
 //        var photos : [String] = []
@@ -79,38 +54,40 @@ extension RealmManager{
     }
     
     func haveNotes(for date: Date) -> Bool{
+        let realm = try! Realm()
         let predicate = NSPredicate(format: "date beginswith %@", date.getUSFormat())
         let result = realm.objects(Note.self).filter(predicate)
         return result.count == 0 ? false : true
     }
     
     func editNote(newNote: Note){
+        let realm = try! Realm()
         let oldNote = realm.object(ofType: Note.self, forPrimaryKey: newNote._id)
         try! realm.write{
             oldNote?.textContent = newNote.textContent
             oldNote?.date = newNote.date
             oldNote?.time = newNote.time
             oldNote?.images = newNote.images
-            oldNote?.symptoms.removeAll()
-            oldNote?.symptoms.append(objectsIn: newNote.symptoms)
+            oldNote?.symptomNames.removeAll()
+            oldNote?.symptomNames.append(objectsIn: newNote.symptomNames)
         }
     }
 }
 
 // MARK: - Reminder
 extension RealmManager{
-    func addReminder(newReminder: Reminder){
+    func addReminder(newReminder: Reminder, realm: Realm){
         try! realm.write{
             realm.add(newReminder)
         }
     }
     
-    func getReminders()->[Reminder]{
+    func getReminders(realm: Realm)->[Reminder]{
         let reminders = realm.objects(Reminder.self)
         return Array(reminders)
     }
     
-    func editReminder(_ newReminder: Reminder){
+    func editReminder(_ newReminder: Reminder, realm: Realm){
         let oldReminder = realm.object(ofType: Reminder.self, forPrimaryKey: newReminder._id)
         try! realm.write{
             oldReminder?.name = newReminder.name
@@ -131,42 +108,32 @@ extension RealmManager{
     }
 }
 
-// MARK: - Limb
-extension RealmManager{
-    func getLimb(name: String)->Limb{
-        return realm.object(ofType: Limb.self, forPrimaryKey: name)!
-    }
-    
-    func fillLimbTable(){
-        Limb.initTable()
-    }
-}
-
 // MARK: - Injection
+
+// FIXME: baraye injection ha realm e alaki gozahstam
 extension RealmManager{
     func addInjection(newInjection: Injection){
+        let realm = try! Realm()
         try! realm.write{
             realm.add(newInjection)
         }
     }
     
     func getInjectionsForLimb(limb: Limb)->[Injection]{
-        var predicate = NSPredicate(format: "name = %@", limb.name!)
-        let injectionLimb = realm.objects(Limb.self).filter(predicate).first!
-        
-        predicate = NSPredicate(format: "limb = %@", injectionLimb)
-        let result = realm.objects(Injection.self).filter(predicate)
+        let realm = try! Realm()
+        let name = limb.name ?? ""
+        let result = realm.objects(Injection.self).filter("limb == \(name)")
         return Array(result)
     }
 }
 
 // MARK: - Login
 extension RealmManager{
-    func login(email: String, password: String, loginAction: @escaping (Result<RealmSwift.User,Error>) -> ()){
+    /*func login(email: String, password: String, loginAction: @escaping (Result<RealmSwift.User,Error>) -> ()){
         app.login(credentials: Credentials.emailPassword(email: email, password: password)) { result in
             DispatchQueue.main.async {
                 loginAction(result)
             }
         }
-    }
+    }*/
 }

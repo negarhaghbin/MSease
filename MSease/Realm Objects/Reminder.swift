@@ -16,12 +16,13 @@ class Reminder: Object{
     @objc dynamic var fri = true
     @objc dynamic var sat = true
     @objc dynamic var sun = true
-    @objc dynamic var time : String = Date().getTime()
+    @objc dynamic var time : String = ""
     @objc dynamic var message : String = "Have you write in your journal today?"
     
     @objc dynamic var _id: ObjectId = ObjectId.generate()
+    @objc dynamic var _partition : String = ""
     
-    convenience init(name: String, mon: Bool, tue: Bool, wed: Bool, thu: Bool, fri: Bool, sat: Bool, sun: Bool, time: String, message: String?){
+    convenience init(name: String, mon: Bool, tue: Bool, wed: Bool, thu: Bool, fri: Bool, sat: Bool, sun: Bool, time: String, message: String?, partition: String){
         self.init()
         self.name = name
         self.mon = mon
@@ -33,6 +34,7 @@ class Reminder: Object{
         self.sun = sun
         self.time = time
         self.message = message ?? "Have you write in your journal today?"
+        self._partition = partition
     }
     
     func getRepeatDaysList()->[Bool]{

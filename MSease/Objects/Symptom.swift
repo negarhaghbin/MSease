@@ -5,12 +5,10 @@
 //  Created by Negar on 2021-02-09.
 //
 
-import RealmSwift
-
-class Symptom: Object{
-    @objc dynamic var name = ""
-    @objc dynamic var imageName = ""
-    @objc dynamic var _id: ObjectId = ObjectId.generate()
+var symptoms : [Symptom] = []
+class Symptom{
+    var name = ""
+    var imageName = ""
     
     convenience init(name: String, imageName: String){
         self.init()
@@ -18,7 +16,18 @@ class Symptom: Object{
         self.imageName = imageName
     }
     
-    override static func primaryKey() -> String{
-        return "_id"
+    static func fillSymptomsTable(){
+        symptoms.append(Symptom(name: "Headache", imageName: "headache"))
+        symptoms.append(Symptom(name: "Diarrhea", imageName: "diarrhea"))
+        symptoms.append(Symptom(name: "Rash", imageName: "rash"))
+        symptoms.append(Symptom(name: "Nausea", imageName: "nausea"))
+        symptoms.append(Symptom(name: "Vomit", imageName: "vomit"))
+            
+        symptoms.append(Symptom(name: "Headache", imageName: "headache"))
+        symptoms.append(Symptom(name: "Diarrhea", imageName: "diarrhea"))
+        symptoms.append(Symptom(name: "Rash", imageName: "rash"))
+        symptoms.append(Symptom(name: "Nausea", imageName: "nausea"))
+        symptoms.append(Symptom(name: "Vomit", imageName: "vomit"))
+        
     }
 }

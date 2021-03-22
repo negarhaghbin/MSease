@@ -8,19 +8,16 @@
 import UIKit
 import ARKit
 
+let app = RealmManager.shared.connectToMongoDB()
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        RealmManager.shared.printPath()
-        if isNewUser(){
-            UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            RealmManager.shared.fillSymptomsTable()
-            RealmManager.shared.fillLimbTable()
-        }
+        Limb.initTable()
+        Symptom.fillSymptomsTable()
         return true
     }
 

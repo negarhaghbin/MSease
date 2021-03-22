@@ -10,12 +10,12 @@ import UIKit
 class WalkthroughContentViewController: UIViewController {
 
     
-    // MARK: -Outlets
+    // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
     
-    // MARK: -Properties
+    // MARK: - Properties
     var index = 0
     var titleText = ""
     var descriptionText = ""

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
@@ -45,6 +46,22 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         case messageTextView
     }
     
+    // MARK: - START OF KASIF KARI
+    
+    var partitionValue: String?
+    var realm: Realm?{
+        didSet{
+            initSetup(title: "Add new reminder")
+        }
+    }
+//    var notificationToken: NotificationToken?
+
+//    deinit {
+//        // Always invalidate any notification tokens when you are done with them.
+//        notificationToken?.invalidate()
+//    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.na.topItem.title = "some title"
@@ -70,18 +87,31 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
+    // MARK: - Helpers
+    
+    func initSetup(title: String) {
+        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
+            fatalError("Sync configuration not found! Realm not opened with sync?")
+        }
+        partitionValue = syncConfiguration.partitionValue!.stringValue!
+        self.title = title
+
+    }
+    
     private func refreshUI(){
         loadView()
         nameLabel.text = reminder?.name
         repeatLabel.text = reminder?.getRepeatationDays()
-        timeLabel.text = reminder?.time
         messageLabel.text = reminder?.message
-        
         nameTextField.text = reminder?.name
         repeatDays = (reminder?.getRepeatDaysList())!
-        let time = getTimeFromString(reminder!.time)
-        timePicker.date = Date().setTime(h: time.h, m: time.m)
         textView.text = reminder?.message
+        
+        
+        timeLabel.text = reminder?.time == "" ? Date().getTime() : reminder?.time
+        let time = getTimeFromString(timeLabel.text!)
+        timePicker.date = Date().setTime(h: time.h, m: time.m)
+        
         tableView.reloadData()
     }
     
@@ -133,13 +163,13 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             sat: repeatDays[5],
                             sun: repeatDays[6],
                             time: timeLabel.text!,
-                            message: textView.text)
+                            message: textView.text, partition: partitionValue!)
         if isNewReminder{
-            RealmManager.shared.addReminder(newReminder: reminder!)
+            RealmManager.shared.addReminder(newReminder: reminder!, realm: realm!)
         }
         else{
             reminder?.setId(id: reminderId)
-            RealmManager.shared.editReminder(reminder!)
+            RealmManager.shared.editReminder(reminder!, realm: realm!)
         }
         
         self.scheduleNotification(name: nameLabel.text ?? "", message: textView.text)

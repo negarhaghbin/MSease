@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ProfileTableViewController: UITableViewController {
     
@@ -15,6 +16,10 @@ class ProfileTableViewController: UITableViewController {
         case settings
         case logout
     }
+    
+    var partitionValue: String?
+    
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -26,17 +31,38 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.row == rows.reminders.rawValue{
+            let user = app.currentUser!
+            Realm.asyncOpen(configuration: user.configuration(partitionValue: partitionValue!)) { [weak self] (result) in
+                switch result {
+                case .failure(let error):
+                    fatalError("Failed to open realm: \(error)")
+                case .success(let realm):
+                    let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+                    let remindersVC = storyboard.instantiateViewController(withIdentifier: "reminderList") as? reminderSettingsViewController
+                    remindersVC?.partitionValue = self!.partitionValue!
+                    remindersVC?.realm = realm
+                    self?.navigationController?.pushViewController(
+                        remindersVC!,
+                        animated: true
+                    )
+                }
+            }
+        }
+        return indexPath
+    }
+    
     // MARK: - Helpers
     func logOut() {
         let alertController = UIAlertController(title: "Log Out", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Yes, Log Out", style: .destructive, handler: {
             _ -> Void in
-            print("Logging out...")
             app.currentUser?.logOut { (_) in
                 DispatchQueue.main.async {
-                    print("Logged out!")
-                    // TODO: Do logout
-//                    self.navigationController?.popViewController(animated: true)
+                    let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                    let onboardingVC = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
+                    self.navigationController?.setViewControllers([onboardingVC], animated: true)
                 }
             }
         }))

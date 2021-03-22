@@ -24,6 +24,7 @@ class WalkthroughViewController: UIViewController, walkthroughPageViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
     

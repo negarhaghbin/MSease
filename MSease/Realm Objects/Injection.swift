@@ -8,17 +8,20 @@
 import RealmSwift
 
 class Injection: Object{
-    @objc dynamic var limb : Limb?
-    @objc dynamic var selectedCell : Pair?
+    @objc dynamic var limbName : String = ""
+    @objc dynamic var selectedCellX = 0
+    @objc dynamic var selectedCellY = 0
     @objc dynamic var date : String = Date().getUSFormat()
     @objc dynamic var time : String = Date().getTime()
     
     @objc dynamic var _id: ObjectId = ObjectId.generate()
+    @objc dynamic var _partition : String = ""
     
-    convenience init(limb: Limb, selectedCell: Pair, date: Date?){
+    convenience init(limbName: String, selectedCellX: Int, selectedCellY: Int, date: Date?){
         self.init()
-        self.limb = limb
-        self.selectedCell = selectedCell
+        self.limbName = limbName
+        self.selectedCellX = selectedCellX
+        self.selectedCellY = selectedCellY
         self.date = date?.getUSFormat() ?? Date().getUSFormat()
         self.time = date?.getTime() ?? Date().getTime()
     }
@@ -26,5 +29,4 @@ class Injection: Object{
     override static func primaryKey() -> String{
         return "_id"
     }
-    
 }

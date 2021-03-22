@@ -18,16 +18,18 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet var calendar : FSCalendar!
     
     // MARK: - Variables
-//    let userRealm: Realm
+//    var delegate: UserRealmDelegate?
+    
+    var userRealm: Realm?
     var notificationToken: NotificationToken?
     var userData: User?
     
-    // MARK: - View controller initialization
     /*init(userRealm: Realm) {
         self.userRealm = userRealm
-
+        print("setting user realm in Main")
         super.init(nibName: nil, bundle: nil)
 
+        // There should only be one user in my realm - that is myself
         let usersInRealm = userRealm.objects(User.self)
 
         notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
@@ -40,15 +42,15 @@ class MainViewController: UIViewController, FSCalendarDelegate {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
+    }*/
 
     deinit {
+        // Always invalidate any notification tokens when you are done with them.
         notificationToken?.invalidate()
-    }*/
-    
+    }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+//        super.viewDidLoad()
         setupCalendar()
         requestNotificationPermission()
         UNUserNotificationCenter.current().delegate = self
@@ -56,15 +58,26 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     //TODO: move this for first time users
     override func viewDidAppear(_ animated: Bool) {
-        print("checking")
-//        if isNewUser(){
-            print("presenting")
+        let usersInRealm = userRealm!.objects(User.self)
+        userData = usersInRealm.first
+        notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
+                self?.userData = usersInRealm.first
+        }
+
+        if isNewUser(){
+            UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             if let walkthroughViewController = storyboard.instantiateViewController(identifier: "WalkthroughViewController") as? WalkthroughViewController{
-                present(walkthroughViewController, animated: true)
+                self.navigationController?.pushViewController(walkthroughViewController, animated: true)
             }
-//        }
+        }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        notificationToken?.invalidate()
+    }
+    
+    // MARK: - Calendar
     
     func setupCalendar(){
         calendar.delegate = self

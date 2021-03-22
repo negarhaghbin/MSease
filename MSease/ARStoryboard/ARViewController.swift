@@ -29,7 +29,7 @@ class ARViewController: UIViewController {
     var cards : [[Entity]] = []
     var tappedCards : [[Entity]] = []
     var currentTappedCardIndices : (Int, Int)?
-    var selectedLimb : Limb?
+    var selectedLimbName : String?
     var focusSquare : FocusEntity?
     
     var loadedMascot : ModelEntity?
@@ -100,10 +100,11 @@ class ARViewController: UIViewController {
     }
     
     
-    func createGrid(completionHandler: ([Pair])->()){
-        let row = selectedLimb!.numberOfRows
-        let col = selectedLimb!.numberOfCols
-        let hidden : [Pair] = Array(selectedLimb!.hiddenCells)
+    func createGrid(completionHandler: ([(x: Int, y: Int)])->()){
+        let limb = Limb.getLimb(name: selectedLimbName!)
+        let row = limb.numberOfRows
+        let col = limb.numberOfCols
+        let hidden : [(x: Int, y: Int)] = Array(limb.hiddenCells)
         
         for i in 0..<row{
             for _ in 0..<col{
@@ -132,7 +133,7 @@ class ARViewController: UIViewController {
         completionHandler(hidden)
     }
     
-    func placeGrid(hidden: [Pair]){
+    func placeGrid(hidden: [(x: Int, y: Int)]){
         for (i,cardRow) in cards.enumerated(){
             for (j, card) in cardRow.enumerated(){
                 if hidden.contains(where: { pair in

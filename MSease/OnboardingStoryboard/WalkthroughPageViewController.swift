@@ -19,7 +19,9 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fillWalkthroughPages()
+        if walkthroughPages.count == 0{
+            fillWalkthroughPages()
+        }
         dataSource = self
         delegate = self
         if let startingViewController = contentViewController(at: 0){
@@ -74,10 +76,8 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed{
-            print("currentIndex")
             if let contentViewController = pageViewController.viewControllers?.first as? WalkthroughContentViewController{
                 currentIndex = contentViewController.index
-                print(currentIndex)
                 walkthroughDelegate?.didUpdatePageIndex(currentIndex: currentIndex)
             }
         }

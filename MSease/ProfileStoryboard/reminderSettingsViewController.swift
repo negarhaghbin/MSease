@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import RealmSwift
 
+// MARK: - Reminder Table View Cell
 class reminderSettingsTableViewCell: UITableViewCell {
     @IBOutlet weak var reminderNameLabel: UILabel!
     @IBOutlet weak var reminderRepeatLabel: UILabel!
@@ -21,42 +23,78 @@ class reminderSettingsTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - Reminders UIViewController
 class reminderSettingsViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    let cellIdentifier = "reminderSettingsCell"
     
-    var reminders = RealmManager.shared.getReminders()
+    // MARK: - Variables
+    let cellIdentifier = "reminderSettingsCell"
     var selectedReminder : Reminder? = Reminder()
     var isNewReminder = true
     
+    var partitionValue: String?
+    var realm: Realm?{
+        didSet{
+            initSetup(title: "Reminders")
+        }
+    }
+    var notificationToken: NotificationToken?
+    var reminders: Results<Reminder>?
+
+    deinit {
+        notificationToken?.invalidate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Reminders"
-        // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        reminders = RealmManager.shared.getReminders()
-        tableView.reloadData()
-    }
     
+    // MARK: - Helpers
+    
+    func initSetup(title: String) {
+        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
+            fatalError("Sync configuration not found! Realm not opened with sync?")
+        }
 
-    
+        partitionValue = syncConfiguration.partitionValue!.stringValue!
+        reminders = realm?.objects(Reminder.self)
+        
+        self.title = title
+
+        notificationToken = reminders!.observe { [weak self] (changes) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.performBatchUpdates({
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 1) }),
+                        with: .automatic)
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 1) }),
+                        with: .automatic)
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 1) }),
+                        with: .automatic)
+                })
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+    }
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AddNewReminderViewController
-        vc.reminder = selectedReminder
-        vc.isNewReminder = isNewReminder
+        
         // Pass the selected object to the new view controller.
-    }
-    
-
+    }*/
 }
 
+// MARK: - Reminders UITableViewController
 extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
@@ -75,7 +113,7 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
             return 1
         }
         else{
-            return reminders.count
+            return reminders?.count ?? 0
         }
         
     }
@@ -87,9 +125,9 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
             }
             else if indexPath.section == 1{
                 cell.setup(isReminderInstance: true)
-                cell.reminderNameLabel.text = reminders[indexPath.row].name
-                cell.reminderTimeLabel.text = reminders[indexPath.row].time
-                cell.reminderRepeatLabel.text = reminders[indexPath.row].getRepeatationDays()
+                cell.reminderNameLabel.text = reminders?[indexPath.row].name
+                cell.reminderTimeLabel.text = reminders?[indexPath.row].time
+                cell.reminderRepeatLabel.text = reminders?[indexPath.row].getRepeatationDays()
             }
             return cell
         }
@@ -101,19 +139,34 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
         return CGFloat(100)
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//    }
-    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 1{
-            selectedReminder = reminders[indexPath.row]
-            isNewReminder = false
+        
+        let user = app.currentUser!
+
+        Realm.asyncOpen(configuration: user.configuration(partitionValue: partitionValue!)) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                fatalError("Failed to open realm: \(error)")
+            case .success(let realm):
+                
+                if indexPath.section == 1{
+                    self!.selectedReminder = self!.reminders![indexPath.row]
+                    self!.isNewReminder = false
+                }
+                else{
+                    self!.selectedReminder = Reminder()
+                    self!.isNewReminder = true
+                }
+                let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+                let reminderVC = storyboard.instantiateViewController(withIdentifier: "addNewReminder") as! AddNewReminderViewController
+                reminderVC.partitionValue = self!.partitionValue!
+                reminderVC.realm = realm
+                reminderVC.reminder = self!.selectedReminder
+                reminderVC.isNewReminder = self!.isNewReminder
+                self?.navigationController?.pushViewController(reminderVC, animated: true)
+            }
         }
-        else{
-            selectedReminder = Reminder()
-            isNewReminder = true
-        }
+        
         return indexPath
     }
     

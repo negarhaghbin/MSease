@@ -65,8 +65,10 @@ class BottomContainerViewController: UIViewController {
         
 //        parentVC.arview.removeFromSuperview()
 //        parentVC.arview = nil
-        let tappedCellPair = Pair(parentVC.currentTappedCardIndices!.0, parentVC.currentTappedCardIndices!.1)
-        let injection = Injection(limb: parentVC.selectedLimb!, selectedCell: tappedCellPair, date: Date())
+        let injection = Injection(limbName: parentVC.selectedLimbName!,
+                                  selectedCellX: parentVC.currentTappedCardIndices!.0,
+                                  selectedCellY: parentVC.currentTappedCardIndices!.1,
+                                  date: Date())
         RealmManager.shared.addInjection(newInjection: injection)
         
         

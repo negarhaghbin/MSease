@@ -7,19 +7,14 @@
 
 import RealmSwift
 
-class Pair: Object{
+class Pair: EmbeddedObject{
     @objc dynamic var x = 0
     @objc dynamic var y = 0
-    
-//    @objc dynamic var _id: ObjectId = ObjectId.generate()
+    @objc dynamic var partition : String? = nil
     
     convenience init(_ x: Int, _ y: Int){
         self.init()
         self.x = x
         self.y = y
     }
-    
-//    override static func primaryKey() -> String{
-//        return "_id"
-//    }
 }

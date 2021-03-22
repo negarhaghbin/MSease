@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUpElements()
     }
     
@@ -42,6 +41,7 @@ class LoginViewController: UIViewController {
     
     func setUpElements(){
 //        errorLabel.alpha = 0
+        self.navigationController?.navigationBar.isHidden = false
         StylingUtilities.styleTextField(emailTextField)
         StylingUtilities.styleTextField(passwordTextField)
         StylingUtilities.styleFilledButton(loginButton)
@@ -61,44 +61,44 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = !loading
     }
     
-    func loginAction(result: Result<RealmSwift.User, Error>){
-        setLoading(false)
-        switch result {
-        case .failure(let error):
-            print("Login failed: \(error)")
-            errorLabel.text = "Login failed: \(error.localizedDescription)"
-            return
-        case .success(let user):
-            print("Login succeeded!")
-
-            setLoading(true)
-            var configuration = user.configuration(partitionValue: "user=\(user.id)")
-            configuration.objectTypes = [User.self]
-            Realm.asyncOpen(configuration: configuration) { [weak self](result) in
-                DispatchQueue.main.async {
-                    self!.setLoading(false)
-                    switch result {
-                    case .failure(let error):
-                        fatalError("Failed to open realm: \(error)")
-                    case .success(let userRealm):
-                        
-                    print("go to main view controller")
-                    /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    if let homeVC = storyboard.instantiateViewController(identifier: "home") as? MainViewController{
-                            present(homeVC(userRealm: userRealm), animated: true)
-                        }*/
-                    }
-                }
-            }
-        }
-    }
     
     
     // MARK: Actions
     @IBAction func loginTapped(_ sender: Any) {
         print("Log in as user: \(email ?? "")")
         setLoading(true)
-        RealmManager.shared.login(email: email!, password: password!, loginAction: loginAction)
+        app.login(credentials: Credentials.emailPassword(email: email!, password: password!)) { result in
+            DispatchQueue.main.async {
+                self.setLoading(false)
+                switch result {
+                case .failure(let error):
+                    print("Login failed: \(error)")
+                    self.errorLabel.text = "Login failed: \(error.localizedDescription)"
+                    return
+                case .success(let user):
+                    print("Login succeeded!")
+
+                    self.setLoading(true)
+                    var configuration = user.configuration(partitionValue: "user=\(user.id)")
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self]
+                    Realm.asyncOpen(configuration: configuration) { [weak self](result) in
+                        DispatchQueue.main.async {
+                            self!.setLoading(false)
+                            switch result {
+                            case .failure(let error):
+                                fatalError("Failed to open realm: \(error)")
+                            case .success(let userRealm):
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
+                                homeVC.userRealm = userRealm
+
+                                self?.navigationController?.setViewControllers([homeVC], animated: true)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     /*
@@ -112,3 +112,17 @@ class LoginViewController: UIViewController {
     */
 
 }
+
+/*
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     let homeVC = segue.destination as? MainViewController
+     homeVC!.userRealm = userRealm
+     let usersInRealm = userRealm!.objects(User.self)
+     let userData = usersInRealm.first
+     print("printing user in success")
+     print(userData)
+     print(userRealm)
+//        self?.navigationController?.setViewControllers([homeVC], animated: true)
+ }
+ */

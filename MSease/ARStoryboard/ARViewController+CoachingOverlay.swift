@@ -43,7 +43,7 @@ extension ARViewController: ARCoachingOverlayViewDelegate {
         coachingOverlay.activatesAutomatically = true
         
         //TODO: change to something meaningful
-        if selectedLimb!.name == limb.leftThigh.rawValue || selectedLimb!.name == limb.rightThigh.rawValue{
+        if selectedLimbName! == limb.leftThigh.rawValue || selectedLimbName! == limb.rightThigh.rawValue{
             coachingOverlay.goal = .horizontalPlane
         }
         else{

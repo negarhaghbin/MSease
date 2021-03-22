@@ -30,7 +30,7 @@ class GridCollectionViewCell: UICollectionViewCell {
         self.textLabel.minimumScaleFactor = 0.5
     }
     
-    func hideExtraRowsAndCols(hidden:[Pair]){
+    func hideExtraRowsAndCols(hidden:[(x: Int, y: Int)]){
 //        for i in row..<LimbGridSize.gridSize().row{
 //            for j in 0..<LimbGridSize.gridSize().col{
 //                self.grid2D[i][j].isHidden = true
@@ -58,9 +58,9 @@ class GridCollectionViewCell: UICollectionViewCell {
     
     func prepareGrid(limbGrid: Limb){
         let injections = RealmManager.shared.getInjectionsForLimb(limb: limbGrid)
-        var cells : [Pair] = []
+        var cells : [(x: Int, y: Int)] = []
         for injection in injections{
-            cells.append(injection.selectedCell!)
+            cells.append((x: injection.selectedCellX, y: injection.selectedCellY))
         }
         
         let width : Double?
@@ -96,7 +96,7 @@ class GridCollectionViewCell: UICollectionViewCell {
 class GridCollectionViewController: UICollectionViewController {
     private let GridSquareViewCellIdentifier = "GridSquareViewCell"
     
-    var selectedLimb : Limb?
+    var selectedLimbName : String?
     var selectedIndexPath : IndexPath?
     
     enum gridSections : Int {
@@ -136,22 +136,22 @@ class GridCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         if indexPath.section == gridSections.abdomen.rawValue{
-            selectedLimb =  RealmManager.shared.getLimb(name: limb.abdomen.rawValue)
+            selectedLimbName =  limb.abdomen.rawValue
         }
         else{
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftArm.rawValue:
-                selectedLimb =  RealmManager.shared.getLimb(name: limb.leftArm.rawValue)
+                selectedLimbName =  limb.leftArm.rawValue
             case gridNotAbdomenSectionItems.rightArm.rawValue:
-                selectedLimb =  RealmManager.shared.getLimb(name: limb.rightArm.rawValue)
+                selectedLimbName =  limb.rightArm.rawValue
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
-                selectedLimb =  RealmManager.shared.getLimb(name: limb.leftThigh.rawValue)
+                selectedLimbName =  limb.leftThigh.rawValue
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
-                selectedLimb =  RealmManager.shared.getLimb(name: limb.rightThigh.rawValue)
+                selectedLimbName =  limb.rightThigh.rawValue
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
-                selectedLimb =  RealmManager.shared.getLimb(name: limb.leftButtock.rawValue)
+                selectedLimbName =  limb.leftButtock.rawValue
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
-                selectedLimb =  RealmManager.shared.getLimb(name: limb.rightButtock.rawValue)
+                selectedLimbName =  limb.rightButtock.rawValue
             default:
                 print("unknown limb")
             }
@@ -160,7 +160,7 @@ class GridCollectionViewController: UICollectionViewController {
         
         let storyboard = UIStoryboard(name: "AR", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "ARVC") as! ARViewController
-        vc.selectedLimb = selectedLimb
+        vc.selectedLimbName = selectedLimbName
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -186,39 +186,39 @@ class GridCollectionViewController: UICollectionViewController {
 //            cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridRectViewCellIdentifier, for: indexPath) as! GridCollectionViewCell
             
             cell.setCellValues(title: limb.abdomen.rawValue, imageName: "abdomen", section: gridSections.abdomen.rawValue)
-            let abdomen = RealmManager.shared.getLimb(name: limb.abdomen.rawValue)
+            let abdomen = Limb.getLimb(name: limb.abdomen.rawValue)
             cell.prepareGrid(limbGrid: abdomen)
         }
         else{
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
                 cell.setCellValues(title: limb.leftThigh.rawValue, imageName: "leftThigh", section: gridSections.notAbdomen.rawValue)
-                let leftThigh = RealmManager.shared.getLimb(name: limb.leftThigh.rawValue)
+                let leftThigh = Limb.getLimb(name: limb.leftThigh.rawValue)
                 cell.prepareGrid(limbGrid: leftThigh)
                 
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
                 cell.setCellValues(title: limb.rightThigh.rawValue, imageName: "rightThigh", section: gridSections.notAbdomen.rawValue)
-                let rightThigh = RealmManager.shared.getLimb(name: limb.rightThigh.rawValue)
+                let rightThigh = Limb.getLimb(name: limb.rightThigh.rawValue)
                 cell.prepareGrid(limbGrid: rightThigh)
                 
             case gridNotAbdomenSectionItems.leftArm.rawValue:
                 cell.setCellValues(title: limb.leftArm.rawValue, imageName: "leftArm", section: gridSections.notAbdomen.rawValue)
-                let leftArm = RealmManager.shared.getLimb(name: limb.leftArm.rawValue)
+                let leftArm = Limb.getLimb(name: limb.leftArm.rawValue)
                 cell.prepareGrid(limbGrid: leftArm)
                 
             case gridNotAbdomenSectionItems.rightArm.rawValue:
                 cell.setCellValues(title: limb.rightArm.rawValue, imageName: "rightArm", section: gridSections.notAbdomen.rawValue)
-                let rightArm = RealmManager.shared.getLimb(name: limb.rightArm.rawValue)
+                let rightArm = Limb.getLimb(name: limb.rightArm.rawValue)
                 cell.prepareGrid(limbGrid: rightArm)
                 
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
                 cell.setCellValues(title: limb.leftButtock.rawValue, imageName: "leftButt", section: gridSections.notAbdomen.rawValue)
-                let leftButtock = RealmManager.shared.getLimb(name: limb.leftButtock.rawValue)
+                let leftButtock = Limb.getLimb(name: limb.leftButtock.rawValue)
                 cell.prepareGrid(limbGrid: leftButtock)
                 
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
                 cell.setCellValues(title: limb.rightButtock.rawValue, imageName: "rightButt", section: gridSections.notAbdomen.rawValue)
-                let rightButtock = RealmManager.shared.getLimb(name: limb.rightButtock.rawValue)
+                let rightButtock = Limb.getLimb(name: limb.rightButtock.rawValue)
                 cell.prepareGrid(limbGrid: rightButtock)
             default:
                 cell.textLabel.text = ""

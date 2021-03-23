@@ -30,4 +30,13 @@ class Symptom{
         symptoms.append(Symptom(name: "Vomit", imageName: "vomit"))
         
     }
+    
+    static func symptomImage(for name: String)->String{
+        for symptom in symptoms{
+            if symptom.name == name{
+                return symptom.imageName
+            }
+        }
+        return ""
+    }
 }

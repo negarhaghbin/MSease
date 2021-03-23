@@ -7,20 +7,31 @@
 
 import FSCalendar
 import UIKit
+import RealmSwift
 
 class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    
+    // MARK: - IBOutlets
     @IBOutlet var calendar : FSCalendar!
+    
+    // MARK: - Variables
     var notesViewController: NotesTableViewController?
     var selectedDate : Date?
     var notes : [Note] = []
+    
+    var partitionValue : String?
+    var realm: Realm?
     
     enum SegueIdentifier: String {
         case viewDateSegue
     }
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.delegate = self
+        self.navigationController?.navigationBar.isHidden = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +39,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     }
     
     
+    // MARK: - FSCalendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         let currentHour = Calendar.current.component(.hour, from: Date())
@@ -42,7 +54,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if RealmManager.shared.haveNotes(for: date as Date){
+        if RealmManager.shared.haveNotes(for: date as Date, realm: realm!){
             return 1
         }
         else{
@@ -51,26 +63,27 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if RealmManager.shared.haveNotes(for: date as Date){
-            cell.eventIndicator.isHidden = false
-            cell.eventIndicator.numberOfEvents = 1
+        if realm != nil{
+            if RealmManager.shared.haveNotes(for: date as Date, realm: realm!){
+                cell.eventIndicator.isHidden = false
+                cell.eventIndicator.numberOfEvents = 1
+            }
         }
-        
     }
     
     
-    
+    // MARK: - IBActions
     @IBAction func goBack(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
-    
-
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.viewDateSegue.rawValue {
             notesViewController = segue.destination as? NotesTableViewController
+            
+            notesViewController?.partitionValue = partitionValue!
+            notesViewController?.realm = realm
             notesViewController?.date = selectedDate!
         }
     }

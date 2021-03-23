@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var containerTableView: UIView!
     // MARK: - Variables
     var partitionValue : String?
+    var realm: Realm?
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -25,13 +26,14 @@ class ProfileViewController: UIViewController {
         for child in children{
             if let childVC = child as? ProfileTableViewController{
                 childVC.partitionValue = partitionValue
+                childVC.realm = realm
             }
         }
     }
     
     // MARK: - Actions
     @IBAction func goBack(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
 

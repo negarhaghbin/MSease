@@ -28,15 +28,15 @@ class SymptomsCollectionViewCell: UICollectionViewCell {
 // MARK: - Collection ViewController
 class SymptomsCollectionViewController: UIViewController{
 
+    // MARK: - IBOutlets
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
+    
+    // MARK: - Variables
     let sectionInsets = UIEdgeInsets(top: 5.0, left: 3.0, bottom: 5.0, right: 4.0)
     let SymptomCollectionHeader : [String] = ["Symptom"]
-    let symptoms = RealmManager.shared.getSymptoms()
-    
     var cgsize : CGSize? = nil
-    var selectedSymptoms : [Symptom] = []
-    
+    var selectedSymptomNames : [String] = []
     var note : Note?{
         didSet {
             refreshUI()
@@ -44,28 +44,42 @@ class SymptomsCollectionViewController: UIViewController{
     }
     var isNewNote = true
     
+    var partitionValue: String?
+    var realm: Realm?{
+        didSet{
+            initSetup()
+        }
+    }
+    
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = note?.date
         mainCollectionView.reloadData()
     }
     
+    // MARK: - Helpers
+    func initSetup() {
+        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
+            fatalError("Sync configuration not found! Realm not opened with sync?")
+        }
+        partitionValue = syncConfiguration.partitionValue!.stringValue!
+    }
     func refreshUI(){
-        selectedSymptoms = note!.getSymptoms()
+        self.title = note!.date
+        selectedSymptomNames = note!.getSymptoms()
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextSymptomPage" {
             let vc = segue.destination as? AdditionalSymptomInfoTableViewController
-            vc!.selectedSymptoms = selectedSymptoms
+            vc!.partitionValue = partitionValue!
+            vc!.realm = realm
+            vc!.selectedSymptomNames = selectedSymptomNames
             vc!.note = note
-//            vc!.date = date
             vc!.isNewNote = isNewNote
         }
     }
@@ -78,7 +92,7 @@ extension SymptomsCollectionViewController: UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SymptomsViewCellIdentifier, for: indexPath) as! SymptomsCollectionViewCell
         cell.symptomImage.image = UIImage(named: symptoms[indexPath.row].imageName)
         cell.symptomName.text = symptoms[indexPath.row].name
-        if selectedSymptoms.contains(symptoms[indexPath.row]){
+        if selectedSymptomNames.contains(symptoms[indexPath.row].name){
             cell.checkmarkImage.isHidden = false
         }
         else{
@@ -86,8 +100,6 @@ extension SymptomsCollectionViewController: UICollectionViewDataSource, UICollec
         }
         return cell
     }
-    
-    
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return SymptomCollectionHeader.count
@@ -97,8 +109,6 @@ extension SymptomsCollectionViewController: UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return symptoms.count
     }
-    
-    
 
     // MARK: UICollectionViewDelegate
     
@@ -106,12 +116,12 @@ extension SymptomsCollectionViewController: UICollectionViewDataSource, UICollec
         if let cell = collectionView.cellForItem(at: indexPath) as? SymptomsCollectionViewCell{
             if cell.checkmarkImage.isHidden{
                 cell.checkmarkImage.isHidden = false
-                selectedSymptoms.append(symptoms[indexPath.row])
+                selectedSymptomNames.append(symptoms[indexPath.row].name)
             }
             else{
                 cell.checkmarkImage.isHidden = true
-                let index = selectedSymptoms.lastIndex(of: symptoms[indexPath.row])
-                selectedSymptoms.remove(at: index!)
+                let index = selectedSymptomNames.lastIndex(of: symptoms[indexPath.row].name)
+                selectedSymptomNames.remove(at: index!)
             }
         }
         

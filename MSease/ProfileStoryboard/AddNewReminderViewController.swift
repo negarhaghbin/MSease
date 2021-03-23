@@ -11,6 +11,7 @@ import RealmSwift
 let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var repeatLabel: UILabel!
@@ -19,8 +20,9 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet var days: Array<UITableViewCell>?
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    // MARK: - Variables
     var isNewReminder = false
     var repeatDays : [Bool] = []
     var reminder : Reminder? {
@@ -46,7 +48,6 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         case messageTextView
     }
     
-    // MARK: - START OF KASIF KARI
     
     var partitionValue: String?
     var realm: Realm?{
@@ -62,12 +63,9 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
 //    }
     
     
+    // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.na.topItem.title = "some title"
-//        timeLabel.text = Date().getTime()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {

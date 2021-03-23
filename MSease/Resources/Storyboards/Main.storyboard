@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bm1-jR-wsx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="height" constant="50" id="FQs-B0-yNC"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="VaA-vM-qek" kind="embed" id="ffa-uP-u0s"/>
+                                    <segue destination="VaA-vM-qek" kind="embed" identifier="topBarSegue" id="ffa-uP-u0s"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-P4-FC8" customClass="circle" customModule="MSease" customModuleProvider="target">
@@ -254,7 +254,7 @@
                                     </preferredSymbolConfiguration>
                                 </state>
                                 <connections>
-                                    <segue destination="MQz-LS-z4W" kind="showDetail" identifier="calendarSegue" id="O9B-hQ-AgT"/>
+                                    <segue destination="MQz-LS-z4W" kind="show" identifier="calendarSegue" id="O9B-hQ-AgT"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -12,7 +12,7 @@
         <!--Profile View Controller-->
         <scene sceneID="Ul0-Zx-5er">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="32B-fB-uVm" customClass="ProfileViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="32B-fB-uVm" customClass="ProfileViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pRC-ed-QsM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +170,7 @@
         <!--Reminder Settings View Controller-->
         <scene sceneID="OhF-SP-jWT">
             <objects>
-                <viewController storyboardIdentifier="reminderList" modalPresentationStyle="fullScreen" id="P5j-qs-CZO" customClass="reminderSettingsViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reminderList" id="P5j-qs-CZO" customClass="reminderSettingsViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PtI-CS-Nd6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,6 +255,7 @@
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="da9-Zy-1qV" id="v2a-5E-kX4"/>
+                        <segue destination="YAZ-gv-mYb" kind="show" identifier="showReminderEditor" id="m30-Bi-ez9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Mn-p0-YyU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

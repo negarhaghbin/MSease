@@ -18,6 +18,7 @@ class ProfileTableViewController: UITableViewController {
     }
     
     var partitionValue: String?
+    var realm: Realm?
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -33,22 +34,11 @@ class ProfileTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath.row == rows.reminders.rawValue{
-            let user = app.currentUser!
-            Realm.asyncOpen(configuration: user.configuration(partitionValue: partitionValue!)) { [weak self] (result) in
-                switch result {
-                case .failure(let error):
-                    fatalError("Failed to open realm: \(error)")
-                case .success(let realm):
-                    let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-                    let remindersVC = storyboard.instantiateViewController(withIdentifier: "reminderList") as? reminderSettingsViewController
-                    remindersVC?.partitionValue = self!.partitionValue!
-                    remindersVC?.realm = realm
-                    self?.navigationController?.pushViewController(
-                        remindersVC!,
-                        animated: true
-                    )
-                }
-            }
+            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+            let remindersVC = storyboard.instantiateViewController(withIdentifier: "reminderList") as? reminderSettingsViewController
+            remindersVC?.partitionValue = self.partitionValue!
+            remindersVC?.realm = self.realm
+            self.navigationController?.pushViewController(remindersVC!, animated: true)
         }
         return indexPath
     }

@@ -28,7 +28,7 @@ extension Date{
     
     func setTime(h: Int, m: Int)->Date{
         var hour = h
-        if h>12{
+        if h == 24{
             hour -= 12
         }
         var date = Calendar.current.date(bySetting: .hour, value: hour, of: self)!

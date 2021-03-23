@@ -24,8 +24,7 @@ class RealmManager{
 
 // MARK: - Note
 extension RealmManager{
-    func addNote(newNote: Note){
-        let realm = try! Realm()
+    func addNote(newNote: Note, realm: Realm){
         try! realm.write{
             realm.add(newNote)
         }
@@ -41,8 +40,7 @@ extension RealmManager{
 //        return Array(imageNames)
 //    }
     
-    func getNotes(for date: Date) -> [Note]{
-        let realm = try! Realm()
+    func getNotes(for date: Date, realm: Realm) -> Results<Note>{
         let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
         let result = realm.objects(Note.self).filter(predicate)
 //        var photos : [String] = []
@@ -50,18 +48,16 @@ extension RealmManager{
 //            photos = getNoteImages(noteId: note._id)
 //            note.setImages(imageNames: photos)
 //        }
-        return Array(result)
+        return result
     }
     
-    func haveNotes(for date: Date) -> Bool{
-        let realm = try! Realm()
+    func haveNotes(for date: Date, realm: Realm) -> Bool{
         let predicate = NSPredicate(format: "date beginswith %@", date.getUSFormat())
         let result = realm.objects(Note.self).filter(predicate)
         return result.count == 0 ? false : true
     }
     
-    func editNote(newNote: Note){
-        let realm = try! Realm()
+    func editNote(newNote: Note, realm: Realm){
         let oldNote = realm.object(ofType: Note.self, forPrimaryKey: newNote._id)
         try! realm.write{
             oldNote?.textContent = newNote.textContent

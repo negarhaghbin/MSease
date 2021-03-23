@@ -83,15 +83,18 @@ class reminderSettingsViewController: UIViewController {
             }
         }
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! AddNewReminderViewController
-        
-        // Pass the selected object to the new view controller.
-    }*/
+        if let vc = segue.destination as? AddNewReminderViewController{
+            vc.partitionValue = partitionValue!
+            vc.realm = realm
+            vc.reminder = selectedReminder
+            vc.isNewReminder = isNewReminder
+        }
+    }
 }
 
 // MARK: - Reminders UITableViewController
@@ -139,35 +142,17 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
         return CGFloat(100)
     }
     
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        
-        let user = app.currentUser!
-
-        Realm.asyncOpen(configuration: user.configuration(partitionValue: partitionValue!)) { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                fatalError("Failed to open realm: \(error)")
-            case .success(let realm):
-                
-                if indexPath.section == 1{
-                    self!.selectedReminder = self!.reminders![indexPath.row]
-                    self!.isNewReminder = false
-                }
-                else{
-                    self!.selectedReminder = Reminder()
-                    self!.isNewReminder = true
-                }
-                let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-                let reminderVC = storyboard.instantiateViewController(withIdentifier: "addNewReminder") as! AddNewReminderViewController
-                reminderVC.partitionValue = self!.partitionValue!
-                reminderVC.realm = realm
-                reminderVC.reminder = self!.selectedReminder
-                reminderVC.isNewReminder = self!.isNewReminder
-                self?.navigationController?.pushViewController(reminderVC, animated: true)
-            }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        if indexPath.section == 1{
+            selectedReminder = reminders![indexPath.row]
+            isNewReminder = false
         }
-        
-        return indexPath
+        else{
+            selectedReminder = Reminder()
+            isNewReminder = true
+        }
+        performSegue(withIdentifier: "showReminderEditor", sender: nil)
     }
     
 }

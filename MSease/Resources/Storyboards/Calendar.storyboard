@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eHN-LX-qOs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -13,7 +13,7 @@
         <!--Journal-->
         <scene sceneID="Lea-4g-HTO">
             <objects>
-                <viewController storyboardIdentifier="calendarVC" modalPresentationStyle="fullScreen" id="eHN-LX-qOs" customClass="CalendarViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calendarVC" id="eHN-LX-qOs" customClass="CalendarViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T3u-Jl-x5V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -265,6 +265,7 @@
                         <outlet property="symptomsView" destination="SUd-3m-wQz" id="35s-g4-6GM"/>
                         <outlet property="tableView" destination="SRz-V0-wtp" id="Uaq-SO-oTV"/>
                         <outlet property="titleDateLabel" destination="VjZ-bT-LrF" id="77Y-fF-m3O"/>
+                        <segue destination="QnQ-Hl-G6a" kind="show" identifier="editNote" id="wi9-dn-nff"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Xj-pz-jeZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -279,7 +280,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRe-9i-Pxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2294" y="463"/>
+            <point key="canvasLocation" x="2294" y="552"/>
         </scene>
         <!--Symptoms Popup View Controller-->
         <scene sceneID="9a3-aS-voL">
@@ -359,6 +360,9 @@
             <point key="canvasLocation" x="2295" y="137"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wi9-dn-nff"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>

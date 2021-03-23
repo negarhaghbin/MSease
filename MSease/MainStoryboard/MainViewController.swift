@@ -51,6 +51,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     override func viewDidLoad() {
 //        super.viewDidLoad()
+        
         setupCalendar()
         requestNotificationPermission()
         UNUserNotificationCenter.current().delegate = self
@@ -58,6 +59,12 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     //TODO: move this for first time users
     override func viewDidAppear(_ animated: Bool) {
+        for child in children{
+            if let childVC = child as? TopBarViewController{
+                childVC.realm = userRealm
+            }
+        }
+        
         let usersInRealm = userRealm!.objects(User.self)
         userData = usersInRealm.first
         notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AdditionalSymptomInfoTableViewController: UITableViewController, UITextViewDelegate, UIPickerViewDelegate {
     
@@ -15,20 +16,30 @@ class AdditionalSymptomInfoTableViewController: UITableViewController, UITextVie
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Variables
     let PhotosCollectionViewCell = "imageCollectionCell"
-    
-    var note : Note?
-    var selectedSymptoms : [Symptom] = []
+    var note : Note?{
+        didSet{
+            self.title = note!.date
+        }
+    }
+    var selectedSymptomNames : [String] = []
     var selectedImages : [String] = [] // names, TODO: fill it in picking images
     var isNewNote : Bool?
     
+    var partitionValue: String?
+    var realm: Realm?{
+        didSet{
+            initSetup()
+        }
+    }
+    
+    // MARK: - View Controllers
     override func viewDidLoad() {
         super.viewDidLoad()
-//        timePicker.date = Date()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = note?.date
         timeLabel.text = note!.time
         
         let time = getTimeFromString(note!.time)
@@ -63,17 +74,17 @@ class AdditionalSymptomInfoTableViewController: UITableViewController, UITextVie
         })
     }
     
-    // MARK: - Action
+    // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!
-        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptoms)
+        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptomNames, partition: partitionValue!)
         
         if isNewNote!{
-            RealmManager.shared.addNote(newNote: note)
+            RealmManager.shared.addNote(newNote: note, realm: realm!)
         }
         else{
             note._id = self.note!._id
-            RealmManager.shared.editNote(newNote: note)
+            RealmManager.shared.editNote(newNote: note, realm: realm!)
         }
         
         self.navigationController?.popToRootViewController(animated: true)
@@ -107,7 +118,13 @@ class AdditionalSymptomInfoTableViewController: UITableViewController, UITextVie
         return CGFloat(46.0)
     }
     
-     
+    // MARK: - Helpers
+    func initSetup() {
+        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
+            fatalError("Sync configuration not found! Realm not opened with sync?")
+        }
+        partitionValue = syncConfiguration.partitionValue!.stringValue!
+    }
     // MARK: - Navigation
 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

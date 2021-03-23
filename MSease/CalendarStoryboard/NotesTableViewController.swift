@@ -6,15 +6,33 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NotesTableViewController: UIViewController {
     
+    // MARK: - Variables
     let cellIdentifier = "notesTableViewCell"
-    var notes : [Note] = []
     var date : Date?{
         didSet{
-            notes = RealmManager.shared.getNotes(for: date!)
+            initSetup()
         }
+    }
+    
+    var partitionValue: String?
+    var realm: Realm?{
+        didSet{
+            guard let syncConfiguration = realm?.configuration.syncConfiguration else {
+                fatalError("Sync configuration not found! Realm not opened with sync?")
+            }
+            partitionValue = syncConfiguration.partitionValue!.stringValue!
+        }
+    }
+    var notificationToken: NotificationToken?
+    var notes: Results<Note>?
+    var selectedRow = 0
+
+    deinit {
+        notificationToken?.invalidate()
     }
     
     
@@ -24,23 +42,50 @@ class NotesTableViewController: UIViewController {
     @IBOutlet var symptomsView : UIView!
     @IBOutlet weak var shadowView: UIView!
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.title = date?.getUSFormat()
-        tableView.reloadData()
+    // MARK: - Helpers
+    
+    func initSetup() {
+        self.title = date!.getUSFormat()
+        notes = RealmManager.shared.getNotes(for: date!, realm: realm!)
+
+        notificationToken = notes!.observe { [weak self] (changes) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.performBatchUpdates({
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 1) }),
+                        with: .automatic)
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 1) }),
+                        with: .automatic)
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 1) }),
+                        with: .automatic)
+                })
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
     }
     
 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "editSymptom" {
-//            let symptomsVC = segue.destination as? SymptomsCollectionViewController
-//            symptomsVC!.date = date
-//        }
+        if segue.identifier == "editNote" {
+            print("SymptomsCollectionViewController")
+            let vc = segue.destination as? SymptomsCollectionViewController
+            vc!.partitionValue = partitionValue!
+            vc!.realm = realm
+            vc!.note = notes![selectedRow]
+            vc!.isNewNote = false
+            
+        }
     }
     
 
@@ -57,7 +102,7 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
         else{
-            return notes.count
+            return notes!.count
         }
         
     }
@@ -89,8 +134,8 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
             cell.collectionView.isUserInteractionEnabled = true
             cell.collectionView.addGestureRecognizer(tapGestureRecognizer)
             
-            cell.contentLabel.text = notes[indexPath.row].textContent
-            cell.timeLabel.text = notes[indexPath.row].time
+            cell.contentLabel.text = notes![indexPath.row].textContent
+            cell.timeLabel.text = notes![indexPath.row].time
             cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             
         }
@@ -117,25 +162,9 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
             symptomsView.animShow()
         }
         else if indexPath.section == 1{
-            
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Symptom", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "SymptomCollectionVC") as! SymptomsCollectionViewController
-            
-            vc.note = notes[indexPath.row]
-            
-//            var dateComponents = Calendar.current.dateComponents([.hour,.minute], from: date!)
-//            dateComponents.hour = Calendar.current.component(.hour, from: notes[indexPath.row].date)
-//            dateComponents.minute = Calendar.current.component(.minute, from: notes[indexPath.row].date)
-//
-//            date = Calendar.current.date(from: dateComponents)
-            
-//            vc.date = notes[indexPath.row].date
-            
-            vc.isNewNote = false
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            selectedRow = indexPath.row
+            performSegue(withIdentifier: "editNote", sender: nil)
         }
-        
     }
     
     
@@ -143,25 +172,21 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
 
 extension NotesTableViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return notes[collectionView.tag].symptoms.count
+        return notes![collectionView.tag].symptomNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "miniSymptomsCell",
                                                       for: indexPath) as! MiniSymptomsCollectionViewCell
 
-        cell.imageView.image = UIImage(named: notes[collectionView.tag].symptoms[indexPath.row].imageName)
+        cell.imageView.image = UIImage(named: Symptom.symptomImage(for: notes![collectionView.tag].symptomNames[indexPath.row]))
         
         return cell
     }
     
     @objc func didTapCollectionView(sender: UITapGestureRecognizer){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Symptom", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "SymptomCollectionVC") as! SymptomsCollectionViewController
-        vc.note = notes[sender.view!.tag]
-        vc.isNewNote = false
-        self.navigationController?.pushViewController(vc, animated: true)
+        selectedRow = sender.view!.tag
+        performSegue(withIdentifier: "editNote", sender: nil)
     }
-    
     
 }

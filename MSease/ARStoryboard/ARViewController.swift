@@ -39,6 +39,8 @@ class ARViewController: UIViewController {
     
     //TODO: save the previous selected mascot in db and put that the default value
     var selectedMascotIndex = -1
+    
+    var partitionValue : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()

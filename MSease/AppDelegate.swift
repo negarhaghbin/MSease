@@ -43,13 +43,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-func isNewUser()->Bool{
-    let defaults = UserDefaults.standard
-    if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
-        return false
-    }
-    else{
-        return true
-    }
-}
-

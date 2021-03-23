@@ -10,15 +10,23 @@ import RealmSwift
 
 class ProfileViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var containerTableView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     // MARK: - Variables
     var partitionValue : String?
     var realm: Realm?
+    var nameText = ""
     
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        nameLabel.text = nameText
     }
     
     override func viewDidAppear(_ animated: Bool) {

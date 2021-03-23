@@ -108,28 +108,39 @@ extension RealmManager{
 
 // FIXME: baraye injection ha realm e alaki gozahstam
 extension RealmManager{
-    func addInjection(newInjection: Injection){
-        let realm = try! Realm()
+    func addInjection(newInjection: Injection, realm: Realm){
         try! realm.write{
             realm.add(newInjection)
         }
     }
     
-    func getInjectionsForLimb(limb: Limb)->[Injection]{
-        let realm = try! Realm()
+    func getInjectionsForLimb(limb: Limb, realm: Realm)->Results<Injection>{
         let name = limb.name ?? ""
-        let result = realm.objects(Injection.self).filter("limb == \(name)")
-        return Array(result)
+        let result = realm.objects(Injection.self).filter("limbName == '\(name)'")
+        return result
     }
 }
 
 // MARK: - Login
 extension RealmManager{
-    /*func login(email: String, password: String, loginAction: @escaping (Result<RealmSwift.User,Error>) -> ()){
-        app.login(credentials: Credentials.emailPassword(email: email, password: password)) { result in
-            DispatchQueue.main.async {
-                loginAction(result)
-            }
+    
+    func hasCredentials() -> Bool {
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "email") == nil{
+            return false
         }
-    }*/
+        else{
+            return true
+        }
+    }
+    
+    func saveCredentials(email: String, password: String){
+        UserDefaults.standard.set(email, forKey: "email")
+        UserDefaults.standard.set(password, forKey: "password")
+    }
+    
+    func removeCredentials(){
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "password")
+    }
 }

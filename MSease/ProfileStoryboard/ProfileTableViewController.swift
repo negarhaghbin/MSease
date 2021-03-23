@@ -32,17 +32,6 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.row == rows.reminders.rawValue{
-            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-            let remindersVC = storyboard.instantiateViewController(withIdentifier: "reminderList") as? reminderSettingsViewController
-            remindersVC?.partitionValue = self.partitionValue!
-            remindersVC?.realm = self.realm
-            self.navigationController?.pushViewController(remindersVC!, animated: true)
-        }
-        return indexPath
-    }
-    
     // MARK: - Helpers
     func logOut() {
         let alertController = UIAlertController(title: "Log Out", message: "", preferredStyle: .alert)
@@ -52,6 +41,8 @@ class ProfileTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
                     let onboardingVC = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
+                    RealmManager.shared.removeCredentials()
+                    onboardingVC.walkthroughPageViewController?.currentIndex = walkthroughPages.count - 1
                     self.navigationController?.setViewControllers([onboardingVC], animated: true)
                 }
             }
@@ -61,11 +52,17 @@ class ProfileTableViewController: UITableViewController {
     }
 
     
-    /*// MARK: - Navigation
+    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }*/
+        if segue.identifier == "reminders"{
+            let remindersVC = segue.destination as! reminderSettingsViewController
+            remindersVC.partitionValue = self.partitionValue!
+            remindersVC.realm = self.realm
+        }
+        
+    }
     
 
 }

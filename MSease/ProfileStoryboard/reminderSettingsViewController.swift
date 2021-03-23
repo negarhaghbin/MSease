@@ -37,7 +37,9 @@ class reminderSettingsViewController: UIViewController {
     var partitionValue: String?
     var realm: Realm?{
         didSet{
-            initSetup(title: "Reminders")
+            if realm != nil{
+                initSetup(title: "Reminders")
+            }
         }
     }
     var notificationToken: NotificationToken?

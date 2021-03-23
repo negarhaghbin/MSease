@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class BottomContainerViewController: UIViewController {
     enum SegueIdentifier: String {
@@ -68,8 +69,10 @@ class BottomContainerViewController: UIViewController {
         let injection = Injection(limbName: parentVC.selectedLimbName!,
                                   selectedCellX: parentVC.currentTappedCardIndices!.0,
                                   selectedCellY: parentVC.currentTappedCardIndices!.1,
-                                  date: Date())
-        RealmManager.shared.addInjection(newInjection: injection)
+                                  date: Date(), partition: parentVC.partitionValue!)
+        // FIXME:
+        let realm = try! Realm()
+        RealmManager.shared.addInjection(newInjection: injection, realm: realm)
         
         
         parent?.navigationController?.isNavigationBarHidden = false

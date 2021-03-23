@@ -25,7 +25,6 @@ class WalkthroughViewController: UIViewController, walkthroughPageViewController
         super.viewDidLoad()
         setUpElements()
         self.navigationController?.navigationBar.isHidden = true
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - walkthroughPageViewControllerDelegate

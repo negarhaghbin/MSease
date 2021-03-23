@@ -32,7 +32,7 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.isHidden = false
         setUpElements()
     }
     
@@ -73,7 +73,7 @@ class SignupViewController: UIViewController {
                     return
                 case .success(let user):
                     print("Login succeeded!")
-
+                    RealmManager.shared.saveCredentials(email: self!.email!, password: self!.password!)
                     self!.setLoading(true)
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
                     configuration.objectTypes = [User.self, Reminder.self, Note.self]
@@ -84,8 +84,6 @@ class SignupViewController: UIViewController {
                             case .failure(let error):
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let userRealm):
-                                print("in signup view")
-                                print(userRealm.isEmpty)
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
                                 homeVC.userRealm = userRealm

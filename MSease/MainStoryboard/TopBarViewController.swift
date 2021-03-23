@@ -13,6 +13,7 @@ class TopBarViewController: UIViewController {
     var realm : Realm?
     override func viewDidLoad() {
         super.viewDidLoad()
+        StylingUtilities.styleView(self.view)
     }
     
 
@@ -26,6 +27,7 @@ class TopBarViewController: UIViewController {
            let destinationVC = segue.destination as? ProfileViewController{
             destinationVC.partitionValue = parentVC!.userData?._partition
             destinationVC.realm = realm
+            destinationVC.nameText = parentVC!.userData!.name
         }
         else if segue.identifier == "calendarSegue",
             let destinationVC = segue.destination as? CalendarViewController{

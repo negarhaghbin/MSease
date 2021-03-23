@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
         setUpElements()
     }
     
@@ -77,10 +78,10 @@ class LoginViewController: UIViewController {
                     return
                 case .success(let user):
                     print("Login succeeded!")
-
+                    RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
                     self.setLoading(true)
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
-                    configuration.objectTypes = [User.self, Reminder.self, Note.self]
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self]
                     Realm.asyncOpen(configuration: configuration) { [weak self](result) in
                         DispatchQueue.main.async {
                             self!.setLoading(false)
@@ -112,17 +113,3 @@ class LoginViewController: UIViewController {
     */
 
 }
-
-/*
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     let homeVC = segue.destination as? MainViewController
-     homeVC!.userRealm = userRealm
-     let usersInRealm = userRealm!.objects(User.self)
-     let userData = usersInRealm.first
-     print("printing user in success")
-     print(userData)
-     print(userRealm)
-//        self?.navigationController?.setViewControllers([homeVC], animated: true)
- }
- */

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "syringe.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "robot.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

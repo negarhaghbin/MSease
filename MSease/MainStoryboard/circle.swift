@@ -12,7 +12,6 @@ class circle: UIView {
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         
-        let shadow = UIColor.black
         let shadowOffset = CGSize(width: 3.1, height: 3.1)
         let shadowBlurRadius: CGFloat = 5
         

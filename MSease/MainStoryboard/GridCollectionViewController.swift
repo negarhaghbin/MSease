@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let sectionInsets = UIEdgeInsets(top: 5.0, left: 4.0, bottom: 5.0, right: 4.0)
 var cgsize : CGSize? = nil
@@ -57,12 +58,15 @@ class GridCollectionViewCell: UICollectionViewCell {
 //    }
     
     func prepareGrid(limbGrid: Limb){
-        let injections = RealmManager.shared.getInjectionsForLimb(limb: limbGrid)
+        print("in prepare grid")
+        // FIXME:
+        let realm = try! Realm()
+        let injections = RealmManager.shared.getInjectionsForLimb(limb: limbGrid, realm: realm)
         var cells : [(x: Int, y: Int)] = []
         for injection in injections{
             cells.append((x: injection.selectedCellX, y: injection.selectedCellY))
         }
-        
+        print("after injections")
         let width : Double?
         if limbGrid.name == "Abdomen"{
             width = Double(self.frame.width/20)
@@ -117,6 +121,7 @@ class GridCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
         self.title = "Choose a body part"
 
     }

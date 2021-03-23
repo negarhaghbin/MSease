@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bm1-jR-wsx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Yn-kM-rOZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caK-Cr-g3m" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="94" width="414" height="269"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="269"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
@@ -46,7 +46,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evW-nU-lxS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FQs-B0-yNC"/>
                                 </constraints>
@@ -61,8 +61,59 @@
                                     <constraint firstAttribute="width" secondItem="xdS-P4-FC8" secondAttribute="height" multiplier="1:1" id="c7h-TR-5Hg"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="robot" translatesAutoresizingMaskIntoConstraints="NO" id="TBh-U4-rof">
+                                <rect key="frame" x="0.0" y="565" width="165" height="159"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="GA4-on-fRB"/>
+                                    <constraint firstAttribute="width" secondItem="TBh-U4-rof" secondAttribute="height" multiplier="55:53" id="LrG-SY-a3w"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-Zf-dTv">
+                                <rect key="frame" x="286.5" y="731" width="90" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAC-iG-Mk5">
+                                        <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="COf-xb-MEc"/>
+                                            <constraint firstAttribute="width" secondItem="rAC-iG-Mk5" secondAttribute="height" multiplier="1:1" id="dF1-Zh-4oI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" image="syringe"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="fAz-Ew-Vr3" kind="show" id="CaN-NO-oQx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Iti-Zf-dTv" secondAttribute="height" multiplier="1:1" id="FlG-nM-tVV"/>
+                                    <constraint firstItem="rAC-iG-Mk5" firstAttribute="centerX" secondItem="Iti-Zf-dTv" secondAttribute="centerX" id="QyY-GD-gY7"/>
+                                    <constraint firstAttribute="width" constant="90" id="hio-qy-9Cw"/>
+                                    <constraint firstItem="rAC-iG-Mk5" firstAttribute="centerY" secondItem="Iti-Zf-dTv" secondAttribute="centerY" id="iTj-P5-zAV"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="45"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOffset">
+                                        <real key="value" value="3.1000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xk7-Il-A3Z">
-                                <rect key="frame" x="20.5" y="424" width="373" height="138"/>
+                                <rect key="frame" x="20.5" y="429" width="373" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treatment in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-tg-k7V">
                                         <rect key="frame" x="139.5" y="0.0" width="94" height="22.5"/>
@@ -77,13 +128,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-YW-WY1">
-                                        <rect key="frame" x="74.5" y="88" width="224" height="50"/>
+                                        <rect key="frame" x="102.5" y="88" width="168" height="40"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="F5U-qb-GmG"/>
+                                            <constraint firstAttribute="height" constant="40" id="F5U-qb-GmG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
-                                        <state key="normal" title="Inject">
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="15"/>
+                                        <state key="normal" title="Log symptoms">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -91,43 +142,65 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="fAz-Ew-Vr3" kind="show" id="XVe-ZE-Xat"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="m4c-YW-WY1" firstAttribute="width" secondItem="xk7-Il-A3Z" secondAttribute="width" multiplier="0.6" id="8rx-ey-RSM"/>
+                                    <constraint firstItem="m4c-YW-WY1" firstAttribute="width" secondItem="xk7-Il-A3Z" secondAttribute="width" multiplier="0.45" id="8rx-ey-RSM"/>
                                 </constraints>
                             </stackView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7w-se-ERg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DV3-aS-EqM">
+                                        <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.49192426062577616" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="DV3-aS-EqM" firstAttribute="centerX" secondItem="s7w-se-ERg" secondAttribute="centerX" id="WXA-j3-bhZ"/>
+                                    <constraint firstItem="DV3-aS-EqM" firstAttribute="centerY" secondItem="s7w-se-ERg" secondAttribute="centerY" id="iDj-E7-s8k"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jCs-Hz-Cc2"/>
                         <color key="backgroundColor" red="0.66274509803921566" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xdS-P4-FC8" firstAttribute="width" secondItem="YcI-zZ-WvY" secondAttribute="width" multiplier="0.9" id="0a3-tf-3Uz"/>
+                            <constraint firstItem="TBh-U4-rof" firstAttribute="trailing" secondItem="xk7-Il-A3Z" secondAttribute="leading" constant="144.5" id="5IS-3Y-lb7"/>
                             <constraint firstItem="xdS-P4-FC8" firstAttribute="centerY" secondItem="YcI-zZ-WvY" secondAttribute="centerY" multiplier="1.1" id="5Wk-5h-o7Y"/>
                             <constraint firstItem="caK-Cr-g3m" firstAttribute="top" secondItem="evW-nU-lxS" secondAttribute="bottom" id="625-yV-6to"/>
                             <constraint firstItem="evW-nU-lxS" firstAttribute="leading" secondItem="jCs-Hz-Cc2" secondAttribute="leading" id="AMb-YC-rp9"/>
                             <constraint firstItem="xdS-P4-FC8" firstAttribute="centerX" secondItem="YcI-zZ-WvY" secondAttribute="centerX" id="B89-zK-oTG"/>
                             <constraint firstItem="xk7-Il-A3Z" firstAttribute="width" secondItem="xdS-P4-FC8" secondAttribute="width" id="Gk6-DI-PU9"/>
+                            <constraint firstItem="s7w-se-ERg" firstAttribute="leading" secondItem="jCs-Hz-Cc2" secondAttribute="leading" id="Hcw-zK-6O4"/>
                             <constraint firstItem="evW-nU-lxS" firstAttribute="trailing" secondItem="jCs-Hz-Cc2" secondAttribute="trailing" id="I2I-bH-t1N"/>
+                            <constraint firstAttribute="bottom" secondItem="s7w-se-ERg" secondAttribute="bottom" id="Kmj-IK-0Lk"/>
+                            <constraint firstItem="jCs-Hz-Cc2" firstAttribute="bottom" secondItem="Iti-Zf-dTv" secondAttribute="bottom" multiplier="1.05" id="L1p-TD-YvI"/>
                             <constraint firstItem="xk7-Il-A3Z" firstAttribute="centerX" secondItem="xdS-P4-FC8" secondAttribute="centerX" id="LGv-Fr-EgT"/>
+                            <constraint firstItem="s7w-se-ERg" firstAttribute="top" secondItem="YcI-zZ-WvY" secondAttribute="top" id="Zjz-TD-ZKR"/>
                             <constraint firstItem="xk7-Il-A3Z" firstAttribute="centerY" secondItem="xdS-P4-FC8" secondAttribute="centerY" id="aR2-dN-hgu"/>
                             <constraint firstItem="caK-Cr-g3m" firstAttribute="height" secondItem="YcI-zZ-WvY" secondAttribute="height" multiplier="0.3" id="d1o-9U-Bix"/>
+                            <constraint firstItem="TBh-U4-rof" firstAttribute="top" secondItem="xk7-Il-A3Z" secondAttribute="bottom" constant="8" id="f1b-2d-IAN"/>
                             <constraint firstItem="caK-Cr-g3m" firstAttribute="leading" secondItem="jCs-Hz-Cc2" secondAttribute="leading" id="fnq-8b-NxU"/>
                             <constraint firstItem="jCs-Hz-Cc2" firstAttribute="trailing" secondItem="caK-Cr-g3m" secondAttribute="trailing" id="mns-2q-giu"/>
                             <constraint firstItem="evW-nU-lxS" firstAttribute="top" secondItem="jCs-Hz-Cc2" secondAttribute="top" id="rma-Jy-mp8"/>
+                            <constraint firstItem="jCs-Hz-Cc2" firstAttribute="trailing" secondItem="s7w-se-ERg" secondAttribute="trailing" id="uhS-W1-dww"/>
+                            <constraint firstItem="jCs-Hz-Cc2" firstAttribute="trailing" secondItem="Iti-Zf-dTv" secondAttribute="trailing" multiplier="1.1" id="zkY-zd-v06"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qea-ES-B7P"/>
                     <connections>
+                        <outlet property="blurView" destination="s7w-se-ERg" id="hPm-Ls-exl"/>
                         <outlet property="calendar" destination="caK-Cr-g3m" id="S4y-w8-MT2"/>
-                        <outlet property="injectButton" destination="m4c-YW-WY1" id="RME-AU-4gD"/>
+                        <outlet property="injectButton" destination="rAC-iG-Mk5" id="cDo-fM-We9"/>
+                        <outlet property="loadingIndicator" destination="DV3-aS-EqM" id="tml-t8-GFi"/>
+                        <outlet property="logSymptomsButton" destination="m4c-YW-WY1" id="OB1-CL-gs9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jx2-Jf-66o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-744.92753623188412" y="62.946428571428569"/>
+            <point key="canvasLocation" x="165.21739130434784" y="62.946428571428569"/>
         </scene>
         <!--Grid Collection View Controller-->
         <scene sceneID="Uxz-hh-1Vl">
@@ -201,7 +274,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDD-je-Wsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="63"/>
+            <point key="canvasLocation" x="973.91304347826099" y="62.946428571428569"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="5Qd-QB-Kne">
@@ -270,7 +343,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLg-Ea-I4s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-744.92753623188412" y="-288.61607142857139"/>
+            <point key="canvasLocation" x="165.21739130434784" y="-288.61607142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ECP-hl-JMI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Yn-kM-rOZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ypu-i8-tse">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bm1-jR-wsx" kind="relationship" relationship="rootViewController" id="vVW-Kf-Jim"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ld-kh-ckR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-744.92753623188412" y="62.946428571428569"/>
         </scene>
     </scenes>
     <resources>
@@ -278,6 +369,8 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="robot" width="138.5" height="241.5"/>
+        <image name="syringe" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

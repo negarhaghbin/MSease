@@ -15,69 +15,64 @@ class MainViewController: UIViewController, FSCalendarDelegate {
 
     // MARK: - IBOutlets
     @IBOutlet weak var injectButton: UIButton!
+    @IBOutlet weak var logSymptomsButton: UIButton!
+    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var calendar : FSCalendar!
     
     // MARK: - Variables
-//    var delegate: UserRealmDelegate?
-    
     var userRealm: Realm?
     var notificationToken: NotificationToken?
-    var userData: User?
-    
-    /*init(userRealm: Realm) {
-        self.userRealm = userRealm
-        print("setting user realm in Main")
-        super.init(nibName: nil, bundle: nil)
-
-        // There should only be one user in my realm - that is myself
-        let usersInRealm = userRealm.objects(User.self)
-
-        notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
-            self?.userData = usersInRealm.first
-//            guard let tableView = self?.tableView else { return }
-//            tableView.reloadData()
+    var userData: User?{
+        didSet{
+            blurView.isHidden = true
         }
-
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }*/
-
+    // MARK: - View Controller
     deinit {
-        // Always invalidate any notification tokens when you are done with them.
         notificationToken?.invalidate()
     }
     
     override func viewDidLoad() {
-//        super.viewDidLoad()
-        
+        super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
+        StylingUtilities.styleView(self.view)
         setupCalendar()
         requestNotificationPermission()
         UNUserNotificationCenter.current().delegate = self
     }
     
-    //TODO: move this for first time users
     override func viewDidAppear(_ animated: Bool) {
-        for child in children{
-            if let childVC = child as? TopBarViewController{
-                childVC.realm = userRealm
+        if !isNewUser(){
+            if RealmManager.shared.hasCredentials() && userRealm == nil{
+                login(
+                    email: UserDefaults.standard.string(forKey: "email")!,
+                    password: UserDefaults.standard.string(forKey: "password")!)
             }
+            else{
+                for child in self.children{
+                    if let childVC = child as? TopBarViewController{
+                        childVC.realm = self.userRealm
+                        
+                    }
+                }
+                let usersInRealm = userRealm!.objects(User.self)
+                self.userData = usersInRealm.first
+                self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
+                        self?.userData = usersInRealm.first
+                }
+            }
+        }
+        else{
+            UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController")
+            self.navigationController?.setViewControllers([vc], animated: true)
+            
         }
         
-        let usersInRealm = userRealm!.objects(User.self)
-        userData = usersInRealm.first
-        notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
-                self?.userData = usersInRealm.first
-        }
-
-        if isNewUser(){
-            UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-            if let walkthroughViewController = storyboard.instantiateViewController(identifier: "WalkthroughViewController") as? WalkthroughViewController{
-                self.navigationController?.pushViewController(walkthroughViewController, animated: true)
-            }
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -85,7 +80,6 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
     
     // MARK: - Calendar
-    
     func setupCalendar(){
         calendar.delegate = self
         calendar.pagingEnabled = true
@@ -96,15 +90,63 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
     
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    /*func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if calendar.today != date{
             injectButton.setTitle("Log Symptoms", for: .normal)
         }
         else{
             injectButton.setTitle("Inject", for: .normal)
         }
+    }*/
+    
+    // MARK: - Helpers
+    func isNewUser()->Bool{
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
+            return false
+        }
+        else{
+            return true
+        }
     }
     
+    func login(email: String,password: String){
+        print("logging in as \(email)")
+        app.login(credentials: Credentials.emailPassword(email: email, password: password)) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print("Login failed: \(error)")
+                    return
+                case .success(let user):
+                    print("Login succeeded!")
+                    var configuration = user.configuration(partitionValue: "user=\(user.id)")
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self]
+                    Realm.asyncOpen(configuration: configuration) { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .failure(let error):
+                                fatalError("Failed to open realm: \(error)")
+                            case .success(let userRealm):
+                                self.userRealm = userRealm
+                                for child in self.children{
+                                    if let childVC = child as? TopBarViewController{
+                                        childVC.realm = self.userRealm
+                                        
+                                    }
+                                }
+                                let usersInRealm = userRealm.objects(User.self)
+                                self.userData = usersInRealm.first
+                                self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
+                                        self?.userData = usersInRealm.first
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     // MARK: - Navigation
 /*

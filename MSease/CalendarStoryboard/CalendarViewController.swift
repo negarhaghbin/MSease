@@ -30,12 +30,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.delegate = self
-        self.navigationController?.navigationBar.isHidden = false
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         calendar.reloadData()
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     

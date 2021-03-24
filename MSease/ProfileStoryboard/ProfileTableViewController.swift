@@ -11,12 +11,7 @@ import RealmSwift
 class ProfileTableViewController: UITableViewController {
     
     // MARK: - Variables
-    enum rows : Int {
-        case reminders = 0
-        case settings
-        case logout
-    }
-    
+    var signoutRow = 4
     var partitionValue: String?
     var realm: Realm?
     
@@ -27,7 +22,7 @@ class ProfileTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == rows.logout.rawValue{
+        if indexPath.row == signoutRow{
             logOut()
         }
     }

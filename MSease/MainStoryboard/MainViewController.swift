@@ -36,11 +36,14 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         StylingUtilities.styleView(self.view)
         setupCalendar()
         requestNotificationPermission()
         UNUserNotificationCenter.current().delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

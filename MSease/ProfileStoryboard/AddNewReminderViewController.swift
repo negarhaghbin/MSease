@@ -204,6 +204,9 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
             
         case rows.message.rawValue:
             textView.isHidden = !textView.isHidden
+            if textView.isHidden{
+                textView.resignFirstResponder()
+            }
             
         case rows.repeatRow.rawValue:
             for cell in days!{
@@ -227,6 +230,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         case rows.name.rawValue:
             nameTextField.isHidden = !nameTextField.isHidden
             nameLabel.text = nameTextField.text
+            nameTextField.resignFirstResponder()
                         
         default:
             print("unknown row")

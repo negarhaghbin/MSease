@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caK-Cr-g3m" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="138" width="414" height="269"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="448"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="19"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
                                         <real key="value" value="14"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
-                                        <integer key="value" value="20"/>
+                                        <real key="value" value="19"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" systemColor="tertiaryLabelColor"/>
@@ -180,7 +180,7 @@
                             <constraint firstItem="xk7-Il-A3Z" firstAttribute="centerX" secondItem="xdS-P4-FC8" secondAttribute="centerX" id="LGv-Fr-EgT"/>
                             <constraint firstItem="s7w-se-ERg" firstAttribute="top" secondItem="YcI-zZ-WvY" secondAttribute="top" id="Zjz-TD-ZKR"/>
                             <constraint firstItem="xk7-Il-A3Z" firstAttribute="centerY" secondItem="xdS-P4-FC8" secondAttribute="centerY" id="aR2-dN-hgu"/>
-                            <constraint firstItem="caK-Cr-g3m" firstAttribute="height" secondItem="YcI-zZ-WvY" secondAttribute="height" multiplier="0.3" id="d1o-9U-Bix"/>
+                            <constraint firstItem="caK-Cr-g3m" firstAttribute="height" secondItem="YcI-zZ-WvY" secondAttribute="height" multiplier="0.5" id="d1o-9U-Bix"/>
                             <constraint firstItem="TBh-U4-rof" firstAttribute="top" secondItem="xk7-Il-A3Z" secondAttribute="bottom" constant="8" id="f1b-2d-IAN"/>
                             <constraint firstItem="caK-Cr-g3m" firstAttribute="leading" secondItem="jCs-Hz-Cc2" secondAttribute="leading" id="fnq-8b-NxU"/>
                             <constraint firstItem="jCs-Hz-Cc2" firstAttribute="trailing" secondItem="caK-Cr-g3m" secondAttribute="trailing" id="mns-2q-giu"/>

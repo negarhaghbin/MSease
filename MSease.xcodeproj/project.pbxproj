@@ -10,7 +10,7 @@
 		5D21C20DC123E92BD7DCEDF6 /* Pods_MSease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5985A3334A06593A80337851 /* Pods_MSease.framework */; };
 		8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */; };
 		8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407F6A125D9B0420015666A /* NotesTableViewCell.swift */; };
-		840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */; };
+		840C1E5C25D3159700AD339E /* SymptomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */; };
 		840C1E6925D36BED00AD339E /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6825D36BED00AD339E /* Symptom.swift */; };
 		840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6D25D36E9400AD339E /* RealmManager.swift */; };
 		8414E4D725FFB18E00A84273 /* StylingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414E4D625FFB18E00A84273 /* StylingUtilities.swift */; };
@@ -81,7 +81,7 @@
 		5985A3334A06593A80337851 /* Pods_MSease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		8407F6A125D9B0420015666A /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
-		840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
+		840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewCell.swift; sourceTree = "<group>"; };
 		840C1E6825D36BED00AD339E /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		840C1E6D25D36E9400AD339E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		8414E4D625FFB18E00A84273 /* StylingUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingUtilities.swift; sourceTree = "<group>"; };
@@ -340,7 +340,7 @@
 			children = (
 				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
 				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
-				840C1E5B25D3159700AD339E /* SymptomsCollectionViewController.swift */,
+				840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */,
 				8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */,
 				8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */,
 				8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */,
@@ -524,7 +524,7 @@
 				84979F5025BA3FE100578C37 /* Mascot.swift in Sources */,
 				8414E4D725FFB18E00A84273 /* StylingUtilities.swift in Sources */,
 				84BBE21A25C0BF700046C24F /* GridCollectionViewController.swift in Sources */,
-				840C1E5C25D3159700AD339E /* SymptomsCollectionViewController.swift in Sources */,
+				840C1E5C25D3159700AD339E /* SymptomsCollectionViewCell.swift in Sources */,
 				842D8025260CB83800A73C98 /* UIImageExtensions.swift in Sources */,
 				840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */,
 				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 import RealmSwift
 
 class BottomContainerViewController: UIViewController {
+    
+    // MARK: - Variables
     enum SegueIdentifier: String {
         case showMascots
     }
@@ -26,7 +28,10 @@ class BottomContainerViewController: UIViewController {
     }
     var mascotsViewController: MascotSelectionViewController?
     
-    // MARK: -IBOutlets
+    var partitionValue: String?
+    var realm: Realm?
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var addMascotButton: UIButton!
     
@@ -35,13 +40,14 @@ class BottomContainerViewController: UIViewController {
     @IBOutlet weak var doneEffectView: UIVisualEffectView!
     
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    // MARK: -Actions
+    // MARK: - Actions
     @IBAction func showMascotSelectionViewController() {
         if let parentVC = parent as? ARViewController{
             guard !addMascotButton.isHidden && !parentVC.isLoading else { return }
@@ -70,9 +76,8 @@ class BottomContainerViewController: UIViewController {
                                   selectedCellX: parentVC.currentTappedCardIndices!.0,
                                   selectedCellY: parentVC.currentTappedCardIndices!.1,
                                   date: Date(), partition: parentVC.partitionValue!)
-        // FIXME:
-        let realm = try! Realm()
-        RealmManager.shared.addInjection(newInjection: injection, realm: realm)
+
+        RealmManager.shared.addInjection(newInjection: injection, realm: realm!)
         
         
         parent?.navigationController?.isNavigationBarHidden = false

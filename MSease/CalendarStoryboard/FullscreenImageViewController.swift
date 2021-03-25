@@ -13,7 +13,6 @@ class FullscreenImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("here")
         let data = try? Data(contentsOf: imageViewURL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
         imageView.image = UIImage(data: data!)
         // Do any additional setup after loading the view.

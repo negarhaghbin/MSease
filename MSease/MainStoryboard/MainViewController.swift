@@ -21,6 +21,9 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet var calendar : FSCalendar!
     
     // MARK: - Variables
+    let notificationCenter = UNUserNotificationCenter.current()
+    var selectedDate = Date()
+    
     var userRealm: Realm?
     var notificationToken: NotificationToken?
     var userData: User?{
@@ -93,14 +96,10 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
     
     
-    /*func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if calendar.today != date{
-            injectButton.setTitle("Log Symptoms", for: .normal)
-        }
-        else{
-            injectButton.setTitle("Inject", for: .normal)
-        }
-    }*/
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDate = date
+        selectedDate = selectedDate.setTime(h: Calendar.current.component(.hour, from: Date()), m: Calendar.current.component(.minute, from: Date()))
+    }
     
     // MARK: - Helpers
     func isNewUser()->Bool{
@@ -124,7 +123,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 case .success(let user):
                     print("Login succeeded!")
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
-                    configuration.objectTypes = [User.self, Reminder.self, Note.self]
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self]
                     Realm.asyncOpen(configuration: configuration) { result in
                         DispatchQueue.main.async {
                             switch result {
@@ -152,12 +151,19 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
 
     // MARK: - Navigation
-/*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }*/
+        if let destinationVC = segue.destination as? GridCollectionViewController{
+            destinationVC.partitionValue = userData?._partition
+            destinationVC.realm = userRealm
+        }
+        else if let destinationVC = segue.destination as? SymptomsCollectionViewController{
+            destinationVC.isNewNote = true
+            destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, images: [], symptoms: [], partition: userData!._partition)
+            
+            destinationVC.partitionValue = userData?._partition
+            destinationVC.realm = userRealm
+        }
+    }
 
 }
 
@@ -166,9 +172,17 @@ class MainViewController: UIViewController, FSCalendarDelegate {
 extension MainViewController : UNUserNotificationCenterDelegate{
     
     func requestNotificationPermission(){
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, error in
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { _, error in
             if let error = error {
                 print(error.localizedDescription)
+            }
+            else{
+                let snoozeAction = UNNotificationAction(identifier: notificationAction.snooze.rawValue, title: "Snooze for 1 hour", options: UNNotificationActionOptions(rawValue: 0))
+                
+                
+                let snoozableCategory = UNNotificationCategory(identifier: notificationCategory.snoozable.rawValue, actions: [snoozeAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
+                
+                self.notificationCenter.setNotificationCategories([snoozableCategory])
             }
         }
     }

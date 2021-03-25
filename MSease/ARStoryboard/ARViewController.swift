@@ -10,6 +10,7 @@ import RealityKit
 import ARKit
 import Combine
 import FocusEntity
+import RealmSwift
 
 class ARViewController: UIViewController {
     @IBOutlet var arview : ARView!
@@ -41,6 +42,7 @@ class ARViewController: UIViewController {
     var selectedMascotIndex = -1
     
     var partitionValue : String?
+    var realm: Realm?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,15 @@ class ARViewController: UIViewController {
 //        arview.debugOptions.insert(.showStatistics)
         UIApplication.shared.isIdleTimerDisabled = true
         resetTracking()
+        
+        for child in children{
+            if let childVC = child as? BottomContainerViewController{
+                childVC.partitionValue = partitionValue
+                childVC.realm = realm
+            }
+        }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
 //        createGrid(completionHandler: { hidden in

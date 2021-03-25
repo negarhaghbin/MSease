@@ -58,6 +58,7 @@ class SymptomsCollectionViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         mainCollectionView.reloadData()
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Helpers

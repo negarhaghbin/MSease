@@ -309,15 +309,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4pI-eu-4iO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                            <rect key="frame" x="2" y="2" width="50" height="41"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="OZj-Bc-Bav"/>
                                             </constraints>
                                         </imageView>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDn-jU-EdG">
-                                            <rect key="frame" x="50" y="0.0" width="200" height="45"/>
+                                            <rect key="frame" x="54" y="0.0" width="196" height="45"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="i8y-me-nbr">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="196" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-NC-BYR">
@@ -338,13 +338,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="pDn-jU-EdG" firstAttribute="leading" secondItem="4pI-eu-4iO" secondAttribute="trailing" id="9q1-ru-Xhx"/>
-                                        <constraint firstItem="4pI-eu-4iO" firstAttribute="leading" secondItem="U1A-2z-eL9" secondAttribute="leading" id="DfP-wJ-LY4"/>
-                                        <constraint firstItem="pDn-jU-EdG" firstAttribute="leading" secondItem="4pI-eu-4iO" secondAttribute="trailing" id="Gmu-Fy-tcB"/>
-                                        <constraint firstItem="4pI-eu-4iO" firstAttribute="top" secondItem="U1A-2z-eL9" secondAttribute="top" id="Ssh-yH-WKZ"/>
+                                        <constraint firstItem="4pI-eu-4iO" firstAttribute="leading" secondItem="U1A-2z-eL9" secondAttribute="leading" constant="2" id="DfP-wJ-LY4"/>
+                                        <constraint firstItem="pDn-jU-EdG" firstAttribute="leading" secondItem="4pI-eu-4iO" secondAttribute="trailing" constant="2" id="Gmu-Fy-tcB"/>
+                                        <constraint firstItem="4pI-eu-4iO" firstAttribute="top" secondItem="U1A-2z-eL9" secondAttribute="top" constant="2" id="Ssh-yH-WKZ"/>
                                         <constraint firstAttribute="trailing" secondItem="pDn-jU-EdG" secondAttribute="trailing" id="dJp-cR-wED"/>
                                         <constraint firstAttribute="bottom" secondItem="pDn-jU-EdG" secondAttribute="bottom" id="dqy-bu-13K"/>
-                                        <constraint firstAttribute="bottom" secondItem="4pI-eu-4iO" secondAttribute="bottom" constant="1" id="fHc-pX-BYl"/>
+                                        <constraint firstAttribute="bottom" secondItem="4pI-eu-4iO" secondAttribute="bottom" constant="2" id="fHc-pX-BYl"/>
                                         <constraint firstItem="pDn-jU-EdG" firstAttribute="top" secondItem="U1A-2z-eL9" secondAttribute="top" id="wKn-ZO-LEC"/>
                                     </constraints>
                                 </tableViewCellContentView>

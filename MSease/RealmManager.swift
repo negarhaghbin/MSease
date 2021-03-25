@@ -106,7 +106,6 @@ extension RealmManager{
 
 // MARK: - Injection
 
-// FIXME: baraye injection ha realm e alaki gozahstam
 extension RealmManager{
     func addInjection(newInjection: Injection, realm: Realm){
         try! realm.write{

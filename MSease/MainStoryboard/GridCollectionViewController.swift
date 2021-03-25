@@ -18,12 +18,11 @@ class GridCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
     
     var grid2D : [[UIImageView]] = []
-        //Array(repeating: Array(repeating: UIImageView(), count: LimbGridSize.gridSize().col), count: LimbGridSize.gridSize().row)
     
     func setCellValues(title: String, imageName: String, section: Int){
         self.textLabel.text = title
         let scaledSize = CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom)
-        self.bodyImage.image = imageWithImage(image: UIImage(named: imageName)!, scaledToSize:scaledSize)
+        self.bodyImage.image = UIImage(named: imageName)!.scaleTo(newSize: scaledSize)
     }
     
     func initiate(){
@@ -32,41 +31,18 @@ class GridCollectionViewCell: UICollectionViewCell {
     }
     
     func hideExtraRowsAndCols(hidden:[(x: Int, y: Int)]){
-//        for i in row..<LimbGridSize.gridSize().row{
-//            for j in 0..<LimbGridSize.gridSize().col{
-//                self.grid2D[i][j].isHidden = true
-//            }
-//        }
-//        for i in col..<LimbGridSize.gridSize().col{
-//            for j in 0..<LimbGridSize.gridSize().row{
-//                self.grid2D[j][i].isHidden = true
-//            }
-//        }
         for block in hidden{
             self.grid2D[block.x][block.y].isHidden = true
         }
     }
     
-//    func create2DGridFrom1D(){
-//        self.grid = self.grid!.sorted { $0.tag < $1.tag }
-//        for i in 0..<LimbGridSize.gridSize().row{
-//            for j in 0..<LimbGridSize.gridSize().col{
-//                self.grid2D[i][j] = self.grid![i*LimbGridSize.gridSize().col+j]
-//                self.grid2D[i][j].isHidden = false
-//            }
-//        }
-//    }
-    
-    func prepareGrid(limbGrid: Limb){
-        print("in prepare grid")
-        // FIXME:
-        let realm = try! Realm()
+    func prepareGrid(limbGrid: Limb, realm: Realm){
         let injections = RealmManager.shared.getInjectionsForLimb(limb: limbGrid, realm: realm)
         var cells : [(x: Int, y: Int)] = []
         for injection in injections{
             cells.append((x: injection.selectedCellX, y: injection.selectedCellY))
         }
-        print("after injections")
+        
         let width : Double?
         if limbGrid.name == "Abdomen"{
             width = Double(self.frame.width/20)
@@ -98,6 +74,8 @@ class GridCollectionViewCell: UICollectionViewCell {
 }
 
 class GridCollectionViewController: UICollectionViewController {
+    
+    // MARK: - Variables
     private let GridSquareViewCellIdentifier = "GridSquareViewCell"
     
     var selectedLimbName : String?
@@ -116,28 +94,47 @@ class GridCollectionViewController: UICollectionViewController {
         case leftButtock = 4
         case rightButtock = 5
     }
+    
+    var partitionValue: String?
+    var realm: Realm?{
+        didSet{
+            if realm != nil{
+                initSetup(title: "Choose a body part")
+            }
+        }
+    }
 
     private var itemsPerRow: CGFloat = 1
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
-        self.title = "Choose a body part"
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
         if selectedIndexPath != nil{
             self.collectionView.reloadItems(at: [selectedIndexPath!])
         }
     }
+    
+    // MARK: - Helpers
+    func initSetup(title: String) {
+        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
+            fatalError("Sync configuration not found! Realm not opened with sync?")
+        }
 
+        partitionValue = syncConfiguration.partitionValue!.stringValue!
+        
+        self.title = title
+    }
+
+    // MARK: - Actions
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: UICollectionViewDataSource
-
+    // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         if indexPath.section == gridSections.abdomen.rawValue{
@@ -158,15 +155,11 @@ class GridCollectionViewController: UICollectionViewController {
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
                 selectedLimbName =  limb.rightButtock.rawValue
             default:
-                print("unknown limb")
+                break
             }
             
         }
-        
-        let storyboard = UIStoryboard(name: "AR", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "ARVC") as! ARViewController
-        vc.selectedLimbName = selectedLimbName
-        self.navigationController?.pushViewController(vc, animated: true)
+        performSegue(withIdentifier: "showAR", sender: nil)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -192,39 +185,39 @@ class GridCollectionViewController: UICollectionViewController {
             
             cell.setCellValues(title: limb.abdomen.rawValue, imageName: "abdomen", section: gridSections.abdomen.rawValue)
             let abdomen = Limb.getLimb(name: limb.abdomen.rawValue)
-            cell.prepareGrid(limbGrid: abdomen)
+            cell.prepareGrid(limbGrid: abdomen, realm: realm!)
         }
         else{
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
                 cell.setCellValues(title: limb.leftThigh.rawValue, imageName: "leftThigh", section: gridSections.notAbdomen.rawValue)
                 let leftThigh = Limb.getLimb(name: limb.leftThigh.rawValue)
-                cell.prepareGrid(limbGrid: leftThigh)
+                cell.prepareGrid(limbGrid: leftThigh, realm: realm!)
                 
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
                 cell.setCellValues(title: limb.rightThigh.rawValue, imageName: "rightThigh", section: gridSections.notAbdomen.rawValue)
                 let rightThigh = Limb.getLimb(name: limb.rightThigh.rawValue)
-                cell.prepareGrid(limbGrid: rightThigh)
+                cell.prepareGrid(limbGrid: rightThigh, realm: realm!)
                 
             case gridNotAbdomenSectionItems.leftArm.rawValue:
                 cell.setCellValues(title: limb.leftArm.rawValue, imageName: "leftArm", section: gridSections.notAbdomen.rawValue)
                 let leftArm = Limb.getLimb(name: limb.leftArm.rawValue)
-                cell.prepareGrid(limbGrid: leftArm)
+                cell.prepareGrid(limbGrid: leftArm, realm: realm!)
                 
             case gridNotAbdomenSectionItems.rightArm.rawValue:
                 cell.setCellValues(title: limb.rightArm.rawValue, imageName: "rightArm", section: gridSections.notAbdomen.rawValue)
                 let rightArm = Limb.getLimb(name: limb.rightArm.rawValue)
-                cell.prepareGrid(limbGrid: rightArm)
+                cell.prepareGrid(limbGrid: rightArm, realm: realm!)
                 
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
                 cell.setCellValues(title: limb.leftButtock.rawValue, imageName: "leftButt", section: gridSections.notAbdomen.rawValue)
                 let leftButtock = Limb.getLimb(name: limb.leftButtock.rawValue)
-                cell.prepareGrid(limbGrid: leftButtock)
+                cell.prepareGrid(limbGrid: leftButtock, realm: realm!)
                 
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
                 cell.setCellValues(title: limb.rightButtock.rawValue, imageName: "rightButt", section: gridSections.notAbdomen.rawValue)
                 let rightButtock = Limb.getLimb(name: limb.rightButtock.rawValue)
-                cell.prepareGrid(limbGrid: rightButtock)
+                cell.prepareGrid(limbGrid: rightButtock, realm: realm!)
             default:
                 cell.textLabel.text = ""
             }
@@ -236,12 +229,13 @@ class GridCollectionViewController: UICollectionViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let vc = segue.destination as! ARViewController
-//        vc.selectedLimb = selectedLimb
-//        vc.selectedLimb = .leftThigh
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ARViewController{
+            vc.selectedLimbName = selectedLimbName
+            vc.partitionValue = self.partitionValue!
+            vc.realm = self.realm
+        }
+    }
 
 }
 
@@ -267,12 +261,4 @@ extension GridCollectionViewController : UICollectionViewDelegateFlowLayout {
     cgsize=CGSize(width: widthPerItem, height: widthPerItem/CGFloat(divider))
     return cgsize!
   }
-}
-
-func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
-    UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
-    image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
-    let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return newImage
 }

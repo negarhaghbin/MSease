@@ -48,6 +48,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         case messageTextView
     }
     
+    let notificationCenter = UNUserNotificationCenter.current()
     
     var partitionValue: String?
     var realm: Realm?{
@@ -233,7 +234,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
             nameTextField.resignFirstResponder()
                         
         default:
-            print("unknown row")
+            break
         }
         AnimateTableCell(indexPath: indexPath)
         
@@ -281,14 +282,15 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
 }
 
 // MARK: - Push Notifications
-extension AddNewReminderViewController{
+extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
     
     func scheduleNotification(name: String, message: String){
         let time = getTimeFromString(timeLabel.text!)
         let content = UNMutableNotificationContent()
         content.title = name
-        content.subtitle = message
+        content.body = message
         content.sound = UNNotificationSound.default
+        content.categoryIdentifier = notificationCategory.snoozable.rawValue
 
         // i = 0,monday
         // weekday = 1, sunday
@@ -311,12 +313,41 @@ extension AddNewReminderViewController{
 
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
-                UNUserNotificationCenter.current().add(request)
+                notificationCenter.add(request)
             }
         }
         
     }
     
-    //TODO: add notification actions
-    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+          switch response.actionIdentifier {
+          case notificationAction.snooze.rawValue:
+            
+            let content = UNMutableNotificationContent()
+            content.title = response.notification.request.content.title
+            content.body = response.notification.request.content.body
+            content.sound = UNNotificationSound.default
+            content.categoryIdentifier = notificationCategory.snoozable.rawValue
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: false)
+
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+            
+             break
+        
+          default:
+             break
+          }
+          completionHandler()
+    }
+}
+
+enum notificationCategory : String{
+    case snoozable = "SNOOZABLE"
+}
+
+enum notificationAction : String{
+    case snooze = "SNOOZE_ACTION"
 }

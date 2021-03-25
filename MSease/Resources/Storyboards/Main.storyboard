@@ -142,6 +142,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="PMr-HH-aDB" kind="show" identifier="addSymptom" id="cbH-nc-kGC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -201,6 +204,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jx2-Jf-66o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="165.21739130434784" y="62.946428571428569"/>
+        </scene>
+        <!--Symptom-->
+        <scene sceneID="su4-lQ-MW9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Symptom" id="PMr-HH-aDB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2NN-34-aGg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtD-vX-4Ma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166" y="512"/>
         </scene>
         <!--Grid Collection View Controller-->
         <scene sceneID="Uxz-hh-1Vl">
@@ -271,10 +284,23 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="3D4-VF-dxG" kind="show" identifier="showAR" id="OIK-sb-Sbv"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDD-je-Wsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.91304347826099" y="62.946428571428569"/>
+        </scene>
+        <!--AR-->
+        <scene sceneID="KWE-Af-3jO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AR" id="3D4-VF-dxG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="DHV-u3-nsk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sEL-W2-7gx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1552" y="63"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="5Qd-QB-Kne">
@@ -369,7 +395,7 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="robot" width="138.5" height="241.5"/>
+        <image name="robot" width="277" height="483"/>
         <image name="syringe" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

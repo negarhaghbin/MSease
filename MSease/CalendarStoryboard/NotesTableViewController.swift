@@ -78,7 +78,6 @@ class NotesTableViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editNote" {
-            print("SymptomsCollectionViewController")
             let vc = segue.destination as? SymptomsCollectionViewController
             vc!.partitionValue = partitionValue!
             vc!.realm = realm

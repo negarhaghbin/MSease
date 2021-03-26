@@ -18,9 +18,12 @@ class RealmManager{
         let path = realm.configuration.fileURL!.path
         print("Path: \(String(describing: path))")
     }
+    
+    func connectToMongoDB()->App{
+        return App(id: "mseaseapp-wrhfs")
+    }
 }
 
-// FIXME: baraye hameye note ha realm e alaki gozashtam
 
 // MARK: - Note
 extension RealmManager{
@@ -99,9 +102,12 @@ extension RealmManager{
         }
     }
     
-    func connectToMongoDB()->App{
-        return App(id: "mseaseapp-wrhfs")
+    func removeReminder(reminder: Reminder, realm: Realm){
+        try! realm.write {
+            realm.delete(reminder)
+        }
     }
+    
 }
 
 // MARK: - Injection

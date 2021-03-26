@@ -67,6 +67,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     // MARK: - ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationCenter.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +85,9 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                 days![i].accessoryType = .none
             }
         }
+        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+            print(result)
+        })
     }
     
     // MARK: - Helpers
@@ -317,12 +321,18 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
             }
         }
         
+        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+            print(result)
+        })
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // FIXME: This function is not called
+        print("heere")
           switch response.actionIdentifier {
           case notificationAction.snooze.rawValue:
-            
+            print("heere2")
             let content = UNMutableNotificationContent()
             content.title = response.notification.request.content.title
             content.body = response.notification.request.content.body
@@ -332,14 +342,17 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: false)
 
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
+            
             notificationCenter.add(request)
             
-             break
+            notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+                print(result)
+            })
         
           default:
              break
           }
+        print("heere3")
           completionHandler()
     }
 }

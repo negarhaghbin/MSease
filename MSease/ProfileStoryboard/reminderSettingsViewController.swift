@@ -157,4 +157,21 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
         performSegue(withIdentifier: "showReminderEditor", sender: nil)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RealmManager.shared.removeReminder(reminder: reminders![indexPath.row], realm: realm!)
+//            reminders = realm?.objects(Reminder.self)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0{
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
 }

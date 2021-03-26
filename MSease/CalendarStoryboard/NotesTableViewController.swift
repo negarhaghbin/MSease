@@ -166,9 +166,26 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RealmManager.shared.removeNote(note: notes![indexPath.row], realm: realm!)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0{
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
     
 }
 
+
+// MARK: Collection View
 extension NotesTableViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return notes![collectionView.tag].symptomNames.count

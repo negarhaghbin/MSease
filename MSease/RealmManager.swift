@@ -71,6 +71,12 @@ extension RealmManager{
             oldNote?.symptomNames.append(objectsIn: newNote.symptomNames)
         }
     }
+    
+    func removeNote(note: Note, realm: Realm){
+        try! realm.write {
+            realm.delete(note)
+        }
+    }
 }
 
 // MARK: - Reminder

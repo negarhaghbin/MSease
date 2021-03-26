@@ -38,6 +38,14 @@ class ARViewController: UIViewController {
     var isLoading = false
     var isRestartAvailable = true
     
+    var injectionIsDone : Bool?{
+        didSet{
+            navigationController?.isNavigationBarHidden = false
+            print("hjkl########")
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
     //TODO: save the previous selected mascot in db and put that the default value
     var selectedMascotIndex = -1
     

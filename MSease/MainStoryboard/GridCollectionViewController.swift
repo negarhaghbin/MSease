@@ -131,7 +131,7 @@ class GridCollectionViewController: UICollectionViewController {
 
     // MARK: - Actions
     @IBAction func goBack(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - UICollectionViewDataSource

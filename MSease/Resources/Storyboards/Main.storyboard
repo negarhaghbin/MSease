@@ -218,8 +218,8 @@
         <!--Grid Collection View Controller-->
         <scene sceneID="Uxz-hh-1Vl">
             <objects>
-                <collectionViewController modalPresentationStyle="fullScreen" id="fAz-Ew-Vr3" customClass="GridCollectionViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="c3m-Ra-CJL">
+                <collectionViewController id="fAz-Ew-Vr3" customClass="GridCollectionViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="c3m-Ra-CJL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -280,7 +280,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="Bel-jO-Kp7">
                             <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
                             <connections>
-                                <action selector="goBack:" destination="fAz-Ew-Vr3" id="ngm-Vl-tTq"/>
+                                <action selector="goBack:" destination="fAz-Ew-Vr3" id="oda-UO-QjS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

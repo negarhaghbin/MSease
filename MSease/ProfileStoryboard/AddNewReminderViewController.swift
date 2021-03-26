@@ -85,9 +85,9 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                 days![i].accessoryType = .none
             }
         }
-        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
-            print(result)
-        })
+//        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+//            print(result)
+//        })
     }
     
     // MARK: - Helpers
@@ -321,9 +321,9 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
             }
         }
         
-        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
-            print(result)
-        })
+//        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+//            print(result)
+//        })
         
     }
     

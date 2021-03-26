@@ -99,11 +99,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4xN-QN-IHc">
-                                                    <rect key="frame" x="20" y="11" width="41.5" height="27.5"/>
+                                                    <rect key="frame" x="20" y="11" width="37.5" height="27.5"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJN-XJ-mMP">
-                                                    <rect key="frame" x="69.5" y="11" width="305.5" height="28"/>
+                                                    <rect key="frame" x="65.5" y="11" width="269.5" height="28"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -134,11 +134,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-nx-1Dg">
-                                                    <rect key="frame" x="20" y="11" width="41.5" height="28.5"/>
+                                                    <rect key="frame" x="20" y="11" width="37.5" height="28.5"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIz-OA-tic">
-                                                    <rect key="frame" x="69.5" y="11" width="305.5" height="28"/>
+                                                    <rect key="frame" x="65.5" y="11" width="269.5" height="28"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -252,7 +252,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="da9-Zy-1qV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="100" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="da9-Zy-1qV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="reminderSettingsCell" rowHeight="100" id="m4V-gl-yC3" customClass="reminderSettingsTableViewCell" customModule="MSease" customModuleProvider="target">
@@ -280,8 +280,14 @@
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lfs-HS-YR9">
+                                                    <rect key="frame" x="20" y="19.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchTapped:" destination="P5j-qs-CZO" eventType="valueChanged" id="2ss-N1-AtT"/>
+                                                    </connections>
+                                                </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPT-WZ-Ff5">
-                                                    <rect key="frame" x="20" y="24" width="222" height="22.5"/>
+                                                    <rect key="frame" x="81" y="24" width="161" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -294,16 +300,19 @@
                                                 <constraint firstItem="KqW-Es-yTf" firstAttribute="centerY" secondItem="8tW-0S-yPb" secondAttribute="centerY" id="Drl-ti-mlS"/>
                                                 <constraint firstItem="i3h-U1-9Kj" firstAttribute="centerY" secondItem="8tW-0S-yPb" secondAttribute="centerY" multiplier="1.3" id="FcE-c3-deD"/>
                                                 <constraint firstItem="D48-Fu-c9f" firstAttribute="width" secondItem="8tW-0S-yPb" secondAttribute="width" multiplier="0.3" id="GcH-Rq-uob"/>
-                                                <constraint firstItem="IPT-WZ-Ff5" firstAttribute="leading" secondItem="8tW-0S-yPb" secondAttribute="leading" constant="20" symbolic="YES" id="RJK-fH-2LK"/>
+                                                <constraint firstItem="Lfs-HS-YR9" firstAttribute="centerY" secondItem="IPT-WZ-Ff5" secondAttribute="centerY" id="QbO-mv-ZM5"/>
                                                 <constraint firstItem="IPT-WZ-Ff5" firstAttribute="centerY" secondItem="8tW-0S-yPb" secondAttribute="centerY" multiplier="0.7" id="Scq-BQ-fjZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="i3h-U1-9Kj" secondAttribute="trailing" id="XDN-er-HdW"/>
                                                 <constraint firstItem="KqW-Es-yTf" firstAttribute="centerX" secondItem="8tW-0S-yPb" secondAttribute="centerX" id="eqc-Nb-lyx"/>
                                                 <constraint firstAttribute="trailing" secondItem="D48-Fu-c9f" secondAttribute="trailing" constant="20" symbolic="YES" id="fdm-mM-Ogs"/>
                                                 <constraint firstItem="i3h-U1-9Kj" firstAttribute="leading" secondItem="8tW-0S-yPb" secondAttribute="leadingMargin" id="mze-pB-msU"/>
+                                                <constraint firstItem="Lfs-HS-YR9" firstAttribute="leading" secondItem="8tW-0S-yPb" secondAttribute="leadingMargin" id="nQR-ly-ZNO"/>
+                                                <constraint firstItem="IPT-WZ-Ff5" firstAttribute="leading" secondItem="Lfs-HS-YR9" secondAttribute="trailingMargin" constant="20" id="qhM-s8-k8Z"/>
                                                 <constraint firstItem="KqW-Es-yTf" firstAttribute="leading" secondItem="8tW-0S-yPb" secondAttribute="leadingMargin" id="w2p-5A-KS3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activationSwitch" destination="Lfs-HS-YR9" id="Hah-RX-1RK"/>
                                             <outlet property="addNewReminderLabel" destination="KqW-Es-yTf" id="x7y-ds-ZVU"/>
                                             <outlet property="reminderNameLabel" destination="IPT-WZ-Ff5" id="DQK-wa-eyX"/>
                                             <outlet property="reminderRepeatLabel" destination="i3h-U1-9Kj" id="lTx-AI-xG8"/>

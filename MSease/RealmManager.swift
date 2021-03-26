@@ -108,6 +108,12 @@ extension RealmManager{
         }
     }
     
+    func changeReminderState(reminder: Reminder, state: Bool, realm: Realm){
+        try! realm.write{
+            reminder.isOn = state
+        }
+    }
+    
 }
 
 // MARK: - Injection

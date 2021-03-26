@@ -14,13 +14,27 @@ class reminderSettingsTableViewCell: UITableViewCell {
     @IBOutlet weak var reminderRepeatLabel: UILabel!
     @IBOutlet weak var reminderTimeLabel: UILabel!
     @IBOutlet weak var addNewReminderLabel: UILabel!
+    @IBOutlet weak var activationSwitch: UISwitch!
     
-    func setup(isReminderInstance: Bool){
+    func setup(isReminderInstance: Bool, reminder: Reminder? = nil, row: Int? = 0){
         self.addNewReminderLabel.isHidden = isReminderInstance
         self.reminderTimeLabel.isHidden = !isReminderInstance
         self.reminderNameLabel.isHidden = !isReminderInstance
         self.reminderRepeatLabel.isHidden = !isReminderInstance
+        self.activationSwitch.isHidden = !isReminderInstance
+        
+        if isReminderInstance{
+            self.activationSwitch.isOn = reminder!.isOn
+            self.activationSwitch.tag = row!
+            
+            self.reminderNameLabel.text = reminder!.name
+            self.reminderTimeLabel.text = reminder!.time
+            self.reminderRepeatLabel.text = reminder!.getRepeatationDays()
+            
+        }
+        
     }
+    
 }
 
 // MARK: - Reminders UIViewController
@@ -80,6 +94,7 @@ class reminderSettingsViewController: UIViewController {
                     tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 1) }),
                         with: .automatic)
                 })
+                tableView.reloadSections(IndexSet(integer: 1), with: .none)
             case .error(let error):
                 fatalError("\(error)")
             }
@@ -124,26 +139,15 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? reminderSettingsTableViewCell{
-            if indexPath.section == 0{
-                cell.setup(isReminderInstance: false)
-            }
-            else if indexPath.section == 1{
-                cell.setup(isReminderInstance: true)
-                cell.reminderNameLabel.text = reminders?[indexPath.row].name
-                cell.reminderTimeLabel.text = reminders?[indexPath.row].time
-                cell.reminderRepeatLabel.text = reminders?[indexPath.row].getRepeatationDays()
-            }
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? reminderSettingsTableViewCell
+        if indexPath.section == 0{
+            cell!.setup(isReminderInstance: false)
         }
-        
-        return reminderSettingsTableViewCell()
+        else if indexPath.section == 1{
+            cell!.setup(isReminderInstance: true, reminder: reminders?[indexPath.row], row: indexPath.row)
+        }
+        return cell!
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100)
-    }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath.section == 1{
@@ -172,6 +176,11 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
         else{
             return true
         }
+    }
+    
+    @IBAction func switchTapped(_ sender: UISwitch) {
+        print(sender.tag)
+        RealmManager.shared.changeReminderState(reminder: reminders![sender.tag], state: sender.isOn, realm: realm!)
     }
     
 }

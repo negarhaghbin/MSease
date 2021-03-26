@@ -18,11 +18,12 @@ class Reminder: Object{
     @objc dynamic var sun = true
     @objc dynamic var time : String = ""
     @objc dynamic var message : String = "Have you write in your journal today?"
+    @objc dynamic var isOn = true
     
     @objc dynamic var _id: ObjectId = ObjectId.generate()
     @objc dynamic var _partition : String = ""
     
-    convenience init(name: String, mon: Bool, tue: Bool, wed: Bool, thu: Bool, fri: Bool, sat: Bool, sun: Bool, time: String, message: String?, partition: String){
+    convenience init(name: String, mon: Bool, tue: Bool, wed: Bool, thu: Bool, fri: Bool, sat: Bool, sun: Bool, time: String, message: String?, partition: String, isOne : Bool? = true){
         self.init()
         self.name = name
         self.mon = mon

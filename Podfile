@@ -8,5 +8,6 @@ target 'MSease' do
   # Pods for MSease
   pod 'FSCalendar'
   pod 'RealmSwift', '=10.1.4'
+  pod 'DLRadioButton', '~> 1.4'
 
 end

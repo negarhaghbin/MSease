@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 var selectedSymptomNames : [String] = []
 
@@ -35,12 +34,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     var selectedImages : [String] = [] // names, TODO: fill it in picking images
     var isNewNote : Bool?
     
-    var partitionValue: String?
-    var realm: Realm?{
-        didSet{
-            initSetup()
-        }
-    }
+    var partitionValue = RealmManager.shared.getPartitionValue()
     
     // MARK: - View Controllers
     override func viewDidLoad() {
@@ -87,14 +81,14 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!
-        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptomNames, partition: partitionValue!)
+        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptomNames, partition: partitionValue)
         
         if isNewNote!{
-            RealmManager.shared.addNote(newNote: note, realm: realm!)
+            RealmManager.shared.addNote(newNote: note)
         }
         else{
             note._id = self.note!._id
-            RealmManager.shared.editNote(newNote: note, realm: realm!)
+            RealmManager.shared.editNote(newNote: note)
         }
         
         self.navigationController?.popToRootViewController(animated: true)
@@ -135,13 +129,6 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     func refreshUI(){
         self.title = note!.date
         selectedSymptomNames = note!.getSymptoms()
-    }
-    
-    func initSetup() {
-        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
-            fatalError("Sync configuration not found! Realm not opened with sync?")
-        }
-        partitionValue = syncConfiguration.partitionValue!.stringValue!
     }
     
     // MARK: - Navigation

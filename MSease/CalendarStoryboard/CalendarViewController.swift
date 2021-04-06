@@ -7,7 +7,6 @@
 
 import FSCalendar
 import UIKit
-import RealmSwift
 
 class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
@@ -20,7 +19,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var notes : [Note] = []
     
     var partitionValue : String?
-    var realm: Realm?
     
     enum SegueIdentifier: String {
         case viewDateSegue
@@ -53,7 +51,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if RealmManager.shared.haveNotes(for: date as Date, realm: realm!){
+        if RealmManager.shared.haveNotes(for: date as Date){
             return 1
         }
         else{
@@ -62,11 +60,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if realm != nil{
-            if RealmManager.shared.haveNotes(for: date as Date, realm: realm!){
-                cell.eventIndicator.isHidden = false
-                cell.eventIndicator.numberOfEvents = 1
-            }
+        if RealmManager.shared.haveNotes(for: date as Date){
+            cell.eventIndicator.isHidden = false
+            cell.eventIndicator.numberOfEvents = 1
         }
     }
     
@@ -81,8 +77,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         if segue.identifier == SegueIdentifier.viewDateSegue.rawValue {
             notesViewController = segue.destination as? NotesTableViewController
             
-            notesViewController?.partitionValue = partitionValue!
-            notesViewController?.realm = realm
+            notesViewController?.partitionValue = partitionValue!            
             notesViewController?.date = selectedDate!
         }
     }

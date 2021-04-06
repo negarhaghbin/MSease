@@ -48,16 +48,10 @@ class reminderSettingsViewController: UIViewController {
     var selectedReminder : Reminder? = Reminder()
     var isNewReminder = true
     
-    var partitionValue: String?
-    var realm: Realm?{
-        didSet{
-            if realm != nil{
-                initSetup(title: "Reminders")
-            }
-        }
-    }
+    var partitionValue: String = RealmManager.shared.getPartitionValue()
+
     var notificationToken: NotificationToken?
-    var reminders: Results<Reminder>?
+    var reminders = RealmManager.shared.getReminders()
 
     deinit {
         notificationToken?.invalidate()
@@ -67,20 +61,18 @@ class reminderSettingsViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        initSetup(title: "Reminders")
+    }
+    
     
     // MARK: - Helpers
     
     func initSetup(title: String) {
-        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
-            fatalError("Sync configuration not found! Realm not opened with sync?")
-        }
-
-        partitionValue = syncConfiguration.partitionValue!.stringValue!
-        reminders = realm?.objects(Reminder.self)
         
         self.title = title
 
-        notificationToken = reminders!.observe { [weak self] (changes) in
+        notificationToken = reminders.observe { [weak self] (changes) in
             guard let tableView = self?.tableView else { return }
             switch changes {
             case .initial:
@@ -106,8 +98,7 @@ class reminderSettingsViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AddNewReminderViewController{
-            vc.partitionValue = partitionValue!
-            vc.realm = realm
+            vc.partitionValue = partitionValue
             vc.reminder = selectedReminder
             vc.isNewReminder = isNewReminder
         }
@@ -133,7 +124,7 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
             return 1
         }
         else{
-            return reminders?.count ?? 0
+            return reminders.count
         }
         
     }
@@ -144,14 +135,14 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
             cell!.setup(isReminderInstance: false)
         }
         else if indexPath.section == 1{
-            cell!.setup(isReminderInstance: true, reminder: reminders?[indexPath.row], row: indexPath.row)
+            cell!.setup(isReminderInstance: true, reminder: reminders[indexPath.row], row: indexPath.row)
         }
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath.section == 1{
-            selectedReminder = reminders![indexPath.row]
+            selectedReminder = reminders[indexPath.row]
             isNewReminder = false
         }
         else{
@@ -163,7 +154,7 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            RealmManager.shared.removeReminder(reminder: reminders![indexPath.row], realm: realm!)
+            RealmManager.shared.removeReminder(reminder: reminders[indexPath.row])
 //            reminders = realm?.objects(Reminder.self)
 //            tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -180,7 +171,7 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     
     @IBAction func switchTapped(_ sender: UISwitch) {
         print(sender.tag)
-        RealmManager.shared.changeReminderState(reminder: reminders![sender.tag], state: sender.isOn, realm: realm!)
+        RealmManager.shared.changeReminderState(reminder: reminders[sender.tag], state: sender.isOn)
     }
     
 }

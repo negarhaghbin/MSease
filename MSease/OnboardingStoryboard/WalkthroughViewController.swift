@@ -86,6 +86,15 @@ class WalkthroughViewController: UIViewController, walkthroughPageViewController
             walkthroughPageViewController = pageViewController
             walkthroughPageViewController?.walkthroughDelegate = self
         }
+        if let destinationVC = destination as? SignupLoginViewController{
+            if segue.identifier == "signup"{
+                destinationVC.isLoggingIn = false
+            }
+            else if segue.identifier == "login"{
+                destinationVC.isLoggingIn = true
+                
+            }
+        }
     }
     
 

@@ -45,6 +45,10 @@ extension Date{
         formatter.dateFormat = "hh:mm a, d MMM y"
         print(formatter.string(from: date))
     }
+    
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
 }
 
 func getDateFromString(_ dateString:String)->Date{
@@ -76,6 +80,15 @@ func getTimeFromString(_ time: String)->(h: Int, m:Int){
 //
 //    return Calendar.current.date(from: dateComponents)!
     return (h: hourInt, m:Int(minute)!)
+}
+
+func timeIntervalToWeeks(timeInterval: TimeInterval)->Double{
+    let seconds = timeInterval / 1000.0
+    let minutes = seconds / 60.0
+    let hours = minutes / 60.0
+    let days = hours / 24.0
+    let weeks = days / 7.0
+    return weeks
 }
 
 

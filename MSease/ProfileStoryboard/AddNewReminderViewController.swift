@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
@@ -50,12 +49,8 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
-    var partitionValue: String?
-    var realm: Realm?{
-        didSet{
-            initSetup(title: "Add new reminder")
-        }
-    }
+    var partitionValue = RealmManager.shared.getPartitionValue()
+
 //    var notificationToken: NotificationToken?
 
 //    deinit {
@@ -72,10 +67,10 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         if isNewReminder{
-            self.navigationItem.title = "Add a new reminder"
+            self.title = "Add a new reminder"
         }
         else{
-            self.navigationItem.title = "Edit reminder"
+            self.title = "Edit reminder"
         }
         for (i,day) in repeatDays.enumerated(){
             if day == true{
@@ -91,16 +86,6 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     }
     
     // MARK: - Helpers
-    
-    func initSetup(title: String) {
-        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
-            fatalError("Sync configuration not found! Realm not opened with sync?")
-        }
-        partitionValue = syncConfiguration.partitionValue!.stringValue!
-        self.title = title
-
-    }
-    
     private func refreshUI(){
         loadView()
         nameLabel.text = reminder?.name
@@ -166,13 +151,13 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             sat: repeatDays[5],
                             sun: repeatDays[6],
                             time: timeLabel.text!,
-                            message: textView.text, partition: partitionValue!)
+                            message: textView.text, partition: partitionValue)
         if isNewReminder{
-            RealmManager.shared.addReminder(newReminder: reminder!, realm: realm!)
+            RealmManager.shared.addReminder(newReminder: reminder!)
         }
         else{
             reminder?.setId(id: reminderId)
-            RealmManager.shared.editReminder(reminder!, realm: realm!)
+            RealmManager.shared.editReminder(reminder!)
         }
         
         self.scheduleNotification(name: nameLabel.text ?? "", message: textView.text)

@@ -18,15 +18,8 @@ class NotesTableViewController: UIViewController {
         }
     }
     
-    var partitionValue: String?
-    var realm: Realm?{
-        didSet{
-            guard let syncConfiguration = realm?.configuration.syncConfiguration else {
-                fatalError("Sync configuration not found! Realm not opened with sync?")
-            }
-            partitionValue = syncConfiguration.partitionValue!.stringValue!
-        }
-    }
+    var partitionValue = RealmManager.shared.getPartitionValue()
+    
     var notificationToken: NotificationToken?
     var notes: Results<Note>?
     var selectedRow = 0
@@ -51,7 +44,7 @@ class NotesTableViewController: UIViewController {
     
     func initSetup() {
         self.title = date!.getUSFormat()
-        notes = RealmManager.shared.getNotes(for: date!, realm: realm!)
+        notes = RealmManager.shared.getNotes(for: date!)
 
         notificationToken = notes!.observe { [weak self] (changes) in
             guard let tableView = self?.tableView else { return }
@@ -79,8 +72,7 @@ class NotesTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editNote" {
             let vc = segue.destination as? SymptomsCollectionViewController
-            vc!.partitionValue = partitionValue!
-            vc!.realm = realm
+            vc!.partitionValue = partitionValue
             vc!.note = notes![selectedRow]
             vc!.isNewNote = false
             
@@ -168,7 +160,7 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            RealmManager.shared.removeNote(note: notes![indexPath.row], realm: realm!)
+            RealmManager.shared.removeNote(note: notes![indexPath.row])
         }
     }
     

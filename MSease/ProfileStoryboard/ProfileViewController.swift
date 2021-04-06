@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ProfileViewController: UIViewController {
 
@@ -16,7 +15,6 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Variables
     var partitionValue : String?
-    var realm: Realm?
     var nameText = ""
     
     // MARK: - View Controller
@@ -34,7 +32,6 @@ class ProfileViewController: UIViewController {
         for child in children{
             if let childVC = child as? ProfileTableViewController{
                 childVC.partitionValue = partitionValue
-                childVC.realm = realm
             }
         }
     }

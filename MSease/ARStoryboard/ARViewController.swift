@@ -10,10 +10,9 @@ import RealityKit
 import ARKit
 import Combine
 import FocusEntity
-import RealmSwift
 
 class ARViewController: UIViewController {
-    @IBOutlet var arview : ARView!
+    @IBOutlet weak var arview : ARView!
     @IBOutlet weak var statusContainerView: UIView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     
@@ -41,7 +40,6 @@ class ARViewController: UIViewController {
     var injectionIsDone : Bool?{
         didSet{
             navigationController?.isNavigationBarHidden = false
-            print("hjkl########")
             navigationController?.popViewController(animated: true)
         }
     }
@@ -49,8 +47,7 @@ class ARViewController: UIViewController {
     //TODO: save the previous selected mascot in db and put that the default value
     var selectedMascotIndex = -1
     
-    var partitionValue : String?
-    var realm: Realm?
+    var partitionValue = RealmManager.shared.getPartitionValue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +57,7 @@ class ARViewController: UIViewController {
 //        arview.session.delegate = self
         setupCoachingOverlay()
 
+        print()
 //        arview.scene.rootNode.addChildNode(focusSquare)
 
         statusViewController.restartExperienceHandler = { [unowned self] in
@@ -78,7 +76,6 @@ class ARViewController: UIViewController {
         for child in children{
             if let childVC = child as? BottomContainerViewController{
                 childVC.partitionValue = partitionValue
-                childVC.realm = realm
             }
         }
     }

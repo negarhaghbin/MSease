@@ -24,7 +24,13 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     let notificationCenter = UNUserNotificationCenter.current()
     var selectedDate = Date()
     
-    var userRealm: Realm?
+    var userRealm: Realm?{
+        didSet{
+            if userRealm != nil{
+                RealmManager.shared.setRealm(realm: userRealm!)
+            }
+        }
+    }
     var notificationToken: NotificationToken?
     var userData: User?{
         didSet{
@@ -41,7 +47,6 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         super.viewDidLoad()
         StylingUtilities.styleView(self.view)
         setupCalendar()
-        requestNotificationPermission()
         UNUserNotificationCenter.current().delegate = self
     }
     
@@ -51,23 +56,25 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         if !isNewUser(){
-            if RealmManager.shared.hasCredentials() && userRealm == nil{
-                login(
-                    email: UserDefaults.standard.string(forKey: "email")!,
-                    password: UserDefaults.standard.string(forKey: "password")!)
-            }
-            else{
-                for child in self.children{
-                    if let childVC = child as? TopBarViewController{
-                        childVC.realm = self.userRealm
-                        
+            requestNotificationPermission()
+            if RealmManager.shared.hasCredentials(){
+                if userRealm == nil{
+                    login(
+                        email: UserDefaults.standard.string(forKey: "email")!,
+                        password: UserDefaults.standard.string(forKey: "password")!)
+                }
+                else{
+                    let usersInRealm = userRealm!.objects(User.self)
+                    self.userData = usersInRealm.first
+                    self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
+                            self?.userData = usersInRealm.first
                     }
                 }
-                let usersInRealm = userRealm!.objects(User.self)
-                self.userData = usersInRealm.first
-                self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
-                        self?.userData = usersInRealm.first
-                }
+            }
+            else{
+                let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController")
+                self.navigationController?.setViewControllers([vc], animated: true)
             }
         }
         else{
@@ -123,7 +130,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 case .success(let user):
                     print("Login succeeded!")
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
-                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self]
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self]
                     Realm.asyncOpen(configuration: configuration) { result in
                         DispatchQueue.main.async {
                             switch result {
@@ -131,12 +138,6 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let userRealm):
                                 self.userRealm = userRealm
-                                for child in self.children{
-                                    if let childVC = child as? TopBarViewController{
-                                        childVC.realm = self.userRealm
-                                        
-                                    }
-                                }
                                 let usersInRealm = userRealm.objects(User.self)
                                 self.userData = usersInRealm.first
                                 self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
@@ -153,15 +154,13 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? GridCollectionViewController{
-            destinationVC.partitionValue = userData?._partition
-            destinationVC.realm = userRealm
+            destinationVC.partitionValue = userData!._partition
         }
         else if let destinationVC = segue.destination as? SymptomsCollectionViewController{
             destinationVC.isNewNote = true
             destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, images: [], symptoms: [], partition: userData!._partition)
             
-            destinationVC.partitionValue = userData?._partition
-            destinationVC.realm = userRealm
+            destinationVC.partitionValue = userData!._partition
         }
     }
 

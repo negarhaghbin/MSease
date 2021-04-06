@@ -327,7 +327,7 @@
             <objects>
                 <viewController id="VaA-vM-qek" customClass="TopBarViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osJ-Ji-bWW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toR-ja-dqD" userLabel="profileButton">
@@ -377,7 +377,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Yn-kM-rOZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ypu-i8-tse">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

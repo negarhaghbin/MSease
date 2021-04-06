@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class BottomContainerViewController: UIViewController {
     
@@ -29,7 +28,6 @@ class BottomContainerViewController: UIViewController {
     var mascotsViewController: MascotSelectionViewController?
     
     var partitionValue: String?
-    var realm: Realm?
     
     // MARK: - IBOutlets
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -74,9 +72,9 @@ class BottomContainerViewController: UIViewController {
         let injection = Injection(limbName: parentVC.selectedLimbName!,
                                   selectedCellX: parentVC.currentTappedCardIndices!.0,
                                   selectedCellY: parentVC.currentTappedCardIndices!.1,
-                                  date: Date(), partition: parentVC.partitionValue!)
+                                  date: Date(), partition: parentVC.partitionValue)
 
-        RealmManager.shared.addInjection(newInjection: injection, realm: realm!)
+        RealmManager.shared.addInjection(newInjection: injection)
         
         parentVC.injectionIsDone = true
 

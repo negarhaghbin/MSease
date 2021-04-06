@@ -24,7 +24,7 @@
 		8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427EA2525FFB7B1003E6FAA /* ValidationUtilities.swift */; };
 		842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D68F425E544BE0056D963 /* Symptom.storyboard */; };
 		842D8025260CB83800A73C98 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D8024260CB83800A73C98 /* UIImageExtensions.swift */; };
-		8448884225D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */; };
+		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
 		8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
 		8448884B25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */; };
@@ -43,8 +43,8 @@
 		8499442A25FB272300AFB965 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499442925FB272300AFB965 /* WalkthroughViewController.swift */; };
 		8499442D25FB2ED400AFB965 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499442C25FB2ED400AFB965 /* UIColorExtensions.swift */; };
 		8499443425FBC5AD00AFB965 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443325FBC5AD00AFB965 /* User.swift */; };
-		8499443C25FBCD0000AFB965 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443B25FBCD0000AFB965 /* LoginViewController.swift */; };
-		8499443F25FBCDD200AFB965 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443E25FBCDD200AFB965 /* SignupViewController.swift */; };
+		8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443B25FBCD0000AFB965 /* ConsentViewController.swift */; };
+		8499443F25FBCDD200AFB965 /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443E25FBCDD200AFB965 /* SignupLoginViewController.swift */; };
 		84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* ARUtilities.swift */; };
 		84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */; };
 		84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */; };
@@ -62,6 +62,13 @@
 		84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */; };
 		84BBE22B25C10E0C0046C24F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22A25C10E0C0046C24F /* UIViewExtensions.swift */; };
 		84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22D25C1B46F0046C24F /* DateExtensions.swift */; };
+		84BCC83526122D2D0097E0A2 /* PretestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC83426122D2D0097E0A2 /* PretestViewController.swift */; };
+		84BCC845261371B40097E0A2 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC844261371B40097E0A2 /* BirthdayViewController.swift */; };
+		84BCC849261374870097E0A2 /* TypeOfMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC848261374870097E0A2 /* TypeOfMSViewController.swift */; };
+		84BCC84D2614B7440097E0A2 /* TSQM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BCC84C2614B7440097E0A2 /* TSQM.storyboard */; };
+		84BCC8522615F6480097E0A2 /* TSQMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC8512615F6470097E0A2 /* TSQMViewController.swift */; };
+		84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC8542615F7580097E0A2 /* TSQMquestion.swift */; };
+		84BCC858261685E20097E0A2 /* TSQM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC857261685E20097E0A2 /* TSQM.swift */; };
 		84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */; };
 		84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */; };
 		84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */; };
@@ -95,7 +102,7 @@
 		8427EA2525FFB7B1003E6FAA /* ValidationUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtilities.swift; sourceTree = "<group>"; };
 		842D68F425E544BE0056D963 /* Symptom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Symptom.storyboard; sourceTree = "<group>"; };
 		842D8024260CB83800A73C98 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
-		8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalSymptomInfoTableViewController.swift; sourceTree = "<group>"; };
+		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionReusableView.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -115,8 +122,8 @@
 		8499442925FB272300AFB965 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		8499442C25FB2ED400AFB965 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		8499443325FBC5AD00AFB965 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		8499443B25FBCD0000AFB965 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		8499443E25FBCDD200AFB965 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		8499443B25FBCD0000AFB965 /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
+		8499443E25FBCDD200AFB965 /* SignupLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		84ACFB1E25BE139000A09F67 /* ARUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARUtilities.swift; sourceTree = "<group>"; };
 		84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotSelectionViewController.swift; sourceTree = "<group>"; };
 		84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCVC+MascotSelection.swift"; sourceTree = "<group>"; };
@@ -134,6 +141,13 @@
 		84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsPopupViewController.swift; sourceTree = "<group>"; };
 		84BBE22A25C10E0C0046C24F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		84BBE22D25C1B46F0046C24F /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		84BCC83426122D2D0097E0A2 /* PretestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretestViewController.swift; sourceTree = "<group>"; };
+		84BCC844261371B40097E0A2 /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
+		84BCC848261374870097E0A2 /* TypeOfMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfMSViewController.swift; sourceTree = "<group>"; };
+		84BCC84C2614B7440097E0A2 /* TSQM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TSQM.storyboard; sourceTree = "<group>"; };
+		84BCC8512615F6470097E0A2 /* TSQMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQMViewController.swift; sourceTree = "<group>"; };
+		84BCC8542615F7580097E0A2 /* TSQMquestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQMquestion.swift; sourceTree = "<group>"; };
+		84BCC857261685E20097E0A2 /* TSQM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQM.swift; sourceTree = "<group>"; };
 		84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
 		84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenImageViewController.swift; sourceTree = "<group>"; };
 		84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSymptomsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +188,7 @@
 				841F9EE925F905FB00E4B519 /* Limb.swift */,
 				840C1E6825D36BED00AD339E /* Symptom.swift */,
 				841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */,
+				84BCC8542615F7580097E0A2 /* TSQMquestion.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -181,8 +196,9 @@
 		841F9EF625FA823C00E4B519 /* OnboardingStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				8499443B25FBCD0000AFB965 /* LoginViewController.swift */,
-				8499443E25FBCDD200AFB965 /* SignupViewController.swift */,
+				84BCC843261371980097E0A2 /* Pretest */,
+				8499443B25FBCD0000AFB965 /* ConsentViewController.swift */,
+				8499443E25FBCDD200AFB965 /* SignupLoginViewController.swift */,
 				841F9EF725FA826600E4B519 /* WalkthroughContentViewController.swift */,
 				841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */,
 				8499442925FB272300AFB965 /* WalkthroughViewController.swift */,
@@ -208,6 +224,7 @@
 				84AF3E1F25DCBDB80083E9F0 /* Reminder.swift */,
 				8448884725D6E13900F5FBBA /* Note.swift */,
 				841F9EEF25F9B56B00E4B519 /* Injection.swift */,
+				84BCC857261685E20097E0A2 /* TSQM.swift */,
 			);
 			path = "Realm Objects";
 			sourceTree = "<group>";
@@ -240,6 +257,7 @@
 				84AF3E1025DC68720083E9F0 /* MainStoryboard */,
 				84AF3E0E25DC67BE0083E9F0 /* ProfileStoryboard */,
 				840C1E6B25D36E1C00AD339E /* Objects */,
+				84BCC84F2614E6DD0097E0A2 /* TSQMStoryboard */,
 				84ACFB1D25BE139000A09F67 /* Utilities */,
 				84979F4425B9E31200578C37 /* Resources */,
 				84979F2F25B9DFF200578C37 /* AppDelegate.swift */,
@@ -297,6 +315,24 @@
 			path = MainStoryboard;
 			sourceTree = "<group>";
 		};
+		84BCC843261371980097E0A2 /* Pretest */ = {
+			isa = PBXGroup;
+			children = (
+				84BCC83426122D2D0097E0A2 /* PretestViewController.swift */,
+				84BCC844261371B40097E0A2 /* BirthdayViewController.swift */,
+				84BCC848261374870097E0A2 /* TypeOfMSViewController.swift */,
+			);
+			path = Pretest;
+			sourceTree = "<group>";
+		};
+		84BCC84F2614E6DD0097E0A2 /* TSQMStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				84BCC8512615F6470097E0A2 /* TSQMViewController.swift */,
+			);
+			path = TSQMStoryboard;
+			sourceTree = "<group>";
+		};
 		84D4E72725E7F67C00DB75B4 /* ARStoryboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +367,7 @@
 				841F9EF325FA6ADC00E4B519 /* Onboarding.storyboard */,
 				84F5E79025C4482900EED24C /* Profile.storyboard */,
 				842D68F425E544BE0056D963 /* Symptom.storyboard */,
+				84BCC84C2614B7440097E0A2 /* TSQM.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -341,7 +378,7 @@
 				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
 				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
 				840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */,
-				8448884125D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift */,
+				8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */,
 				8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */,
 				8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */,
 				8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */,
@@ -434,6 +471,7 @@
 				841F9EF425FA6ADC00E4B519 /* Onboarding.storyboard in Resources */,
 				842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */,
 				84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */,
+				84BCC84D2614B7440097E0A2 /* TSQM.storyboard in Resources */,
 				84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */,
 				84D4E73225E812E800DB75B4 /* plane.usdz in Resources */,
 				84D4E73025E812E800DB75B4 /* robot.usdz in Resources */,
@@ -497,7 +535,9 @@
 				84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */,
 				845996C725F11AA100AA3233 /* BottomContainerViewController.swift in Sources */,
 				8448884825D6E13900F5FBBA /* Note.swift in Sources */,
+				84BCC845261371B40097E0A2 /* BirthdayViewController.swift in Sources */,
 				8499442D25FB2ED400AFB965 /* UIColorExtensions.swift in Sources */,
+				84BCC8522615F6480097E0A2 /* TSQMViewController.swift in Sources */,
 				84AF3E1D25DC84600083E9F0 /* AddNewReminderTableViewCell.swift in Sources */,
 				8499442725FB23F000AFB965 /* circle.swift in Sources */,
 				841F9EF025F9B56B00E4B519 /* Injection.swift in Sources */,
@@ -507,6 +547,7 @@
 				8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */,
 				84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */,
 				841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */,
+				84BCC849261374870097E0A2 /* TypeOfMSViewController.swift in Sources */,
 				84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */,
 				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
 				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
@@ -515,10 +556,12 @@
 				845EC8A52602C1AF00B51D74 /* TopBarViewController.swift in Sources */,
 				84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */,
 				84ACFB4225BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift in Sources */,
+				84BCC858261685E20097E0A2 /* TSQM.swift in Sources */,
 				8499442A25FB272300AFB965 /* WalkthroughViewController.swift in Sources */,
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
 				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
 				8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */,
+				84BCC83526122D2D0097E0A2 /* PretestViewController.swift in Sources */,
 				841F9EFC25FA97C100E4B519 /* WalkthroughPageViewController.swift in Sources */,
 				84D4E72925E7F6AB00DB75B4 /* ARViewController.swift in Sources */,
 				84979F5025BA3FE100578C37 /* Mascot.swift in Sources */,
@@ -531,19 +574,20 @@
 				84BBE22B25C10E0C0046C24F /* UIViewExtensions.swift in Sources */,
 				84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */,
 				84979F4F25BA3FE100578C37 /* MascotLoader.swift in Sources */,
-				8499443C25FBCD0000AFB965 /* LoginViewController.swift in Sources */,
+				8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */,
 				84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */,
 				84979F4A25BA3CDC00578C37 /* BCVC+PopoverPresentation.swift in Sources */,
+				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,
 				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
 				841F9EFF25FA981900E4B519 /* WalkthroughPage.swift in Sources */,
 				841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
-				8499443F25FBCDD200AFB965 /* SignupViewController.swift in Sources */,
+				8499443F25FBCDD200AFB965 /* SignupLoginViewController.swift in Sources */,
 				84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */,
 				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
 				8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */,
 				84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */,
-				8448884225D6C48200F5FBBA /* AdditionalSymptomInfoTableViewController.swift in Sources */,
+				8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

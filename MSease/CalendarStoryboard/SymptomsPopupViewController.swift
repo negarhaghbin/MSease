@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class SymptomsPopupViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     
@@ -43,10 +42,9 @@ class SymptomsPopupViewController: UIViewController {
         if segue.identifier == "showAddSymptoms" {
             let symptomsVC = segue.destination as? SymptomsCollectionViewController
 //            symptomsVC!.date = notesVC.date
-            symptomsVC!.partitionValue = notesVC.partitionValue!
-            symptomsVC!.realm = notesVC.realm
+            symptomsVC!.partitionValue = notesVC.partitionValue
             symptomsVC!.isNewNote = true
-            symptomsVC!.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [], partition: notesVC.partitionValue!)
+            symptomsVC!.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [], partition: notesVC.partitionValue)
         }
     }
     

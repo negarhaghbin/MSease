@@ -11,10 +11,8 @@ class User: Object {
     @objc dynamic var _id: String = ""
     @objc dynamic var _partition: String = ""
     @objc dynamic var name: String = ""
+    @objc dynamic var hasSignedConsent: Bool = false
     
-//    let reminders = List<Reminder>()
-//    let notes = List<Note>()
-//    let injections = List<Injection>()
     override static func primaryKey() -> String? {
         return "_id"
     }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 private let sectionInsets = UIEdgeInsets(top: 5.0, left: 4.0, bottom: 5.0, right: 4.0)
 var cgsize : CGSize? = nil
@@ -36,8 +35,8 @@ class GridCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func prepareGrid(limbGrid: Limb, realm: Realm){
-        let injections = RealmManager.shared.getInjectionsForLimb(limb: limbGrid, realm: realm)
+    func prepareGrid(limbGrid: Limb){
+        let injections = RealmManager.shared.getInjectionsForLimb(limb: limbGrid)
         var cells : [(x: Int, y: Int)] = []
         for injection in injections{
             cells.append((x: injection.selectedCellX, y: injection.selectedCellY))
@@ -95,14 +94,7 @@ class GridCollectionViewController: UICollectionViewController {
         case rightButtock = 5
     }
     
-    var partitionValue: String?
-    var realm: Realm?{
-        didSet{
-            if realm != nil{
-                initSetup(title: "Choose a body part")
-            }
-        }
-    }
+    var partitionValue = RealmManager.shared.getPartitionValue()
 
     private var itemsPerRow: CGFloat = 1
     
@@ -113,20 +105,10 @@ class GridCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.title = "Choose a body part"
         if selectedIndexPath != nil{
             self.collectionView.reloadItems(at: [selectedIndexPath!])
         }
-    }
-    
-    // MARK: - Helpers
-    func initSetup(title: String) {
-        guard let syncConfiguration = realm?.configuration.syncConfiguration else {
-            fatalError("Sync configuration not found! Realm not opened with sync?")
-        }
-
-        partitionValue = syncConfiguration.partitionValue!.stringValue!
-        
-        self.title = title
     }
 
     // MARK: - Actions
@@ -185,39 +167,39 @@ class GridCollectionViewController: UICollectionViewController {
             
             cell.setCellValues(title: limb.abdomen.rawValue, imageName: "abdomen", section: gridSections.abdomen.rawValue)
             let abdomen = Limb.getLimb(name: limb.abdomen.rawValue)
-            cell.prepareGrid(limbGrid: abdomen, realm: realm!)
+            cell.prepareGrid(limbGrid: abdomen)
         }
         else{
             switch indexPath.row {
             case gridNotAbdomenSectionItems.leftThigh.rawValue:
                 cell.setCellValues(title: limb.leftThigh.rawValue, imageName: "leftThigh", section: gridSections.notAbdomen.rawValue)
                 let leftThigh = Limb.getLimb(name: limb.leftThigh.rawValue)
-                cell.prepareGrid(limbGrid: leftThigh, realm: realm!)
+                cell.prepareGrid(limbGrid: leftThigh)
                 
             case gridNotAbdomenSectionItems.rightThigh.rawValue:
                 cell.setCellValues(title: limb.rightThigh.rawValue, imageName: "rightThigh", section: gridSections.notAbdomen.rawValue)
                 let rightThigh = Limb.getLimb(name: limb.rightThigh.rawValue)
-                cell.prepareGrid(limbGrid: rightThigh, realm: realm!)
+                cell.prepareGrid(limbGrid: rightThigh)
                 
             case gridNotAbdomenSectionItems.leftArm.rawValue:
                 cell.setCellValues(title: limb.leftArm.rawValue, imageName: "leftArm", section: gridSections.notAbdomen.rawValue)
                 let leftArm = Limb.getLimb(name: limb.leftArm.rawValue)
-                cell.prepareGrid(limbGrid: leftArm, realm: realm!)
+                cell.prepareGrid(limbGrid: leftArm)
                 
             case gridNotAbdomenSectionItems.rightArm.rawValue:
                 cell.setCellValues(title: limb.rightArm.rawValue, imageName: "rightArm", section: gridSections.notAbdomen.rawValue)
                 let rightArm = Limb.getLimb(name: limb.rightArm.rawValue)
-                cell.prepareGrid(limbGrid: rightArm, realm: realm!)
+                cell.prepareGrid(limbGrid: rightArm)
                 
             case gridNotAbdomenSectionItems.leftButtock.rawValue:
                 cell.setCellValues(title: limb.leftButtock.rawValue, imageName: "leftButt", section: gridSections.notAbdomen.rawValue)
                 let leftButtock = Limb.getLimb(name: limb.leftButtock.rawValue)
-                cell.prepareGrid(limbGrid: leftButtock, realm: realm!)
+                cell.prepareGrid(limbGrid: leftButtock)
                 
             case gridNotAbdomenSectionItems.rightButtock.rawValue:
                 cell.setCellValues(title: limb.rightButtock.rawValue, imageName: "rightButt", section: gridSections.notAbdomen.rawValue)
                 let rightButtock = Limb.getLimb(name: limb.rightButtock.rawValue)
-                cell.prepareGrid(limbGrid: rightButtock, realm: realm!)
+                cell.prepareGrid(limbGrid: rightButtock)
             default:
                 cell.textLabel.text = ""
             }
@@ -232,8 +214,6 @@ class GridCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ARViewController{
             vc.selectedLimbName = selectedLimbName
-            vc.partitionValue = self.partitionValue!
-            vc.realm = self.realm
         }
     }
 

@@ -206,7 +206,7 @@ extension RealmManager{
     }
 }
 
-// MARK: TSQM
+// MARK: - TSQM
 extension RealmManager{
     func submitTSQM(version: Int, answers: [String]){
         if hasTSQM(version: version){
@@ -281,6 +281,28 @@ extension RealmManager{
         }
         else{
             return false
+        }
+    }
+}
+
+// MARK: IP
+extension RealmManager{
+    
+    // not editable
+    func submitIP(answers: [String]){
+        let ip = InjectionPhobiaForm(q1: answers[0], q2: answers[1], q3: answers[2], q4: answers[3], q5: answers[4], q6: answers[5], q7: answers[6], q8: answers[7], partition: getPartitionValue())
+            try! realm!.write{
+                realm!.add(ip)
+            }
+    }
+    
+    func getIP()->[String]{
+        let ip = realm?.objects(InjectionPhobiaForm.self)
+        if ip?.count == 0{
+            return Array(repeating: "Not selected", count: IPquestions.count)
+        }
+        else{
+            return (ip?.first!.getAnswersFromFields())!
         }
     }
 }

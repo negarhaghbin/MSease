@@ -29,6 +29,8 @@ class TypeOfMSViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: DLRadioButton) {
         selectedType = sender.titleLabel?.text
         nextButton.isEnabled = true
+        
+        // TODO: go to tsqm questionnaire?
     }
 
     /*

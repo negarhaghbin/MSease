@@ -96,7 +96,7 @@ class TSQMViewController: UIViewController {
         }
         
         
-        pageLabel.text = "\(TSQMquestions[pageNumber].number) of 14"
+        pageLabel.text = "\(TSQMquestions[pageNumber].number) of \(TSQMquestions.count)"
         fillOption(answer: answers![pageNumber])
         if TSQMquestions[pageNumber].number == 14{
             nextButton.setTitle("Submit", for: .normal)

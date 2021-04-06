@@ -69,6 +69,9 @@
 		84BCC8522615F6480097E0A2 /* TSQMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC8512615F6470097E0A2 /* TSQMViewController.swift */; };
 		84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC8542615F7580097E0A2 /* TSQMquestion.swift */; };
 		84BCC858261685E20097E0A2 /* TSQM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC857261685E20097E0A2 /* TSQM.swift */; };
+		84BCC85F261CC07F0097E0A2 /* InjectionPhobiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC85E261CC07F0097E0A2 /* InjectionPhobiaViewController.swift */; };
+		84BCC862261CC19B0097E0A2 /* InjectionPhobia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC861261CC19B0097E0A2 /* InjectionPhobia.swift */; };
+		84BCC865261CC4C70097E0A2 /* InjectionPhobiaForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC864261CC4C70097E0A2 /* InjectionPhobiaForm.swift */; };
 		84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */; };
 		84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */; };
 		84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */; };
@@ -148,6 +151,9 @@
 		84BCC8512615F6470097E0A2 /* TSQMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQMViewController.swift; sourceTree = "<group>"; };
 		84BCC8542615F7580097E0A2 /* TSQMquestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQMquestion.swift; sourceTree = "<group>"; };
 		84BCC857261685E20097E0A2 /* TSQM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQM.swift; sourceTree = "<group>"; };
+		84BCC85E261CC07F0097E0A2 /* InjectionPhobiaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionPhobiaViewController.swift; sourceTree = "<group>"; };
+		84BCC861261CC19B0097E0A2 /* InjectionPhobia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionPhobia.swift; sourceTree = "<group>"; };
+		84BCC864261CC4C70097E0A2 /* InjectionPhobiaForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionPhobiaForm.swift; sourceTree = "<group>"; };
 		84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
 		84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenImageViewController.swift; sourceTree = "<group>"; };
 		84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSymptomsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 				840C1E6825D36BED00AD339E /* Symptom.swift */,
 				841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */,
 				84BCC8542615F7580097E0A2 /* TSQMquestion.swift */,
+				84BCC861261CC19B0097E0A2 /* InjectionPhobia.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -225,6 +232,7 @@
 				8448884725D6E13900F5FBBA /* Note.swift */,
 				841F9EEF25F9B56B00E4B519 /* Injection.swift */,
 				84BCC857261685E20097E0A2 /* TSQM.swift */,
+				84BCC864261CC4C70097E0A2 /* InjectionPhobiaForm.swift */,
 			);
 			path = "Realm Objects";
 			sourceTree = "<group>";
@@ -329,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				84BCC8512615F6470097E0A2 /* TSQMViewController.swift */,
+				84BCC85E261CC07F0097E0A2 /* InjectionPhobiaViewController.swift */,
 			);
 			path = TSQMStoryboard;
 			sourceTree = "<group>";
@@ -548,6 +557,7 @@
 				84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */,
 				841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */,
 				84BCC849261374870097E0A2 /* TypeOfMSViewController.swift in Sources */,
+				84BCC85F261CC07F0097E0A2 /* InjectionPhobiaViewController.swift in Sources */,
 				84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */,
 				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
 				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
@@ -559,6 +569,7 @@
 				84BCC858261685E20097E0A2 /* TSQM.swift in Sources */,
 				8499442A25FB272300AFB965 /* WalkthroughViewController.swift in Sources */,
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
+				84BCC862261CC19B0097E0A2 /* InjectionPhobia.swift in Sources */,
 				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
 				8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */,
 				84BCC83526122D2D0097E0A2 /* PretestViewController.swift in Sources */,
@@ -580,6 +591,7 @@
 				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,
 				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
 				841F9EFF25FA981900E4B519 /* WalkthroughPage.swift in Sources */,
+				84BCC865261CC4C70097E0A2 /* InjectionPhobiaForm.swift in Sources */,
 				841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
 				8499443F25FBCDD200AFB965 /* SignupLoginViewController.swift in Sources */,

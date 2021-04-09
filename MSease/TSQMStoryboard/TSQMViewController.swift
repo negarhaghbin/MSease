@@ -98,6 +98,11 @@ class TSQMViewController: UIViewController {
         
         pageLabel.text = "\(TSQMquestions[pageNumber].number) of \(TSQMquestions.count)"
         fillOption(answer: answers![pageNumber])
+        
+        styleButtons()
+    }
+    
+    func styleButtons(){
         if TSQMquestions[pageNumber].number == 14{
             nextButton.setTitle("Submit", for: .normal)
         }
@@ -128,25 +133,18 @@ class TSQMViewController: UIViewController {
             switch answer {
             case option1.titleLabel?.text:
                 option1.isSelected = true
-//                optionTapped(option1)
             case option2.titleLabel?.text:
                 option2.isSelected = true
-//                optionTapped(option2)
             case option3.titleLabel?.text:
                 option3.isSelected = true
-//                optionTapped(option3)
             case option4.titleLabel?.text:
                 option4.isSelected = true
-//                optionTapped(option4)
             case option5.titleLabel?.text:
                 option5.isSelected = true
-//                optionTapped(option5)
             case option6.titleLabel?.text:
                 option6.isSelected = true
-//                optionTapped(option6)
             case option7.titleLabel?.text:
                 option7.isSelected = true
-//                optionTapped(option7)
             
             default:
                 textView.text = answer

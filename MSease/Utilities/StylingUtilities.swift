@@ -34,20 +34,6 @@ class StylingUtilities{
         button.titleLabel?.font = UIFont(name: "Futura", size: 17)
     }
     
-    static func styleAcceptButton(_ button: UIButton){
-        button.backgroundColor = UIColor.green
-        button.layer.cornerRadius = 10.0
-        button.tintColor = .white
-        button.titleLabel?.font = UIFont(name: "Futura", size: 17)
-    }
-    
-    static func styleCancelButton(_ button: UIButton){
-        button.backgroundColor = UIColor.red
-        button.layer.cornerRadius = 10.0
-        button.tintColor = .white
-        button.titleLabel?.font = UIFont(name: "Futura", size: 17)
-    }
-    
     static func styleDisabledCell(tableCell: UITableViewCell, label: UILabel?, imageView: UIImageView?){
         label?.textColor = UIColor.placeholderText
         imageView?.tintColor  = UIColor.placeholderText

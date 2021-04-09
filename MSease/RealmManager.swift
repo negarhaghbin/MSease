@@ -198,12 +198,25 @@ extension RealmManager{
         vc.present(alertController, animated: true)
     }
     
-    func acceptConsent(realm: Realm){
-        let user = realm.objects(User.self).first
-        try! realm.write{
+    func acceptConsent(){
+        let user = realm!.objects(User.self).first
+        try! realm!.write{
             user?.hasSignedConsent = true
         }
     }
+    
+    // MARK: - Pretest Questionnaire
+    func submitPretestData(answers: [String]){
+        let user = realm!.objects(User.self).first
+        try! realm!.write{
+            user?.gender = answers[0]
+            user?.birthday = answers[1]
+            user?.typeOfMS = answers[2]
+            user?.diagnosisDate = answers[3]
+            user?.treatmentBeginningDate = answers[4]
+        }
+    }
+    
 }
 
 // MARK: - TSQM

@@ -45,6 +45,7 @@
 		8499443425FBC5AD00AFB965 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443325FBC5AD00AFB965 /* User.swift */; };
 		8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443B25FBCD0000AFB965 /* ConsentViewController.swift */; };
 		8499443F25FBCDD200AFB965 /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443E25FBCDD200AFB965 /* SignupLoginViewController.swift */; };
+		84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4E2261F836300CE52BD /* PretestQuestions.swift */; };
 		84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* ARUtilities.swift */; };
 		84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */; };
 		84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */; };
@@ -63,8 +64,6 @@
 		84BBE22B25C10E0C0046C24F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22A25C10E0C0046C24F /* UIViewExtensions.swift */; };
 		84BBE22E25C1B46F0046C24F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE22D25C1B46F0046C24F /* DateExtensions.swift */; };
 		84BCC83526122D2D0097E0A2 /* PretestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC83426122D2D0097E0A2 /* PretestViewController.swift */; };
-		84BCC845261371B40097E0A2 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC844261371B40097E0A2 /* BirthdayViewController.swift */; };
-		84BCC849261374870097E0A2 /* TypeOfMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC848261374870097E0A2 /* TypeOfMSViewController.swift */; };
 		84BCC84D2614B7440097E0A2 /* TSQM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BCC84C2614B7440097E0A2 /* TSQM.storyboard */; };
 		84BCC8522615F6480097E0A2 /* TSQMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC8512615F6470097E0A2 /* TSQMViewController.swift */; };
 		84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCC8542615F7580097E0A2 /* TSQMquestion.swift */; };
@@ -127,6 +126,7 @@
 		8499443325FBC5AD00AFB965 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8499443B25FBCD0000AFB965 /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
 		8499443E25FBCDD200AFB965 /* SignupLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
+		84A0C4E2261F836300CE52BD /* PretestQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretestQuestions.swift; sourceTree = "<group>"; };
 		84ACFB1E25BE139000A09F67 /* ARUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARUtilities.swift; sourceTree = "<group>"; };
 		84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotSelectionViewController.swift; sourceTree = "<group>"; };
 		84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCVC+MascotSelection.swift"; sourceTree = "<group>"; };
@@ -145,8 +145,6 @@
 		84BBE22A25C10E0C0046C24F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		84BBE22D25C1B46F0046C24F /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		84BCC83426122D2D0097E0A2 /* PretestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretestViewController.swift; sourceTree = "<group>"; };
-		84BCC844261371B40097E0A2 /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
-		84BCC848261374870097E0A2 /* TypeOfMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfMSViewController.swift; sourceTree = "<group>"; };
 		84BCC84C2614B7440097E0A2 /* TSQM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TSQM.storyboard; sourceTree = "<group>"; };
 		84BCC8512615F6470097E0A2 /* TSQMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQMViewController.swift; sourceTree = "<group>"; };
 		84BCC8542615F7580097E0A2 /* TSQMquestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSQMquestion.swift; sourceTree = "<group>"; };
@@ -196,6 +194,7 @@
 				841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */,
 				84BCC8542615F7580097E0A2 /* TSQMquestion.swift */,
 				84BCC861261CC19B0097E0A2 /* InjectionPhobia.swift */,
+				84A0C4E2261F836300CE52BD /* PretestQuestions.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -327,8 +326,6 @@
 			isa = PBXGroup;
 			children = (
 				84BCC83426122D2D0097E0A2 /* PretestViewController.swift */,
-				84BCC844261371B40097E0A2 /* BirthdayViewController.swift */,
-				84BCC848261374870097E0A2 /* TypeOfMSViewController.swift */,
 			);
 			path = Pretest;
 			sourceTree = "<group>";
@@ -544,7 +541,6 @@
 				84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */,
 				845996C725F11AA100AA3233 /* BottomContainerViewController.swift in Sources */,
 				8448884825D6E13900F5FBBA /* Note.swift in Sources */,
-				84BCC845261371B40097E0A2 /* BirthdayViewController.swift in Sources */,
 				8499442D25FB2ED400AFB965 /* UIColorExtensions.swift in Sources */,
 				84BCC8522615F6480097E0A2 /* TSQMViewController.swift in Sources */,
 				84AF3E1D25DC84600083E9F0 /* AddNewReminderTableViewCell.swift in Sources */,
@@ -556,7 +552,6 @@
 				8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */,
 				84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */,
 				841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */,
-				84BCC849261374870097E0A2 /* TypeOfMSViewController.swift in Sources */,
 				84BCC85F261CC07F0097E0A2 /* InjectionPhobiaViewController.swift in Sources */,
 				84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */,
 				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
@@ -588,6 +583,7 @@
 				8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */,
 				84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */,
 				84979F4A25BA3CDC00578C37 /* BCVC+PopoverPresentation.swift in Sources */,
+				84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */,
 				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,
 				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
 				841F9EFF25FA981900E4B519 /* WalkthroughPage.swift in Sources */,

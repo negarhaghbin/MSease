@@ -44,6 +44,7 @@ class ProfileTableViewController: UITableViewController {
         if indexPath.row == signoutRow{
             RealmManager.shared.logOut(vc: self)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Helpers

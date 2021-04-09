@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Limb.initTable()
         Symptom.fillSymptomsTable()
         TSQMquestion.fillTable()
+        pretestQuestion.fillTable()
+        IPquestion.fillTable()
         return true
     }
 

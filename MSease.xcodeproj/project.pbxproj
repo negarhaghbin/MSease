@@ -46,6 +46,8 @@
 		8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443B25FBCD0000AFB965 /* ConsentViewController.swift */; };
 		8499443F25FBCDD200AFB965 /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499443E25FBCDD200AFB965 /* SignupLoginViewController.swift */; };
 		84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4E2261F836300CE52BD /* PretestQuestions.swift */; };
+		84A0C4EB2620C22C00CE52BD /* postInjectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4EA2620C22C00CE52BD /* postInjectionVC.swift */; };
+		84A0C4EF2624D1EA00CE52BD /* InjectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */; };
 		84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* ARUtilities.swift */; };
 		84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */; };
 		84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */; };
@@ -127,6 +129,8 @@
 		8499443B25FBCD0000AFB965 /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
 		8499443E25FBCDD200AFB965 /* SignupLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		84A0C4E2261F836300CE52BD /* PretestQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretestQuestions.swift; sourceTree = "<group>"; };
+		84A0C4EA2620C22C00CE52BD /* postInjectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postInjectionVC.swift; sourceTree = "<group>"; };
+		84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionTableViewController.swift; sourceTree = "<group>"; };
 		84ACFB1E25BE139000A09F67 /* ARUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARUtilities.swift; sourceTree = "<group>"; };
 		84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotSelectionViewController.swift; sourceTree = "<group>"; };
 		84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCVC+MascotSelection.swift"; sourceTree = "<group>"; };
@@ -285,6 +289,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		84A0C4E62620770A00CE52BD /* Post Injection */ = {
+			isa = PBXGroup;
+			children = (
+				84A0C4EA2620C22C00CE52BD /* postInjectionVC.swift */,
+			);
+			path = "Post Injection";
+			sourceTree = "<group>";
+		};
+		84A0C4ED2624D19900CE52BD /* Injection Journal */ = {
+			isa = PBXGroup;
+			children = (
+				84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */,
+			);
+			path = "Injection Journal";
+			sourceTree = "<group>";
+		};
 		84ACFB1D25BE139000A09F67 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +362,7 @@
 		84D4E72725E7F67C00DB75B4 /* ARStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				84A0C4E62620770A00CE52BD /* Post Injection */,
 				84D4E72825E7F6AB00DB75B4 /* ARViewController.swift */,
 				84ACFB4125BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift */,
 				841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */,
@@ -381,6 +402,7 @@
 		84F5E79625C44A2C00EED24C /* CalendarStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				84A0C4ED2624D19900CE52BD /* Injection Journal */,
 				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
 				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
 				840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */,
@@ -552,6 +574,7 @@
 				8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */,
 				84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */,
 				841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */,
+				84A0C4EF2624D1EA00CE52BD /* InjectionTableViewController.swift in Sources */,
 				84BCC85F261CC07F0097E0A2 /* InjectionPhobiaViewController.swift in Sources */,
 				84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */,
 				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
@@ -582,6 +605,7 @@
 				84979F4F25BA3FE100578C37 /* MascotLoader.swift in Sources */,
 				8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */,
 				84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */,
+				84A0C4EB2620C22C00CE52BD /* postInjectionVC.swift in Sources */,
 				84979F4A25BA3CDC00578C37 /* BCVC+PopoverPresentation.swift in Sources */,
 				84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */,
 				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,

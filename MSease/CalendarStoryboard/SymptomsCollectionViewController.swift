@@ -39,6 +39,14 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     // MARK: - View Controllers
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissKeyboard))
+        
+        toolbar.setItems([doneButton], animated: true)
+        textView.inputAccessoryView = toolbar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,6 +139,10 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         selectedSymptomNames = note!.getSymptoms()
     }
     
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
     // MARK: - Navigation
 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -167,8 +179,8 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
         }
         else if collectionView == self.symptomsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid.SymptomsCollection.rawValue, for: indexPath) as! SymptomsCollectionViewCell
-            cell.symptomImage.image = UIImage(named: symptoms[indexPath.row].imageName)
-            cell.symptomName.text = symptoms[indexPath.row].name
+            cell.image.image = UIImage(named: symptoms[indexPath.row].imageName)
+            cell.name.text = symptoms[indexPath.row].name
             if selectedSymptomNames.contains(symptoms[indexPath.row].name){
                 cell.checkmarkImage.isHidden = false
             }
@@ -209,10 +221,10 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
         else if collectionView == self.symptomsCollectionView{
             if let cell = collectionView.cellForItem(at: indexPath) as? SymptomsCollectionViewCell{
                 if cell.checkmarkImage.isHidden{
-                    cell.addSymptom()
+                    selectedSymptomNames = cell.add(to: selectedSymptomNames)
                 }
                 else{
-                    cell.removeSymptom()
+                    selectedSymptomNames = cell.remove(from: selectedSymptomNames)
                 }
             }
         }

@@ -123,23 +123,7 @@ class GridCollectionViewController: UICollectionViewController {
             selectedLimbName =  limb.abdomen.rawValue
         }
         else{
-            switch indexPath.row {
-            case gridNotAbdomenSectionItems.leftArm.rawValue:
-                selectedLimbName =  limb.leftArm.rawValue
-            case gridNotAbdomenSectionItems.rightArm.rawValue:
-                selectedLimbName =  limb.rightArm.rawValue
-            case gridNotAbdomenSectionItems.leftThigh.rawValue:
-                selectedLimbName =  limb.leftThigh.rawValue
-            case gridNotAbdomenSectionItems.rightThigh.rawValue:
-                selectedLimbName =  limb.rightThigh.rawValue
-            case gridNotAbdomenSectionItems.leftButtock.rawValue:
-                selectedLimbName =  limb.leftButtock.rawValue
-            case gridNotAbdomenSectionItems.rightButtock.rawValue:
-                selectedLimbName =  limb.rightButtock.rawValue
-            default:
-                break
-            }
-            
+            selectedLimbName = limbs[indexPath.row + 1].name
         }
         performSegue(withIdentifier: "showAR", sender: nil)
     }
@@ -163,47 +147,15 @@ class GridCollectionViewController: UICollectionViewController {
         cell.initiate()
         
         if indexPath.section == gridSections.abdomen.rawValue{
-//            cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridRectViewCellIdentifier, for: indexPath) as! GridCollectionViewCell
-            
-            cell.setCellValues(title: limb.abdomen.rawValue, imageName: "abdomen", section: gridSections.abdomen.rawValue)
             let abdomen = Limb.getLimb(name: limb.abdomen.rawValue)
+            cell.setCellValues(title: abdomen.name, imageName: abdomen.imageName, section: gridSections.abdomen.rawValue)
             cell.prepareGrid(limbGrid: abdomen)
         }
         else{
-            switch indexPath.row {
-            case gridNotAbdomenSectionItems.leftThigh.rawValue:
-                cell.setCellValues(title: limb.leftThigh.rawValue, imageName: "leftThigh", section: gridSections.notAbdomen.rawValue)
-                let leftThigh = Limb.getLimb(name: limb.leftThigh.rawValue)
-                cell.prepareGrid(limbGrid: leftThigh)
-                
-            case gridNotAbdomenSectionItems.rightThigh.rawValue:
-                cell.setCellValues(title: limb.rightThigh.rawValue, imageName: "rightThigh", section: gridSections.notAbdomen.rawValue)
-                let rightThigh = Limb.getLimb(name: limb.rightThigh.rawValue)
-                cell.prepareGrid(limbGrid: rightThigh)
-                
-            case gridNotAbdomenSectionItems.leftArm.rawValue:
-                cell.setCellValues(title: limb.leftArm.rawValue, imageName: "leftArm", section: gridSections.notAbdomen.rawValue)
-                let leftArm = Limb.getLimb(name: limb.leftArm.rawValue)
-                cell.prepareGrid(limbGrid: leftArm)
-                
-            case gridNotAbdomenSectionItems.rightArm.rawValue:
-                cell.setCellValues(title: limb.rightArm.rawValue, imageName: "rightArm", section: gridSections.notAbdomen.rawValue)
-                let rightArm = Limb.getLimb(name: limb.rightArm.rawValue)
-                cell.prepareGrid(limbGrid: rightArm)
-                
-            case gridNotAbdomenSectionItems.leftButtock.rawValue:
-                cell.setCellValues(title: limb.leftButtock.rawValue, imageName: "leftButt", section: gridSections.notAbdomen.rawValue)
-                let leftButtock = Limb.getLimb(name: limb.leftButtock.rawValue)
-                cell.prepareGrid(limbGrid: leftButtock)
-                
-            case gridNotAbdomenSectionItems.rightButtock.rawValue:
-                cell.setCellValues(title: limb.rightButtock.rawValue, imageName: "rightButt", section: gridSections.notAbdomen.rawValue)
-                let rightButtock = Limb.getLimb(name: limb.rightButtock.rawValue)
-                cell.prepareGrid(limbGrid: rightButtock)
-            default:
-                cell.textLabel.text = ""
-            }
-            
+            // limbs in previous sections = 1
+            let limbInCell = limbs[indexPath.row+1]
+            cell.setCellValues(title: limbInCell.name, imageName: limbInCell.imageName, section: gridSections.notAbdomen.rawValue)
+            cell.prepareGrid(limbGrid: limbInCell)
         }
     
         return cell

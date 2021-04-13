@@ -83,8 +83,7 @@ func getTimeFromString(_ time: String)->(h: Int, m:Int){
 }
 
 func timeIntervalToWeeks(timeInterval: TimeInterval)->Double{
-    let seconds = timeInterval / 1000.0
-    let minutes = seconds / 60.0
+    let minutes = timeInterval / 60.0
     let hours = minutes / 60.0
     let days = hours / 24.0
     let weeks = days / 7.0

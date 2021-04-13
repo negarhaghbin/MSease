@@ -6,6 +6,8 @@
 //
 
 var symptoms : [Symptom] = []
+var reactions : [Symptom] = []
+
 class Symptom{
     var name = ""
     var imageName = ""
@@ -28,6 +30,21 @@ class Symptom{
         symptoms.append(Symptom(name: "Rash", imageName: "rash"))
         symptoms.append(Symptom(name: "Nausea", imageName: "nausea"))
         symptoms.append(Symptom(name: "Vomit", imageName: "vomit"))
+        
+    }
+    
+    static func fillReactionsTable(){
+        reactions.append(Symptom(name: "Headache", imageName: "headache"))
+        reactions.append(Symptom(name: "Diarrhea", imageName: "diarrhea"))
+        reactions.append(Symptom(name: "Rash", imageName: "rash"))
+        reactions.append(Symptom(name: "Nausea", imageName: "nausea"))
+        reactions.append(Symptom(name: "Vomit", imageName: "vomit"))
+            
+        reactions.append(Symptom(name: "Headache", imageName: "headache"))
+        reactions.append(Symptom(name: "Diarrhea", imageName: "diarrhea"))
+        reactions.append(Symptom(name: "Rash", imageName: "rash"))
+        reactions.append(Symptom(name: "Nausea", imageName: "nausea"))
+        reactions.append(Symptom(name: "Vomit", imageName: "vomit"))
         
     }
     

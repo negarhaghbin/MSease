@@ -8,24 +8,28 @@
 import UIKit
 
 class SymptomsCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var symptomImage: UIImageView!
-    @IBOutlet weak var symptomName: UILabel!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var checkmarkImage: UIImageView!
     
     func initiate(){
-        self.symptomName.adjustsFontSizeToFitWidth = true
-        self.symptomName.minimumScaleFactor = 0.5
+        self.name.adjustsFontSizeToFitWidth = true
+        self.name.minimumScaleFactor = 0.5
     }
     
-    func addSymptom(){
+    func add(to symptoms: [String])->[String]{
+        var result = symptoms
         self.checkmarkImage.isHidden = false
-        selectedSymptomNames.append(self.symptomName.text!)
+        result.append(self.name.text!)
+        return result
     }
     
-    func removeSymptom(){
+    func remove(from symptoms: [String])->[String]{
+        var result = symptoms
         self.checkmarkImage.isHidden = true
-        let index = selectedSymptomNames.lastIndex(of: self.symptomName.text!)
-        selectedSymptomNames.remove(at: index!)
+        let index = result.lastIndex(of: self.name.text!)
+        result.remove(at: index!)
+        return result
     }
     
 }

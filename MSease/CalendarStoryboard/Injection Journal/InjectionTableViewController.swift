@@ -102,15 +102,11 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     }
     
     @IBAction func painButtonTapped(_ sender: UIButton) {
-        print("pain button tapped")
-        if let prevPainButton = self.view.viewWithTag(selectedPain!) as? UIButton{
-            StylingUtilities.stylePainscaleButton(prevPainButton, range: selectedPain!)
+        if selectedPain != 0{
+            StylingUtilities.stylePainscaleButton(options[selectedPain!-1], range: selectedPain!)
         }
         selectedPain = Int((sender.titleLabel?.text)!)!
-        if let selectedPainButton = self.view.viewWithTag(selectedPain!) as? UIButton{
-            StylingUtilities.stylePainscaleButton(selectedPainButton, range: selectedPain!)
-            print(selectedPain)
-        }
+        StylingUtilities.styleFilledPainscaleButton(options[selectedPain!-1], range: selectedPain!)
     }
     
     // MARK: - Helpers

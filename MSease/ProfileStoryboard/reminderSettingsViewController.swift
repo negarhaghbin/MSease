@@ -52,11 +52,15 @@ class reminderSettingsViewController: UIViewController {
 
     var notificationToken: NotificationToken?
     var reminders = RealmManager.shared.getReminders()
+    
+    let notificationCenter = UNUserNotificationCenter.current()
 
+    // MARK: - Initialization
     deinit {
         notificationToken?.invalidate()
     }
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -67,7 +71,6 @@ class reminderSettingsViewController: UIViewController {
     
     
     // MARK: - Helpers
-    
     func initSetup(title: String) {
         
         self.title = title
@@ -89,6 +92,19 @@ class reminderSettingsViewController: UIViewController {
                 tableView.reloadSections(IndexSet(integer: 1), with: .none)
             case .error(let error):
                 fatalError("\(error)")
+            }
+        }
+    }
+    
+    // MARK: - IBActions
+    @IBAction func switchTapped(_ sender: UISwitch) {
+        RealmManager.shared.changeReminderState(reminder: reminders[sender.tag], state: sender.isOn)
+        if sender.isOn{
+            scheduleNotification(reminder: reminders[sender.tag])
+        }
+        else{
+            for i in 0...6{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminders[sender.tag]._id.stringValue+"\(i)"])
             }
         }
     }
@@ -154,9 +170,10 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            for i in 0...6{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminders[indexPath.row]._id.stringValue+"\(i)"])
+            }
             RealmManager.shared.removeReminder(reminder: reminders[indexPath.row])
-//            reminders = realm?.objects(Reminder.self)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -169,9 +186,83 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    @IBAction func switchTapped(_ sender: UISwitch) {
-        print(sender.tag)
-        RealmManager.shared.changeReminderState(reminder: reminders[sender.tag], state: sender.isOn)
-    }
+}
+
+extension reminderSettingsViewController : UNUserNotificationCenterDelegate{
     
+    func scheduleNotification(reminder: Reminder){
+        let time = getTimeFromString(reminder.time)
+        let content = UNMutableNotificationContent()
+        content.title = reminder.name
+        content.body = reminder.message
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = notificationCategory.snoozable.rawValue
+        content.userInfo = ["id": reminder._id.stringValue]
+
+        // weekday = 1, sunday
+        // weekday = 0, saturday
+        
+        var triggerRepeat = Calendar.current.dateComponents([.weekday,.hour, .minute], from: Date())
+        triggerRepeat.hour = time.h
+        triggerRepeat.minute = time.m
+        
+        if reminder.mon{
+            triggerRepeat.weekday = 2 
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+            let request = UNNotificationRequest(identifier: reminder._id.stringValue+"2", content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+        }
+        if reminder.tue{
+            triggerRepeat.weekday = 3
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+            let request = UNNotificationRequest(identifier: reminder._id.stringValue+"3", content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+        }
+        if reminder.wed{
+            triggerRepeat.weekday = 4
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+            let request = UNNotificationRequest(identifier: reminder._id.stringValue+"4", content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+        }
+        if reminder.thu{
+            triggerRepeat.weekday = 5
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+            let request = UNNotificationRequest(identifier: reminder._id.stringValue+"5", content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+        }
+        if reminder.fri{
+            triggerRepeat.weekday = 6
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+            let request = UNNotificationRequest(identifier: reminder._id.stringValue+"6", content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+        }
+        if reminder.sat{
+            triggerRepeat.weekday = 0
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+            let request = UNNotificationRequest(identifier: reminder._id.stringValue+"0", content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+        }
+        if reminder.sun{
+            triggerRepeat.weekday = 1
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+
+            let request = UNNotificationRequest(identifier: reminder._id.stringValue+"1", content: content, trigger: trigger)
+
+            notificationCenter.add(request)
+        }
+        
+        
+    }
 }

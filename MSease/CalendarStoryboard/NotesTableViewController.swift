@@ -221,6 +221,7 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
             
             let storyboard = UIStoryboard(name: "Symptom", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "editInjection") as! InjectionTableViewController
+            vc.title = "Edit injection"
             vc.partitionValue = partitionValue
             vc.injection = injections![selectedRow]
             vc.isNewInjection = false

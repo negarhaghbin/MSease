@@ -141,7 +141,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     // MARK: - Actions
     
     @IBAction func addReminder(_ sender: Any) {
-        let reminderId = (reminder?._id)!
+        var reminderId = (reminder?._id)!
         reminder = Reminder(name: nameLabel.text ?? "",
                             mon: repeatDays[0],
                             tue: repeatDays[1],
@@ -154,13 +154,14 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             message: textView.text, partition: partitionValue)
         if isNewReminder{
             RealmManager.shared.addReminder(newReminder: reminder!)
+            reminderId = reminder!._id
         }
         else{
             reminder?.setId(id: reminderId)
             RealmManager.shared.editReminder(reminder!)
         }
         
-        self.scheduleNotification(name: nameLabel.text ?? "", message: textView.text)
+        self.scheduleNotification(id: reminderId.stringValue, name: nameLabel.text ?? "", message: textView.text)
         
         self.navigationController?.popViewController(animated: true)
     }
@@ -273,13 +274,14 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
 // MARK: - Push Notifications
 extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
     
-    func scheduleNotification(name: String, message: String){
+    func scheduleNotification(id: String, name: String, message: String){
         let time = getTimeFromString(timeLabel.text!)
         let content = UNMutableNotificationContent()
         content.title = name
         content.body = message
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = notificationCategory.snoozable.rawValue
+        content.userInfo = ["id": id]
 
         // i = 0,monday
         // weekday = 1, sunday
@@ -300,15 +302,15 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
 
-                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: id+"\(i)", content: content, trigger: trigger)
 
                 notificationCenter.add(request)
             }
         }
         
-//        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
-//            print(result)
-//        })
+        /*notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+            print(result)
+        })*/
         
     }
     
@@ -324,7 +326,7 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
             content.sound = UNNotificationSound.default
             content.categoryIdentifier = notificationCategory.snoozable.rawValue
 
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
 
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             

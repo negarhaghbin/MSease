@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController{
     
     // MARK: - IBOutlets
     @IBOutlet weak var tsqm0: UITableViewCell!
@@ -25,8 +26,13 @@ class ProfileTableViewController: UITableViewController {
     
     
     // MARK: - Variables
-    var signoutRow = 7
+    enum rows: Int{
+        case technicalSupport = 3
+        case signout = 7
+    }
     var partitionValue: String?
+    
+    var alertMessage = (title: "", message: "")
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -39,10 +45,14 @@ class ProfileTableViewController: UITableViewController {
         updateTSQM(version: 2)
     }
     
+    
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == signoutRow{
+        if indexPath.row == rows.signout.rawValue{
             RealmManager.shared.logOut(vc: self)
+        }
+        else if indexPath.row == rows.technicalSupport.rawValue{
+            showMailComposer()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -70,23 +80,18 @@ class ProfileTableViewController: UITableViewController {
             }
         }
     }
-    /*func logOut() {
-        let alertController = UIAlertController(title: "Log Out", message: "", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Yes, Log Out", style: .destructive, handler: {
-            _ -> Void in
-            app.currentUser?.logOut { (_) in
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-                    let onboardingVC = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
-                    RealmManager.shared.removeCredentials()
-                    onboardingVC.walkthroughPageViewController?.currentIndex = walkthroughPages.count - 1
-                    self.navigationController?.setViewControllers([onboardingVC], animated: true)
-                }
-            }
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        self.present(alertController, animated: true)
-    }*/
+    
+    func showMailComposer(){
+        guard MFMailComposeViewController.canSendMail() else{
+            return
+        }
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = self
+        composer.setToRecipients(["nbeanm@gmail.com"])
+        composer.setSubject("technical support needed!")
+        
+        present(composer, animated: true)
+    }
 
     
     // MARK: - Navigation
@@ -113,6 +118,43 @@ class ProfileTableViewController: UITableViewController {
     }
     
 
+}
+
+extension ProfileTableViewController : MFMailComposeViewControllerDelegate{
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        if let _ = error{
+            self.alertMessage.title = "Error"
+            self.alertMessage.message = "\(error)"
+        }
+        else{
+            switch result {
+            case .sent:
+                self.alertMessage.title = "Message sent"
+                self.alertMessage.message = "Your email is successfuly sent."
+            case .saved:
+                self.alertMessage.title = "Message saved"
+                self.alertMessage.message = "The email was saved in your drafts folder."
+                
+            default:
+                print("canceled.")
+            }
+        }
+        controller.dismiss(animated: true, completion: {
+            if self.alertMessage.title != ""{
+                let alert = UIAlertController(title: self.alertMessage.title, message: self.alertMessage.message, preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+                    self.dismiss(animated: true)
+                    self.alertMessage.title = ""
+                    self.alertMessage.message = ""
+                }))
+
+                self.present(alert, animated: true)
+            }
+        })
+        return
+    }
 }
 
 

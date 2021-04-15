@@ -12,11 +12,14 @@ class StylingUtilities{
     static let backgroundColor = "#B7DEEAFF"
     static let buttonColor = "#61A5C2FF"
     
-    static let noPainColorCode = "#10b5d6ff"
-    static let mildPainColorCode = "#4fba82ff"
-    static let moderatePainColorCode = "#ffcd2bff"
-    static let severePainColorCode = "#f68837ff"
-    static let maxPainColorCode = "#f05555ff"
+    enum PainColorCode : String{
+        case nopain = "#10b5d6ff"
+        case mild = "#4fba82ff"
+        case moderate = "#ffcd2bff"
+        case severe = "#f68837ff"
+        case max = "#f05555ff"
+    }
+    
     
     static func styleTextField(_ textField: UITextField){
         
@@ -51,23 +54,23 @@ class StylingUtilities{
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 10.0
         button.titleLabel?.font = UIFont(name: "Futura", size: 18)
-        print("here")
+        button.backgroundColor = UIColor.systemBackground
         switch range {
         case 1:
-            button.layer.borderColor = hexToCGColor(hex: "#10b5d6ff")
-            button.setTitleColor(UIColor.init(hex: "#10b5d6ff"), for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.nopain.rawValue)
+            button.setTitleColor(UIColor.init(hex: PainColorCode.nopain.rawValue), for: .normal)
         case 2:
-            button.layer.borderColor = hexToCGColor(hex: "#4fba82ff")
-            button.setTitleColor(UIColor.init(hex: "#4fba82ff"), for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.mild.rawValue)
+            button.setTitleColor(UIColor.init(hex: PainColorCode.mild.rawValue), for: .normal)
         case 3:
-            button.layer.borderColor = hexToCGColor(hex: "#ffcd2bff")
-            button.setTitleColor(UIColor.init(hex: "#ffcd2bff"), for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.moderate.rawValue)
+            button.setTitleColor(UIColor.init(hex: PainColorCode.moderate.rawValue), for: .normal)
         case 4:
-            button.layer.borderColor = hexToCGColor(hex: "#f68837ff")
-            button.setTitleColor(UIColor.init(hex: "#f68837ff"), for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.severe.rawValue)
+            button.setTitleColor(UIColor.init(hex: PainColorCode.severe.rawValue), for: .normal)
         case 5:
-            button.layer.borderColor = hexToCGColor(hex: "#f05555ff")
-            button.setTitleColor(UIColor.init(hex: "#f05555ff"), for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.max.rawValue)
+            button.setTitleColor(UIColor.init(hex: PainColorCode.max.rawValue), for: .normal)
         default:
             return
         }
@@ -77,27 +80,24 @@ class StylingUtilities{
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 10.0
         button.titleLabel?.font = UIFont(name: "Futura", size: 18)
+        button.setTitleColor(UIColor.black, for: .normal)
         switch range {
         case 1:
-            button.layer.borderColor = hexToCGColor(hex: noPainColorCode)
-            button.backgroundColor = UIColor(hex: noPainColorCode)
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.nopain.rawValue)
+            button.backgroundColor = UIColor(hex: PainColorCode.nopain.rawValue)
+            
         case 2:
-            button.layer.borderColor = hexToCGColor(hex: mildPainColorCode)
-            button.backgroundColor = UIColor(hex: mildPainColorCode)
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.mild.rawValue)
+            button.backgroundColor = UIColor(hex: PainColorCode.mild.rawValue)
         case 3:
-            button.layer.borderColor = hexToCGColor(hex: moderatePainColorCode)
-            button.backgroundColor = UIColor(hex: moderatePainColorCode)
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.moderate.rawValue)
+            button.backgroundColor = UIColor(hex: PainColorCode.moderate.rawValue)
         case 4:
-            button.layer.borderColor = hexToCGColor(hex: severePainColorCode)
-            button.backgroundColor = UIColor(hex: severePainColorCode)
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.severe.rawValue)
+            button.backgroundColor = UIColor(hex: PainColorCode.severe.rawValue)
         case 5:
-            button.layer.borderColor = hexToCGColor(hex: maxPainColorCode)
-            button.backgroundColor = UIColor(hex: maxPainColorCode)
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.layer.borderColor = hexToCGColor(hex: PainColorCode.max.rawValue)
+            button.backgroundColor = UIColor(hex: PainColorCode.max.rawValue)
         default:
             return
         }

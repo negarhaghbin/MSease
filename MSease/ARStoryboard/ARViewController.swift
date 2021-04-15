@@ -37,10 +37,14 @@ class ARViewController: UIViewController {
     var isLoading = false
     var isRestartAvailable = true
     
-    var injectionIsDone : Bool?{
+    var injection : Injection?{
         didSet{
-            navigationController?.isNavigationBarHidden = false
-            navigationController?.popViewController(animated: true)
+            navigationController?.isNavigationBarHidden = true
+            performSegue(withIdentifier: "postInjection", sender: nil)
+//            let storyboard = UIStoryboard(name: "AR", bundle: nil)
+//            let postInjection = storyboard.instantiateViewController(withIdentifier: "postInjection") as! postInjectionVC
+//
+//            self.navigationController?.pushViewController(postInjection, animated: true)
         }
     }
     
@@ -312,14 +316,16 @@ class ARViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "postInjection"{
+            let destinationVC = segue.destination as! postInjectionVC
+            destinationVC.injection = injection
+        }
     }
-    */
+    
 
 }

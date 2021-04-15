@@ -146,10 +146,38 @@ extension RealmManager{
     }
     
     func getInjectionsForLimb(limb: Limb)->Results<Injection>{
-        let name = limb.name ?? ""
+        let name = limb.name
         let result = realm!.objects(Injection.self).filter("limbName == '\(name)'")
         return result
     }
+    
+    func getInjections(for date: Date) -> Results<Injection>{
+        let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
+        let result = realm!.objects(Injection.self).filter(predicate)
+        return result
+    }
+    
+    func addPostInjectionData(injection: Injection, painScale: Int, note: String, symptoms: [String], reactions: [String]){
+        try! realm!.write{
+            injection.painScale = painScale
+            injection.note = note
+            injection.symptomNames.append(objectsIn: symptoms)
+            injection.reactionNames.append(objectsIn: reactions)
+        }
+    }
+    
+    func removeInjection(injection: Injection){
+        try! realm!.write {
+            realm!.delete(injection)
+        }
+    }
+    
+    func haveInjections(for date: Date) -> Bool{
+        let predicate = NSPredicate(format: "date beginswith %@", date.getUSFormat())
+        let result = realm!.objects(Injection.self).filter(predicate)
+        return result.count == 0 ? false : true
+    }
+    
 }
 
 // MARK: - Login

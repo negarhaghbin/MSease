@@ -60,7 +60,8 @@ class BottomContainerViewController: UIViewController {
         
 //        parentVC.arview.removeFromSuperview()
 //        parentVC.arview = nil
-        parentVC.injectionIsDone = true
+//        parentVC.injectionIsDone = true
+        parentVC.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
@@ -76,7 +77,7 @@ class BottomContainerViewController: UIViewController {
 
         RealmManager.shared.addInjection(newInjection: injection)
         
-        parentVC.injectionIsDone = true
+        parentVC.injection = injection
 
 //        let lastViewController = parent?.navigationController?.topViewController as! GridCollectionViewController
 //        

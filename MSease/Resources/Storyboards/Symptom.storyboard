@@ -303,7 +303,7 @@
         <scene sceneID="PGF-1G-RfP">
             <objects>
                 <tableViewController storyboardIdentifier="editInjection" id="zUH-gJ-JqY" customClass="InjectionTableViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="e5H-UF-Eac">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="e5H-UF-Eac">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <sections>
@@ -317,10 +317,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abdomen" translatesAutoresizingMaskIntoConstraints="NO" id="tAI-rc-e4E">
-                                                    <rect key="frame" x="254.5" y="31" width="99.5" height="199"/>
+                                                    <rect key="frame" x="255.5" y="7.5" width="118.5" height="237.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abdomen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9e7-mT-fuV">
-                                                    <rect key="frame" x="40" y="31" width="76" height="22.5"/>
+                                                    <rect key="frame" x="30" y="7.5" width="76" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -328,11 +328,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9e7-mT-fuV" firstAttribute="top" secondItem="tAI-rc-e4E" secondAttribute="top" id="3cD-U1-Vt2"/>
-                                                <constraint firstAttribute="bottom" secondItem="tAI-rc-e4E" secondAttribute="bottom" constant="20" id="6uL-FL-Zhw"/>
-                                                <constraint firstItem="9e7-mT-fuV" firstAttribute="leading" secondItem="B2Q-CV-oSv" secondAttribute="leadingMargin" constant="20" id="N3t-Vx-4jM"/>
-                                                <constraint firstAttribute="trailing" secondItem="tAI-rc-e4E" secondAttribute="trailing" constant="20" id="Y8W-5L-Ex7"/>
-                                                <constraint firstItem="9e7-mT-fuV" firstAttribute="top" secondItem="B2Q-CV-oSv" secondAttribute="topMargin" constant="20" id="bq1-ke-GIk"/>
+                                                <constraint firstAttribute="bottom" secondItem="tAI-rc-e4E" secondAttribute="bottom" constant="5" id="6uL-FL-Zhw"/>
+                                                <constraint firstItem="9e7-mT-fuV" firstAttribute="leading" secondItem="B2Q-CV-oSv" secondAttribute="leadingMargin" constant="10" id="N3t-Vx-4jM"/>
+                                                <constraint firstAttribute="trailing" secondItem="tAI-rc-e4E" secondAttribute="trailing" id="Y8W-5L-Ex7"/>
                                                 <constraint firstItem="tAI-rc-e4E" firstAttribute="width" secondItem="tAI-rc-e4E" secondAttribute="height" multiplier="1:2" id="cHw-P9-joX"/>
+                                                <constraint firstItem="tAI-rc-e4E" firstAttribute="height" secondItem="B2Q-CV-oSv" secondAttribute="height" multiplier="0.95" id="n2g-CH-Ri5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -376,17 +376,7 @@
                                                                         <action selector="painButtonTapped:" destination="zUH-gJ-JqY" eventType="touchUpInside" id="gJL-I6-gXp"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiJ-lv-5qk">
-                                                                    <rect key="frame" x="0.0" y="126" width="50" height="53"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <state key="normal" title="2"/>
-                                                                </button>
                                                             </subviews>
-                                                            <variation key="default">
-                                                                <mask key="subviews">
-                                                                    <exclude reference="aiJ-lv-5qk"/>
-                                                                </mask>
-                                                            </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vrt-OH-iqC">
                                                             <rect key="frame" x="60" y="0.0" width="50" height="135"/>
@@ -430,17 +420,7 @@
                                                                         <action selector="painButtonTapped:" destination="zUH-gJ-JqY" eventType="touchUpInside" id="h7W-Cy-L6W"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aaz-A1-dcm">
-                                                                    <rect key="frame" x="0.0" y="126" width="50" height="53"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <state key="normal" title="6"/>
-                                                                </button>
                                                             </subviews>
-                                                            <variation key="default">
-                                                                <mask key="subviews">
-                                                                    <exclude reference="Aaz-A1-dcm"/>
-                                                                </mask>
-                                                            </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wIU-Qy-0ep">
                                                             <rect key="frame" x="180" y="0.0" width="50" height="135"/>
@@ -462,17 +442,7 @@
                                                                         <action selector="painButtonTapped:" destination="zUH-gJ-JqY" eventType="touchUpInside" id="NsI-8M-0NF"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCD-Og-moO">
-                                                                    <rect key="frame" x="0.0" y="126" width="50" height="53"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <state key="normal" title="8"/>
-                                                                </button>
                                                             </subviews>
-                                                            <variation key="default">
-                                                                <mask key="subviews">
-                                                                    <exclude reference="HCD-Og-moO"/>
-                                                                </mask>
-                                                            </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qdW-7f-Ybl">
                                                             <rect key="frame" x="240" y="0.0" width="50" height="135"/>
@@ -722,10 +692,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bodyImage" destination="tAI-rc-e4E" id="evZ-EV-Fow"/>
+                        <outlet property="limbCell" destination="9Lm-hX-h7N" id="WvJ-EM-8yw"/>
                         <outlet property="reactionsCollectionView" destination="Mw9-Yl-Btf" id="Lzb-j2-Sdz"/>
                         <outlet property="symptomsCollectionView" destination="WHs-O5-iam" id="CVR-EN-gfr"/>
                         <outlet property="textView" destination="HSL-4D-300" id="TUF-s3-bRJ"/>
                         <outlet property="titleLabel" destination="9e7-mT-fuV" id="Qa2-VW-a3T"/>
+                        <outletCollection property="options" destination="9E8-m1-LgO" collectionClass="NSMutableArray" id="ClI-NZ-9r6"/>
+                        <outletCollection property="options" destination="Erb-9F-vQd" collectionClass="NSMutableArray" id="2Lv-bl-TN3"/>
+                        <outletCollection property="options" destination="qNc-oC-L8Y" collectionClass="NSMutableArray" id="JXH-ML-7c2"/>
+                        <outletCollection property="options" destination="gtQ-OK-bDT" collectionClass="NSMutableArray" id="7oo-ww-1nj"/>
+                        <outletCollection property="options" destination="Rfj-mC-mPN" collectionClass="NSMutableArray" id="qvy-oD-3uR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgj-kO-cJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

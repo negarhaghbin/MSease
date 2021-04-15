@@ -51,19 +51,27 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        var result = 0
         if RealmManager.shared.haveNotes(for: date as Date){
-            return 1
+            result += 1
         }
-        else{
-            return 0
+        if RealmManager.shared.haveInjections(for: date as Date){
+            result += 1
         }
+        return result
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
+        var numberOfEvents = 0
         if RealmManager.shared.haveNotes(for: date as Date){
             cell.eventIndicator.isHidden = false
-            cell.eventIndicator.numberOfEvents = 1
+            numberOfEvents += 1
         }
+        if RealmManager.shared.haveInjections(for: date as Date){
+            cell.eventIndicator.isHidden = false
+            numberOfEvents += 1
+        }
+        cell.eventIndicator.numberOfEvents = numberOfEvents
     }
     
     

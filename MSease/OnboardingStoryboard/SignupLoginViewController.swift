@@ -42,6 +42,12 @@ class SignupLoginViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    func scheduleReminders(){
+        let reminders = RealmManager.shared.getReminders()
+        for reminder in reminders{
+            scheduleNotification(reminder: reminder)
+        }
+    }
     
     func setUpElements(){
 //        errorLabel.alpha = 0
@@ -95,11 +101,13 @@ class SignupLoginViewController: UIViewController {
                             case .failure(let error):
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let userRealm):
+                                RealmManager.shared.setRealm(realm: userRealm)
                                 if RealmManager.shared.hasSignedConsent(realm: userRealm){
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
-                                    homeVC.userRealm = userRealm
-
+//                                    homeVC.userRealm = userRealm
+                                    
+                                    self?.scheduleReminders()
                                     self?.navigationController?.setViewControllers([homeVC], animated: true)
                                 }
                                 else{

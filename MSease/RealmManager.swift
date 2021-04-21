@@ -209,8 +209,8 @@ extension RealmManager{
     }
     
     func logOut(vc: UIViewController) {
-        let alertController = UIAlertController(title: "Log Out", message: "", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Yes, Log Out", style: .destructive, handler: {
+        let alertController = UIAlertController(title: "Do you want to sign out?", message: "If you sign out you will no longer receive reminders. Your data will not be deleted.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: {
             _ -> Void in
             app.currentUser?.logOut { (_) in
                 DispatchQueue.main.async {
@@ -219,6 +219,8 @@ extension RealmManager{
                     RealmManager.shared.removeCredentials()
                     onboardingVC.walkthroughPageViewController?.currentIndex = walkthroughPages.count - 1
                     vc.navigationController?.setViewControllers([onboardingVC], animated: true)
+                    
+                    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                 }
             }
         }))

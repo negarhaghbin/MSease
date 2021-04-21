@@ -26,9 +26,9 @@ class ARViewController: UIViewController {
     }()
 //    var mascotsViewController: MascotSelectionViewController?
     
-    var cards : [[Entity]] = []
-    var tappedCards : [[Entity]] = []
-    var currentTappedCardIndices : (Int, Int)?
+    var cells : [[Entity]] = []
+    var tappedCells : [[Entity]] = []
+    var currentTappedCellIndices : (Int, Int)?
     var selectedLimbName : String?
     var focusSquare : FocusEntity?
     
@@ -61,7 +61,7 @@ class ARViewController: UIViewController {
 //        arview.session.delegate = self
         setupCoachingOverlay()
 
-        print()
+//        print()
 //        arview.scene.rootNode.addChildNode(focusSquare)
 
         statusViewController.restartExperienceHandler = { [unowned self] in
@@ -69,11 +69,15 @@ class ARViewController: UIViewController {
         }
         
 //        anchor.addChild(focusSquare)
+        
+        
+        let storyboard = UIStoryboard(name: "AR", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "tutorialVC")
+        present(vc, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        arview.debugOptions.insert(.showStatistics)
         UIApplication.shared.isIdleTimerDisabled = true
         resetTracking()
         
@@ -82,14 +86,6 @@ class ARViewController: UIViewController {
                 childVC.partitionValue = partitionValue
             }
         }
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        createGrid(completionHandler: { hidden in
-//            placeGrid(hidden: hidden)
-//            loadMascots()
-//        })
     }
     
     
@@ -103,16 +99,16 @@ class ARViewController: UIViewController {
         arview.session.pause()
     }
 
-    // MARK: - Session management
+    // MARK: - Helper
     
     func resetTracking() {
         loadedMascot = nil
         arview.automaticallyConfigureSession = false
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
-        if #available(iOS 12.0, *) {
-            configuration.environmentTexturing = .automatic
-        }
+//        if #available(iOS 12.0, *) {
+//            configuration.environmentTexturing = .automatic
+//        }
         arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
 
@@ -120,6 +116,7 @@ class ARViewController: UIViewController {
         arview.scene.addAnchor(anchor)
     }
     
+    // MARK: - Object Loading UI
     
     func createGrid(completionHandler: ([(x: Int, y: Int)])->()){
         let limb = Limb.getLimb(name: selectedLimbName!)
@@ -136,18 +133,18 @@ class ARViewController: UIViewController {
                 
                 
                 model.generateCollisionShapes(recursive: true)
-                if cards.count-1 < i{
-                    cards.append([])
+                if cells.count-1 < i{
+                    cells.append([])
                 }
-                cards[i].append(model)
+                cells[i].append(model)
                 
                 let selectedBoxMaterial = SimpleMaterial(color: .yellow, isMetallic: false)
                 let selectedModel = ModelEntity(mesh: box, materials: [selectedBoxMaterial])
                 selectedModel.generateCollisionShapes(recursive: true)
-                if tappedCards.count-1 < i{
-                    tappedCards.append([])
+                if tappedCells.count-1 < i{
+                    tappedCells.append([])
                 }
-                tappedCards[i].append(selectedModel)
+                tappedCells[i].append(selectedModel)
             }
         }
         
@@ -155,27 +152,27 @@ class ARViewController: UIViewController {
     }
     
     func placeGrid(hidden: [(x: Int, y: Int)]){
-        for (i,cardRow) in cards.enumerated(){
-            for (j, card) in cardRow.enumerated(){
+        for (i,cellRow) in cells.enumerated(){
+            for (j, cell) in cellRow.enumerated(){
                 if hidden.contains(where: { pair in
                     let result = ((pair.x == i) && (pair.y == j))
                     return result
                 }){
                     continue
                 }
-                /*if j<cardRow.count/2{
-                    card.position = [-Float(j/2)*0.035, 0, Float(i)*0.035]
+                /*if j<cellRow.count/2{
+                    cell.position = [-Float(j/2)*0.035, 0, Float(i)*0.035]
                 }
                 else{
-                    card.position = [Float(j/2)*0.035, 0, Float(i)*0.035]
+                    cell.position = [Float(j/2)*0.035, 0, Float(i)*0.035]
                 }*/
                 
-                let r = cardRow.count%2 == 0 ? Float(0.5) : Float(0)
+                let r = cellRow.count%2 == 0 ? Float(0.5) : Float(0)
                 
-                card.position = [(Float(j-cardRow.count/2)+r)*0.035, 0, 0.05 + Float(i)*0.035]
+                cell.position = [(Float(j-cellRow.count/2)+r)*0.035, 0, 0.05 + Float(i)*0.035]
                 
-                tappedCards[i][j].position = card.position
-                anchor.addChild(card)
+                tappedCells[i][j].position = cell.position
+                anchor.addChild(cell)
             }
         }
     }
@@ -188,9 +185,6 @@ class ARViewController: UIViewController {
         }
         return nil
     }
-    
-    
-    // MARK: Object Loading UI
 
     func displayObjectLoadingUI() {
         for child in children{
@@ -213,23 +207,23 @@ class ARViewController: UIViewController {
         isRestartAvailable = true
     }
     
-    func selectCell(card: Entity, index: (Int, Int)){
-        anchor.addChild(tappedCards[index.0][index.1])
-        currentTappedCardIndices = index
-        anchor.removeChild(card)
+    func selectCell(cell: Entity, index: (Int, Int)){
+        anchor.addChild(tappedCells[index.0][index.1])
+        currentTappedCellIndices = index
+        anchor.removeChild(cell)
     }
     
-    func deselectCell(card: Entity, index: (Int,Int)){
-        anchor.addChild(cards[index.0][index.1])
-        anchor.removeChild(card)
-        currentTappedCardIndices = nil
+    func deselectCell(cell: Entity, index: (Int,Int)){
+        anchor.addChild(cells[index.0][index.1])
+        anchor.removeChild(cell)
+        currentTappedCellIndices = nil
     }
     
     func isShowingGrid() -> Bool{
         return anchor.children.count > 1
     }
     
-    @IBAction func cardTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction func cellTapped(_ sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: arview)
         if loadedMascot == nil {
             statusViewController.scheduleMessage("First select a mascot.", inSeconds: 7.5, messageType: .mascotSelection)
@@ -249,16 +243,16 @@ class ARViewController: UIViewController {
             })
         }
         
-        else if let card = arview.entity(at: tapLocation){
-            if let indices = indices(of: card, in: cards){
-                if currentTappedCardIndices != nil{
-                    deselectCell(card: tappedCards[currentTappedCardIndices!.0][currentTappedCardIndices!.1], index: currentTappedCardIndices!)
+        else if let cell = arview.entity(at: tapLocation){
+            if let indices = indices(of: cell, in: cells){
+                if currentTappedCellIndices != nil{
+                    deselectCell(cell: tappedCells[currentTappedCellIndices!.0][currentTappedCellIndices!.1], index: currentTappedCellIndices!)
                 }
-                selectCell(card: card, index: indices)
+                selectCell(cell: cell, index: indices)
                 showConfirmationUI()
             }
-            else if let indices = indices(of: card, in: tappedCards){
-                deselectCell(card: card, index: indices)
+            else if let indices = indices(of: cell, in: tappedCells){
+                deselectCell(cell: cell, index: indices)
                 hideConfirmationUI()
             }
         }

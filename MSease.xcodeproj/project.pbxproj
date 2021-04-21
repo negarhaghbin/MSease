@@ -20,10 +20,15 @@
 		841F9EF425FA6ADC00E4B519 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841F9EF325FA6ADC00E4B519 /* Onboarding.storyboard */; };
 		841F9EF825FA826600E4B519 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EF725FA826600E4B519 /* WalkthroughContentViewController.swift */; };
 		841F9EFC25FA97C100E4B519 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */; };
-		841F9EFF25FA981900E4B519 /* WalkthroughPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */; };
+		841F9EFF25FA981900E4B519 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EFE25FA981900E4B519 /* Page.swift */; };
 		8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427EA2525FFB7B1003E6FAA /* ValidationUtilities.swift */; };
 		842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D68F425E544BE0056D963 /* Symptom.storyboard */; };
 		842D8025260CB83800A73C98 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D8024260CB83800A73C98 /* UIImageExtensions.swift */; };
+		843C05AC262EF15000FFFC2D /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843C05AB262EF15000FFFC2D /* GameController.framework */; };
+		843C05D12630594900FFFC2D /* ArTutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05D02630594900FFFC2D /* ArTutorialPageViewController.swift */; };
+		843C05D52630597700FFFC2D /* ArTutorialContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05D42630597700FFFC2D /* ArTutorialContentViewController.swift */; };
+		843C05D8263059AF00FFFC2D /* ArTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05D7263059AF00FFFC2D /* ArTutorialViewController.swift */; };
+		843C05E2263083EE00FFFC2D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05E1263083EE00FFFC2D /* NotificationManager.swift */; };
 		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
 		8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
@@ -102,10 +107,15 @@
 		841F9EF325FA6ADC00E4B519 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		841F9EF725FA826600E4B519 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
-		841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPage.swift; sourceTree = "<group>"; };
+		841F9EFE25FA981900E4B519 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		8427EA2525FFB7B1003E6FAA /* ValidationUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtilities.swift; sourceTree = "<group>"; };
 		842D68F425E544BE0056D963 /* Symptom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Symptom.storyboard; sourceTree = "<group>"; };
 		842D8024260CB83800A73C98 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		843C05AB262EF15000FFFC2D /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+		843C05D02630594900FFFC2D /* ArTutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArTutorialPageViewController.swift; sourceTree = "<group>"; };
+		843C05D42630597700FFFC2D /* ArTutorialContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArTutorialContentViewController.swift; sourceTree = "<group>"; };
+		843C05D7263059AF00FFFC2D /* ArTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArTutorialViewController.swift; sourceTree = "<group>"; };
+		843C05E1263083EE00FFFC2D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionReusableView.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -176,6 +186,7 @@
 			files = (
 				845996C325F0325F00AA3233 /* FocusEntity in Frameworks */,
 				5D21C20DC123E92BD7DCEDF6 /* Pods_MSease.framework in Frameworks */,
+				843C05AC262EF15000FFFC2D /* GameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +196,7 @@
 		5D9BB03B6F3DF6062BC62427 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				843C05AB262EF15000FFFC2D /* GameController.framework */,
 				5985A3334A06593A80337851 /* Pods_MSease.framework */,
 			);
 			name = Frameworks;
@@ -193,12 +205,12 @@
 		840C1E6B25D36E1C00AD339E /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				841F9EE925F905FB00E4B519 /* Limb.swift */,
-				840C1E6825D36BED00AD339E /* Symptom.swift */,
-				841F9EFE25FA981900E4B519 /* WalkthroughPage.swift */,
-				84BCC8542615F7580097E0A2 /* TSQMquestion.swift */,
 				84BCC861261CC19B0097E0A2 /* InjectionPhobia.swift */,
+				841F9EE925F905FB00E4B519 /* Limb.swift */,
+				841F9EFE25FA981900E4B519 /* Page.swift */,
 				84A0C4E2261F836300CE52BD /* PretestQuestions.swift */,
+				840C1E6825D36BED00AD339E /* Symptom.swift */,
+				84BCC8542615F7580097E0A2 /* TSQMquestion.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -214,6 +226,16 @@
 				8499442925FB272300AFB965 /* WalkthroughViewController.swift */,
 			);
 			path = OnboardingStoryboard;
+			sourceTree = "<group>";
+		};
+		843C05CF263058DD00FFFC2D /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				843C05D42630597700FFFC2D /* ArTutorialContentViewController.swift */,
+				843C05D02630594900FFFC2D /* ArTutorialPageViewController.swift */,
+				843C05D7263059AF00FFFC2D /* ArTutorialViewController.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		845996CC25F12A5700AA3233 /* Bottom Container  */ = {
@@ -273,6 +295,7 @@
 				84979F4425B9E31200578C37 /* Resources */,
 				84979F2F25B9DFF200578C37 /* AppDelegate.swift */,
 				840C1E6D25D36E9400AD339E /* RealmManager.swift */,
+				843C05E1263083EE00FFFC2D /* NotificationManager.swift */,
 			);
 			path = MSease;
 			sourceTree = "<group>";
@@ -362,6 +385,7 @@
 		84D4E72725E7F67C00DB75B4 /* ARStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				843C05CF263058DD00FFFC2D /* Tutorial */,
 				84A0C4E62620770A00CE52BD /* Post Injection */,
 				84D4E72825E7F6AB00DB75B4 /* ARViewController.swift */,
 				84ACFB4125BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift */,
@@ -559,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */,
+				843C05D52630597700FFFC2D /* ArTutorialContentViewController.swift in Sources */,
 				840C1E6925D36BED00AD339E /* Symptom.swift in Sources */,
 				84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */,
 				845996C725F11AA100AA3233 /* BottomContainerViewController.swift in Sources */,
@@ -583,9 +608,11 @@
 				8499443425FBC5AD00AFB965 /* User.swift in Sources */,
 				845EC8A52602C1AF00B51D74 /* TopBarViewController.swift in Sources */,
 				84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */,
+				843C05D12630594900FFFC2D /* ArTutorialPageViewController.swift in Sources */,
 				84ACFB4225BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift in Sources */,
 				84BCC858261685E20097E0A2 /* TSQM.swift in Sources */,
 				8499442A25FB272300AFB965 /* WalkthroughViewController.swift in Sources */,
+				843C05D8263059AF00FFFC2D /* ArTutorialViewController.swift in Sources */,
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
 				84BCC862261CC19B0097E0A2 /* InjectionPhobia.swift in Sources */,
 				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
@@ -603,6 +630,7 @@
 				84BBE22B25C10E0C0046C24F /* UIViewExtensions.swift in Sources */,
 				84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */,
 				84979F4F25BA3FE100578C37 /* MascotLoader.swift in Sources */,
+				843C05E2263083EE00FFFC2D /* NotificationManager.swift in Sources */,
 				8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */,
 				84AF3DFC25DACB6D0083E9F0 /* PhotosCollectionView.swift in Sources */,
 				84A0C4EB2620C22C00CE52BD /* postInjectionVC.swift in Sources */,
@@ -610,7 +638,7 @@
 				84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */,
 				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,
 				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
-				841F9EFF25FA981900E4B519 /* WalkthroughPage.swift in Sources */,
+				841F9EFF25FA981900E4B519 /* Page.swift in Sources */,
 				84BCC865261CC4C70097E0A2 /* InjectionPhobiaForm.swift in Sources */,
 				841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,

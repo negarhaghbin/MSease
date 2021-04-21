@@ -71,7 +71,14 @@ func getTimeFromString(_ time: String)->(h: Int, m:Int){
     var hourInt = Int(hour)!
     
     if ampm == "PM"{
-        hourInt += 12
+        if hourInt != 12{
+            hourInt += 12
+        }
+    }
+    if ampm == "AM"{
+        if hourInt == 12{
+            hourInt -= 12
+        }
     }
     
 //    var dateComponents = Calendar.current.dateComponents([.minute, .hour], from: Date())

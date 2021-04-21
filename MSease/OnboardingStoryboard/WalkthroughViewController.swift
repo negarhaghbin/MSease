@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WalkthroughViewController: UIViewController, walkthroughPageViewControllerDelegate {
+class WalkthroughViewController: UIViewController, pageViewControllerDelegate {
     
     // MARK: - IBOutlets
     @IBOutlet weak var pageControl : UIPageControl!
@@ -54,6 +54,8 @@ class WalkthroughViewController: UIViewController, walkthroughPageViewController
         StylingUtilities.styleFilledButton(nextButton)
         StylingUtilities.styleFilledButton(signupButton)
         StylingUtilities.styleHollowdButton(loginButton)
+        
+        pageControl.numberOfPages = walkthroughPages.count
     }
     
     func updateUI(){

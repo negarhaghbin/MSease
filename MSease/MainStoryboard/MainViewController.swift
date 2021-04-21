@@ -52,6 +52,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -126,7 +127,26 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 switch result {
                 case .failure(let error):
                     print("Login failed: \(error)")
-                    return
+                    var configuration = app.currentUser!.configuration(partitionValue: "user=\(app.currentUser!.id)")
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self]
+                    Realm.asyncOpen(configuration: configuration) { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .failure(let error):
+                                print("hereeeee1")
+                                fatalError("Failed to open realm: \(error)")
+                                
+                            case .success(let userRealm):
+                                print("hereeeee2")
+                                self.userRealm = userRealm
+                                let usersInRealm = userRealm.objects(User.self)
+                                self.userData = usersInRealm.first
+                                self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
+                                        self?.userData = usersInRealm.first
+                                }
+                            }
+                        }
+                    }
                 case .success(let user):
                     print("Login succeeded!")
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
@@ -189,6 +209,5 @@ extension MainViewController : UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner,.sound])
     }
-    
     
 }

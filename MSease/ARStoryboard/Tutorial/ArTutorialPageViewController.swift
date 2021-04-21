@@ -1,26 +1,22 @@
 //
-//  WalkthroughPageViewController.swift
+//  ArTutorialPageViewController.swift
 //  MSease
 //
-//  Created by Negar on 2021-03-11.
+//  Created by Negar on 2021-04-21.
 //
 
 import UIKit
 
-protocol pageViewControllerDelegate {
-    func didUpdatePageIndex(currentIndex: Int)
-}
-
-class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class ArTutorialPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     // MARK: - Variables
-    var walkthroughDelegate : pageViewControllerDelegate?
+    var tutorialDelegate : pageViewControllerDelegate?
     var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if walkthroughPages.count == 0{
-            Page.fillWalkthroughPages()
+        if arTutorialPages.count == 0{
+            Page.fillARTutorialPages()
         }
         dataSource = self
         delegate = self
@@ -32,31 +28,29 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     // MARK: - UIPageViewControllerDataSource
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        var index = (viewController as! WalkthroughContentViewController).index
+        var index = (viewController as! ArTutorialContentViewController).index
         index -= 1
         
         return contentViewController(at: index)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        var index = (viewController as! WalkthroughContentViewController).index
+        var index = (viewController as! ArTutorialContentViewController).index
         index += 1
         
         return contentViewController(at: index)
     }
     
     // MARK: - Helper
-    
-    func contentViewController(at index: Int) -> WalkthroughContentViewController? {
-        if index<0 || index>walkthroughPages.count-1{
+    func contentViewController(at index: Int) -> ArTutorialContentViewController? {
+        if index<0 || index>arTutorialPages.count-1{
             return nil
         }
         
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        if let pageContentViewController = storyboard.instantiateViewController(identifier: "WalkthroughContentViewController") as? WalkthroughContentViewController{
-            pageContentViewController.titleText = walkthroughPages[index].heading!
-            pageContentViewController.descriptionText = walkthroughPages[index].subheading!
-            pageContentViewController.imageName = walkthroughPages[index].imageName!
+        let storyboard = UIStoryboard(name: "AR", bundle: nil)
+        if let pageContentViewController = storyboard.instantiateViewController(identifier: "TutorialContentViewController") as? ArTutorialContentViewController{
+            pageContentViewController.descriptionText = arTutorialPages[index].subheading!
+            pageContentViewController.imageName = arTutorialPages[index].imageName!
             
             pageContentViewController.index = index
             return pageContentViewController
@@ -75,9 +69,9 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed{
-            if let contentViewController = pageViewController.viewControllers?.first as? WalkthroughContentViewController{
+            if let contentViewController = pageViewController.viewControllers?.first as? ArTutorialContentViewController{
                 currentIndex = contentViewController.index
-                walkthroughDelegate?.didUpdatePageIndex(currentIndex: currentIndex)
+                tutorialDelegate?.didUpdatePageIndex(currentIndex: currentIndex)
             }
         }
     }

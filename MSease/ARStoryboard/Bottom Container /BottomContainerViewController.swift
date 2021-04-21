@@ -61,6 +61,7 @@ class BottomContainerViewController: UIViewController {
 //        parentVC.arview.removeFromSuperview()
 //        parentVC.arview = nil
 //        parentVC.injectionIsDone = true
+        parentVC.navigationController?.navigationBar.isHidden = false
         parentVC.navigationController?.popViewController(animated: true)
     }
     
@@ -71,8 +72,8 @@ class BottomContainerViewController: UIViewController {
 //        parentVC.arview.removeFromSuperview()
 //        parentVC.arview = nil
         let injection = Injection(limbName: parentVC.selectedLimbName!,
-                                  selectedCellX: parentVC.currentTappedCardIndices!.0,
-                                  selectedCellY: parentVC.currentTappedCardIndices!.1,
+                                  selectedCellX: parentVC.currentTappedCellIndices!.0,
+                                  selectedCellY: parentVC.currentTappedCellIndices!.1,
                                   date: Date(), partition: parentVC.partitionValue)
 
         RealmManager.shared.addInjection(newInjection: injection)

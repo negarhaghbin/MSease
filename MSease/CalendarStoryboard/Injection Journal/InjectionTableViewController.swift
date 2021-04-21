@@ -166,9 +166,10 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
                 let frame = CGRect(x: xVal, y: yVal, width: width!, height: width!)
                 let imageView = UIImageView(frame: frame)
                 imageView.image = UIImage(systemName: "square.fill")
+                imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].0)
                 
                 if (injection!.selectedCellX == i) && (injection?.selectedCellY == j){
-                    imageView.tintColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                    imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[0].0)
                 }
                 
                 grid2D[i].append(imageView)

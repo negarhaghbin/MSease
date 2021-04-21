@@ -20,6 +20,7 @@ class StylingUtilities{
         case max = "#f05555ff"
     }
     
+    static let InjectionCodes : [(colorCode: String, daysPassed: Int)] = [("#EA4C46FF", daysPassed: 0), ("#F07470FF", daysPassed: 1), ("#F1959BFF", daysPassed: 2), ("#ABE098FF", daysPassed: 3), ("#83D475FF", daysPassed: 4), ("#57C84DFF", daysPassed: 5)]
     
     static func styleTextField(_ textField: UITextField){
         

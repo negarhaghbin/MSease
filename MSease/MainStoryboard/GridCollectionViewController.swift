@@ -36,10 +36,16 @@ class GridCollectionViewCell: UICollectionViewCell {
     }
     
     func prepareGrid(limbGrid: Limb){
-        let injections = RealmManager.shared.getInjectionsForLimb(limb: limbGrid)
-        var cells : [(x: Int, y: Int)] = []
-        for injection in injections{
-            cells.append((x: injection.selectedCellX, y: injection.selectedCellY))
+        let injectionsOnDates = RealmManager.shared.getRecentInjectionsForLimb(limb: limbGrid)
+        
+//        print(injectionsOnDates.count)
+        var cells : [(x: Int, y: Int, color: String)] = []
+        
+        for (i,injections) in injectionsOnDates.enumerated(){
+            for injection in injections{
+                cells.append((x: injection.selectedCellX, y: injection.selectedCellY, color:StylingUtilities.InjectionCodes[i].colorCode))
+            }
+            
         }
         
         let width : Double?
@@ -58,11 +64,16 @@ class GridCollectionViewCell: UICollectionViewCell {
                 let frame = CGRect(x: xVal, y: yVal, width: width!, height: width!)
                 let imageView = UIImageView(frame: frame)
                 imageView.image = UIImage(systemName: "square.fill")
-                if cells.contains(where: { pair in
+                imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)
+                
+                
+                let temp = cells.filter({ pair in
                     return (pair.x == i) && (pair.y == j)
-                }){
-                    imageView.tintColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                })
+                if temp.count>0{
+                    imageView.tintColor = UIColor(hex: temp[0].color)
                 }
+                
                 grid2D[i].append(imageView)
                 self.contentView.addSubview(imageView)
             }

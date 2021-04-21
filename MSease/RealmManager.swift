@@ -151,6 +151,23 @@ extension RealmManager{
         return result
     }
     
+    func getRecentInjectionsForLimb(limb: Limb)->[Results<Injection>]{
+        let injections = getInjectionsForLimb(limb: limb)
+        var result : [Results<Injection>] = []
+        
+        for injectionDateOffsetFromToday in 0...5{
+            var dayComponent = DateComponents()
+            dayComponent.day = -1*injectionDateOffsetFromToday
+            let theCalendar = Calendar.current
+            let date = theCalendar.date(byAdding: dayComponent, to: Date())!
+            
+            let injectionsOnDate = injections.filter("date == '\(date.getUSFormat())'")
+            result.append(injectionsOnDate)
+        }
+         
+        return result
+    }
+    
     func getInjections(for date: Date) -> Results<Injection>{
         let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
         let result = realm!.objects(Injection.self).filter(predicate)

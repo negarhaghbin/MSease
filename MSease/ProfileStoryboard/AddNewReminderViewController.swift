@@ -313,41 +313,4 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
         })*/
         
     }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        // FIXME: This function is not called
-        print("heere")
-          switch response.actionIdentifier {
-          case notificationAction.snooze.rawValue:
-            print("heere2")
-            let content = UNMutableNotificationContent()
-            content.title = response.notification.request.content.title
-            content.body = response.notification.request.content.body
-            content.sound = UNNotificationSound.default
-            content.categoryIdentifier = notificationCategory.snoozable.rawValue
-
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
-
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            
-            notificationCenter.add(request)
-            
-            notificationCenter.getPendingNotificationRequests(completionHandler: { result in
-                print(result)
-            })
-        
-          default:
-             break
-          }
-        print("heere3")
-          completionHandler()
-    }
-}
-
-enum notificationCategory : String{
-    case snoozable = "SNOOZABLE"
-}
-
-enum notificationAction : String{
-    case snooze = "SNOOZE_ACTION"
 }

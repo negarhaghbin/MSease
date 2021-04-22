@@ -7,6 +7,15 @@
 
 import UserNotifications
 
+enum notificationCategory : String{
+    case snoozable = "SNOOZABLE"
+}
+
+enum notificationAction : String{
+    case snooze = "SNOOZE_ACTION"
+}
+
+
 func scheduleNotification(reminder: Reminder){
     let time = getTimeFromString(reminder.time)
     let content = UNMutableNotificationContent()
@@ -80,4 +89,34 @@ func scheduleNotification(reminder: Reminder){
         UNUserNotificationCenter.current().add(request)
     }
     
+}
+
+extension UNNotification {
+    func snoozeNotification(notificationContent: UNNotificationContent) {
+        let content = UNMutableNotificationContent()
+        content.title = notificationContent.title
+        content.body = notificationContent.body
+        content.sound = .default
+        content.categoryIdentifier = notificationCategory.snoozable.rawValue
+
+        let identifier = self.request.identifier
+//        UUID().uuidString
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .hour, value: 1, to: Date())
+                
+        let dateComponent = calendar.dateComponents([.hour,.minute], from: date!)
+                
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+        
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                debugPrint("Rescheduling failed", error.localizedDescription)
+            } else {
+                debugPrint("rescheduled success")
+            }
+        }
+    }
+
 }

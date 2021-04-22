@@ -210,4 +210,15 @@ extension MainViewController : UNUserNotificationCenterDelegate{
         completionHandler([.banner,.sound])
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // FIXME: This function is not called
+          switch response.actionIdentifier {
+          case notificationAction.snooze.rawValue:
+            response.notification.snoozeNotification(notificationContent: response.notification.request.content)
+          default:
+             break
+          }
+          completionHandler()
+    }
+    
 }

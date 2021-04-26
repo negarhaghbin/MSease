@@ -19,7 +19,7 @@ extension ARViewController {
 //        mascot.position = [x*0.001, 0, -z*0.001]
         
 //        mascot.position = [, 0, ]
-        self.anchor.addChild(mascot)
+        self.parentEntity.addChild(mascot)
     }
     
     

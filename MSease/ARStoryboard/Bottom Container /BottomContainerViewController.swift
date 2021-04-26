@@ -17,10 +17,7 @@ class BottomContainerViewController: UIViewController {
     var availableMascots : [Mascot] {
         var mascots : [Mascot] = []
         for mascotName in mascotNames{
-            let mascot = Mascot()
-            mascot.name = mascotName.0
-            mascot.scale = mascotName.1
-            
+            let mascot = Mascot(name: mascotName.0, scale: mascotName.1)
             mascots.append(mascot)
         }
         return mascots
@@ -61,7 +58,8 @@ class BottomContainerViewController: UIViewController {
 //        parentVC.arview.removeFromSuperview()
 //        parentVC.arview = nil
 //        parentVC.injectionIsDone = true
-        parentVC.navigationController?.navigationBar.isHidden = false
+        parentVC.navigationController?.isNavigationBarHidden = false
+        UIApplication.shared.isIdleTimerDisabled = false
         parentVC.navigationController?.popViewController(animated: true)
     }
     

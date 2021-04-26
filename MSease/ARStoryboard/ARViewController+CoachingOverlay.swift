@@ -19,6 +19,7 @@ extension ARViewController: ARCoachingOverlayViewDelegate {
         statusContainerView.isHidden = false
         bottomContainerView.isHidden = false
         focusSquare?.isEnabled = true
+        statusViewController.scheduleMessage("Select a mascot to begin.", inSeconds: 7.5, messageType: .mascotSelection)
     }
 
     func coachingOverlayViewDidRequestSessionReset(_ coachingOverlayView: ARCoachingOverlayView) {

@@ -33,11 +33,11 @@ class Page{
     }
     
     static func fillWalkthroughPages(){
-        walkthroughPages.append(Page(heading: "Welcome to MSease!", subheading: "Keep everything in one place.", imageName: "page0", index: 0))
-        walkthroughPages.append(Page(heading: "Add injections and symptoms", subheading: "Record your daily symptoms effortlessly.", imageName: "page1", index: 1))
-        walkthroughPages.append(Page(heading: "Set customizable reminders", subheading: "Never forget a thing.", imageName: "page2", index: 2))
-        walkthroughPages.append(Page(heading: "Gain useful insights", subheading: "Spot patterns between your injections, your symptoms, and your mood.", imageName: "page3", index: 3))
-        walkthroughPages.append(Page(heading: "Get started", subheading: "Sign up for an account or login.", imageName: "page4", index: 4))
+        walkthroughPages.append(Page(heading: "Welcome to MSease!", subheading: "Keep everything in one place.", imageName: "welcome", index: 0))
+        walkthroughPages.append(Page(heading: "Add injections and symptoms", subheading: "Record your daily symptoms effortlessly.", imageName: "journal", index: 1))
+        walkthroughPages.append(Page(heading: "Set customizable reminders", subheading: "Never forget a thing.", imageName: "notification", index: 2))
+        walkthroughPages.append(Page(heading: "Gain useful insights", subheading: "Spot patterns between your injections, your symptoms, and your mood.", imageName: "insight", index: 3))
+        walkthroughPages.append(Page(heading: "Get started", subheading: "Sign up for an account or login.", imageName: "signup", index: 4))
     }
 }
 

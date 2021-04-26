@@ -40,6 +40,7 @@ class ARViewController: UIViewController {
     var injection : Injection?{
         didSet{
             navigationController?.isNavigationBarHidden = true
+            UIApplication.shared.isIdleTimerDisabled = false
             performSegue(withIdentifier: "postInjection", sender: nil)
 //            let storyboard = UIStoryboard(name: "AR", bundle: nil)
 //            let postInjection = storyboard.instantiateViewController(withIdentifier: "postInjection") as! postInjectionVC
@@ -52,6 +53,8 @@ class ARViewController: UIViewController {
     var selectedMascotIndex = -1
     
     var partitionValue = RealmManager.shared.getPartitionValue()
+    
+    let parentEntity = ModelEntity()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,25 +129,19 @@ class ARViewController: UIViewController {
         
         for i in 0..<row{
             for _ in 0..<col{
-                let box = MeshResource.generateBox(width: 0.03, height: 0.002, depth: 0.03)
-                let cellMaterial = SimpleMaterial(color: UIColor(red: 0.32, green: 0.625, blue: 0.746, alpha: 1), isMetallic: false)
-                let model = ModelEntity(mesh: box, materials: [cellMaterial])
                 
-                
-                
-                model.generateCollisionShapes(recursive: true)
+                let model = CellModelEntity(color: UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)!)
                 if cells.count-1 < i{
                     cells.append([])
                 }
                 cells[i].append(model)
                 
-                let selectedBoxMaterial = SimpleMaterial(color: .yellow, isMetallic: false)
-                let selectedModel = ModelEntity(mesh: box, materials: [selectedBoxMaterial])
-                selectedModel.generateCollisionShapes(recursive: true)
+                let selectedModel = CellModelEntity(color: .yellow)
                 if tappedCells.count-1 < i{
                     tappedCells.append([])
                 }
                 tappedCells[i].append(selectedModel)
+                
             }
         }
         
@@ -152,6 +149,7 @@ class ARViewController: UIViewController {
     }
     
     func placeGrid(hidden: [(x: Int, y: Int)]){
+        
         for (i,cellRow) in cells.enumerated(){
             for (j, cell) in cellRow.enumerated(){
                 if hidden.contains(where: { pair in
@@ -172,9 +170,11 @@ class ARViewController: UIViewController {
                 cell.position = [(Float(j-cellRow.count/2)+r)*0.035, 0, 0.05 + Float(i)*0.035]
                 
                 tappedCells[i][j].position = cell.position
-                anchor.addChild(cell)
+                parentEntity.addChild(cell)
             }
         }
+        arview.installGestures([.all], for: parentEntity)
+        anchor.addChild(parentEntity)
     }
     
     func indices(of x: Entity, in array:[[Entity]]) -> (Int, Int)? {
@@ -208,19 +208,25 @@ class ARViewController: UIViewController {
     }
     
     func selectCell(cell: Entity, index: (Int, Int)){
-        anchor.addChild(tappedCells[index.0][index.1])
+        parentEntity.addChild(tappedCells[index.0][index.1])
         currentTappedCellIndices = index
-        anchor.removeChild(cell)
+        parentEntity.removeChild(cell)
     }
     
     func deselectCell(cell: Entity, index: (Int,Int)){
-        anchor.addChild(cells[index.0][index.1])
-        anchor.removeChild(cell)
+        parentEntity.addChild(cells[index.0][index.1])
+        parentEntity.removeChild(cell)
         currentTappedCellIndices = nil
     }
     
     func isShowingGrid() -> Bool{
-        return anchor.children.count > 1
+        for child in anchor.children{
+            if child == parentEntity{
+                return true
+            }
+        }
+        return false
+//        return anchor.children.count > 1
     }
     
     @IBAction func cellTapped(_ sender: UITapGestureRecognizer) {

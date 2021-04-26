@@ -39,6 +39,15 @@ class ConsentViewController: UIViewController {
         RealmManager.shared.acceptConsent()
     }
     
+    @IBAction func switchOnValueChange(_ sender: UISwitch) {
+        if sender.isOn{
+            acceptButton.isEnabled = true
+        }
+        else{
+            acceptButton.isEnabled = false
+        }
+        StylingUtilities.styleFilledButton(acceptButton)
+    }
     
    /* // MARK: - Navigation
 

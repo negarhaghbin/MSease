@@ -152,6 +152,8 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             sun: repeatDays[6],
                             time: timeLabel.text!,
                             message: textView.text, partition: partitionValue)
+        
+        print(getTimeFromString(timeLabel.text!))
         if isNewReminder{
             RealmManager.shared.addReminder(newReminder: reminder!)
             reminderId = reminder!._id
@@ -287,7 +289,7 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
         // weekday = 1, sunday
         
         //i = 6, weekday = 1
-        var triggerRepeat = Calendar.current.dateComponents([.weekday,.hour, .minute], from: Date())
+        var triggerRepeat = Calendar.current.dateComponents([.weekday, .hour, .minute], from: Date())
         triggerRepeat.hour = time.h
         triggerRepeat.minute = time.m
         

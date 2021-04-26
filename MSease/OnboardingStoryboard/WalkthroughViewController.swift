@@ -18,12 +18,16 @@ class WalkthroughViewController: UIViewController, pageViewControllerDelegate {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
-    
+    // MARK: - Variables
     var walkthroughPageViewController : WalkthroughPageViewController?
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -39,8 +43,20 @@ class WalkthroughViewController: UIViewController, pageViewControllerDelegate {
             case 0...walkthroughPages.count-2:
                 walkthroughPageViewController?.forwardPage()
             case walkthroughPages.count-1:
-                // FIXME: next button is hidden in this page
                 dismiss(animated: true)
+            default:
+                break
+            }
+        }
+        updateUI()
+    }
+    
+    @IBAction func skipButtonTapped(sender: UIButton){
+        if let index = walkthroughPageViewController?.currentIndex{
+            switch index {
+            case 0...walkthroughPages.count-2:
+                let counter = walkthroughPages.count-1-index
+                walkthroughPageViewController?.forwardPage(counter: counter)
             default:
                 break
             }
@@ -52,6 +68,8 @@ class WalkthroughViewController: UIViewController, pageViewControllerDelegate {
     // MARK: - Helpers
     func setUpElements(){
         StylingUtilities.styleFilledButton(nextButton)
+        StylingUtilities.styleHollowdButton(skipButton)
+        
         StylingUtilities.styleFilledButton(signupButton)
         StylingUtilities.styleHollowdButton(loginButton)
         

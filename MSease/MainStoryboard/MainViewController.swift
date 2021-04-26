@@ -28,6 +28,11 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         didSet{
             if userRealm != nil{
                 RealmManager.shared.setRealm(realm: userRealm!)
+                if !RealmManager.shared.hasSignedConsent(realm: userRealm!){
+                    let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "consentVC")
+                    self.navigationController?.setViewControllers([vc], animated: true)
+                }
             }
         }
     }
@@ -63,14 +68,14 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                     login(
                         email: UserDefaults.standard.string(forKey: "email")!,
                         password: UserDefaults.standard.string(forKey: "password")!)
-                }
-                else{
-                    let usersInRealm = userRealm!.objects(User.self)
-                    self.userData = usersInRealm.first
-                    self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
-                            self?.userData = usersInRealm.first
                     }
-                }
+                    else{
+                        let usersInRealm = userRealm!.objects(User.self)
+                        self.userData = usersInRealm.first
+                        self.notificationToken = usersInRealm.observe { [weak self, usersInRealm] (_) in
+                                self?.userData = usersInRealm.first
+                        }
+                    }
             }
             else{
                 let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)

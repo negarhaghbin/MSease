@@ -264,6 +264,26 @@ extension RealmManager{
         }
     }
     
+    func getPretestData()->[String]{
+        let pretestData = realm?.objects(User.self).first?.getPretestData()
+        
+        return [pretestData!.gender,
+                pretestData!.birthday,
+                pretestData!.typeOfMS,
+                pretestData!.diagnosisDate,
+                pretestData!.treatmentBeginningDate]
+    }
+    
+    func hasGeneralData()->Bool{
+        let user = realm?.objects(User.self).first
+        if user?.birthday == ""{
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
 }
 
 // MARK: - TSQM
@@ -347,13 +367,28 @@ extension RealmManager{
 
 // MARK: IP
 extension RealmManager{
-    
-    // not editable
+
     func submitIP(answers: [String]){
-        let ip = InjectionPhobiaForm(q1: answers[0], q2: answers[1], q3: answers[2], q4: answers[3], q5: answers[4], q6: answers[5], q7: answers[6], q8: answers[7], partition: getPartitionValue())
+        if hasInjectionPhobiaForm(){
+            let ip = realm?.objects(InjectionPhobiaForm.self).first
             try! realm!.write{
-                realm!.add(ip)
+                ip?.q1 = answers[0]
+                ip?.q2 = answers[1]
+                ip?.q3 = answers[2]
+                ip?.q4 = answers[3]
+                ip?.q5 = answers[4]
+                ip?.q6 = answers[5]
+                ip?.q7 = answers[6]
+                ip?.q8 = answers[7]
             }
+        }
+        else{
+            let ip = InjectionPhobiaForm(q1: answers[0], q2: answers[1], q3: answers[2], q4: answers[3], q5: answers[4], q6: answers[5], q7: answers[6], q8: answers[7], partition: getPartitionValue())
+                try! realm!.write{
+                    realm!.add(ip)
+                }
+        }
+        
     }
     
     func getIP()->[String]{
@@ -363,6 +398,16 @@ extension RealmManager{
         }
         else{
             return (ip?.first!.getAnswersFromFields())!
+        }
+    }
+    
+    func hasInjectionPhobiaForm()->Bool{
+        let ip = realm?.objects(InjectionPhobiaForm.self)
+        if ip?.count == 0{
+            return false
+        }
+        else{
+            return true
         }
     }
 }

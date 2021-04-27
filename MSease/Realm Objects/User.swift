@@ -22,4 +22,8 @@ class User: Object {
     override static func primaryKey() -> String? {
         return "_id"
     }
+    
+    func getPretestData()->(gender: String, birthday: String, typeOfMS: String, diagnosisDate: String, treatmentBeginningDate: String){
+        return (gender: gender, birthday: birthday, typeOfMS: typeOfMS, diagnosisDate: diagnosisDate, treatmentBeginningDate: treatmentBeginningDate)
+    }
 }

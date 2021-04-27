@@ -93,7 +93,7 @@ class SignupLoginViewController: UIViewController {
                     RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
                     self.setLoading(true)
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
-                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self]
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self]
                     Realm.asyncOpen(configuration: configuration) { [weak self](result) in
                         DispatchQueue.main.async {
                             self!.setLoading(false)

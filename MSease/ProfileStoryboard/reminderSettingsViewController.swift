@@ -135,6 +135,15 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
         return 2
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == 1{
+            if reminders.count == 0{
+                return "You have no reminders."
+            }
+        }
+        return ""
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1

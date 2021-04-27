@@ -133,7 +133,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 case .failure(let error):
                     print("Login failed: \(error)")
                     var configuration = app.currentUser!.configuration(partitionValue: "user=\(app.currentUser!.id)")
-                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self]
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self]
                     Realm.asyncOpen(configuration: configuration) { result in
                         DispatchQueue.main.async {
                             switch result {
@@ -155,7 +155,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 case .success(let user):
                     print("Login succeeded!")
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
-                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self]
+                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self]
                     Realm.asyncOpen(configuration: configuration) { result in
                         DispatchQueue.main.async {
                             switch result {

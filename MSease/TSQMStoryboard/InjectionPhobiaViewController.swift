@@ -13,11 +13,7 @@ class InjectionPhobiaViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var questionLabel: UILabel!
     
-    @IBOutlet weak var option1: DLRadioButton!
-    @IBOutlet weak var option2: DLRadioButton!
-    @IBOutlet weak var option3: DLRadioButton!
-    @IBOutlet weak var option4: DLRadioButton!
-    @IBOutlet weak var option5: DLRadioButton!
+    @IBOutlet var options: [DLRadioButton]!
     
     @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -32,8 +28,6 @@ class InjectionPhobiaViewController: UIViewController {
     // MARK: - Viewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,43 +39,20 @@ class InjectionPhobiaViewController: UIViewController {
     func setupUI(){
         questionLabel.text = IPquestions[pageNumber].question
         nextButton.isEnabled = false
-            
-        option1.isHidden = false
-        option1.deselectOtherButtons()
-            
-        option2.isHidden = false
-        option2.deselectOtherButtons()
-            
-        option3.isHidden = false
-        option3.deselectOtherButtons()
-            
-        option4.isHidden = false
-        option4.deselectOtherButtons()
-            
-        option5.isHidden = false
-        option5.deselectOtherButtons()
-            
-            
-        option1.setTitle(IPquestions[pageNumber].options[0], for: .normal)
-        option2.setTitle(IPquestions[pageNumber].options[1], for: .normal)
-        option3.setTitle(IPquestions[pageNumber].options[2], for: .normal)
-        option4.setTitle(IPquestions[pageNumber].options[3], for: .normal)
-        option5.setTitle(IPquestions[pageNumber].options[4], for: .normal)
+        
+        for (index, option) in options.enumerated(){
+            option.isHidden = false
+            option.deselectOtherButtons()
+            option.setTitle(IPquestions[pageNumber].options[index], for: .normal)
+        }
         
         pageLabel.text = "\(IPquestions[pageNumber].number) of \(IPquestions.count)"
         fillOption(answer: answers![pageNumber])
-        if IPquestions[pageNumber].number == 14{
+        if IPquestions[pageNumber].number == IPquestions.count{
             nextButton.setTitle("Submit", for: .normal)
         }
         else{
             nextButton.setTitle("Next", for: .normal)
-        }
-        
-        if IPquestions[pageNumber].number == 1{
-            backButton.setTitle("Cancel", for: .normal)
-        }
-        else{
-            backButton.setTitle("Back", for: .normal)
         }
         
         StylingUtilities.styleFilledButton(nextButton)
@@ -93,24 +64,13 @@ class InjectionPhobiaViewController: UIViewController {
             return
         }
         else{
-            switch answer {
-            case option1.titleLabel?.text:
-                option1.isSelected = true
-            case option2.titleLabel?.text:
-                option2.isSelected = true
-            case option3.titleLabel?.text:
-                option3.isSelected = true
-            case option4.titleLabel?.text:
-                option4.isSelected = true
-            case option5.titleLabel?.text:
-                option5.isSelected = true
-            
-            default:
-                break
+            for option in options{
+                if option.titleLabel?.text == answer{
+                    option.isSelected = true
+                }
             }
-            
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.init(hex: "#61A5C2FF")
+            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
             selectedAnswer = answer
         }
     }
@@ -118,7 +78,7 @@ class InjectionPhobiaViewController: UIViewController {
     // MARK: - Actions
     @IBAction func nextTapped(_ sender: Any) {
         answers![pageNumber] = selectedAnswer!
-        if pageNumber == 13{
+        if pageNumber == IPquestions.count-1{
             RealmManager.shared.submitIP(answers: answers!)
             
             dismiss(animated: true, completion: nil)
@@ -132,13 +92,14 @@ class InjectionPhobiaViewController: UIViewController {
     
     @IBAction func optionTapped(_ sender: DLRadioButton) {
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: "#61A5C2FF")
+        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
         selectedAnswer = sender.titleLabel?.text
     }
     
     @IBAction func backTapped(_ sender: Any) {
         if pageNumber == 0{
-            dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+//            dismiss(animated: true, completion: nil)
         }
         else{
             pageNumber = pageNumber - 1

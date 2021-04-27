@@ -13,11 +13,7 @@ var PISelectedReactionNames : [String] = []
 class postInjectionVC: UITableViewController, UITextViewDelegate {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var option1: UIButton!
-    @IBOutlet weak var option2: UIButton!
-    @IBOutlet weak var option3: UIButton!
-    @IBOutlet weak var option4: UIButton!
-    @IBOutlet weak var option5: UIButton!
+    @IBOutlet var options: [UIButton]!
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var reactionsCollectionView: UICollectionView!
@@ -88,7 +84,6 @@ class postInjectionVC: UITableViewController, UITextViewDelegate {
     }
     
     @IBAction func painButtonTapped(_ sender: UIButton) {
-        print(selectedPain)
         if let prevPainButton = self.view.viewWithTag(selectedPain) as? UIButton{
             StylingUtilities.stylePainscaleButton(prevPainButton, range: selectedPain)
         }
@@ -100,11 +95,9 @@ class postInjectionVC: UITableViewController, UITextViewDelegate {
     
     // MARK: - Helpers
     func styleButtons(){
-        StylingUtilities.stylePainscaleButton(option1, range: 1)
-        StylingUtilities.stylePainscaleButton(option2, range: 2)
-        StylingUtilities.stylePainscaleButton(option3, range: 3)
-        StylingUtilities.stylePainscaleButton(option4, range: 4)
-        StylingUtilities.stylePainscaleButton(option5, range: 5)
+        for (index, option) in options.enumerated(){
+            StylingUtilities.stylePainscaleButton(option, range: index+1)
+        }
         
         StylingUtilities.styleFilledButton(submitButton)
     }

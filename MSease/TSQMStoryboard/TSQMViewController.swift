@@ -14,13 +14,7 @@ class TSQMViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var option1: DLRadioButton!
-    @IBOutlet weak var option2: DLRadioButton!
-    @IBOutlet weak var option3: DLRadioButton!
-    @IBOutlet weak var option4: DLRadioButton!
-    @IBOutlet weak var option5: DLRadioButton!
-    @IBOutlet weak var option6: DLRadioButton!
-    @IBOutlet weak var option7: DLRadioButton!
+    @IBOutlet var options: [DLRadioButton]!
     
     @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -40,6 +34,14 @@ class TSQMViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissKeyboard))
+        
+        toolbar.setItems([doneButton], animated: true)
+        textView.inputAccessoryView = toolbar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,50 +51,24 @@ class TSQMViewController: UIViewController {
 
     // MARK: - Helpers
     func setupUI(){
+        self.navigationController?.navigationBar.isHidden = true
         questionLabel.text = TSQMquestions[pageNumber].question
         nextButton.isEnabled = false
         
         if TSQMquestions[pageNumber].options.count>0{
             textView.isHidden = true
             
-            option1.isHidden = false
-            option1.deselectOtherButtons()
-            
-            option2.isHidden = false
-            option2.deselectOtherButtons()
-            
-            option3.isHidden = false
-            option3.deselectOtherButtons()
-            
-            option4.isHidden = false
-            option4.deselectOtherButtons()
-            
-            option5.isHidden = false
-            option5.deselectOtherButtons()
-            
-            option6.isHidden = false
-            option6.deselectOtherButtons()
-            
-            option7.isHidden = false
-            option7.deselectOtherButtons()
-            
-            option1.setTitle(TSQMquestions[pageNumber].options[0], for: .normal)
-            option2.setTitle(TSQMquestions[pageNumber].options[1], for: .normal)
-            option3.setTitle(TSQMquestions[pageNumber].options[2], for: .normal)
-            option4.setTitle(TSQMquestions[pageNumber].options[3], for: .normal)
-            option5.setTitle(TSQMquestions[pageNumber].options[4], for: .normal)
-            option6.setTitle(TSQMquestions[pageNumber].options[5], for: .normal)
-            option7.setTitle(TSQMquestions[pageNumber].options[6], for: .normal)
+            for (index, option) in options.enumerated(){
+                option.isHidden = false
+                option.deselectOtherButtons()
+                option.setTitle(TSQMquestions[pageNumber].options[index], for: .normal)
+            }
         }
         else{
             textView.isHidden = false
-            option1.isHidden = true
-            option2.isHidden = true
-            option3.isHidden = true
-            option4.isHidden = true
-            option5.isHidden = true
-            option6.isHidden = true
-            option7.isHidden = true
+            for option in options{
+                option.isHidden = true
+            }
         }
         
         
@@ -103,7 +79,7 @@ class TSQMViewController: UIViewController {
     }
     
     func styleButtons(){
-        if TSQMquestions[pageNumber].number == 14{
+        if TSQMquestions[pageNumber].number == TSQMquestions.count{
             nextButton.setTitle("Submit", for: .normal)
         }
         else{
@@ -130,29 +106,21 @@ class TSQMViewController: UIViewController {
             return
         }
         else{
-            switch answer {
-            case option1.titleLabel?.text:
-                option1.isSelected = true
-            case option2.titleLabel?.text:
-                option2.isSelected = true
-            case option3.titleLabel?.text:
-                option3.isSelected = true
-            case option4.titleLabel?.text:
-                option4.isSelected = true
-            case option5.titleLabel?.text:
-                option5.isSelected = true
-            case option6.titleLabel?.text:
-                option6.isSelected = true
-            case option7.titleLabel?.text:
-                option7.isSelected = true
-            
-            default:
+            var isOptionFound = false
+            for option in options{
+                if option.titleLabel?.text == answer{
+                    option.isSelected=true
+                    isOptionFound = true
+                }
+            }
+            if !isOptionFound{
                 textView.text = answer
                 textView.textColor = UIColor.label
+                isOptionFound = true
             }
             
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.init(hex: "#61A5C2FF")
+            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
             selectedAnswer = answer
         }
     }
@@ -160,7 +128,7 @@ class TSQMViewController: UIViewController {
     // MARK: - Actions
     @IBAction func nextTapped(_ sender: Any) {
         answers![pageNumber] = selectedAnswer!
-        if pageNumber == 13{
+        if pageNumber == TSQMquestions.count-1{
             RealmManager.shared.submitTSQM(version: TSQMversion!, answers: answers!)
             
             dismiss(animated: true, completion: nil)
@@ -174,7 +142,7 @@ class TSQMViewController: UIViewController {
     
     @IBAction func optionTapped(_ sender: DLRadioButton) {
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: "#61A5C2FF")
+        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
         selectedAnswer = sender.titleLabel?.text
     }
     
@@ -204,7 +172,7 @@ class TSQMViewController: UIViewController {
 extension TSQMViewController:UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: "#61A5C2FF")
+        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
         selectedAnswer = textView.text
     }
     

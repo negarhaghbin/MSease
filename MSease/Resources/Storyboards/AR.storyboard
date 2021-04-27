@@ -898,15 +898,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="option1" destination="9Hl-4Y-7cB" id="Tpe-Jo-HS5"/>
-                        <outlet property="option2" destination="Pz7-Cu-jRo" id="iVD-Z8-Wqc"/>
-                        <outlet property="option3" destination="cVE-Px-gK2" id="LcO-b3-MJd"/>
-                        <outlet property="option4" destination="V4d-Dj-zax" id="7tx-SX-ZRg"/>
-                        <outlet property="option5" destination="VI8-2G-3oe" id="Gh5-UL-heu"/>
                         <outlet property="reactionsCollectionView" destination="FeE-LN-cpk" id="BqD-5M-H35"/>
                         <outlet property="submitButton" destination="UUL-KU-YtD" id="WLS-Qk-5KB"/>
                         <outlet property="symptomsCollectionView" destination="6eB-eC-fjC" id="Otc-UR-ywJ"/>
                         <outlet property="textView" destination="yhl-Kt-uid" id="pHj-g9-w9v"/>
+                        <outletCollection property="options" destination="9Hl-4Y-7cB" collectionClass="NSMutableArray" id="5xQ-6D-5oJ"/>
+                        <outletCollection property="options" destination="Pz7-Cu-jRo" collectionClass="NSMutableArray" id="fVw-xm-e55"/>
+                        <outletCollection property="options" destination="cVE-Px-gK2" collectionClass="NSMutableArray" id="Phx-eD-4Qt"/>
+                        <outletCollection property="options" destination="V4d-Dj-zax" collectionClass="NSMutableArray" id="KFV-85-k9H"/>
+                        <outletCollection property="options" destination="VI8-2G-3oe" collectionClass="NSMutableArray" id="jmx-XH-EEZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r66-md-Jxi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

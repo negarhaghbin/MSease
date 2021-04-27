@@ -11,25 +11,21 @@ import MessageUI
 class ProfileTableViewController: UITableViewController{
     
     // MARK: - IBOutlets
-    @IBOutlet weak var tsqm0: UITableViewCell!
-    @IBOutlet weak var tsqm1: UITableViewCell!
-    @IBOutlet weak var tsqm2: UITableViewCell!
+    @IBOutlet var tsqms: [UITableViewCell]!
+    @IBOutlet var tsqmImages: [UIImageView]!
+    @IBOutlet var tsqmLabels: [UILabel]!
     
-    @IBOutlet weak var tsqm0Image: UIImageView!
-    @IBOutlet weak var tsqm0Label: UILabel!
-    
-    @IBOutlet weak var tsqm1Image: UIImageView!
-    @IBOutlet weak var tsqm1Label: UILabel!
-    
-    @IBOutlet weak var tsqm2Image: UIImageView!
-    @IBOutlet weak var tsqm2Label: UILabel!
-    
+    @IBOutlet weak var ipCell: UITableViewCell!
+    @IBOutlet weak var generalCell: UITableViewCell!
     
     // MARK: - Variables
-    enum rows: Int{
-        case technicalSupport = 3
-        case signout = 7
+    struct cell {
+        static let generalData = IndexPath(row:0, section: 1)
+        static let ipQuestionnaire = IndexPath(row:1, section: 1)
+        static let technicalSupport = IndexPath(row:1, section: 2)
+        static let signout = IndexPath(row:0, section: 3)
     }
+    
     var partitionValue: String?
     
     var alertMessage = (title: "", message: "")
@@ -40,43 +36,61 @@ class ProfileTableViewController: UITableViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateTSQM(version: 0)
-        updateTSQM(version: 1)
-        updateTSQM(version: 2)
+        updateForms()
     }
     
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == rows.signout.rawValue{
+        if indexPath == cell.signout{
             RealmManager.shared.logOut(vc: self)
         }
-        else if indexPath.row == rows.technicalSupport.rawValue{
+        else if indexPath == cell.technicalSupport{
             showMailComposer()
+        }
+        else if indexPath == cell.generalData{
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "pretestVC")
+            present(vc, animated: true)
+        }
+        else if indexPath == cell.ipQuestionnaire{
+            let storyboard = UIStoryboard(name: "TSQM", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "injectionPhobiaVC")
+            present(vc, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Helpers
     
-    func updateTSQM(version: Int){
-        tsqm0.isSelected = false
-        tsqm1.isSelected = false
-        tsqm2.isSelected = false
-        
-        if RealmManager.shared.hasTSQM(version: version){
-            tsqm0.accessoryType = .checkmark
+    func updateForms(){
+        updateGeneral()
+        updateIP()
+        updateTSQMs()
+    }
+    
+    func updateGeneral(){
+        generalCell.isSelected = false
+        if RealmManager.shared.hasGeneralData(){
+            generalCell.accessoryType = .checkmark
         }
-        if RealmManager.shared.isTSQMLocked(version: version){
-            switch version {
-            case 0:
-                StylingUtilities.styleDisabledCell(tableCell: tsqm0, label: tsqm0Label, imageView: tsqm0Image)
-            case 1:
-                StylingUtilities.styleDisabledCell(tableCell: tsqm1, label: tsqm1Label, imageView: tsqm1Image)
-            case 2:
-                StylingUtilities.styleDisabledCell(tableCell: tsqm2, label: tsqm2Label, imageView: tsqm2Image)
-            default:
-                break
+    }
+    
+    func updateIP(){
+        ipCell.isSelected = false
+        if RealmManager.shared.hasInjectionPhobiaForm(){
+            ipCell.accessoryType = .checkmark
+        }
+    }
+    
+    func updateTSQMs(){
+        for (version, tsqm) in tsqms.enumerated(){
+            tsqm.isSelected = false
+            if RealmManager.shared.hasTSQM(version: version){
+                tsqm.accessoryType = .checkmark
+            }
+            if RealmManager.shared.isTSQMLocked(version: version){
+                StylingUtilities.styleDisabledCell(tableCell: tsqm, label: tsqmLabels[version], imageView: tsqmImages[version])
             }
         }
     }

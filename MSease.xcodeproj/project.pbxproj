@@ -30,6 +30,7 @@
 		843C05D8263059AF00FFFC2D /* ArTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05D7263059AF00FFFC2D /* ArTutorialViewController.swift */; };
 		843C05E2263083EE00FFFC2D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05E1263083EE00FFFC2D /* NotificationManager.swift */; };
 		843C05E52631A3C600FFFC2D /* CellModelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05E42631A3C600FFFC2D /* CellModelEntity.swift */; };
+		843C05EE263781D500FFFC2D /* IPIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05ED263781D400FFFC2D /* IPIntroViewController.swift */; };
 		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
 		8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
@@ -118,6 +119,7 @@
 		843C05D7263059AF00FFFC2D /* ArTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArTutorialViewController.swift; sourceTree = "<group>"; };
 		843C05E1263083EE00FFFC2D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		843C05E42631A3C600FFFC2D /* CellModelEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModelEntity.swift; sourceTree = "<group>"; };
+		843C05ED263781D400FFFC2D /* IPIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPIntroViewController.swift; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionReusableView.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			children = (
 				84BCC8512615F6470097E0A2 /* TSQMViewController.swift */,
 				84BCC85E261CC07F0097E0A2 /* InjectionPhobiaViewController.swift */,
+				843C05ED263781D400FFFC2D /* IPIntroViewController.swift */,
 			);
 			path = TSQMStoryboard;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				84AF3E0325DC3B640083E9F0 /* reminderSettingsViewController.swift in Sources */,
 				84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */,
 				84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */,
+				843C05EE263781D500FFFC2D /* IPIntroViewController.swift in Sources */,
 				84AF3E0B25DC67300083E9F0 /* AddNewReminderViewController.swift in Sources */,
 				8499443425FBC5AD00AFB965 /* User.swift in Sources */,
 				845EC8A52602C1AF00B51D74 /* TopBarViewController.swift in Sources */,

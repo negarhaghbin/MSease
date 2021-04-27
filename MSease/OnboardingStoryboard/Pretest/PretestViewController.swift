@@ -16,16 +16,15 @@ class PretestViewController: UIViewController {
     @IBOutlet weak var typesOptionsStack: UIStackView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-//    @IBOutlet weak var maleButton: DLRadioButton!
-//    @IBOutlet weak var femaleButton: DLRadioButton!
-//    @IBOutlet weak var nonbinaryButton: DLRadioButton!
-    @IBOutlet weak var otherButton: DLRadioButton!
+    @IBOutlet var genderOptions: [DLRadioButton]!
+    @IBOutlet var MSOptions: [DLRadioButton]!
+    
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
     // MARK: - Variables
-    var answers = Array(repeating: "Not selected", count: pretestQuestions.count)
+    var answers = RealmManager.shared.getPretestData()
     var currentIndex = 0
     var selectedAnswer = ""
     
@@ -45,11 +44,16 @@ class PretestViewController: UIViewController {
     }
 
     // MARK: - Actions
+    @IBAction func datePickerChanged(_ sender: Any) {
+        selectedAnswer = datePicker.date.getUSFormat()
+        answers[currentIndex] = selectedAnswer
+    }
+    
     @IBAction func optionsTapped(_ sender: DLRadioButton) {
         selectedAnswer = (sender.titleLabel?.text)!
         self.view.endEditing(true)
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: "#61A5C2FF")
+        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -57,10 +61,24 @@ class PretestViewController: UIViewController {
         if currentIndex == pretestQuestions.count-1{
             RealmManager.shared.submitPretestData(answers: answers)
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let _ = presentingViewController{
+                dismiss(animated: true)
+            }
+            else{
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
+                self.navigationController?.setViewControllers([homeVC], animated: true)
+            }
+            /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
 
-            self.navigationController?.setViewControllers([homeVC], animated: true)
+            let navigationViewControllerItems = self.navigationController?.viewControllers
+            if navigationViewControllerItems![navigationViewControllerItems!.count-2] is ProfileViewController{
+                self.navigationController?.popViewController(animated: true)
+            }
+            else{
+                self.navigationController?.setViewControllers([homeVC], animated: true)
+            }*/
         }
         else{
             currentIndex = currentIndex + 1
@@ -70,8 +88,12 @@ class PretestViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: Any) {
         if currentIndex == 0{
-            self.navigationController?.popViewController(animated: true)
-            //dismiss(animated: true, completion: nil)
+            if let _ = presentingViewController{
+                dismiss(animated: true)
+            }
+            else{
+                self.navigationController?.popViewController(animated: true)
+            }
         }
         else{
             currentIndex = currentIndex - 1
@@ -80,19 +102,68 @@ class PretestViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    func fillGenderOptions(answer: String){
+        if answer==""{
+            return
+        }
+        else{
+            genderOptions[genderOptions.count-1].isSelected = true
+            for option in genderOptions{
+                if option.titleLabel?.text == answer{
+                    option.deselectOtherButtons()
+                    option.isSelected = true
+                }
+            }
+            nextButton.isEnabled = true
+            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            selectedAnswer = answer
+        }
+    }
+    
+    func fillMSType(answer: String){
+        if answer==""{
+            return
+        }
+        else{
+            for option in MSOptions{
+                if option.titleLabel?.text == answer{
+                    option.deselectOtherButtons()
+                    option.isSelected = true
+                }
+            }
+            nextButton.isEnabled = true
+            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            selectedAnswer = answer
+        }
+    }
+    
+    func fillDatePicker(answer: String){
+        if answer==""{
+            return
+        }
+        else{
+            datePicker.date = getDateFromString(answer)
+            nextButton.isEnabled = true
+            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            selectedAnswer = answer
+        }
+    }
+    
     func refreshUI(){
         titleLabel.text = pretestQuestions[currentIndex].question
         switch currentIndex {
         case Pretest.gender.rawValue:
             hideUIelements(isADate: false, isGender: true)
-        case Pretest.bday.rawValue:
+            fillGenderOptions(answer: answers[currentIndex])
+            
+        case Pretest.bday.rawValue, Pretest.diagnosedDate.rawValue, Pretest.treatmentDate.rawValue:
             hideUIelements(isADate: true)
+            fillDatePicker(answer: answers[currentIndex])
+            
         case Pretest.MSType.rawValue:
             hideUIelements(isADate: false, isGender: false)
-        case Pretest.diagnosedDate.rawValue:
-            hideUIelements(isADate: true)
-        case Pretest.treatmentDate.rawValue:
-            hideUIelements(isADate: true)
+            fillMSType(answer: answers[currentIndex])
+            
         default:
             return
         }
@@ -106,6 +177,13 @@ class PretestViewController: UIViewController {
         }
         else{
             nextButton.setTitle("Next", for: .normal)
+        }
+        
+        backButton.setTitle("Back", for: .normal)
+        if currentIndex == 0{
+            if let _ = presentingViewController{
+                backButton.setTitle("Cancel", for: .normal)
+            }
         }
         
         StylingUtilities.styleFilledButton(nextButton)
@@ -145,7 +223,7 @@ class PretestViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension PretestViewController:UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        otherButton.isSelected = true
+        genderOptions[genderOptions.count-1].isSelected = true
         selectedAnswer = textField.text!
     }
     

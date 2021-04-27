@@ -222,13 +222,13 @@
         <!--Pretest View Controller-->
         <scene sceneID="iKQ-sp-Xaz">
             <objects>
-                <viewController id="nmR-Na-ABO" customClass="PretestViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pretestVC" modalPresentationStyle="fullScreen" id="nmR-Na-ABO" customClass="PretestViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KOE-cX-2yX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-SR-bbO">
-                                <rect key="frame" x="20" y="296" width="374" height="250"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-SR-bbO">
+                                <rect key="frame" x="20" y="323" width="374" height="250"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-Z2-DBf" customClass="DLRadioButton">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -290,13 +290,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your gender identity?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-0O-4JR">
-                                <rect key="frame" x="20" y="243.5" width="374" height="32.5"/>
+                                <rect key="frame" x="20" y="270.5" width="374" height="32.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yq1-uF-VV9">
-                                <rect key="frame" x="20" y="296" width="374" height="250"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yq1-uF-VV9">
+                                <rect key="frame" x="20" y="323" width="374" height="250"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc4-du-UUg" customClass="DLRadioButton">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -366,10 +366,13 @@
                                 </subviews>
                             </stackView>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-c0-6Jc">
-                                <rect key="frame" x="20" y="296" width="374" height="250"/>
+                                <rect key="frame" x="20" y="323" width="374" height="250"/>
+                                <connections>
+                                    <action selector="datePickerChanged:" destination="nmR-Na-ABO" eventType="valueChanged" id="FsE-e3-4vm"/>
+                                </connections>
                             </datePicker>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r7M-nE-EcI">
-                                <rect key="frame" x="20" y="738" width="374" height="50"/>
+                                <rect key="frame" x="20" y="792" width="374" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OD2-Rk-TuU">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
@@ -421,10 +424,18 @@
                         <outlet property="datePicker" destination="oGw-c0-6Jc" id="Vvn-dX-psz"/>
                         <outlet property="genderOptionsStack" destination="HDf-SR-bbO" id="AJD-Vh-9np"/>
                         <outlet property="nextButton" destination="x2b-za-FdV" id="CMB-hH-xDx"/>
-                        <outlet property="otherButton" destination="WBJ-B5-6u9" id="WjN-cN-3Ce"/>
                         <outlet property="textField" destination="GGR-gv-pJG" id="vqY-bc-Hpy"/>
                         <outlet property="titleLabel" destination="kvh-0O-4JR" id="ije-fg-8dA"/>
                         <outlet property="typesOptionsStack" destination="Yq1-uF-VV9" id="dSD-zV-4fJ"/>
+                        <outletCollection property="genderOptions" destination="NeC-Z2-DBf" collectionClass="NSMutableArray" id="irf-Gg-Awq"/>
+                        <outletCollection property="genderOptions" destination="lan-vZ-M63" collectionClass="NSMutableArray" id="ezJ-cp-vbd"/>
+                        <outletCollection property="genderOptions" destination="0cS-e1-LLD" collectionClass="NSMutableArray" id="ZWw-M8-THf"/>
+                        <outletCollection property="genderOptions" destination="WBJ-B5-6u9" collectionClass="NSMutableArray" id="qwi-Oo-PmY"/>
+                        <outletCollection property="MSOptions" destination="sc4-du-UUg" collectionClass="NSMutableArray" id="6ZW-z7-k1Y"/>
+                        <outletCollection property="MSOptions" destination="B7y-sv-8dK" collectionClass="NSMutableArray" id="E36-TB-bPs"/>
+                        <outletCollection property="MSOptions" destination="rFj-dC-BXq" collectionClass="NSMutableArray" id="q3r-l3-Iea"/>
+                        <outletCollection property="MSOptions" destination="HMb-7E-Zyh" collectionClass="NSMutableArray" id="mpO-hl-3Kb"/>
+                        <outletCollection property="MSOptions" destination="qjB-7q-02g" collectionClass="NSMutableArray" id="fJf-wv-b2t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drl-dD-mjN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

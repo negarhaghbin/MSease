@@ -341,11 +341,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cvp-1q-7yn">
-                                                    <rect key="frame" x="8" y="9.5" width="35.5" height="30.5"/>
+                                                    <rect key="frame" x="20" y="12.5" width="34.5" height="24.5"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical support" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xym-Lu-dJX">
-                                                    <rect key="frame" x="51.5" y="8" width="295.5" height="34"/>
+                                                    <rect key="frame" x="62.5" y="11" width="272.5" height="28"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -371,11 +371,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C2Q-XZ-GeH">
-                                                    <rect key="frame" x="8" y="7.5" width="35.5" height="35"/>
+                                                    <rect key="frame" x="20" y="10.5" width="34.5" height="29"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Technical support" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7j-b8-qlw">
-                                                    <rect key="frame" x="51.5" y="8" width="295.5" height="34"/>
+                                                    <rect key="frame" x="62.5" y="11" width="272.5" height="28"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -404,7 +404,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2t4-1z-QPt">
-                                                    <rect key="frame" x="8" y="8" width="358" height="34"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="28"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
@@ -483,8 +483,31 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="uyb-iK-faZ" userLabel="Drummer" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="aar-mw-in3" userLabel="None" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
                                         <rect key="frame" x="20" y="64" width="374" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aar-mw-in3" id="l8a-A3-Gut">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9T-7L-yvd">
+                                                    <rect key="frame" x="20" y="39" width="334" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="m9T-7L-yvd" firstAttribute="leading" secondItem="l8a-A3-Gut" secondAttribute="leadingMargin" id="NsK-TD-Q5n"/>
+                                                <constraint firstItem="m9T-7L-yvd" firstAttribute="centerY" secondItem="l8a-A3-Gut" secondAttribute="centerY" id="P8R-DW-09O"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="m9T-7L-yvd" secondAttribute="trailing" id="t1w-A3-RQl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="m9T-7L-yvd" id="Szf-r5-Vi3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="uyb-iK-faZ" userLabel="Drummer" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="164" width="374" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyb-iK-faZ" id="la2-Fe-fT0">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -516,7 +539,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="RkB-Av-8Is" userLabel="Plane" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="164" width="374" height="100"/>
+                                        <rect key="frame" x="20" y="264" width="374" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RkB-Av-8Is" id="FbF-Jm-w8h">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -548,7 +571,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="sc3-YV-FyU" userLabel="Robot" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="264" width="374" height="100"/>
+                                        <rect key="frame" x="20" y="364" width="374" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sc3-YV-FyU" id="SNz-HZ-2br">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -591,9 +614,10 @@
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="mascotLabel" destination="3el-38-b5x" id="VwB-4g-DUq"/>
-                        <outletCollection property="mascots" destination="uyb-iK-faZ" collectionClass="NSMutableArray" id="fP6-so-5DX"/>
-                        <outletCollection property="mascots" destination="RkB-Av-8Is" collectionClass="NSMutableArray" id="Ksn-kI-eXF"/>
-                        <outletCollection property="mascots" destination="sc3-YV-FyU" collectionClass="NSMutableArray" id="CFh-l8-uMl"/>
+                        <outletCollection property="mascots" destination="aar-mw-in3" collectionClass="NSMutableArray" id="asd-1A-2uF"/>
+                        <outletCollection property="mascots" destination="uyb-iK-faZ" collectionClass="NSMutableArray" id="bsd-WV-9J9"/>
+                        <outletCollection property="mascots" destination="RkB-Av-8Is" collectionClass="NSMutableArray" id="Ke5-0b-bv8"/>
+                        <outletCollection property="mascots" destination="sc3-YV-FyU" collectionClass="NSMutableArray" id="68Z-Ob-Y4b"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2v9-eV-ykd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

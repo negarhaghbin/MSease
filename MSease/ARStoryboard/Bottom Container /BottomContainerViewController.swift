@@ -70,7 +70,13 @@ class BottomContainerViewController: UIViewController {
                                   date: Date(), partition: parentVC.partitionValue)
 
         RealmManager.shared.addInjection(newInjection: injection)
-        RealmManager.shared.setMascot(name: mascotNames[parentVC.selectedMascotIndex].0)
+        if parentVC.selectedMascotIndex == -1{
+            RealmManager.shared.setMascot(name: "None")
+        }
+        else{
+            RealmManager.shared.setMascot(name: mascotNames[parentVC.selectedMascotIndex].name)
+        }
+        
         
         parentVC.injection = injection
         

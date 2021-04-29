@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Variables
     enum rows : Int{
         case mascot = 0
+        case none
         case drummer
         case plane
         case robot
@@ -40,7 +41,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height = CGFloat(46.0)
         switch indexPath.row {
-        case rows.drummer.rawValue...rows.robot.rawValue:
+        case rows.mascot.rawValue+1...rows.robot.rawValue:
             height = mascots![indexPath.row-1].isHidden ? 0.0 : 100.0
         default:
             height = CGFloat(46.0)
@@ -56,7 +57,7 @@ class SettingsTableViewController: UITableViewController {
             for cell in mascots!{
                 cell.isHidden = !cell.isHidden
             }
-        case rows.drummer.rawValue...rows.robot.rawValue:
+        case rows.mascot.rawValue+1...rows.robot.rawValue:
             for mascot in mascots!{
                 mascot.accessoryType = .none
             }

@@ -34,7 +34,9 @@ extension ARViewController {
                     loadedMascots.append(entity)
                 }
                 if isShowingObjects(){
-                    parentEntity.addChild(loadedMascots[selectedMascotIndex])
+                    if selectedMascotIndex != -1{
+                        parentEntity.addChild(loadedMascots[selectedMascotIndex])
+                    }
                 }
                 /*let entity = entities.first
                 

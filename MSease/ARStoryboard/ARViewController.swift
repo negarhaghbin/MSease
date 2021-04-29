@@ -161,7 +161,9 @@ class ARViewController: UIViewController {
     
     func placeObjects(hidden: [(x: Int, y: Int)]){
         if loadedMascots.count != 0{
-            parentEntity.addChild(loadedMascots[selectedMascotIndex])
+            if selectedMascotIndex != -1{
+                parentEntity.addChild(loadedMascots[selectedMascotIndex])
+            }
         }
             placeGrid(hidden: hidden)
             arview.installGestures([.all], for: parentEntity)

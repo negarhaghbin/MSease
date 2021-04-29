@@ -10,7 +10,7 @@ import UIKit
 class MascotTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var imageview: UIImageView?
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {

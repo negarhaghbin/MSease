@@ -19,6 +19,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var calendar : FSCalendar!
+    @IBOutlet weak var mascotImage: UIImageView!
     
     // MARK: - Variables
     let notificationCenter = UNUserNotificationCenter.current()
@@ -28,6 +29,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         didSet{
             if userRealm != nil{
                 RealmManager.shared.setRealm(realm: userRealm!)
+                setMascot()
                 if !RealmManager.shared.hasSignedConsent(realm: userRealm!){
                     let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "consentVC")
@@ -58,6 +60,9 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         UIApplication.shared.isIdleTimerDisabled = false
+        if userRealm != nil{
+            setMascot()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,6 +128,11 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         else{
             return true
         }
+    }
+    
+    func setMascot(){
+        let mascot = RealmManager.shared.getMascot()
+        mascotImage.image = UIImage(named: mascot)
     }
     
     func login(email: String,password: String){

@@ -39,3 +39,13 @@ extension UIView{
     }
     
 }
+
+extension UITableViewController{
+    func AnimateTableCell(indexPath: IndexPath){
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            self.tableView.beginUpdates()
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            self.tableView.endUpdates()
+        })
+    }
+}

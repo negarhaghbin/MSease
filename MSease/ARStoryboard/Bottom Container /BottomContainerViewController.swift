@@ -17,7 +17,7 @@ class BottomContainerViewController: UIViewController {
     var availableMascots : [Mascot] {
         var mascots : [Mascot] = []
         for mascotName in mascotNames{
-            let mascot = Mascot(name: mascotName.0, scale: mascotName.1)
+            let mascot = Mascot(name: mascotName.name, scale: mascotName.scale)
             mascots.append(mascot)
         }
         return mascots
@@ -55,9 +55,6 @@ class BottomContainerViewController: UIViewController {
         let parentVC = parent as! ARViewController
         parentVC.arview.scene.removeAnchor(parentVC.anchor)
         
-//        parentVC.arview.removeFromSuperview()
-//        parentVC.arview = nil
-//        parentVC.injectionIsDone = true
         parentVC.navigationController?.isNavigationBarHidden = false
         UIApplication.shared.isIdleTimerDisabled = false
         parentVC.navigationController?.popViewController(animated: true)
@@ -67,19 +64,16 @@ class BottomContainerViewController: UIViewController {
         let parentVC = parent as! ARViewController
         parentVC.arview.scene.removeAnchor(parentVC.anchor)
         
-//        parentVC.arview.removeFromSuperview()
-//        parentVC.arview = nil
         let injection = Injection(limbName: parentVC.selectedLimbName!,
                                   selectedCellX: parentVC.currentTappedCellIndices!.0,
                                   selectedCellY: parentVC.currentTappedCellIndices!.1,
                                   date: Date(), partition: parentVC.partitionValue)
 
         RealmManager.shared.addInjection(newInjection: injection)
+        RealmManager.shared.setMascot(name: mascotNames[parentVC.selectedMascotIndex].0)
         
         parentVC.injection = injection
-
-//        let lastViewController = parent?.navigationController?.topViewController as! GridCollectionViewController
-//        
+        
     }
     
 

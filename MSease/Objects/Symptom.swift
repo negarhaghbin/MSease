@@ -24,28 +24,18 @@ class Symptom{
         symptoms.append(Symptom(name: "Rash", imageName: "rash"))
         symptoms.append(Symptom(name: "Nausea", imageName: "nausea"))
         symptoms.append(Symptom(name: "Vomit", imageName: "vomit"))
-            
-        symptoms.append(Symptom(name: "Headache", imageName: "headache"))
-        symptoms.append(Symptom(name: "Diarrhea", imageName: "diarrhea"))
-        symptoms.append(Symptom(name: "Rash", imageName: "rash"))
-        symptoms.append(Symptom(name: "Nausea", imageName: "nausea"))
-        symptoms.append(Symptom(name: "Vomit", imageName: "vomit"))
-        
+        symptoms.append(Symptom(name: "Chest pain", imageName: "chestPain"))
+        symptoms.append(Symptom(name: "Shortness of breath", imageName: "shortness_breath"))
+        symptoms.append(Symptom(name: "Flushing", imageName: "flushed"))
     }
     
     static func fillReactionsTable(){
-        reactions.append(Symptom(name: "Headache", imageName: "headache"))
-        reactions.append(Symptom(name: "Diarrhea", imageName: "diarrhea"))
+        reactions.append(Symptom(name: "Itching", imageName: "itching"))
+        reactions.append(Symptom(name: "Pain", imageName: "pain"))
+        reactions.append(Symptom(name: "Redness", imageName: "redness"))
+        reactions.append(Symptom(name: "Swelling", imageName: "swelling"))
+        reactions.append(Symptom(name: "Bleeding", imageName: "bleeding"))
         reactions.append(Symptom(name: "Rash", imageName: "rash"))
-        reactions.append(Symptom(name: "Nausea", imageName: "nausea"))
-        reactions.append(Symptom(name: "Vomit", imageName: "vomit"))
-            
-        reactions.append(Symptom(name: "Headache", imageName: "headache"))
-        reactions.append(Symptom(name: "Diarrhea", imageName: "diarrhea"))
-        reactions.append(Symptom(name: "Rash", imageName: "rash"))
-        reactions.append(Symptom(name: "Nausea", imageName: "nausea"))
-        reactions.append(Symptom(name: "Vomit", imageName: "vomit"))
-        
     }
     
     static func symptomImage(for name: String)->String{

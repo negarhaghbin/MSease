@@ -31,7 +31,6 @@ class MascotCell: UITableViewCell {
 
 protocol MascotSelectionViewControllerDelegate: class {
     func mascotSelectionViewController(_ selectionViewController: MascotSelectionViewController, didSelectObjectAt: Int)
-    func mascotSelectionViewController(_ selectionViewController: MascotSelectionViewController, didDeselectObjectAt: Int)
 }
 
 class MascotSelectionViewController: UITableViewController {
@@ -53,9 +52,7 @@ class MascotSelectionViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (selectedMascotRow == indexPath.row) {
-            delegate?.mascotSelectionViewController(self, didDeselectObjectAt: indexPath.row)
-        } else {
+        if (selectedMascotRow != indexPath.row)  {
             delegate?.mascotSelectionViewController(self, didSelectObjectAt: indexPath.row)
         }
 
@@ -73,7 +70,7 @@ class MascotSelectionViewController: UITableViewController {
             fatalError("Did not find `\(MascotCell.self)` type for reuseIdentifier \(MascotCell.reuseIdentifier).")
         }
         
-        cell.modelName = mascotNames[indexPath.row].0
+        cell.modelName = mascotNames[indexPath.row].name
 
         if (selectedMascotRow == indexPath.row) {
             cell.accessoryType = .checkmark

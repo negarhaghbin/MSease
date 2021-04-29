@@ -8,75 +8,78 @@
 import UIKit
 import RealityKit
 import ARKit
-import Combine
 import FocusEntity
 
 class ARViewController: UIViewController {
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var arview : ARView!
     @IBOutlet weak var statusContainerView: UIView!
     @IBOutlet weak var blurView: UIVisualEffectView!
-    
     @IBOutlet weak var bottomContainerView: UIView!
     
-    let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.1, 0.1])
+    // MARK: - Variables
+    var partitionValue = RealmManager.shared.getPartitionValue()
     
+    let anchor = AnchorEntity(plane: .any, minimumBounds: [0.1, 0.1])
     let coachingOverlay = ARCoachingOverlayView()
+    var focusSquare : FocusEntity?
+    
     lazy var statusViewController: StatusViewController = {
         return children.lazy.compactMap({ $0 as? StatusViewController }).first!
     }()
-//    var mascotsViewController: MascotSelectionViewController?
     
     var cells : [[Entity]] = []
     var tappedCells : [[Entity]] = []
     var currentTappedCellIndices : (Int, Int)?
-    var selectedLimbName : String?
-    var focusSquare : FocusEntity?
     
-    var loadedMascot : ModelEntity?
-    
+    var loadedMascots : [ModelEntity] = []
     var isLoading = false
     var isRestartAvailable = true
     
+    var selectedLimbName : String?
     var injection : Injection?{
         didSet{
             navigationController?.isNavigationBarHidden = true
             UIApplication.shared.isIdleTimerDisabled = false
             performSegue(withIdentifier: "postInjection", sender: nil)
-//            let storyboard = UIStoryboard(name: "AR", bundle: nil)
-//            let postInjection = storyboard.instantiateViewController(withIdentifier: "postInjection") as! postInjectionVC
-//
-//            self.navigationController?.pushViewController(postInjection, animated: true)
         }
     }
     
-    //TODO: save the previous selected mascot in db and put that the default value
-    var selectedMascotIndex = -1
     
-    var partitionValue = RealmManager.shared.getPartitionValue()
+    var selectedMascotIndex : Int = -1
     
     let parentEntity = ModelEntity()
 
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
         focusSquare = FocusEntity(on: arview, style: .classic(color: .yellow))
-//        arview.delegate = self
-//        arview.session.delegate = self
         setupCoachingOverlay()
-
-//        print()
-//        arview.scene.rootNode.addChildNode(focusSquare)
+        
+        if loadedMascots.count == 0{
+            loadMascots()
+        }
+        
+        if selectedMascotIndex == -1{
+            for (index, mascot) in mascotNames.enumerated(){
+                if mascot.name == RealmManager.shared.getMascot(){
+                    selectedMascotIndex = index
+                }
+            }
+        }
 
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
         }
         
-//        anchor.addChild(focusSquare)
-        
-        
-        let storyboard = UIStoryboard(name: "AR", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "tutorialVC")
-        present(vc, animated: true)
+        presentTutorial()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,167 +87,97 @@ class ARViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = true
         resetTracking()
         
-        for child in children{
-            if let childVC = child as? BottomContainerViewController{
-                childVC.partitionValue = partitionValue
-            }
-        }
-    }
-    
-    
-    //????
-    override var prefersHomeIndicatorAutoHidden: Bool {
-        return true
+        let bottomViewController = children.lazy.compactMap({ $0 as? BottomContainerViewController }).first!
+        bottomViewController.partitionValue = partitionValue
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         arview.session.pause()
     }
+    
+    // MARK: - Tutorial
+    
+    func presentTutorial(){
+        let storyboard = UIStoryboard(name: "AR", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "tutorialVC")
+        present(vc, animated: true)
+    }
 
     // MARK: - Helper
     
     func resetTracking() {
-        loadedMascot = nil
+//        loadedMascot = nil
         arview.automaticallyConfigureSession = false
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
-//        if #available(iOS 12.0, *) {
-//            configuration.environmentTexturing = .automatic
-//        }
         arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
 
-        statusViewController.scheduleMessage("Select a mascot to begin.", inSeconds: 7.5, messageType: .mascotSelection)
+        statusViewController.scheduleMessage("Tap to place grid.", inSeconds: 7.5, messageType: .mascotSelection)
         arview.scene.addAnchor(anchor)
     }
     
-    // MARK: - Object Loading UI
-    
-    func createGrid(completionHandler: ([(x: Int, y: Int)])->()){
-        let limb = Limb.getLimb(name: selectedLimbName!)
-        let row = limb.numberOfRows
-        let col = limb.numberOfCols
-        let hidden : [(x: Int, y: Int)] = Array(limb.hiddenCells)
-        
-        for i in 0..<row{
-            for _ in 0..<col{
-                
-                let model = CellModelEntity(color: UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)!)
-                if cells.count-1 < i{
-                    cells.append([])
-                }
-                cells[i].append(model)
-                
-                let selectedModel = CellModelEntity(color: .yellow)
-                if tappedCells.count-1 < i{
-                    tappedCells.append([])
-                }
-                tappedCells[i].append(selectedModel)
-                
-            }
-        }
-        
-        completionHandler(hidden)
-    }
-    
-    func placeGrid(hidden: [(x: Int, y: Int)]){
-        
-        for (i,cellRow) in cells.enumerated(){
-            for (j, cell) in cellRow.enumerated(){
-                if hidden.contains(where: { pair in
-                    let result = ((pair.x == i) && (pair.y == j))
-                    return result
-                }){
-                    continue
-                }
-                /*if j<cellRow.count/2{
-                    cell.position = [-Float(j/2)*0.035, 0, Float(i)*0.035]
-                }
-                else{
-                    cell.position = [Float(j/2)*0.035, 0, Float(i)*0.035]
-                }*/
-                
-                let r = cellRow.count%2 == 0 ? Float(0.5) : Float(0)
-                
-                cell.position = [(Float(j-cellRow.count/2)+r)*0.035, 0, 0.05 + Float(i)*0.035]
-                
-                tappedCells[i][j].position = cell.position
-                parentEntity.addChild(cell)
-            }
-        }
-        arview.installGestures([.all], for: parentEntity)
-        anchor.addChild(parentEntity)
-    }
-    
-    func indices(of x: Entity, in array:[[Entity]]) -> (Int, Int)? {
-        for (i, row) in array.enumerated() {
-            if let j = row.firstIndex(of: x) {
-                return (i, j)
-            }
-        }
-        return nil
-    }
-
-    func displayObjectLoadingUI() {
-        for child in children{
-            if let childVC = child as? BottomContainerViewController{
-                childVC.spinner.startAnimating()
-                childVC.addMascotButton.isEnabled = false
-            }
-        }
+    func restartExperience() {
+        guard isRestartAvailable, !isLoading else { return }
         isRestartAvailable = false
+
+        statusViewController.cancelAllScheduledMessages()
+        resetTracking()
+
+        // Disable restart for a while in order to give the session time to restart.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.isRestartAvailable = true
+            self.statusContainerView.isHidden = false
+        }
+    }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
     }
 
-    func hideObjectLoadingUI() {
-        for child in children{
-            if let childVC = child as? BottomContainerViewController{
-                childVC.spinner.stopAnimating()
-                childVC.addMascotButton.isEnabled = true
-            }
+    func objectLoadingUI(display: Bool) {
+        let bottomViewController = children.lazy.compactMap({ $0 as? BottomContainerViewController }).first!
+        if display{
+            bottomViewController.spinner.startAnimating()
+        }
+        else{
+            bottomViewController.spinner.stopAnimating()
         }
         
-        isRestartAvailable = true
+        bottomViewController.addMascotButton.isEnabled = !display
+        
+        isRestartAvailable = !display
     }
     
-    func selectCell(cell: Entity, index: (Int, Int)){
-        parentEntity.addChild(tappedCells[index.0][index.1])
-        currentTappedCellIndices = index
-        parentEntity.removeChild(cell)
-    }
-    
-    func deselectCell(cell: Entity, index: (Int,Int)){
-        parentEntity.addChild(cells[index.0][index.1])
-        parentEntity.removeChild(cell)
-        currentTappedCellIndices = nil
-    }
-    
-    func isShowingGrid() -> Bool{
+    func isShowingObjects() -> Bool{
         for child in anchor.children{
             if child == parentEntity{
                 return true
             }
         }
         return false
-//        return anchor.children.count > 1
     }
     
-    @IBAction func cellTapped(_ sender: UITapGestureRecognizer) {
-        let tapLocation = sender.location(in: arview)
-        if loadedMascot == nil {
-            statusViewController.scheduleMessage("First select a mascot.", inSeconds: 7.5, messageType: .mascotSelection)
-            return
+    func placeObjects(hidden: [(x: Int, y: Int)]){
+        if loadedMascots.count != 0{
+            parentEntity.addChild(loadedMascots[selectedMascotIndex])
         }
+            placeGrid(hidden: hidden)
+            arview.installGestures([.all], for: parentEntity)
+            anchor.addChild(parentEntity)
+    }
+    
+    // MARK: - Actions
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        let tapLocation = sender.location(in: arview)
         
-        if !isShowingGrid(){
-            displayObjectLoadingUI()
+        if !isShowingObjects(){
+            objectLoadingUI(display: true)
             createGrid(completionHandler: { hidden in
-                placeGrid(hidden: hidden)
-                if let mascot = loadedMascot{
-                    placeMascot(mascot)
-                    DispatchQueue.main.async {
-                        self.hideObjectLoadingUI()
-                    }
+                placeObjects(hidden: hidden)
+                DispatchQueue.main.async {
+                    self.objectLoadingUI(display: false)
                 }
             })
         }
@@ -265,41 +198,6 @@ class ARViewController: UIViewController {
         
     }
     
-    /*func removeObjects(){
-        removeMascot(at: selectedMascotIndex)
-        
-        arview.scene.removeAnchor(anchor)
-    }*/
-    
-    func restartExperience() {
-        guard isRestartAvailable, !isLoading else { return }
-        isRestartAvailable = false
-
-        statusViewController.cancelAllScheduledMessages()
-        resetTracking()
-
-        // Disable restart for a while in order to give the session time to restart.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.isRestartAvailable = true
-            self.statusContainerView.isHidden = false
-        }
-    }
-    
-    // MARK: Mascot anchors
-    /*func addOrUpdateAnchor(for object: ModelEntity) {
-        if let anchor = object.anchor {
-            //might need updating the view
-            arview.scene.removeAnchor(anchor)
-//            session.remove(anchor: anchor)
-        }
-        
-        let newAnchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.1, 0.1])
-//        let newAnchor = ARAnchor(transform: object.simdWorldTransform)
-        newAnchor.addChild(object)
-//        object.anchor = newAnchor
-        arview.scene.addAnchor(newAnchor)
-//        session.add(anchor: newAnchor)
-    }*/
     
     // MARK: - Error handling
     
@@ -319,7 +217,6 @@ class ARViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postInjection"{
             let destinationVC = segue.destination as! postInjectionVC

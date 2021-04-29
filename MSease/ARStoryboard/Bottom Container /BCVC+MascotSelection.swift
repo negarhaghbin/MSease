@@ -15,17 +15,19 @@ extension BottomContainerViewController : MascotSelectionViewControllerDelegate 
     func mascotSelectionViewController(_: MascotSelectionViewController, didSelectObjectAt index: Int) {
         
         let parent = self.parent as! ARViewController
-        parent.loadMascot(at: index, loadedHandler: {
-            DispatchQueue.main.async {
-                parent.hideObjectLoadingUI()
-            }
-        })
-        parent.displayObjectLoadingUI()
+        print("here")
+        if parent.isShowingObjects(){
+            parent.parentEntity.removeChild(parent.loadedMascots[parent.selectedMascotIndex])
+            parent.parentEntity.addChild(parent.loadedMascots[index])
+        }
+        parent.selectedMascotIndex = index
+        print(parent.selectedMascotIndex)
+        print(index)
     }
     
     func mascotSelectionViewController(_: MascotSelectionViewController, didDeselectObjectAt index: Int) {
         
         let parent = self.parent as! ARViewController
-        parent.removeMascot(at: index)
+        parent.parentEntity.removeChild(parent.loadedMascots[index])
     }
 }

@@ -167,6 +167,9 @@
                                         <constraints>
                                             <constraint firstItem="S3u-nx-1Dg" firstAttribute="width" secondItem="aOc-3J-xz8" secondAttribute="width" multiplier="0.1" id="ZF0-ao-Q8N"/>
                                         </constraints>
+                                        <connections>
+                                            <segue destination="h88-jU-eec" kind="show" id="Wn1-md-Fif"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -440,6 +443,162 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOp-ys-nwx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1095.6521739130435" y="836.38392857142856"/>
+        </scene>
+        <!--Settings Table View Controller-->
+        <scene sceneID="QD6-mL-YJD">
+            <objects>
+                <tableViewController id="h88-jU-eec" customClass="SettingsTableViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="VUH-j9-0Sq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections>
+                            <tableViewSection id="08D-dL-tWC">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="46" id="SB4-bM-dyd">
+                                        <rect key="frame" x="20" y="18" width="374" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SB4-bM-dyd" id="R1A-KU-W3Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mascot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzi-H6-euE">
+                                                    <rect key="frame" x="20" y="12" width="157.5" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drummer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3el-38-b5x">
+                                                    <rect key="frame" x="177.5" y="12" width="157.5" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mzi-H6-euE" firstAttribute="centerY" secondItem="R1A-KU-W3Z" secondAttribute="centerY" id="1O1-D7-68G"/>
+                                                <constraint firstItem="mzi-H6-euE" firstAttribute="leading" secondItem="R1A-KU-W3Z" secondAttribute="leadingMargin" id="Gwx-NO-jQl"/>
+                                                <constraint firstItem="3el-38-b5x" firstAttribute="centerY" secondItem="R1A-KU-W3Z" secondAttribute="centerY" id="MYe-ui-7Th"/>
+                                                <constraint firstItem="3el-38-b5x" firstAttribute="leading" secondItem="R1A-KU-W3Z" secondAttribute="centerXWithinMargins" id="TdS-cP-jcZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3el-38-b5x" secondAttribute="trailing" id="ttt-vb-GUG"/>
+                                                <constraint firstAttribute="centerXWithinMargins" secondItem="mzi-H6-euE" secondAttribute="trailing" id="w6R-M9-yYq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="uyb-iK-faZ" userLabel="Drummer" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="64" width="374" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyb-iK-faZ" id="la2-Fe-fT0">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drummer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcw-qD-hHj">
+                                                    <rect key="frame" x="118" y="39" width="71" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drummer" translatesAutoresizingMaskIntoConstraints="NO" id="JVE-av-4VG">
+                                                    <rect key="frame" x="20" y="11" width="78" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="JVE-av-4VG" secondAttribute="height" multiplier="1:1" id="Eda-a9-pS8"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jcw-qD-hHj" firstAttribute="leading" secondItem="JVE-av-4VG" secondAttribute="trailing" constant="20" id="CMe-k4-oc7"/>
+                                                <constraint firstItem="jcw-qD-hHj" firstAttribute="centerY" secondItem="la2-Fe-fT0" secondAttribute="centerY" id="GT1-HA-8Nu"/>
+                                                <constraint firstItem="JVE-av-4VG" firstAttribute="leading" secondItem="la2-Fe-fT0" secondAttribute="leadingMargin" id="NSB-rh-noi"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JVE-av-4VG" secondAttribute="bottom" id="efS-WA-5cB"/>
+                                                <constraint firstItem="JVE-av-4VG" firstAttribute="top" secondItem="la2-Fe-fT0" secondAttribute="topMargin" id="gBZ-AH-UhO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageview" destination="JVE-av-4VG" id="qyq-mb-Ie7"/>
+                                            <outlet property="titleLabel" destination="jcw-qD-hHj" id="a5l-S0-APp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="RkB-Av-8Is" userLabel="Plane" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="164" width="374" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RkB-Av-8Is" id="FbF-Jm-w8h">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKK-Xz-fdS">
+                                                    <rect key="frame" x="118" y="39" width="42.5" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plane" translatesAutoresizingMaskIntoConstraints="NO" id="R9p-WN-Edg">
+                                                    <rect key="frame" x="20" y="11" width="78" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="R9p-WN-Edg" secondAttribute="height" multiplier="1:1" id="I31-8R-XCq"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="R9p-WN-Edg" firstAttribute="top" secondItem="FbF-Jm-w8h" secondAttribute="topMargin" id="L2N-Kl-rYG"/>
+                                                <constraint firstItem="FKK-Xz-fdS" firstAttribute="leading" secondItem="R9p-WN-Edg" secondAttribute="trailing" constant="20" id="XK7-dI-ajy"/>
+                                                <constraint firstItem="FKK-Xz-fdS" firstAttribute="centerY" secondItem="FbF-Jm-w8h" secondAttribute="centerY" id="cul-oh-LDn"/>
+                                                <constraint firstItem="R9p-WN-Edg" firstAttribute="leading" secondItem="FbF-Jm-w8h" secondAttribute="leadingMargin" id="fwZ-kT-FSH"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="R9p-WN-Edg" secondAttribute="bottom" id="kwC-ED-zyT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageview" destination="R9p-WN-Edg" id="7AH-ke-xY1"/>
+                                            <outlet property="titleLabel" destination="FKK-Xz-fdS" id="8rT-rj-M53"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="sc3-YV-FyU" userLabel="Robot" customClass="MascotTableViewCell" customModule="MSease" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="264" width="374" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sc3-YV-FyU" id="SNz-HZ-2br">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Robot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Rn-kh7">
+                                                    <rect key="frame" x="118" y="39" width="45.5" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Robot" translatesAutoresizingMaskIntoConstraints="NO" id="dew-AJ-Xxa">
+                                                    <rect key="frame" x="20" y="11" width="78" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="dew-AJ-Xxa" secondAttribute="height" multiplier="1:1" id="HjZ-dS-W7S"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pUh-Rn-kh7" firstAttribute="leading" secondItem="dew-AJ-Xxa" secondAttribute="trailing" constant="20" id="5fe-Cc-xAP"/>
+                                                <constraint firstItem="dew-AJ-Xxa" firstAttribute="leading" secondItem="SNz-HZ-2br" secondAttribute="leadingMargin" id="96Z-q0-ZYg"/>
+                                                <constraint firstItem="pUh-Rn-kh7" firstAttribute="centerY" secondItem="SNz-HZ-2br" secondAttribute="centerY" id="GXR-Np-y8D"/>
+                                                <constraint firstItem="dew-AJ-Xxa" firstAttribute="top" secondItem="SNz-HZ-2br" secondAttribute="topMargin" id="kkU-Ly-40y"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dew-AJ-Xxa" secondAttribute="bottom" id="wFT-hJ-Hfz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageview" destination="dew-AJ-Xxa" id="NDX-kR-tGM"/>
+                                            <outlet property="titleLabel" destination="pUh-Rn-kh7" id="Eex-F3-shw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="h88-jU-eec" id="yQd-AR-Hc8"/>
+                            <outlet property="delegate" destination="h88-jU-eec" id="xDR-97-YYm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gqi-T5-sLr"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="mascotLabel" destination="3el-38-b5x" id="VwB-4g-DUq"/>
+                        <outletCollection property="mascots" destination="uyb-iK-faZ" collectionClass="NSMutableArray" id="fP6-so-5DX"/>
+                        <outletCollection property="mascots" destination="RkB-Av-8Is" collectionClass="NSMutableArray" id="Ksn-kI-eXF"/>
+                        <outletCollection property="mascots" destination="sc3-YV-FyU" collectionClass="NSMutableArray" id="CFh-l8-uMl"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2v9-eV-ykd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1097" y="1558"/>
         </scene>
         <!--Reminder Settings View Controller-->
         <scene sceneID="OhF-SP-jWT">
@@ -960,6 +1119,9 @@
         <segue reference="kbK-Qr-ibN"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Drummer" width="320" height="478"/>
+        <image name="Plane" width="435" height="218"/>
+        <image name="Robot" width="277" height="483"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="envelope" catalog="system" width="128" height="93"/>

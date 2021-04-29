@@ -199,6 +199,7 @@
                         <outlet property="injectButton" destination="rAC-iG-Mk5" id="cDo-fM-We9"/>
                         <outlet property="loadingIndicator" destination="DV3-aS-EqM" id="tml-t8-GFi"/>
                         <outlet property="logSymptomsButton" destination="m4c-YW-WY1" id="OB1-CL-gs9"/>
+                        <outlet property="mascotImage" destination="TBh-U4-rof" id="gtI-4n-sMz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jx2-Jf-66o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

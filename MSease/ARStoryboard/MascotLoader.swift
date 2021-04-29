@@ -11,33 +11,33 @@ import RealityKit
 import Combine
 
 extension ARViewController {
-    // MARK: - Loading Mascot
     
-    func placeMascot(_ mascot: ModelEntity){
-//        let x = Float(location.x)
-//        let z = Float(location.y)
-//        mascot.position = [x*0.001, 0, -z*0.001]
-        
-//        mascot.position = [, 0, ]
-        self.parentEntity.addChild(mascot)
-    }
-    
-    
-    func loadMascot(at index: Int, loadedHandler: @escaping () -> Void) {
+    func loadMascots() {
         var cancellable : AnyCancellable? = nil
         isLoading = true
         
         cancellable = ModelEntity
-            .loadModelAsync(named: mascotNames[index].0)
+            .loadModelAsync(named: mascotNames[0].name)
+            .append(ModelEntity
+                        .loadModelAsync(named: mascotNames[1].name))
+            .append(ModelEntity
+                        .loadModelAsync(named: mascotNames[2].name))
             .collect()
             .sink(receiveCompletion: {error in
                 print("Error: \(error)")
                 cancellable?.cancel()
             }, receiveValue: { [self]entities in
-                let entity = entities.first
-                entity!.setScale(SIMD3<Float>(mascotNames[index].1, mascotNames[index].1, mascotNames[index].1), relativeTo: self.anchor)
-                entity?.generateCollisionShapes(recursive: true)
-                arview.installGestures([.all], for: entity!)
+                
+                for (index, entity) in entities.enumerated(){
+                    entity.setScale(SIMD3<Float>(mascotNames[index].1, mascotNames[index].1, mascotNames[index].1), relativeTo: self.anchor)
+                    entity.generateCollisionShapes(recursive: true)
+                    loadedMascots.append(entity)
+                }
+                if isShowingObjects(){
+                    parentEntity.addChild(loadedMascots[selectedMascotIndex])
+                }
+                /*let entity = entities.first
+                
                 if isShowingMascot(){
                     removeMascot(at: selectedMascotIndex)
                     placeMascot(entity!)
@@ -45,27 +45,30 @@ extension ARViewController {
                 selectedMascotIndex = index
                 
                 self.loadedMascot = entity
-                self.isLoading = false
+                self.isLoading = false*/
+                
                 cancellable?.cancel()
             })
-        
-        loadedHandler()
     }
     
-    func isShowingMascot() -> Bool{
-        if selectedMascotIndex != -1{
-            return true
-        }
-        else{
+    
+    /* func isShowingMascot() -> Bool{
+        guard let _ = loadedMascot else {
             return false
         }
+        return true
     }
     
-    // MARK: Removing Mascot
-    func removeMascot(at index: Int) {
-        self.anchor.removeChild(loadedMascot!)
-        selectedMascotIndex = -1
-        loadedMascot = nil
+    func placeMascot(_ mascot: ModelEntity){
+        self.parentEntity.addChild(mascot)
     }
+    
+    func removeMascot(at index: Int) {
+        if isShowingMascot(){
+            self.anchor.removeChild(loadedMascot!)
+            selectedMascotIndex = -1
+            loadedMascot = nil
+        }
+    }*/
     
 }

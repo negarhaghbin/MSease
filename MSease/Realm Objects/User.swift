@@ -19,6 +19,8 @@ class User: Object {
     @objc dynamic var diagnosisDate: String = ""
     @objc dynamic var treatmentBeginningDate: String = ""
     
+    @objc dynamic var mascot: String = "Drummer"
+    
     override static func primaryKey() -> String? {
         return "_id"
     }

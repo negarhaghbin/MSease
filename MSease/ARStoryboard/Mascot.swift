@@ -6,7 +6,10 @@
 //
 
 
-let mascotNames = [("drummer",Float(0.008)), ("plane",Float(0.004)), ("robot",Float(0.005))]
+let mascotNames = [
+    (name: "Drummer", scale: Float(0.008)),
+    (name: "Plane", scale: Float(0.004)),
+    (name: "Robot", scale: Float(0.005))]
 
 struct Mascot{
     var name : String?

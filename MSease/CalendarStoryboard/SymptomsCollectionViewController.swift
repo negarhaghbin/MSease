@@ -77,15 +77,6 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         textView.textColor = UIColor(named: "Label Color")
     }
     
-    // MARK: - Animation
-    func AnimateTableCell(indexPath: IndexPath){
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            self.tableView.beginUpdates()
-            self.tableView.deselectRow(at: indexPath, animated: true)
-            self.tableView.endUpdates()
-        })
-    }
-    
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!

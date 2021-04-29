@@ -59,7 +59,7 @@ extension RealmManager{
     
     func getNotes(for date: Date) -> Results<Note>{
         let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
-        let result = realm!.objects(Note.self).filter(predicate)
+        let result = realm!.objects(Note.self).filter(predicate).sorted(byKeyPath: "time", ascending: false)
 //        var photos : [String] = []
 //        for note in result{
 //            photos = getNoteImages(noteId: note._id)
@@ -170,7 +170,7 @@ extension RealmManager{
     
     func getInjections(for date: Date) -> Results<Injection>{
         let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
-        let result = realm!.objects(Injection.self).filter(predicate)
+        let result = realm!.objects(Injection.self).filter(predicate).sorted(byKeyPath: "time", ascending: false)
         return result
     }
     
@@ -267,6 +267,9 @@ extension RealmManager{
     func getPretestData()->[String]{
         let pretestData = realm?.objects(User.self).first?.getPretestData()
         
+        guard let _ = pretestData else {
+            return["", "", "", "", ""]
+        }
         return [pretestData!.gender,
                 pretestData!.birthday,
                 pretestData!.typeOfMS,
@@ -408,6 +411,25 @@ extension RealmManager{
         }
         else{
             return true
+        }
+    }
+}
+
+// MARK: Mascot
+extension RealmManager{
+    func setMascot(name mascot: String){
+        let user = realm!.objects(User.self).first
+        try! realm!.write{
+            user?.mascot = mascot
+        }
+    }
+    
+    func getMascot()->String{
+        if let mascot = realm!.objects(User.self).first?.mascot{
+            return mascot
+        }
+        else{
+            return "Drummer"
         }
     }
 }

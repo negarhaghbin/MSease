@@ -28,13 +28,15 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     var userRealm: Realm?{
         didSet{
             if userRealm != nil{
-                RealmManager.shared.setRealm(realm: userRealm!)
-                setMascot()
-                if !RealmManager.shared.hasSignedConsent(realm: userRealm!){
-                    let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "consentVC")
-                    self.navigationController?.setViewControllers([vc], animated: true)
-                }
+                RealmManager.shared.setRealm(realm: userRealm!, handler: {
+                    setMascot()
+                    if !RealmManager.shared.hasSignedConsent(realm: userRealm!){
+                        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "consentVC")
+                        self.navigationController?.setViewControllers([vc], animated: true)
+                    }
+                })
+                
             }
         }
     }

@@ -15,7 +15,6 @@ extension BottomContainerViewController : MascotSelectionViewControllerDelegate 
     func mascotSelectionViewController(_: MascotSelectionViewController, didSelectObjectAt index: Int) {
         
         let parent = self.parent as! ARViewController
-        print("here")
         if parent.isShowingObjects(){
             if parent.selectedMascotIndex != -1{
                 parent.parentEntity.removeChild(parent.loadedMascots[parent.selectedMascotIndex])
@@ -23,8 +22,6 @@ extension BottomContainerViewController : MascotSelectionViewControllerDelegate 
             parent.parentEntity.addChild(parent.loadedMascots[index])
         }
         parent.selectedMascotIndex = index
-        print(parent.selectedMascotIndex)
-        print(index)
     }
     
     func mascotSelectionViewController(_: MascotSelectionViewController, didDeselectObjectAt index: Int) {

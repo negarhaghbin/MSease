@@ -25,8 +25,9 @@ class RealmManager{
         return App(id: "mseaseapp-wrhfs")
     }
     
-    func setRealm(realm: Realm){
+    func setRealm(realm: Realm, handler: ()->()){
         self.realm = realm
+        handler()
     }
     
     func getPartitionValue()->String{
@@ -193,6 +194,15 @@ extension RealmManager{
         let predicate = NSPredicate(format: "date beginswith %@", date.getUSFormat())
         let result = realm!.objects(Injection.self).filter(predicate)
         return result.count == 0 ? false : true
+    }
+    
+    func editInjection(id: ObjectId, limbName: String, selectedCellX: Int, selectedCellY: Int){
+        let oldInjection = realm!.object(ofType: Injection.self, forPrimaryKey: id)
+        try! realm!.write{
+            oldInjection?.limbName = limbName
+            oldInjection?.selectedCellX = selectedCellX
+            oldInjection?.selectedCellY = selectedCellY
+        }
     }
     
 }

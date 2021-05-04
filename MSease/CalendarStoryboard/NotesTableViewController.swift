@@ -41,7 +41,7 @@ class NotesTableViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var titleDateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var symptomsView : UIView!
+    @IBOutlet weak var symptomsView : UIView!
     @IBOutlet weak var shadowView: UIView!
     
     // MARK: - View Controller

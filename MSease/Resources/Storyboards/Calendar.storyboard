@@ -290,19 +290,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="331" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqA-qD-DaO">
-                                <rect key="frame" x="66" y="177" width="199" height="50.5"/>
-                                <color key="backgroundColor" red="0.29411764705882354" green="0.6705882352941176" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
-                                <state key="normal" title="Injection">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Rj7-Aj-Y2C">
+                                <rect key="frame" x="66" y="182.5" width="199" height="140"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqA-qD-DaO">
+                                        <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                        <color key="backgroundColor" red="0.29411764705882354" green="0.6705882352941176" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9gP-vU-xPN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Injection">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addInjectionTapped:" destination="Mcc-fO-phX" eventType="touchUpInside" id="Q3I-uE-YcY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xh4-Mv-fTS">
+                                        <rect key="frame" x="0.0" y="90" width="199" height="50"/>
+                                        <color key="backgroundColor" red="0.40784313729999999" green="0.66274509800000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Symptom">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="QnQ-Hl-G6a" kind="show" identifier="showAddSymptoms" id="AFm-Oe-mIZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIb-c7-Osc">
                                 <rect key="frame" x="279" y="20" width="32" height="32"/>
                                 <constraints>
@@ -317,36 +344,15 @@
                                     <action selector="closePopup:" destination="Mcc-fO-phX" eventType="touchUpInside" id="qxo-Fx-VBb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xh4-Mv-fTS">
-                                <rect key="frame" x="66" y="278" width="199" height="50.5"/>
-                                <color key="backgroundColor" red="0.40784313729999999" green="0.66274509800000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
-                                <state key="normal" title="Symptom">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="QnQ-Hl-G6a" kind="show" identifier="showAddSymptoms" id="AFm-Oe-mIZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HfE-Dq-kDJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NqA-qD-DaO" firstAttribute="height" secondItem="JjH-to-KJt" secondAttribute="height" multiplier="0.1" id="4rn-Rx-F5G"/>
-                            <constraint firstItem="xh4-Mv-fTS" firstAttribute="centerY" secondItem="JjH-to-KJt" secondAttribute="centerY" multiplier="1.2" id="F8a-H4-WoW"/>
-                            <constraint firstItem="xh4-Mv-fTS" firstAttribute="centerX" secondItem="JjH-to-KJt" secondAttribute="centerX" id="FR8-mM-O51"/>
-                            <constraint firstItem="NqA-qD-DaO" firstAttribute="centerY" secondItem="JjH-to-KJt" secondAttribute="centerY" multiplier="0.8" id="GAo-nA-MCj"/>
-                            <constraint firstItem="NqA-qD-DaO" firstAttribute="centerX" secondItem="JjH-to-KJt" secondAttribute="centerX" id="OAM-Ed-blf"/>
-                            <constraint firstItem="NqA-qD-DaO" firstAttribute="width" secondItem="JjH-to-KJt" secondAttribute="width" multiplier="0.6" id="fMX-O0-blt"/>
+                            <constraint firstItem="Rj7-Aj-Y2C" firstAttribute="centerX" secondItem="JjH-to-KJt" secondAttribute="centerX" id="2an-1O-Iid"/>
+                            <constraint firstItem="Rj7-Aj-Y2C" firstAttribute="width" secondItem="HfE-Dq-kDJ" secondAttribute="width" multiplier="0.6" id="BQ1-d6-wWR"/>
                             <constraint firstItem="wIb-c7-Osc" firstAttribute="top" secondItem="JjH-to-KJt" secondAttribute="top" constant="20" id="l8o-hh-iaJ"/>
-                            <constraint firstItem="xh4-Mv-fTS" firstAttribute="width" secondItem="NqA-qD-DaO" secondAttribute="width" id="uiU-Wq-7bW"/>
                             <constraint firstAttribute="trailing" secondItem="wIb-c7-Osc" secondAttribute="trailing" constant="20" id="vAN-sU-UWS"/>
-                            <constraint firstItem="xh4-Mv-fTS" firstAttribute="height" secondItem="NqA-qD-DaO" secondAttribute="height" id="zpZ-Kg-QnT"/>
+                            <constraint firstItem="Rj7-Aj-Y2C" firstAttribute="centerY" secondItem="JjH-to-KJt" secondAttribute="centerY" id="wBw-wC-KHk"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -361,7 +367,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wi9-dn-nff"/>
+        <segue reference="AFm-Oe-mIZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>

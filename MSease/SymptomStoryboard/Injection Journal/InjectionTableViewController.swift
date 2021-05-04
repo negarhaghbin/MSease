@@ -12,8 +12,10 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     // MARK: - IBOutlets
     @IBOutlet var options: [UIButton]!
     
+    @IBOutlet weak var limbPicker: UIPickerView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyImage: UIImageView!
+    @IBOutlet weak var limbPickerCell: UITableViewCell!
     @IBOutlet weak var limbCell: UITableViewCell!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var reactionsCollectionView: UICollectionView!
@@ -34,18 +36,17 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         case note
     }
     
-    var injection : Injection?{
-        didSet{
-            selectedPain = injection!.painScale
-            PISelectedSymptomNames = injection!.getSymptoms()
-            PISelectedReactionNames = injection!.getReactions()
-        }
-    }
+    var injection : Injection?
     var grid2D : [[UIImageView]] = []
     
     var isNewInjection: Bool?
-    
+    var date : Date?{
+        didSet{
+            self.title = date?.getUSFormat()
+        }
+    }
     var selectedPain : Int?
+    var selectedCell : (x: Int, y: Int)?
     
     var partitionValue = RealmManager.shared.getPartitionValue()
     
@@ -60,22 +61,34 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         
         toolbar.setItems([doneButton], animated: true)
         textView.inputAccessoryView = toolbar
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         styleButtons()
         
-        if selectedPain != 0{
+        selectedPain = injection?.painScale
+        PISelectedSymptomNames = injection?.getSymptoms() ?? []
+        PISelectedReactionNames = injection?.getReactions() ?? []
+        if selectedPain != nil && selectedPain != 0{
             StylingUtilities.styleFilledPainscaleButton(options[selectedPain!-1], range: selectedPain!)
         }
-
+        if injection != nil{
+            selectedCell = (x: injection!.selectedCellX, y: injection!.selectedCellY)
+            let pickerRow = rowInPicker(title: injection!.limbName)
+            limbPicker.selectRow(pickerRow, inComponent: 0, animated: false)
+        }
+        titleLabel.text = injection?.limbName ?? limbs[limbPicker.selectedRow(inComponent: 0)].name
+        
+        
         textView.text = injection?.note
         symptomsCollectionView.reloadData()
         reactionsCollectionView.reloadData()
         
-        titleLabel.text = injection?.limbName
-        
-        let injectedLimb = Limb.getLimb(name: injection!.limbName)
+        let injectedLimb = Limb.getLimb(name: injection?.limbName ?? limb.abdomen.rawValue)
         bodyImage.image = UIImage(named: injectedLimb.imageName)!
         prepareGrid(limbGrid: injectedLimb)
         
@@ -96,20 +109,95 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!
-        RealmManager.shared.addPostInjectionData(injection: injection!, painScale: selectedPain!, note: content, symptoms: PISelectedSymptomNames, reactions: PISelectedReactionNames)
+        if injection == nil {
+            injection = Injection(limbName: titleLabel.text!, selectedCellX: selectedCell!.x, selectedCellY: selectedCell!.y, hasUsedAR: false, date: date, partition: partitionValue)
+            RealmManager.shared.addInjection(newInjection: injection!)
+        }
+        else{
+            RealmManager.shared.editInjection(id: injection!._id, limbName: titleLabel.text!, selectedCellX: selectedCell!.x, selectedCellY: selectedCell!.y)
+        }
+        
+        RealmManager.shared.addPostInjectionData(injection: injection!, painScale: selectedPain ?? 0, note: content, symptoms: PISelectedSymptomNames, reactions: PISelectedReactionNames)
         
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func painButtonTapped(_ sender: UIButton) {
-        if selectedPain != 0{
+        if selectedPain != nil && selectedPain != 0{
             StylingUtilities.stylePainscaleButton(options[selectedPain!-1], range: selectedPain!)
         }
         selectedPain = Int((sender.titleLabel?.text)!)!
         StylingUtilities.styleFilledPainscaleButton(options[selectedPain!-1], range: selectedPain!)
     }
     
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        if tappedImage.tintColor == UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].0) {
+            if selectedCell != nil{
+                grid2D[selectedCell!.x][selectedCell!.y].tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].0)
+            }
+            
+            tappedImage.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[0].0)
+            
+            for i in 0..<grid2D.count{
+                for j in 0..<grid2D[i].count{
+                    if grid2D[i][j] == tappedImage{
+                        selectedCell = (x: i, y:j)
+                        return
+                    }
+                }
+            }
+            
+        }
+        else{
+            tappedImage.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].0)
+        }
+        
+    }
+    
+    // MARK: - Table View Controller
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath == IndexPath(row: 0, section: sections.limb.rawValue){
+            limbPicker.isHidden = !limbPicker.isHidden
+        }
+        AnimateTableCell(indexPath: indexPath)
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == sections.limb.rawValue{
+            if indexPath.row == 0{
+                return CGFloat(50)
+            }
+            if indexPath.row == 1{
+                return limbPicker.isHidden ? CGFloat(0) : CGFloat(200)
+            }
+            else{
+                return titleLabel.text == "Abdomen" ? CGFloat(170) : CGFloat(250)
+            }
+        }
+        else if indexPath.section == sections.painScale.rawValue{
+            return CGFloat(250)
+        }
+        else if indexPath.section == sections.note.rawValue{
+            return CGFloat(170)
+        }
+        else{
+            return CGFloat(150)
+        }
+    }
+    
     // MARK: - Helpers
+    
+    func rowInPicker(title:String)->Int{
+        for (i, limb) in limbs.enumerated(){
+            if limb.name == title{
+                return i
+            }
+        }
+        return -1
+    }
+    
     func styleButtons(){
         for (index,option) in options.enumerated(){
             StylingUtilities.stylePainscaleButton(option, range: index+1)
@@ -125,31 +213,10 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
             self.grid2D[block.x][block.y].isHidden = true
         }
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == sections.limb.rawValue{
-            if injection?.limbName == "Abdomen"{
-                return CGFloat(170)
-            }
-            else{
-                return CGFloat(250)
-            }
-        }
-        else if indexPath.section == sections.painScale.rawValue{
-            return CGFloat(250)
-        }
-        else if indexPath.section == sections.note.rawValue{
-            return CGFloat(170)
-        }
-        else{
-            return CGFloat(122)
-        }
-    }
+    
     
     // FIXME: For big screens
     func prepareGrid(limbGrid: Limb){
-        var cells : [(x: Int, y: Int)] = []
-        cells.append((x: injection!.selectedCellX, y: injection!.selectedCellY))
-        
         let width : Double?
         if limbGrid.name == "Abdomen"{
             width = Double(limbCell.contentView.frame.width/20)
@@ -167,8 +234,12 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
                 let imageView = UIImageView(frame: frame)
                 imageView.image = UIImage(systemName: "square.fill")
                 imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].0)
+                imageView.isUserInteractionEnabled = true
                 
-                if (injection!.selectedCellX == i) && (injection?.selectedCellY == j){
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+                imageView.addGestureRecognizer(tapGestureRecognizer)
+                
+                if (selectedCell?.x == i) && (selectedCell?.y == j){
                     imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[0].0)
                 }
                 
@@ -177,6 +248,17 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
             }
         }
         hideExtraRowsAndCols(hidden: Array(limbGrid.hiddenCells))
+    }
+    
+    func removePreviousGrid(){
+        for subview in limbCell.contentView.subviews{
+            let imageSubview = subview as! UIImageView
+            if imageSubview.image == UIImage(systemName: "square.fill"){
+                imageSubview.removeFromSuperview()
+            }
+        }
+        grid2D = []
+        selectedCell = nil
     }
     
     // MARK: - Navigation
@@ -251,4 +333,27 @@ extension InjectionTableViewController : UICollectionViewDelegate, UICollectionV
     }
 }
 
+extension InjectionTableViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return limbs.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return limbs[row].name
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedLimbName = limbs[pickerView.selectedRow(inComponent: 0)].name
+        titleLabel.text = selectedLimbName
+        removePreviousGrid()
+        let injectedLimb = Limb.getLimb(name: selectedLimbName)
+        bodyImage.image = UIImage(named: injectedLimb.imageName)!
+        prepareGrid(limbGrid: injectedLimb)
+        tableView.reloadData()
+    }
+    
+}
 

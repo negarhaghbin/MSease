@@ -48,4 +48,14 @@ extension UITableViewController{
             self.tableView.endUpdates()
         })
     }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
 }
+
+

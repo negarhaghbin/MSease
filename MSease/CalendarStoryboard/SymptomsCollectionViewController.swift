@@ -47,6 +47,10 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         
         toolbar.setItems([doneButton], animated: true)
         textView.inputAccessoryView = toolbar
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,7 +113,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == IndexPath(row: 0, section: 0) {
-            return CGFloat(122.0)
+            return CGFloat(150.0)
         }
         else if indexPath == IndexPath(row: 1, section: 1) {
             let height:CGFloat = timePicker.isHidden ? 0.0 : 200.0

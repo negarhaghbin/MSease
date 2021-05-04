@@ -101,22 +101,24 @@ class SignupLoginViewController: UIViewController {
                             case .failure(let error):
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let userRealm):
-                                RealmManager.shared.setRealm(realm: userRealm)
-                                if RealmManager.shared.hasSignedConsent(realm: userRealm){
-                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
-//                                    homeVC.userRealm = userRealm
-                                    
-                                    self?.scheduleReminders()
-                                    self?.navigationController?.setViewControllers([homeVC], animated: true)
-                                }
-                                else{
-                                    let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-                                    let destination = storyboard.instantiateViewController(withIdentifier: "consentVC") as! ConsentViewController
-                                    destination.userRealm = userRealm
+                                RealmManager.shared.setRealm(realm: userRealm, handler:{
+                                    if RealmManager.shared.hasSignedConsent(realm: userRealm){
+                                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                        let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
+    //                                    homeVC.userRealm = userRealm
+                                        
+                                        self?.scheduleReminders()
+                                        self?.navigationController?.setViewControllers([homeVC], animated: true)
+                                    }
+                                    else{
+                                        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                                        let destination = storyboard.instantiateViewController(withIdentifier: "consentVC") as! ConsentViewController
+                                        destination.userRealm = userRealm
 
-                                    self?.navigationController?.setViewControllers([destination], animated: true)
-                                }
+                                        self?.navigationController?.setViewControllers([destination], animated: true)
+                                    }
+                                })
+                                
                                 
                             }
                         }

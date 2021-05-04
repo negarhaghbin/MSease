@@ -57,6 +57,8 @@
 		84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4E2261F836300CE52BD /* PretestQuestions.swift */; };
 		84A0C4EB2620C22C00CE52BD /* postInjectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4EA2620C22C00CE52BD /* postInjectionVC.swift */; };
 		84A0C4EF2624D1EA00CE52BD /* InjectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */; };
+		84A0F4AE263C30C200B8A68A /* tutorial1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84A0F4AD263C30C200B8A68A /* tutorial1.gif */; };
+		84A0F4B1263C4F3F00B8A68A /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0F4B0263C4F3F00B8A68A /* testViewController.swift */; };
 		84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* ARUtilities.swift */; };
 		84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */; };
 		84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */; };
@@ -91,6 +93,7 @@
 		84D4E73125E812E800DB75B4 /* Drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72E25E812E700DB75B4 /* Drummer.usdz */; };
 		84D4E73225E812E800DB75B4 /* Plane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72F25E812E700DB75B4 /* Plane.usdz */; };
 		84E50A62263AD5BF00917872 /* ARViewController+Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E50A61263AD5BF00917872 /* ARViewController+Grid.swift */; };
+		84E50A6C263B617200917872 /* tutorial0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84E50A6B263B617200917872 /* tutorial0.gif */; };
 		84F5E79125C4482900EED24C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5E79025C4482900EED24C /* Profile.storyboard */; };
 		84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79925C44A7300EED24C /* ProfileViewController.swift */; };
 		84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */; };
@@ -150,6 +153,8 @@
 		84A0C4E2261F836300CE52BD /* PretestQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretestQuestions.swift; sourceTree = "<group>"; };
 		84A0C4EA2620C22C00CE52BD /* postInjectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postInjectionVC.swift; sourceTree = "<group>"; };
 		84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionTableViewController.swift; sourceTree = "<group>"; };
+		84A0F4AD263C30C200B8A68A /* tutorial1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tutorial1.gif; sourceTree = "<group>"; };
+		84A0F4B0263C4F3F00B8A68A /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		84ACFB1E25BE139000A09F67 /* ARUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARUtilities.swift; sourceTree = "<group>"; };
 		84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotSelectionViewController.swift; sourceTree = "<group>"; };
 		84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCVC+MascotSelection.swift"; sourceTree = "<group>"; };
@@ -184,6 +189,7 @@
 		84D4E72E25E812E700DB75B4 /* Drummer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Drummer.usdz; path = Untitled/Drummer.usdz; sourceTree = SOURCE_ROOT; };
 		84D4E72F25E812E700DB75B4 /* Plane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Plane.usdz; path = Untitled/Plane.usdz; sourceTree = SOURCE_ROOT; };
 		84E50A61263AD5BF00917872 /* ARViewController+Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARViewController+Grid.swift"; sourceTree = "<group>"; };
+		84E50A6B263B617200917872 /* tutorial0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = tutorial0.gif; path = Untitled/tutorial0.gif; sourceTree = SOURCE_ROOT; };
 		84F5E79025C4482900EED24C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		84F5E79925C44A7300EED24C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +299,9 @@
 		84979F2E25B9DFF200578C37 /* MSease */ = {
 			isa = PBXGroup;
 			children = (
+				84A0F4B32640608600B8A68A /* SymptomStoryboard */,
+				84A0F4AD263C30C200B8A68A /* tutorial1.gif */,
+				84E50A6B263B617200917872 /* tutorial0.gif */,
 				8488B99F260159C6003B7B95 /* Realm Objects */,
 				841F9EF625FA823C00E4B519 /* OnboardingStoryboard */,
 				84D4E72725E7F67C00DB75B4 /* ARStoryboard */,
@@ -306,6 +315,7 @@
 				84979F2F25B9DFF200578C37 /* AppDelegate.swift */,
 				840C1E6D25D36E9400AD339E /* RealmManager.swift */,
 				843C05E1263083EE00FFFC2D /* NotificationManager.swift */,
+				84A0F4B0263C4F3F00B8A68A /* testViewController.swift */,
 			);
 			path = MSease;
 			sourceTree = "<group>";
@@ -336,6 +346,14 @@
 				84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */,
 			);
 			path = "Injection Journal";
+			sourceTree = "<group>";
+		};
+		84A0F4B32640608600B8A68A /* SymptomStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				84A0C4ED2624D19900CE52BD /* Injection Journal */,
+			);
+			path = SymptomStoryboard;
 			sourceTree = "<group>";
 		};
 		84ACFB1D25BE139000A09F67 /* Utilities */ = {
@@ -441,7 +459,6 @@
 		84F5E79625C44A2C00EED24C /* CalendarStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				84A0C4ED2624D19900CE52BD /* Injection Journal */,
 				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
 				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
 				840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */,
@@ -532,6 +549,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A0F4AE263C30C200B8A68A /* tutorial1.gif in Resources */,
 				84D4E73125E812E800DB75B4 /* Drummer.usdz in Resources */,
 				84BBE22225C0D63F0046C24F /* Calendar.storyboard in Resources */,
 				84979F3225B9DFF200578C37 /* art.scnassets in Resources */,
@@ -542,6 +560,7 @@
 				84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */,
 				84D4E73225E812E800DB75B4 /* Plane.usdz in Resources */,
 				84D4E73025E812E800DB75B4 /* Robot.usdz in Resources */,
+				84E50A6C263B617200917872 /* tutorial0.gif in Resources */,
 				84F5E79125C4482900EED24C /* Profile.storyboard in Resources */,
 				84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */,
 				84D4E72525E7F1F800DB75B4 /* AR.storyboard in Resources */,
@@ -663,6 +682,7 @@
 				841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
 				8499443F25FBCDD200AFB965 /* SignupLoginViewController.swift in Sources */,
+				84A0F4B1263C4F3F00B8A68A /* testViewController.swift in Sources */,
 				84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */,
 				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
 				8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */,

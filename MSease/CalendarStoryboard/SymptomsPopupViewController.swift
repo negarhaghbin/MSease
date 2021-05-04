@@ -8,44 +8,58 @@
 import UIKit
 
 class SymptomsPopupViewController: UIViewController {
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var closeButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    // MARK: - Variables
+    enum segueIds : String {
+        case showAddSymptoms
+        case addInjection
     }
     
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
+    // MARK: - Actions
     @IBAction func closePopup(_ sender: Any) {
+        dismissPopup()
+    }
+    
+    @IBAction func addInjectionTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Symptom", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "editInjection") as! InjectionTableViewController
+        let notesVC = parent as! NotesTableViewController
+        vc.partitionValue = notesVC.partitionValue
+        vc.isNewInjection = true
+        vc.date = notesVC.date
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - Helper
+    func dismissPopup(){
         let notesVC = parent as! NotesTableViewController
         notesVC.symptomsView.animHide()
         notesVC.shadowView.isHidden = true
-//        dismiss(animated: true)
-    }
-    
-    @IBAction func addInjectionLogTapped(_ sender: Any) {
-    }
-    
-    @IBAction func addSymptomsLogTapped(_ sender: Any) {
     }
     
     
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let notesVC = parent as! NotesTableViewController
-        notesVC.symptomsView.animHide()
-        notesVC.shadowView.isHidden = true
         
-        if segue.identifier == "showAddSymptoms" {
-            let symptomsVC = segue.destination as? SymptomsCollectionViewController
-//            symptomsVC!.date = notesVC.date
-            symptomsVC!.partitionValue = notesVC.partitionValue
-            symptomsVC!.isNewNote = true
-            symptomsVC!.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [], partition: notesVC.partitionValue)
+        dismissPopup()
+        let notesVC = parent as! NotesTableViewController
+        
+        if let symptomsVC = segue.destination as? SymptomsCollectionViewController{
+            symptomsVC.partitionValue = notesVC.partitionValue
+            symptomsVC.isNewNote = true
+            symptomsVC.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [], partition: notesVC.partitionValue)
         }
+        
     }
     
 

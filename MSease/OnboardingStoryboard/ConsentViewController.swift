@@ -16,13 +16,14 @@ class ConsentViewController: UIViewController {
     @IBOutlet weak var acceptButton: UIButton!
     
     // MARK: - Variables
-    var userRealm: Realm?{
+    var userRealm: Realm?
+    /*{
         didSet{
             if userRealm != nil{
                 RealmManager.shared.setRealm(realm: userRealm!)
             }
         }
-    }
+    }*/
     
     // MARK: - ViewController
     override func viewWillAppear(_ animated: Bool) {

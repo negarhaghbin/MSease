@@ -46,6 +46,10 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             blurView.isHidden = true
         }
     }
+    
+    lazy var topBarViewController: TopBarViewController = {
+        return children.lazy.compactMap({ $0 as? TopBarViewController }).first!
+    }()
 
     // MARK: - View Controller
     deinit {
@@ -67,6 +71,8 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         if userRealm != nil{
             setMascot()
         }
+        calendar.calendarHeaderView.removeFromSuperview()
+        topBarViewController.monthLabel.text = Date().getMonth()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -121,6 +127,8 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
         selectedDate = selectedDate.setTime(h: Calendar.current.component(.hour, from: Date()), m: Calendar.current.component(.minute, from: Date()))
+        
+        topBarViewController.monthLabel.text = date.getMonth()
     }
     
     // MARK: - Helpers

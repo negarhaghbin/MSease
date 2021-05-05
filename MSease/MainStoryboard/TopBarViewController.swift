@@ -9,6 +9,8 @@ import UIKit
 
 class TopBarViewController: UIViewController {
 
+    @IBOutlet weak var monthLabel:UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         StylingUtilities.styleView(self.view)

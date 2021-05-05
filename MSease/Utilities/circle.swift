@@ -12,10 +12,10 @@ class circle: UIView {
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         
-        let shadowOffset = CGSize(width: 3.1, height: 3.1)
-        let shadowBlurRadius: CGFloat = 5
+        let shadowOffset = CGSize(width: 0, height: 3)
+        let shadowBlurRadius: CGFloat = 8
         
-        context?.setShadow(offset: shadowOffset, blur: shadowBlurRadius, color: CGColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0))
+        context?.setShadow(offset: shadowOffset, blur: shadowBlurRadius, color: CGColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1))
         
         var path = UIBezierPath()
         path = UIBezierPath(ovalIn: CGRect(x: 10, y: 10, width: superview!.frame.width*0.9-20, height: superview!.frame.width*0.9-20))

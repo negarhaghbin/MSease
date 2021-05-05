@@ -26,6 +26,12 @@ extension Date{
 //        return "\(self.):\(minutes) \(formatter.string(from: self))"
     }
     
+    func getMonth()->String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM"
+        return formatter.string(from: self)
+    }
+    
     func setTime(h: Int, m: Int)->Date{
         var hour = h
         if h == 24{
@@ -87,6 +93,11 @@ func getTimeFromString(_ time: String)->(h: Int, m:Int){
 //
 //    return Calendar.current.date(from: dateComponents)!
     return (h: hourInt, m:Int(minute)!)
+}
+
+func changeTimeTo24hourFormat(oldTime: String)->String{
+    let timeTuple = getTimeFromString(oldTime)
+    return "\(timeTuple.h):\(timeTuple.m)"
 }
 
 func timeIntervalToWeeks(timeInterval: TimeInterval)->Double{

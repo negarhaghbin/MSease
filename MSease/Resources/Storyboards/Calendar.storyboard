@@ -209,6 +209,50 @@
                                             <outlet property="timeLabel" destination="fa8-Kf-Er0" id="8SN-td-FAf"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="injectionsTableViewCell" rowHeight="90" id="qbe-Yn-7sB" userLabel="injectionsTableViewCell" customClass="InjectionTableViewCell" customModule="MSease" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="205.5" width="374" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qbe-Yn-7sB" id="qUW-vv-z62">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr2-Mv-Dib">
+                                                    <rect key="frame" x="20" y="11" width="334" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eh0-Dv-HVE">
+                                                    <rect key="frame" x="276" y="16" width="58" height="58"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="eh0-Dv-HVE" secondAttribute="height" multiplier="1:1" id="KUq-bu-5zn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:36 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFg-Sl-EcQ">
+                                                    <rect key="frame" x="20" y="58" width="334" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Cr2-Mv-Dib" secondAttribute="trailing" id="7Lh-SC-ZWu"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eh0-Dv-HVE" secondAttribute="trailing" constant="20" id="BgQ-Fp-qG9"/>
+                                                <constraint firstItem="eh0-Dv-HVE" firstAttribute="top" secondItem="qUW-vv-z62" secondAttribute="topMargin" constant="5" id="Chr-b7-2iP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eFg-Sl-EcQ" secondAttribute="bottom" id="HEJ-ap-m4s"/>
+                                                <constraint firstItem="Cr2-Mv-Dib" firstAttribute="top" secondItem="qUW-vv-z62" secondAttribute="topMargin" id="JSt-1h-ZpC"/>
+                                                <constraint firstItem="eFg-Sl-EcQ" firstAttribute="leading" secondItem="qUW-vv-z62" secondAttribute="leadingMargin" id="mB3-Fx-EO2"/>
+                                                <constraint firstItem="Cr2-Mv-Dib" firstAttribute="leading" secondItem="qUW-vv-z62" secondAttribute="leadingMargin" id="nWg-ya-2jU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eFg-Sl-EcQ" secondAttribute="trailing" id="tfw-oa-euo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eh0-Dv-HVE" secondAttribute="bottom" constant="5" id="uq6-x5-AW4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageview" destination="eh0-Dv-HVE" id="XXy-x0-WzD"/>
+                                            <outlet property="limbLabel" destination="Cr2-Mv-Dib" id="kx5-C7-DGq"/>
+                                            <outlet property="timeLabel" destination="eFg-Sl-EcQ" id="Gb7-gy-oo2"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="aYB-Z0-qRf" id="EwE-4O-Vy2"/>
@@ -367,7 +411,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AFm-Oe-mIZ"/>
+        <segue reference="wi9-dn-nff"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>

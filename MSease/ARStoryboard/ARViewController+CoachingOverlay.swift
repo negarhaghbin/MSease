@@ -19,7 +19,9 @@ extension ARViewController: ARCoachingOverlayViewDelegate {
         statusContainerView.isHidden = false
         bottomContainerView.isHidden = false
         focusSquare?.isEnabled = true
-        statusViewController.scheduleMessage("Tap to place grid.", inSeconds: 7.5, messageType: .mascotSelection)
+        if !isShowingObjects(){
+            statusViewController.scheduleMessage("Tap to place grid.", inSeconds: 3, messageType: .mascotSelection)
+        }
     }
 
     func coachingOverlayViewDidRequestSessionReset(_ coachingOverlayView: ARCoachingOverlayView) {

@@ -20,7 +20,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var reactionsCollectionView: UICollectionView!
     @IBOutlet weak var symptomsCollectionView: UICollectionView!
-//    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // MARK: - Variables
     enum cellid : String{
@@ -46,7 +46,16 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         }
     }
     var selectedPain : Int?
-    var selectedCell : (x: Int, y: Int)?
+    var selectedCell : (x: Int, y: Int)?{
+        didSet{
+            if selectedCell != nil{
+                saveButton.isEnabled = true
+            }
+            else{
+                saveButton.isEnabled = false
+            }
+        }
+    }
     
     var partitionValue = RealmManager.shared.getPartitionValue()
     
@@ -119,7 +128,8 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         
         RealmManager.shared.addPostInjectionData(injection: injection!, painScale: selectedPain ?? 0, note: content, symptoms: PISelectedSymptomNames, reactions: PISelectedReactionNames)
         
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func painButtonTapped(_ sender: UIButton) {
@@ -152,6 +162,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         }
         else{
             tappedImage.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].0)
+            selectedCell = nil
         }
         
     }

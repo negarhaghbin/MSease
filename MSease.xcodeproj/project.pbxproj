@@ -13,6 +13,8 @@
 		840C1E5C25D3159700AD339E /* SymptomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */; };
 		840C1E6925D36BED00AD339E /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6825D36BED00AD339E /* Symptom.swift */; };
 		840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6D25D36E9400AD339E /* RealmManager.swift */; };
+		840CA86D2642DF7C00018481 /* InjectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA86C2642DF7C00018481 /* InjectionTableViewCell.swift */; };
+		840CA870264305B900018481 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA86F264305B700018481 /* Gradient.swift */; };
 		8414E4D725FFB18E00A84273 /* StylingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414E4D625FFB18E00A84273 /* StylingUtilities.swift */; };
 		841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */; };
 		841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE925F905FB00E4B519 /* Limb.swift */; };
@@ -108,6 +110,8 @@
 		840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewCell.swift; sourceTree = "<group>"; };
 		840C1E6825D36BED00AD339E /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		840C1E6D25D36E9400AD339E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		840CA86C2642DF7C00018481 /* InjectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionTableViewCell.swift; sourceTree = "<group>"; };
+		840CA86F264305B700018481 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		8414E4D625FFB18E00A84273 /* StylingUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingUtilities.swift; sourceTree = "<group>"; };
 		841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationUI.swift; sourceTree = "<group>"; };
 		841F9EE925F905FB00E4B519 /* Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limb.swift; sourceTree = "<group>"; };
@@ -367,6 +371,7 @@
 				8499442C25FB2ED400AFB965 /* UIColorExtensions.swift */,
 				842D8024260CB83800A73C98 /* UIImageExtensions.swift */,
 				84BBE22A25C10E0C0046C24F /* UIViewExtensions.swift */,
+				840CA86F264305B700018481 /* Gradient.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */,
 				84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */,
 				84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */,
+				840CA86C2642DF7C00018481 /* InjectionTableViewCell.swift */,
 			);
 			path = CalendarStoryboard;
 			sourceTree = "<group>";
@@ -667,6 +673,7 @@
 				840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */,
 				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,
 				84BBE22B25C10E0C0046C24F /* UIViewExtensions.swift in Sources */,
+				840CA86D2642DF7C00018481 /* InjectionTableViewCell.swift in Sources */,
 				84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */,
 				84979F4F25BA3FE100578C37 /* MascotLoader.swift in Sources */,
 				843C05E2263083EE00FFFC2D /* NotificationManager.swift in Sources */,
@@ -676,6 +683,7 @@
 				84979F4A25BA3CDC00578C37 /* BCVC+PopoverPresentation.swift in Sources */,
 				84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */,
 				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,
+				840CA870264305B900018481 /* Gradient.swift in Sources */,
 				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
 				841F9EFF25FA981900E4B519 /* Page.swift in Sources */,
 				84BCC865261CC4C70097E0A2 /* InjectionPhobiaForm.swift in Sources */,

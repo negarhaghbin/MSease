@@ -29,6 +29,7 @@ class SymptomsPopupViewController: UIViewController {
     }
     
     @IBAction func addInjectionTapped(_ sender: Any) {
+        dismissPopup()
         let storyboard = UIStoryboard(name: "Symptom", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "editInjection") as! InjectionTableViewController
         let notesVC = parent as! NotesTableViewController

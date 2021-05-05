@@ -732,7 +732,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="r40-EV-4N4">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Tse-Qi-ge3">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="plain" systemItem="save" id="Tse-Qi-ge3">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="zUH-gJ-JqY" id="ZOX-MJ-KJ6"/>
                             </connections>
@@ -744,6 +744,7 @@
                         <outlet property="limbPicker" destination="Zgs-3O-1bf" id="IkV-bO-WZF"/>
                         <outlet property="limbPickerCell" destination="vQN-lW-71E" id="r3N-4f-Rio"/>
                         <outlet property="reactionsCollectionView" destination="Mw9-Yl-Btf" id="Lzb-j2-Sdz"/>
+                        <outlet property="saveButton" destination="Tse-Qi-ge3" id="3yO-SM-IT1"/>
                         <outlet property="symptomsCollectionView" destination="WHs-O5-iam" id="CVR-EN-gfr"/>
                         <outlet property="textView" destination="HSL-4D-300" id="TUF-s3-bRJ"/>
                         <outlet property="titleLabel" destination="edg-LB-86v" id="2VG-Pc-BdB"/>

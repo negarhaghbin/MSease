@@ -7,6 +7,7 @@
 
 var symptoms : [Symptom] = []
 var reactions : [Symptom] = []
+var painScale = ["nopain", "mild", "moderate", "intense", "unspeakable"]
 
 class Symptom{
     var name = ""

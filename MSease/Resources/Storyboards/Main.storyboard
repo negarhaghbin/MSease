@@ -56,7 +56,7 @@
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-P4-FC8" customClass="circle" customModule="MSease" customModuleProvider="target">
                                 <rect key="frame" x="20.5" y="306.5" width="373" height="372.5"/>
-                                <color key="backgroundColor" red="0.66274509803921566" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xdS-P4-FC8" secondAttribute="height" multiplier="1:1" id="c7h-TR-5Hg"/>
                                 </constraints>
@@ -73,12 +73,13 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAC-iG-Mk5">
                                         <rect key="frame" x="20" y="20" width="50" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.73333333329999995" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="COf-xb-MEc"/>
                                             <constraint firstAttribute="width" secondItem="rAC-iG-Mk5" secondAttribute="height" multiplier="1:1" id="dF1-Zh-4oI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="syringe"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -90,7 +91,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.73333333333333328" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Iti-Zf-dTv" secondAttribute="height" multiplier="1:1" id="FlG-nM-tVV"/>
                                     <constraint firstItem="rAC-iG-Mk5" firstAttribute="centerX" secondItem="Iti-Zf-dTv" secondAttribute="centerX" id="QyY-GD-gY7"/>
@@ -167,7 +168,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jCs-Hz-Cc2"/>
-                        <color key="backgroundColor" red="0.66274509803921566" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.34509803921568627" green="0.3529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xdS-P4-FC8" firstAttribute="width" secondItem="YcI-zZ-WvY" secondAttribute="width" multiplier="0.9" id="0a3-tf-3Uz"/>
                             <constraint firstItem="TBh-U4-rof" firstAttribute="trailing" secondItem="xk7-Il-A3Z" secondAttribute="leading" constant="144.5" id="5IS-3Y-lb7"/>

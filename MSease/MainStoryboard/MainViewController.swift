@@ -55,6 +55,8 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         StylingUtilities.styleView(self.view)
+        logSymptomsButton.tintColor = .white
+        logSymptomsButton.backgroundColor = UIColor(hex: StylingUtilities.buttonColor)
         setupCalendar()
         UNUserNotificationCenter.current().delegate = self
     }

@@ -11,7 +11,11 @@ import RealmSwift
 class NotesTableViewController: UIViewController {
     
     // MARK: - Variables
-    let cellIdentifier = "notesTableViewCell"
+    enum cellIdentifier: String{
+        case notesTableViewCell
+        case injectionsTableViewCell
+    }
+    
     var date : Date?{
         didSet{
             initSetup()
@@ -51,47 +55,37 @@ class NotesTableViewController: UIViewController {
     
     // MARK: - Helpers
     
+    func updateTable<T: Object>(changes: RealmCollectionChange<Results<T>>,section: Int){
+        guard let tableView = self.tableView else { return }
+        switch changes {
+        case .initial:
+            tableView.reloadData()
+        case .update(_, let deletions, let insertions, let modifications):
+            tableView.performBatchUpdates({
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: section) }),
+                    with: .automatic)
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: section) }),
+                    with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: section) }),
+                    with: .automatic)
+            })
+            tableView.reloadData()
+        case .error(let error):
+            fatalError("\(error)")
+        }
+    }
+    
     func initSetup() {
         self.title = date!.getUSFormat()
         notes = RealmManager.shared.getNotes(for: date!)
         injections = RealmManager.shared.getInjections(for: date!)
 
         notificationToken = notes!.observe { [weak self] (changes) in
-            guard let tableView = self?.tableView else { return }
-            switch changes {
-            case .initial:
-                tableView.reloadData()
-            case .update(_, let deletions, let insertions, let modifications):
-                tableView.performBatchUpdates({
-                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: sections.notes.rawValue) }),
-                        with: .automatic)
-                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: sections.notes.rawValue) }),
-                        with: .automatic)
-                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: sections.notes.rawValue) }),
-                        with: .automatic)
-                })
-            case .error(let error):
-                fatalError("\(error)")
-            }
+            self!.updateTable(changes: changes, section: sections.notes.rawValue)
         }
         
         injectionNotificationToken = injections?.observe{ [weak self] (changes) in
-            guard let tableView = self?.tableView else { return }
-            switch changes {
-            case .initial:
-                tableView.reloadData()
-            case .update(_, let deletions, let insertions, let modifications):
-                tableView.performBatchUpdates({
-                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: sections.injections.rawValue) }),
-                        with: .automatic)
-                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: sections.injections.rawValue) }),
-                        with: .automatic)
-                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: sections.injections.rawValue) }),
-                        with: .automatic)
-                })
-            case .error(let error):
-                fatalError("\(error)")
-            }
+            self!.updateTable(changes: changes, section: sections.injections.rawValue)
         }
     }
     
@@ -160,46 +154,40 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotesTableViewCell
-            else{
-                return NotesTableViewCell()
-        }
-        
-        if indexPath.section == sections.addNew.rawValue{
-            cell.setup(isNoteInstance: false)
+        if indexPath.section == sections.injections.rawValue{
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.injectionsTableViewCell.rawValue, for: indexPath) as! InjectionTableViewCell
+            cell.limbLabel.text = injections![indexPath.row].limbName
+            cell.timeLabel.text = injections![indexPath.row].time
+            if injections![indexPath.row].painScale > 0{
+                cell.imageview.image = UIImage(named: painScale[injections![indexPath.row].painScale-1])
+            }
             
+            return cell
         }
-        else {
-            cell.setup(isNoteInstance: true)
-             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCollectionView(sender:)))
-            cell.collectionView.isUserInteractionEnabled = true
-            cell.collectionView.addGestureRecognizer(tapGestureRecognizer)
-            
-            if indexPath.section == sections.injections.rawValue{
-                cell.contentLabel.text = injections![indexPath.row].limbName
-                cell.timeLabel.text = injections![indexPath.row].time
-                cell.collectionView.isHidden = true
-//                cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.notesTableViewCell.rawValue, for: indexPath) as! NotesTableViewCell
+            if indexPath.section == sections.addNew.rawValue{
+                cell.setup(isNoteInstance: false)
             }
             else if indexPath.section == sections.notes.rawValue{
+                cell.setup(isNoteInstance: true)
+                    
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCollectionView(sender:)))
+                cell.collectionView.isUserInteractionEnabled = true
+                cell.collectionView.addGestureRecognizer(tapGestureRecognizer)
+                    
                 cell.contentLabel.text = notes![indexPath.row].textContent
                 cell.timeLabel.text = notes![indexPath.row].time
                 cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             }
-            
+            return cell
         }
-        return cell
+        
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotesTableViewCell
-//        cell!.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == sections.injections.rawValue{
-            return CGFloat(90)
+            return CGFloat(80)
         }
         if indexPath.section == sections.notes.rawValue{
             return CGFloat(150)

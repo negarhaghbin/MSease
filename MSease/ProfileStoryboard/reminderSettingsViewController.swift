@@ -17,6 +17,7 @@ class reminderSettingsTableViewCell: UITableViewCell {
     @IBOutlet weak var activationSwitch: UISwitch!
     
     func setup(isReminderInstance: Bool, reminder: Reminder? = nil, row: Int? = 0){
+        self.addNewReminderLabel.textColor = UIColor(hex: StylingUtilities.buttonColor)
         self.addNewReminderLabel.isHidden = isReminderInstance
         self.reminderTimeLabel.isHidden = !isReminderInstance
         self.reminderNameLabel.isHidden = !isReminderInstance

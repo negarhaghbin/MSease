@@ -19,7 +19,8 @@ class circle: UIView {
         
         var path = UIBezierPath()
         path = UIBezierPath(ovalIn: CGRect(x: 10, y: 10, width: superview!.frame.width*0.9-20, height: superview!.frame.width*0.9-20))
-        UIColor(hex: "#468FAFAA")!.setFill()
+//        UIColor(red: 0.9, green: 0.79, blue: 0.76, alpha: 1).setFill()
+        UIColor(hex: StylingUtilities.circleColor)!.setFill()
         UIColor.clear.setStroke()
         
         path.lineWidth = 5

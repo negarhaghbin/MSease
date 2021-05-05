@@ -94,11 +94,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
             RealmManager.shared.editNote(newNote: note)
         }
         
-        self.navigationController?.popToRootViewController(animated: true)
-        
-        // TODO: go back to NotesTableViewController
-        
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     

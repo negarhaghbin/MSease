@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 class StylingUtilities{
-    static let backgroundColor = "#B7DEEAFF"
-    static let buttonColor = "#61A5C2FF"
+    static let backgroundColor = "#99bbadff"
+    static let circleColor = "#C87871FF"
+    static let buttonColor = "#99bbadff"//"#61A5C2FF"
     
     enum PainColorCode : String{
         case nopain = "#10b5d6ff"
@@ -105,6 +106,6 @@ class StylingUtilities{
     }
     
     static func styleView(_ view: UIView){
-        view.backgroundColor = UIColor.init(hex: backgroundColor)
+        view.backgroundColor = UIColor.secondarySystemBackground
     }
 }

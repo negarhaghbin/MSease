@@ -100,6 +100,7 @@ class ARViewController: UIViewController {
     }
     
     deinit{
+        focusSquare?.destroy()
         print("deiniting")
         arview.session.delegate = nil
         arview.scene.anchors.removeAll()
@@ -124,8 +125,8 @@ class ARViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-        print(view.subviews.count)
-        statusViewController.scheduleMessage("Tap to place grid.", inSeconds: 7.5, messageType: .mascotSelection)
+//        print(view.subviews.count)
+//        statusViewController.scheduleMessage("Tap to place grid.", inSeconds: 7.5, messageType: .mascotSelection)
         arview.scene.addAnchor(anchor)
     }
     

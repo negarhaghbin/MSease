@@ -20,6 +20,8 @@ class TSQMViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var bgView: UIView!
+    
     // MARK: - Variables
     var pageNumber : Int = 0
     var selectedAnswer : String?
@@ -42,6 +44,7 @@ class TSQMViewController: UIViewController {
         
         toolbar.setItems([doneButton], animated: true)
         textView.inputAccessoryView = toolbar
+        StylingUtilities.styleQuestionnaireView(bgView)
     }
     
     override func viewWillAppear(_ animated: Bool) {

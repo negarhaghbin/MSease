@@ -17,16 +17,19 @@ class ProfileTableViewController: UITableViewController{
     
     @IBOutlet weak var ipCell: UITableViewCell!
     @IBOutlet weak var generalCell: UITableViewCell!
+    @IBOutlet weak var nameLabel: UILabel!
     
     // MARK: - Variables
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+    lazy var nameText = RealmManager.shared.getUsername()
+    
     struct cell {
-        static let generalData = IndexPath(row:0, section: 1)
-        static let ipQuestionnaire = IndexPath(row:1, section: 1)
-        static let technicalSupport = IndexPath(row:1, section: 2)
-        static let signout = IndexPath(row:0, section: 3)
+        static let generalData = IndexPath(row:0, section: 2)
+        static let ipQuestionnaire = IndexPath(row:1, section: 2)
+        static let technicalSupport = IndexPath(row:1, section: 3)
+        static let signout = IndexPath(row:0, section: 4)
     }
     
-    var partitionValue: String?
     
     var alertMessage = (title: "", message: "")
     
@@ -37,6 +40,9 @@ class ProfileTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         updateForms()
+        nameLabel.text = nameText
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     
@@ -52,6 +58,7 @@ class ProfileTableViewController: UITableViewController{
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "pretestVC")
             present(vc, animated: true)
+            
         }
         else if indexPath == cell.ipQuestionnaire{
             let storyboard = UIStoryboard(name: "TSQM", bundle: nil)
@@ -112,10 +119,6 @@ class ProfileTableViewController: UITableViewController{
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "reminders"{
-            let remindersVC = segue.destination as! reminderSettingsViewController
-            remindersVC.partitionValue = self.partitionValue!
-        }
         if let destination = segue.destination as? TSQMViewController{
             if segue.identifier == "TSQM0"{
                 destination.TSQMversion = 0

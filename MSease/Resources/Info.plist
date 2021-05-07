@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Access is needed to take photos for symptoms' journal.</string>
+	<string>Access is needed to take photos for symptoms&apos; journal.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access is needed to add photos to the note from Photo Library.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -29,7 +29,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>TabbarStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

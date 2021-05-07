@@ -19,7 +19,7 @@ class ARViewController: UIViewController {
     @IBOutlet weak var bottomContainerView: UIView!
     
     // MARK: - Variables
-    var partitionValue = RealmManager.shared.getPartitionValue()
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     let anchor = AnchorEntity(plane: .any, minimumBounds: [0.1, 0.1])
     let coachingOverlay = ARCoachingOverlayView()
@@ -80,7 +80,8 @@ class ARViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

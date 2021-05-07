@@ -12,6 +12,7 @@ class StylingUtilities{
     static let backgroundColor = "#F8F8F8FF"
     static let circleColor = "#D88C84FF"
     static let buttonColor = "#749E98FF"//"#61A5C2FF"
+    static let borderColor = "#687794FF"
     
     enum PainColorCode : String{
         case nopain = "#10b5d6ff"
@@ -21,10 +22,12 @@ class StylingUtilities{
         case max = "#f05555ff"
     }
     
-    static let InjectionCodes : [(colorCode: String, daysPassed: Int)] = [("#EA4C46FF", daysPassed: 0), ("#F07470FF", daysPassed: 1), ("#F1959BFF", daysPassed: 2), ("#ABE098FF", daysPassed: 3), ("#83D475FF", daysPassed: 4), ("#57C84DFF", daysPassed: 5)]
+    static let InjectionCodes : [(colorCode: String, daysPassed: Int)] = [("#d9514cff", daysPassed: 0), ("#F07470dd", daysPassed: 1), ("#F1959Bcc", daysPassed: 2), ("#98d698cc", daysPassed: 3), ("#7bbd7bdd", daysPassed: 4), ("#7ea884ff", daysPassed: 5)]
     
-    static func styleTextField(_ textField: UITextField){
-        
+    static func styleQuestionnaireView(_ view: UIView){
+        view.layer.cornerRadius = 20
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor(hex: StylingUtilities.borderColor)?.cgColor
     }
     
     static func styleFilledButton(_ button: UIButton){

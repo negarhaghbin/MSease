@@ -22,6 +22,7 @@ class PretestViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var bgView: UIView!
     
     // MARK: - Variables
     var answers = RealmManager.shared.getPretestData()
@@ -40,6 +41,7 @@ class PretestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         StylingUtilities.styleFilledButton(nextButton)
+        StylingUtilities.styleQuestionnaireView(bgView)
         refreshUI()
     }
 

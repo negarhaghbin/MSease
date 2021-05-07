@@ -49,7 +49,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
-    var partitionValue = RealmManager.shared.getPartitionValue()
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
 //    var notificationToken: NotificationToken?
 

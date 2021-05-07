@@ -227,200 +227,217 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-SR-bbO">
-                                <rect key="frame" x="20" y="323" width="374" height="250"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="gPE-FM-fTV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjs-IN-Enq">
+                                <rect key="frame" x="20" y="121" width="374" height="654"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-Z2-DBf" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <state key="normal" title="Male">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your gender identity?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-0O-4JR">
+                                        <rect key="frame" x="20" y="20" width="334" height="65"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-SR-bbO">
+                                        <rect key="frame" x="20" y="202" width="334" height="250"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-Z2-DBf" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                                <state key="normal" title="Male">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="aWI-a1-aIP"/>
+                                                    <outletCollection property="otherButtons" destination="0cS-e1-LLD" id="F8k-28-VDa"/>
+                                                    <outletCollection property="otherButtons" destination="lan-vZ-M63" id="HF5-cq-8kB"/>
+                                                    <outletCollection property="otherButtons" destination="WBJ-B5-6u9" id="Y3y-ZT-uj2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lan-vZ-M63" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="54" width="334" height="34"/>
+                                                <state key="normal" title="Female">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="kN4-W3-4VL"/>
+                                                    <outletCollection property="otherButtons" destination="NeC-Z2-DBf" id="b62-LG-DeV"/>
+                                                    <outletCollection property="otherButtons" destination="0cS-e1-LLD" id="f6y-VC-I5I"/>
+                                                    <outletCollection property="otherButtons" destination="WBJ-B5-6u9" id="yel-QD-GBq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cS-e1-LLD" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="108" width="334" height="34"/>
+                                                <state key="normal" title="Non-binary">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="Miq-Xc-ilE"/>
+                                                    <outletCollection property="otherButtons" destination="NeC-Z2-DBf" id="aud-ir-NiR"/>
+                                                    <outletCollection property="otherButtons" destination="lan-vZ-M63" id="TCY-US-pza"/>
+                                                    <outletCollection property="otherButtons" destination="WBJ-B5-6u9" id="SJC-LF-dPR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBJ-B5-6u9" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="162" width="334" height="34"/>
+                                                <state key="normal" title="Other">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="odg-IO-UEX"/>
+                                                    <outletCollection property="otherButtons" destination="NeC-Z2-DBf" id="okW-ek-83F"/>
+                                                    <outletCollection property="otherButtons" destination="0cS-e1-LLD" id="HaX-vH-zU7"/>
+                                                    <outletCollection property="otherButtons" destination="lan-vZ-M63" id="URV-8H-HRU"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Explain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GGR-gv-pJG">
+                                                <rect key="frame" x="0.0" y="216" width="334" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldChanged:" destination="nmR-Na-ABO" eventType="editingChanged" id="ZJv-Dv-nPb"/>
+                                                    <outlet property="delegate" destination="nmR-Na-ABO" id="9N4-hE-LJW"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yq1-uF-VV9">
+                                        <rect key="frame" x="20" y="202" width="334" height="250"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc4-du-UUg" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                                <state key="normal" title="Clinically Isolated Syndrome (CIS)">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="s51-oG-Mbp"/>
+                                                    <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="9Cl-MT-rWv"/>
+                                                    <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="Rab-i7-5cb"/>
+                                                    <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="kHf-gn-uea"/>
+                                                    <outletCollection property="otherButtons" destination="qjB-7q-02g" id="s1n-3C-GRB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7y-sv-8dK" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="54" width="334" height="34"/>
+                                                <state key="normal" title="Primary progressive MS (PPMS)">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="VQg-UQ-4if"/>
+                                                    <outletCollection property="otherButtons" destination="sc4-du-UUg" id="xeh-SR-KoP"/>
+                                                    <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="3RK-nJ-vJZ"/>
+                                                    <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="f7s-zy-Cb5"/>
+                                                    <outletCollection property="otherButtons" destination="qjB-7q-02g" id="rcL-Kd-wqX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFj-dC-BXq" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="108" width="334" height="34"/>
+                                                <state key="normal" title="Relapsing-Remitting MS">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="AN0-tL-RTF"/>
+                                                    <outletCollection property="otherButtons" destination="sc4-du-UUg" id="erg-2u-5kv"/>
+                                                    <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="CK1-LJ-Uwp"/>
+                                                    <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="YvV-kv-Dzo"/>
+                                                    <outletCollection property="otherButtons" destination="qjB-7q-02g" id="cIU-Es-BYr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMb-7E-Zyh" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="162" width="334" height="34"/>
+                                                <state key="normal" title="Secondary progressive MS (SPMS)">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="81H-ZY-KUe"/>
+                                                    <outletCollection property="otherButtons" destination="sc4-du-UUg" id="pcz-a3-cMF"/>
+                                                    <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="obs-A1-xvb"/>
+                                                    <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="OAz-gz-xbD"/>
+                                                    <outletCollection property="otherButtons" destination="qjB-7q-02g" id="f6r-Qk-Dq6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjB-7q-02g" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="216" width="334" height="34"/>
+                                                <state key="normal" title="I'm not sure/I'd rather not say">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="iJs-as-MMc"/>
+                                                    <outletCollection property="otherButtons" destination="sc4-du-UUg" id="0a7-Wb-NEj"/>
+                                                    <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="3Gx-2P-3Sm"/>
+                                                    <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="yxp-VE-dtu"/>
+                                                    <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="vpH-i0-OVe"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-c0-6Jc">
+                                        <rect key="frame" x="20" y="219" width="334" height="216"/>
                                         <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="aWI-a1-aIP"/>
-                                            <outletCollection property="otherButtons" destination="0cS-e1-LLD" id="F8k-28-VDa"/>
-                                            <outletCollection property="otherButtons" destination="lan-vZ-M63" id="HF5-cq-8kB"/>
-                                            <outletCollection property="otherButtons" destination="WBJ-B5-6u9" id="Y3y-ZT-uj2"/>
+                                            <action selector="datePickerChanged:" destination="nmR-Na-ABO" eventType="valueChanged" id="FsE-e3-4vm"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lan-vZ-M63" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="34"/>
-                                        <state key="normal" title="Female">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="kN4-W3-4VL"/>
-                                            <outletCollection property="otherButtons" destination="NeC-Z2-DBf" id="b62-LG-DeV"/>
-                                            <outletCollection property="otherButtons" destination="0cS-e1-LLD" id="f6y-VC-I5I"/>
-                                            <outletCollection property="otherButtons" destination="WBJ-B5-6u9" id="yel-QD-GBq"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cS-e1-LLD" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="108" width="374" height="34"/>
-                                        <state key="normal" title="Non-binary">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="Miq-Xc-ilE"/>
-                                            <outletCollection property="otherButtons" destination="NeC-Z2-DBf" id="aud-ir-NiR"/>
-                                            <outletCollection property="otherButtons" destination="lan-vZ-M63" id="TCY-US-pza"/>
-                                            <outletCollection property="otherButtons" destination="WBJ-B5-6u9" id="SJC-LF-dPR"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBJ-B5-6u9" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="162" width="374" height="34"/>
-                                        <state key="normal" title="Other">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="odg-IO-UEX"/>
-                                            <outletCollection property="otherButtons" destination="NeC-Z2-DBf" id="okW-ek-83F"/>
-                                            <outletCollection property="otherButtons" destination="0cS-e1-LLD" id="HaX-vH-zU7"/>
-                                            <outletCollection property="otherButtons" destination="lan-vZ-M63" id="URV-8H-HRU"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Explain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GGR-gv-pJG">
-                                        <rect key="frame" x="0.0" y="216" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="textFieldChanged:" destination="nmR-Na-ABO" eventType="editingChanged" id="ZJv-Dv-nPb"/>
-                                            <outlet property="delegate" destination="nmR-Na-ABO" id="9N4-hE-LJW"/>
-                                        </connections>
-                                    </textField>
+                                    </datePicker>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r7M-nE-EcI">
+                                        <rect key="frame" x="20" y="584" width="334" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OD2-Rk-TuU">
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backButtonTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="TCE-3A-AH8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2b-za-FdV">
+                                                <rect key="frame" x="177" y="0.0" width="157" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="m3f-BE-QCy"/>
+                                                </constraints>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="nextButtonTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="n7Q-64-lrG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your gender identity?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-0O-4JR">
-                                <rect key="frame" x="20" y="270.5" width="374" height="32.5"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yq1-uF-VV9">
-                                <rect key="frame" x="20" y="323" width="374" height="250"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc4-du-UUg" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <state key="normal" title="Clinically Isolated Syndrome (CIS)">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="s51-oG-Mbp"/>
-                                            <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="9Cl-MT-rWv"/>
-                                            <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="Rab-i7-5cb"/>
-                                            <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="kHf-gn-uea"/>
-                                            <outletCollection property="otherButtons" destination="qjB-7q-02g" id="s1n-3C-GRB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7y-sv-8dK" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="34"/>
-                                        <state key="normal" title="Primary progressive MS (PPMS)">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="VQg-UQ-4if"/>
-                                            <outletCollection property="otherButtons" destination="sc4-du-UUg" id="xeh-SR-KoP"/>
-                                            <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="3RK-nJ-vJZ"/>
-                                            <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="f7s-zy-Cb5"/>
-                                            <outletCollection property="otherButtons" destination="qjB-7q-02g" id="rcL-Kd-wqX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFj-dC-BXq" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="108" width="374" height="34"/>
-                                        <state key="normal" title="Relapsing-Remitting MS">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="AN0-tL-RTF"/>
-                                            <outletCollection property="otherButtons" destination="sc4-du-UUg" id="erg-2u-5kv"/>
-                                            <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="CK1-LJ-Uwp"/>
-                                            <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="YvV-kv-Dzo"/>
-                                            <outletCollection property="otherButtons" destination="qjB-7q-02g" id="cIU-Es-BYr"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMb-7E-Zyh" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="162" width="374" height="34"/>
-                                        <state key="normal" title="Secondary progressive MS (SPMS)">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="81H-ZY-KUe"/>
-                                            <outletCollection property="otherButtons" destination="sc4-du-UUg" id="pcz-a3-cMF"/>
-                                            <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="obs-A1-xvb"/>
-                                            <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="OAz-gz-xbD"/>
-                                            <outletCollection property="otherButtons" destination="qjB-7q-02g" id="f6r-Qk-Dq6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjB-7q-02g" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="216" width="374" height="34"/>
-                                        <state key="normal" title="I'm not sure/I'd rather not say">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionsTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="iJs-as-MMc"/>
-                                            <outletCollection property="otherButtons" destination="sc4-du-UUg" id="0a7-Wb-NEj"/>
-                                            <outletCollection property="otherButtons" destination="B7y-sv-8dK" id="3Gx-2P-3Sm"/>
-                                            <outletCollection property="otherButtons" destination="rFj-dC-BXq" id="yxp-VE-dtu"/>
-                                            <outletCollection property="otherButtons" destination="HMb-7E-Zyh" id="vpH-i0-OVe"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-c0-6Jc">
-                                <rect key="frame" x="20" y="323" width="374" height="250"/>
-                                <connections>
-                                    <action selector="datePickerChanged:" destination="nmR-Na-ABO" eventType="valueChanged" id="FsE-e3-4vm"/>
-                                </connections>
-                            </datePicker>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r7M-nE-EcI">
-                                <rect key="frame" x="20" y="792" width="374" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OD2-Rk-TuU">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
-                                        <state key="normal" title="Back"/>
-                                        <connections>
-                                            <action selector="backButtonTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="TCE-3A-AH8"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2b-za-FdV">
-                                        <rect key="frame" x="197" y="0.0" width="177" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="m3f-BE-QCy"/>
-                                        </constraints>
-                                        <state key="normal" title="Next"/>
-                                        <connections>
-                                            <action selector="nextButtonTapped:" destination="nmR-Na-ABO" eventType="touchUpInside" id="n7Q-64-lrG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90420134080000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Yq1-uF-VV9" firstAttribute="leading" secondItem="kvh-0O-4JR" secondAttribute="leading" id="4gc-Wz-ebr"/>
+                                    <constraint firstAttribute="trailing" secondItem="kvh-0O-4JR" secondAttribute="trailing" constant="20" id="8Ch-Ut-3ml"/>
+                                    <constraint firstAttribute="bottom" secondItem="r7M-nE-EcI" secondAttribute="bottom" constant="20" id="8vC-sa-ooM"/>
+                                    <constraint firstItem="r7M-nE-EcI" firstAttribute="leading" secondItem="kvh-0O-4JR" secondAttribute="leading" id="9PO-1k-ulS"/>
+                                    <constraint firstItem="oGw-c0-6Jc" firstAttribute="trailing" secondItem="kvh-0O-4JR" secondAttribute="trailing" id="Gfr-MU-Ae4"/>
+                                    <constraint firstItem="kvh-0O-4JR" firstAttribute="leading" secondItem="gjs-IN-Enq" secondAttribute="leading" constant="20" id="HxX-3O-1M7"/>
+                                    <constraint firstItem="oGw-c0-6Jc" firstAttribute="centerY" secondItem="gjs-IN-Enq" secondAttribute="centerY" id="KG1-Fn-awX"/>
+                                    <constraint firstItem="kvh-0O-4JR" firstAttribute="top" secondItem="gjs-IN-Enq" secondAttribute="top" constant="20" id="KMh-8A-j01"/>
+                                    <constraint firstItem="HDf-SR-bbO" firstAttribute="trailing" secondItem="kvh-0O-4JR" secondAttribute="trailing" id="Pgl-LE-xkg"/>
+                                    <constraint firstItem="r7M-nE-EcI" firstAttribute="trailing" secondItem="kvh-0O-4JR" secondAttribute="trailing" id="SnB-vP-xUF"/>
+                                    <constraint firstItem="HDf-SR-bbO" firstAttribute="leading" secondItem="kvh-0O-4JR" secondAttribute="leading" id="aX4-zU-jFn"/>
+                                    <constraint firstItem="Yq1-uF-VV9" firstAttribute="centerY" secondItem="gjs-IN-Enq" secondAttribute="centerY" id="cmN-sn-2ta"/>
+                                    <constraint firstItem="HDf-SR-bbO" firstAttribute="centerY" secondItem="gjs-IN-Enq" secondAttribute="centerY" id="k0y-v4-QEt"/>
+                                    <constraint firstItem="oGw-c0-6Jc" firstAttribute="leading" secondItem="kvh-0O-4JR" secondAttribute="leading" id="oRZ-uY-xv8"/>
+                                    <constraint firstItem="Yq1-uF-VV9" firstAttribute="trailing" secondItem="kvh-0O-4JR" secondAttribute="trailing" id="pDc-zi-TQQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x2B-Py-O4N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Yq1-uF-VV9" firstAttribute="centerY" secondItem="KOE-cX-2yX" secondAttribute="centerY" id="2aS-Y8-75U"/>
-                            <constraint firstItem="x2B-Py-O4N" firstAttribute="trailing" secondItem="oGw-c0-6Jc" secondAttribute="trailing" constant="20" id="DbK-UK-FNq"/>
-                            <constraint firstItem="oGw-c0-6Jc" firstAttribute="centerX" secondItem="KOE-cX-2yX" secondAttribute="centerX" id="Fbd-xg-qeY"/>
-                            <constraint firstItem="x2B-Py-O4N" firstAttribute="bottom" secondItem="r7M-nE-EcI" secondAttribute="bottom" constant="20" id="FxJ-Jp-Bvd"/>
-                            <constraint firstItem="Yq1-uF-VV9" firstAttribute="centerX" secondItem="KOE-cX-2yX" secondAttribute="centerX" id="ITt-uK-47d"/>
-                            <constraint firstItem="Yq1-uF-VV9" firstAttribute="top" secondItem="kvh-0O-4JR" secondAttribute="bottom" constant="20" id="MJs-Rh-897"/>
-                            <constraint firstItem="oGw-c0-6Jc" firstAttribute="leading" secondItem="x2B-Py-O4N" secondAttribute="leading" constant="20" id="Rty-Jo-OKx"/>
-                            <constraint firstItem="kvh-0O-4JR" firstAttribute="leading" secondItem="x2B-Py-O4N" secondAttribute="leading" constant="20" id="VaV-U3-qhK"/>
-                            <constraint firstItem="HDf-SR-bbO" firstAttribute="centerY" secondItem="KOE-cX-2yX" secondAttribute="centerY" id="XoN-1P-AM9"/>
-                            <constraint firstItem="x2B-Py-O4N" firstAttribute="trailing" secondItem="HDf-SR-bbO" secondAttribute="trailing" constant="20" id="ZxO-eX-fen"/>
-                            <constraint firstItem="x2B-Py-O4N" firstAttribute="trailing" secondItem="r7M-nE-EcI" secondAttribute="trailing" constant="20" id="dMu-i0-cTe"/>
-                            <constraint firstItem="r7M-nE-EcI" firstAttribute="leading" secondItem="x2B-Py-O4N" secondAttribute="leading" constant="20" id="hQc-e3-js3"/>
-                            <constraint firstItem="x2B-Py-O4N" firstAttribute="trailing" secondItem="kvh-0O-4JR" secondAttribute="trailing" constant="20" id="hpf-yg-271"/>
-                            <constraint firstItem="oGw-c0-6Jc" firstAttribute="top" secondItem="kvh-0O-4JR" secondAttribute="bottom" constant="20" id="iyK-rz-t1D"/>
-                            <constraint firstItem="x2B-Py-O4N" firstAttribute="trailing" secondItem="Yq1-uF-VV9" secondAttribute="trailing" constant="20" id="rQL-Vn-gCv"/>
-                            <constraint firstItem="HDf-SR-bbO" firstAttribute="leading" secondItem="x2B-Py-O4N" secondAttribute="leading" constant="20" id="s4o-Iw-e5X"/>
-                            <constraint firstItem="oGw-c0-6Jc" firstAttribute="centerY" secondItem="KOE-cX-2yX" secondAttribute="centerY" id="tyv-Ax-4YD"/>
-                            <constraint firstItem="HDf-SR-bbO" firstAttribute="top" secondItem="kvh-0O-4JR" secondAttribute="bottom" constant="20" id="vVo-pX-RCE"/>
-                            <constraint firstItem="Yq1-uF-VV9" firstAttribute="leading" secondItem="x2B-Py-O4N" secondAttribute="leading" constant="20" id="xw8-DO-SA9"/>
+                            <constraint firstItem="gjs-IN-Enq" firstAttribute="centerX" secondItem="KOE-cX-2yX" secondAttribute="centerX" id="0oq-EH-GOa"/>
+                            <constraint firstItem="gjs-IN-Enq" firstAttribute="leading" secondItem="x2B-Py-O4N" secondAttribute="leading" constant="20" id="82s-w5-kxw"/>
+                            <constraint firstItem="gPE-FM-fTV" firstAttribute="top" secondItem="KOE-cX-2yX" secondAttribute="top" id="V9a-0Y-eFp"/>
+                            <constraint firstItem="gPE-FM-fTV" firstAttribute="leading" secondItem="x2B-Py-O4N" secondAttribute="leading" id="YpA-y5-GIN"/>
+                            <constraint firstAttribute="bottom" secondItem="gPE-FM-fTV" secondAttribute="bottom" id="aUV-SJ-3RS"/>
+                            <constraint firstItem="gjs-IN-Enq" firstAttribute="centerY" secondItem="KOE-cX-2yX" secondAttribute="centerY" id="bz7-nm-Ya7"/>
+                            <constraint firstItem="gjs-IN-Enq" firstAttribute="height" secondItem="x2B-Py-O4N" secondAttribute="height" multiplier="0.8" id="dld-PM-iQZ"/>
+                            <constraint firstItem="gPE-FM-fTV" firstAttribute="trailing" secondItem="x2B-Py-O4N" secondAttribute="trailing" id="etA-v9-Dfi"/>
+                            <constraint firstItem="x2B-Py-O4N" firstAttribute="trailing" secondItem="gjs-IN-Enq" secondAttribute="trailing" constant="20" id="y6A-jf-j3z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ETh-Zq-B32"/>
                     <connections>
                         <outlet property="backButton" destination="OD2-Rk-TuU" id="NaB-6s-ZDQ"/>
+                        <outlet property="bgView" destination="gjs-IN-Enq" id="kaX-L9-ncE"/>
                         <outlet property="datePicker" destination="oGw-c0-6Jc" id="Vvn-dX-psz"/>
                         <outlet property="genderOptionsStack" destination="HDf-SR-bbO" id="AJD-Vh-9np"/>
                         <outlet property="nextButton" destination="x2b-za-FdV" id="CMB-hH-xDx"/>
@@ -428,14 +445,14 @@
                         <outlet property="titleLabel" destination="kvh-0O-4JR" id="ije-fg-8dA"/>
                         <outlet property="typesOptionsStack" destination="Yq1-uF-VV9" id="dSD-zV-4fJ"/>
                         <outletCollection property="genderOptions" destination="NeC-Z2-DBf" collectionClass="NSMutableArray" id="irf-Gg-Awq"/>
-                        <outletCollection property="genderOptions" destination="lan-vZ-M63" collectionClass="NSMutableArray" id="ezJ-cp-vbd"/>
                         <outletCollection property="genderOptions" destination="0cS-e1-LLD" collectionClass="NSMutableArray" id="ZWw-M8-THf"/>
+                        <outletCollection property="genderOptions" destination="lan-vZ-M63" collectionClass="NSMutableArray" id="ezJ-cp-vbd"/>
                         <outletCollection property="genderOptions" destination="WBJ-B5-6u9" collectionClass="NSMutableArray" id="qwi-Oo-PmY"/>
-                        <outletCollection property="MSOptions" destination="sc4-du-UUg" collectionClass="NSMutableArray" id="6ZW-z7-k1Y"/>
-                        <outletCollection property="MSOptions" destination="B7y-sv-8dK" collectionClass="NSMutableArray" id="E36-TB-bPs"/>
                         <outletCollection property="MSOptions" destination="rFj-dC-BXq" collectionClass="NSMutableArray" id="q3r-l3-Iea"/>
                         <outletCollection property="MSOptions" destination="HMb-7E-Zyh" collectionClass="NSMutableArray" id="mpO-hl-3Kb"/>
-                        <outletCollection property="MSOptions" destination="qjB-7q-02g" collectionClass="NSMutableArray" id="fJf-wv-b2t"/>
+                        <outletCollection property="MSOptions" destination="B7y-sv-8dK" collectionClass="NSMutableArray" id="E36-TB-bPs"/>
+                        <outletCollection property="MSOptions" destination="sc4-du-UUg" collectionClass="NSMutableArray" id="6ZW-z7-k1Y"/>
+                        <outletCollection property="MSOptions" destination="qjB-7q-02g" collectionClass="NSMutableArray" id="jXW-te-jsZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drl-dD-mjN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -630,6 +647,7 @@
         <segue reference="0yI-h9-9R6"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="bg" width="1382" height="1275"/>
         <image name="shield" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -18,6 +18,7 @@ class InjectionPhobiaViewController: UIViewController {
     @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var bgView: UIView!
     
     // MARK: - Variables
     var pageNumber : Int = 0
@@ -32,6 +33,7 @@ class InjectionPhobiaViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         answers = RealmManager.shared.getIP()
+        StylingUtilities.styleQuestionnaireView(bgView)
         setupUI()
     }
 

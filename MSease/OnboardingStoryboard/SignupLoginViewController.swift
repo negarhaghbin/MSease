@@ -52,8 +52,8 @@ class SignupLoginViewController: UIViewController {
     func setUpElements(){
 //        errorLabel.alpha = 0
         self.navigationController?.navigationBar.isHidden = true
-        StylingUtilities.styleTextField(emailTextField)
-        StylingUtilities.styleTextField(passwordTextField)
+//        StylingUtilities.styleTextField(emailTextField)
+//        StylingUtilities.styleTextField(passwordTextField)
         StylingUtilities.styleFilledButton(signupLoginButton)
         setLoading(false)
         if isLoggingIn!{

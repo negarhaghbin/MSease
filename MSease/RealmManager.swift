@@ -37,6 +37,10 @@ class RealmManager{
 
         return syncConfiguration.partitionValue!.stringValue!
     }
+    
+    func getUsername() -> String {
+        return UserDefaults.standard.string(forKey: "email")!
+    }
 }
 
 

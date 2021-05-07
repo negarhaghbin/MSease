@@ -30,6 +30,7 @@ class NotesTableViewCell: UITableViewCell {
         self.addNewNoteLabel.isHidden = isNoteInstance
         self.contentLabel.isHidden = !isNoteInstance
         self.timeLabel.isHidden = !isNoteInstance
+        self.collectionView.isHidden = !isNoteInstance
     }
     
     func setCollectionViewDataSourceDelegate(dataSourceDelegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {

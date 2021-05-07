@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XJy-gE-SGe">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="Nvd-gp-KA5">
+            <objects>
+                <tabBarController id="XJy-gE-SGe" customClass="MainTabBarController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="abQ-PC-DYX" customClass="CenterTabBarButton" customModule="MSease" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.4549019608" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.4549019608" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZrT-Id-mQx" kind="relationship" relationship="viewControllers" id="N3f-9M-OFv"/>
+                        <segue destination="KCw-IB-2GE" kind="relationship" relationship="viewControllers" id="hO3-LQ-eob"/>
+                        <segue destination="oSO-0k-Jr1" kind="relationship" relationship="viewControllers" id="uWf-TV-oEq"/>
+                        <segue destination="ZuO-s6-ppG" kind="relationship" relationship="viewControllers" id="s4p-mt-RKq"/>
+                        <segue destination="1sD-Cw-Kb9" kind="relationship" relationship="viewControllers" id="Lyo-vI-Hw0"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9B-qX-E7W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="-181"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="0v9-Aq-AIx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="ZrT-Id-mQx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="xhD-uE-nYx"/>
+                    <navigationItem key="navigationItem" id="xaH-6e-tyv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yKj-pd-LaF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1192" y="250"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="O7H-Tb-5gF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="KCw-IB-2GE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Insight" id="6fU-B0-llI"/>
+                    <navigationItem key="navigationItem" id="KB1-t0-URp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IxC-x1-iCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1008" y="250"/>
+        </scene>
+        <!--AR-->
+        <scene sceneID="VZf-L7-lpc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AR" id="oSO-0k-Jr1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="AnN-cc-XTG"/>
+                    <navigationItem key="navigationItem" id="g6I-HI-Omw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJm-qq-YDQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-825" y="250"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="Ayb-73-Wdx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Calendar" id="ZuO-s6-ppG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="yAT-lv-m2A"/>
+                    <navigationItem key="navigationItem" id="xTM-Fb-cAG"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tS7-mC-gzI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-695" y="250"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="pkf-jA-muG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="1sD-Cw-Kb9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="person.crop.circle.fill" catalog="system" id="U8Z-C7-5vv"/>
+                    <navigationItem key="navigationItem" id="q46-yH-SOr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TzJ-Lb-FX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-545" y="250"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

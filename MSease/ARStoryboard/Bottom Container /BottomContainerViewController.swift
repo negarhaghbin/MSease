@@ -24,6 +24,7 @@ class BottomContainerViewController: UIViewController {
     }
     var mascotsViewController: MascotSelectionViewController?
     
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     var partitionValue: String?
     
     // MARK: - IBOutlets

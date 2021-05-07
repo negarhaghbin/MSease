@@ -57,7 +57,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    var partitionValue = RealmManager.shared.getPartitionValue()
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     // MARK: - View Controllers
     override func viewDidLoad() {

@@ -34,7 +34,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     var selectedImages : [String] = [] // names, TODO: fill it in picking images
     var isNewNote : Bool?
     
-    var partitionValue = RealmManager.shared.getPartitionValue()
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     // MARK: - View Controllers
     override func viewDidLoad() {

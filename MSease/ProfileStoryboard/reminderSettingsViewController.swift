@@ -49,7 +49,7 @@ class reminderSettingsViewController: UIViewController {
     var selectedReminder : Reminder? = Reminder()
     var isNewReminder = true
     
-    var partitionValue: String = RealmManager.shared.getPartitionValue()
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
     var notificationToken: NotificationToken?
     var reminders = RealmManager.shared.getReminders()
@@ -68,6 +68,8 @@ class reminderSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         initSetup(title: "Reminders")
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
     
     

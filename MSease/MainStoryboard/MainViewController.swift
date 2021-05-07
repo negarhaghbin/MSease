@@ -14,7 +14,7 @@ import RealmSwift
 class MainViewController: UIViewController, FSCalendarDelegate {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var injectButton: UIButton!
+//    @IBOutlet weak var injectButton: UIButton!
     @IBOutlet weak var logSymptomsButton: UIButton!
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -47,9 +47,9 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         }
     }
     
-    lazy var topBarViewController: TopBarViewController = {
-        return children.lazy.compactMap({ $0 as? TopBarViewController }).first!
-    }()
+//    lazy var topBarViewController: TopBarViewController = {
+//        return children.lazy.compactMap({ $0 as? TopBarViewController }).first!
+//    }()
 
     // MARK: - View Controller
     deinit {
@@ -71,8 +71,8 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         if userRealm != nil{
             setMascot()
         }
-        calendar.calendarHeaderView.removeFromSuperview()
-        topBarViewController.monthLabel.text = Date().getMonth()
+//        calendar.calendarHeaderView.removeFromSuperview()
+//        topBarViewController.monthLabel.text = Date().getMonth()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,7 +128,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         selectedDate = date
         selectedDate = selectedDate.setTime(h: Calendar.current.component(.hour, from: Date()), m: Calendar.current.component(.minute, from: Date()))
         
-        topBarViewController.monthLabel.text = date.getMonth()
+//        topBarViewController.monthLabel.text = date.getMonth()
     }
     
     // MARK: - Helpers
@@ -200,10 +200,11 @@ class MainViewController: UIViewController, FSCalendarDelegate {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? GridCollectionViewController{
+        /*if let destinationVC = segue.destination as? GridCollectionViewController{
             destinationVC.partitionValue = userData!._partition
         }
-        else if let destinationVC = segue.destination as? SymptomsCollectionViewController{
+        else*/
+        if let destinationVC = segue.destination as? SymptomsCollectionViewController{
             destinationVC.isNewNote = true
             destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, images: [], symptoms: [], partition: userData!._partition)
             
@@ -238,7 +239,7 @@ extension MainViewController : UNUserNotificationCenterDelegate{
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        // FIXME: This function is not called
+        
           switch response.actionIdentifier {
           case notificationAction.snooze.rawValue:
             response.notification.snoozeNotification(notificationContent: response.notification.request.content)

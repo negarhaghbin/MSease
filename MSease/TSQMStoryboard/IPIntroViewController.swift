@@ -12,6 +12,8 @@ class IPIntroViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var cancelButton:UIButton!
     @IBOutlet weak var startButton:UIButton!
+    @IBOutlet weak var bgView: UIView!
+    
     
     // MARK: - Variables
     override func viewDidLoad() {
@@ -21,6 +23,7 @@ class IPIntroViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         StylingUtilities.styleFilledButton(startButton)
         StylingUtilities.styleHollowdButton(cancelButton)
+        StylingUtilities.styleQuestionnaireView(bgView)
         
         self.navigationController?.isNavigationBarHidden = true
     }

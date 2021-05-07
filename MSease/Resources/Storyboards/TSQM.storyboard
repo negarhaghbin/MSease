@@ -16,177 +16,229 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-av-kOp">
-                                <rect key="frame" x="20" y="249" width="374" height="358"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="wxp-Ej-qUP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTm-it-ed1">
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0D-eo-GWA" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <state key="normal" title="3 Extremely satisfied">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="qKy-lM-8jx"/>
-                                            <outletCollection property="otherButtons" destination="4gm-9v-lMa" id="Lhf-KT-qM3"/>
-                                            <outletCollection property="otherButtons" destination="e4q-jx-nMw" id="gNY-lC-RLn"/>
-                                            <outletCollection property="otherButtons" destination="3pd-47-eLA" id="9go-tc-JxU"/>
-                                            <outletCollection property="otherButtons" destination="55g-iu-pTF" id="BXR-UO-jj6"/>
-                                            <outletCollection property="otherButtons" destination="9hz-KH-oX3" id="qQa-My-q4K"/>
-                                            <outletCollection property="otherButtons" destination="osi-0Q-2By" id="PXf-um-2Vt"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gm-9v-lMa" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="34"/>
-                                        <state key="normal" title="2">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="kL4-dW-P3d"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4q-jx-nMw" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="108" width="374" height="34"/>
-                                        <state key="normal" title="1">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="JoA-my-hTm"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pd-47-eLA" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="162" width="374" height="34"/>
-                                        <state key="normal" title="0">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="Hbn-zE-1SJ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55g-iu-pTF" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="216" width="374" height="34"/>
-                                        <state key="normal" title="-1">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="e2G-75-3fd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-KH-oX3" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="270" width="374" height="34"/>
-                                        <state key="normal" title="-2">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="zcy-eF-vR0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osi-0Q-2By" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="324" width="374" height="34"/>
-                                        <state key="normal" title="-3 Extremely dissatisfied">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="4tY-Vv-hpO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="55g-iu-pTF" secondAttribute="trailing" id="3tu-ny-NuT"/>
-                                    <constraint firstAttribute="trailing" secondItem="e4q-jx-nMw" secondAttribute="trailing" id="6x4-L9-wGj"/>
-                                    <constraint firstAttribute="trailing" secondItem="K0D-eo-GWA" secondAttribute="trailing" id="8lZ-OV-KQF"/>
-                                    <constraint firstItem="9hz-KH-oX3" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="EhQ-Ag-3F5"/>
-                                    <constraint firstItem="K0D-eo-GWA" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="RFW-L0-bHk"/>
-                                    <constraint firstItem="3pd-47-eLA" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="RQR-au-61W"/>
-                                    <constraint firstItem="e4q-jx-nMw" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="TtL-KP-biR"/>
-                                    <constraint firstAttribute="trailing" secondItem="3pd-47-eLA" secondAttribute="trailing" id="XIu-Tn-FBY"/>
-                                    <constraint firstAttribute="trailing" secondItem="4gm-9v-lMa" secondAttribute="trailing" id="ZEH-mg-pLJ"/>
-                                    <constraint firstItem="55g-iu-pTF" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="ZVF-x2-dPv"/>
-                                    <constraint firstAttribute="trailing" secondItem="osi-0Q-2By" secondAttribute="trailing" id="cyu-dm-jCO"/>
-                                    <constraint firstAttribute="trailing" secondItem="9hz-KH-oX3" secondAttribute="trailing" id="hFD-E1-cNl"/>
-                                    <constraint firstItem="4gm-9v-lMa" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="hmf-I1-BXs"/>
-                                    <constraint firstItem="osi-0Q-2By" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="og9-Sk-8li"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How satisfied or dissatisfied are you with the ability of the medication to prevent or treat your condition?" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCt-s3-vqG">
-                                <rect key="frame" x="20" y="99" width="374" height="130"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-nr-fsr">
-                                <rect key="frame" x="20" y="792" width="374" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-DO-Rbn">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
-                                        <state key="normal" title="Back"/>
-                                        <connections>
-                                            <action selector="backTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="0Fu-7w-gPe"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcm-Of-QvW">
-                                        <rect key="frame" x="197" y="0.0" width="177" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How satisfied or dissatisfied are you with the ability of the medication to prevent or treat your condition?" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCt-s3-vqG">
+                                        <rect key="frame" x="20" y="20" width="334" height="130"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-av-kOp">
+                                        <rect key="frame" x="20" y="170" width="334" height="358"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0D-eo-GWA" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                                <state key="normal" title="3 Extremely satisfied">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="qKy-lM-8jx"/>
+                                                    <outletCollection property="otherButtons" destination="e4q-jx-nMw" id="gNY-lC-RLn"/>
+                                                    <outletCollection property="otherButtons" destination="3pd-47-eLA" id="9go-tc-JxU"/>
+                                                    <outletCollection property="otherButtons" destination="55g-iu-pTF" id="BXR-UO-jj6"/>
+                                                    <outletCollection property="otherButtons" destination="9hz-KH-oX3" id="qQa-My-q4K"/>
+                                                    <outletCollection property="otherButtons" destination="osi-0Q-2By" id="PXf-um-2Vt"/>
+                                                    <outletCollection property="otherButtons" destination="4gm-9v-lMa" id="Vva-0u-bsM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gm-9v-lMa" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="54" width="334" height="34"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="kL4-dW-P3d"/>
+                                                    <outletCollection property="otherButtons" destination="K0D-eo-GWA" id="q9b-fG-Y2H"/>
+                                                    <outletCollection property="otherButtons" destination="e4q-jx-nMw" id="fDk-08-c1l"/>
+                                                    <outletCollection property="otherButtons" destination="3pd-47-eLA" id="81C-rS-Ozd"/>
+                                                    <outletCollection property="otherButtons" destination="55g-iu-pTF" id="q9V-Av-2Uq"/>
+                                                    <outletCollection property="otherButtons" destination="9hz-KH-oX3" id="9T0-Zc-pBU"/>
+                                                    <outletCollection property="otherButtons" destination="osi-0Q-2By" id="a3M-9h-xHe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4q-jx-nMw" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="108" width="334" height="34"/>
+                                                <state key="normal" title="1">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="JoA-my-hTm"/>
+                                                    <outletCollection property="otherButtons" destination="4gm-9v-lMa" id="y3m-Mg-GH5"/>
+                                                    <outletCollection property="otherButtons" destination="3pd-47-eLA" id="ueS-JR-PIc"/>
+                                                    <outletCollection property="otherButtons" destination="55g-iu-pTF" id="mW2-Sm-1x6"/>
+                                                    <outletCollection property="otherButtons" destination="9hz-KH-oX3" id="Npf-3O-3wN"/>
+                                                    <outletCollection property="otherButtons" destination="osi-0Q-2By" id="lDu-ZE-HBr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pd-47-eLA" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="162" width="334" height="34"/>
+                                                <state key="normal" title="0">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="Hbn-zE-1SJ"/>
+                                                    <outletCollection property="otherButtons" destination="4gm-9v-lMa" id="JY4-g7-iAL"/>
+                                                    <outletCollection property="otherButtons" destination="e4q-jx-nMw" id="066-Qm-ekP"/>
+                                                    <outletCollection property="otherButtons" destination="55g-iu-pTF" id="Ixz-tb-OLR"/>
+                                                    <outletCollection property="otherButtons" destination="9hz-KH-oX3" id="9jL-j8-MBW"/>
+                                                    <outletCollection property="otherButtons" destination="osi-0Q-2By" id="LEv-hE-WYL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55g-iu-pTF" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="216" width="334" height="34"/>
+                                                <state key="normal" title="-1">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="e2G-75-3fd"/>
+                                                    <outletCollection property="otherButtons" destination="4gm-9v-lMa" id="8Ik-cu-cR9"/>
+                                                    <outletCollection property="otherButtons" destination="e4q-jx-nMw" id="1Gn-pK-Rta"/>
+                                                    <outletCollection property="otherButtons" destination="3pd-47-eLA" id="lkS-ZB-Bg0"/>
+                                                    <outletCollection property="otherButtons" destination="9hz-KH-oX3" id="pqy-hy-UdU"/>
+                                                    <outletCollection property="otherButtons" destination="osi-0Q-2By" id="CrM-rz-yMi"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-KH-oX3" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="270" width="334" height="34"/>
+                                                <state key="normal" title="-2">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="zcy-eF-vR0"/>
+                                                    <outletCollection property="otherButtons" destination="4gm-9v-lMa" id="vp2-gB-BOj"/>
+                                                    <outletCollection property="otherButtons" destination="e4q-jx-nMw" id="5PB-rl-Yh2"/>
+                                                    <outletCollection property="otherButtons" destination="3pd-47-eLA" id="ICg-0M-Cu2"/>
+                                                    <outletCollection property="otherButtons" destination="55g-iu-pTF" id="PpC-m2-Gl8"/>
+                                                    <outletCollection property="otherButtons" destination="osi-0Q-2By" id="GSD-nv-Fpm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osi-0Q-2By" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="324" width="334" height="34"/>
+                                                <state key="normal" title="-3 Extremely dissatisfied">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="4tY-Vv-hpO"/>
+                                                    <outletCollection property="otherButtons" destination="4gm-9v-lMa" id="8S8-e0-4xU"/>
+                                                    <outletCollection property="otherButtons" destination="e4q-jx-nMw" id="eGc-vl-3QS"/>
+                                                    <outletCollection property="otherButtons" destination="3pd-47-eLA" id="5eP-37-Mdr"/>
+                                                    <outletCollection property="otherButtons" destination="55g-iu-pTF" id="am3-gV-cTh"/>
+                                                    <outletCollection property="otherButtons" destination="9hz-KH-oX3" id="QLx-ct-Sc4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Zhd-aF-nGC"/>
+                                            <constraint firstAttribute="trailing" secondItem="55g-iu-pTF" secondAttribute="trailing" id="3tu-ny-NuT"/>
+                                            <constraint firstAttribute="trailing" secondItem="e4q-jx-nMw" secondAttribute="trailing" id="6x4-L9-wGj"/>
+                                            <constraint firstAttribute="trailing" secondItem="K0D-eo-GWA" secondAttribute="trailing" id="8lZ-OV-KQF"/>
+                                            <constraint firstItem="9hz-KH-oX3" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="EhQ-Ag-3F5"/>
+                                            <constraint firstItem="K0D-eo-GWA" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="RFW-L0-bHk"/>
+                                            <constraint firstItem="3pd-47-eLA" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="RQR-au-61W"/>
+                                            <constraint firstItem="e4q-jx-nMw" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="TtL-KP-biR"/>
+                                            <constraint firstAttribute="trailing" secondItem="3pd-47-eLA" secondAttribute="trailing" id="XIu-Tn-FBY"/>
+                                            <constraint firstAttribute="trailing" secondItem="4gm-9v-lMa" secondAttribute="trailing" id="ZEH-mg-pLJ"/>
+                                            <constraint firstItem="55g-iu-pTF" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="ZVF-x2-dPv"/>
+                                            <constraint firstAttribute="trailing" secondItem="osi-0Q-2By" secondAttribute="trailing" id="cyu-dm-jCO"/>
+                                            <constraint firstAttribute="trailing" secondItem="9hz-KH-oX3" secondAttribute="trailing" id="hFD-E1-cNl"/>
+                                            <constraint firstItem="4gm-9v-lMa" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="hmf-I1-BXs"/>
+                                            <constraint firstItem="osi-0Q-2By" firstAttribute="leading" secondItem="UfE-av-kOp" secondAttribute="leading" id="og9-Sk-8li"/>
                                         </constraints>
-                                        <state key="normal" title="Next"/>
-                                        <connections>
-                                            <action selector="nextTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="co0-D4-S3G"/>
-                                        </connections>
-                                    </button>
+                                    </stackView>
+                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Explain..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iy7-k7-ajf">
+                                        <rect key="frame" x="20" y="170" width="334" height="428"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="placeholderTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6e-dy-M2w">
+                                        <rect key="frame" x="20" y="667.5" width="334" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-nr-fsr">
+                                        <rect key="frame" x="20" y="708" width="334" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-DO-Rbn">
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="0Fu-7w-gPe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcm-Of-QvW">
+                                                <rect key="frame" x="177" y="0.0" width="157" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Zhd-aF-nGC"/>
+                                                </constraints>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="nextTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="co0-D4-S3G"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cXi-DO-Rbn" firstAttribute="height" secondItem="kcm-Of-QvW" secondAttribute="height" id="Aip-cg-xuH"/>
+                                            <constraint firstAttribute="height" constant="50" id="Dyf-Df-dgE"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.9042013408332471" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="cXi-DO-Rbn" firstAttribute="height" secondItem="kcm-Of-QvW" secondAttribute="height" id="Aip-cg-xuH"/>
-                                    <constraint firstAttribute="height" constant="50" id="Dyf-Df-dgE"/>
+                                    <constraint firstItem="iy7-k7-ajf" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="0cP-EA-XFI"/>
+                                    <constraint firstItem="UfE-av-kOp" firstAttribute="top" secondItem="lCt-s3-vqG" secondAttribute="bottom" constant="20" id="1Qg-nJ-t7l"/>
+                                    <constraint firstItem="UTJ-nr-fsr" firstAttribute="top" secondItem="n6e-dy-M2w" secondAttribute="bottom" constant="20" id="1rD-we-1TD"/>
+                                    <constraint firstItem="n6e-dy-M2w" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="2Ij-9Z-p2X"/>
+                                    <constraint firstItem="UfE-av-kOp" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="FFd-UV-ytV"/>
+                                    <constraint firstItem="lCt-s3-vqG" firstAttribute="leading" secondItem="GTm-it-ed1" secondAttribute="leading" constant="20" id="T1Y-IK-7hr"/>
+                                    <constraint firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" constant="20" id="UyR-xa-PPq"/>
+                                    <constraint firstItem="UfE-av-kOp" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="XHk-fb-o1Z"/>
+                                    <constraint firstItem="UTJ-nr-fsr" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="YME-27-KKq"/>
+                                    <constraint firstItem="UTJ-nr-fsr" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="b25-hx-MsV"/>
+                                    <constraint firstItem="iy7-k7-ajf" firstAttribute="top" secondItem="lCt-s3-vqG" secondAttribute="bottom" constant="20" id="cSR-MW-raW"/>
+                                    <constraint firstAttribute="bottom" secondItem="UTJ-nr-fsr" secondAttribute="bottom" constant="20" id="dep-gX-VSv"/>
+                                    <constraint firstItem="lCt-s3-vqG" firstAttribute="top" secondItem="GTm-it-ed1" secondAttribute="top" constant="20" id="dn7-Ug-uif"/>
+                                    <constraint firstItem="iy7-k7-ajf" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="eWA-cB-uiT"/>
+                                    <constraint firstItem="n6e-dy-M2w" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="m1a-uL-abQ"/>
+                                    <constraint firstItem="iy7-k7-ajf" firstAttribute="height" secondItem="GTm-it-ed1" secondAttribute="height" multiplier="0.55" id="mop-vQ-Rag"/>
                                 </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6e-dy-M2w">
-                                <rect key="frame" x="20" y="751.5" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="secondaryLabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Explain..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iy7-k7-ajf">
-                                <rect key="frame" x="20" y="249" width="374" height="409"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="placeholderTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bp8-hH-ymk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UTJ-nr-fsr" firstAttribute="leading" secondItem="bp8-hH-ymk" secondAttribute="leading" constant="20" id="6F9-NS-BSD"/>
-                            <constraint firstItem="bp8-hH-ymk" firstAttribute="bottom" secondItem="UTJ-nr-fsr" secondAttribute="bottom" constant="20" id="77D-wk-h8w"/>
-                            <constraint firstItem="lCt-s3-vqG" firstAttribute="leading" secondItem="bp8-hH-ymk" secondAttribute="leading" constant="20" id="HDH-C0-t0O"/>
-                            <constraint firstItem="bp8-hH-ymk" firstAttribute="trailing" secondItem="UTJ-nr-fsr" secondAttribute="trailing" constant="20" id="I6C-zn-o7L"/>
-                            <constraint firstItem="bp8-hH-ymk" firstAttribute="trailing" secondItem="n6e-dy-M2w" secondAttribute="trailing" constant="20" id="IfL-F8-jEW"/>
-                            <constraint firstItem="lCt-s3-vqG" firstAttribute="top" secondItem="bp8-hH-ymk" secondAttribute="top" multiplier="1.8" constant="20" id="Ipm-bH-mlr"/>
-                            <constraint firstItem="iy7-k7-ajf" firstAttribute="top" secondItem="lCt-s3-vqG" secondAttribute="bottom" constant="20" id="JON-Ud-88p"/>
-                            <constraint firstItem="UTJ-nr-fsr" firstAttribute="top" secondItem="n6e-dy-M2w" secondAttribute="bottom" constant="20" id="KTF-pi-7vl"/>
-                            <constraint firstItem="bp8-hH-ymk" firstAttribute="trailing" secondItem="UfE-av-kOp" secondAttribute="trailing" constant="20" id="Sh8-Q4-rkd"/>
-                            <constraint firstItem="bp8-hH-ymk" firstAttribute="trailing" secondItem="iy7-k7-ajf" secondAttribute="trailing" constant="20" id="WCf-oq-GbF"/>
-                            <constraint firstItem="n6e-dy-M2w" firstAttribute="leading" secondItem="bp8-hH-ymk" secondAttribute="leading" constant="20" id="ehq-rr-6hC"/>
-                            <constraint firstItem="bp8-hH-ymk" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" constant="20" id="i5c-wf-N9L"/>
-                            <constraint firstItem="UfE-av-kOp" firstAttribute="top" secondItem="lCt-s3-vqG" secondAttribute="bottom" constant="20" id="jAS-5i-Fgc"/>
-                            <constraint firstItem="iy7-k7-ajf" firstAttribute="leading" secondItem="bp8-hH-ymk" secondAttribute="leading" constant="20" id="ntf-rQ-lDj"/>
-                            <constraint firstItem="iy7-k7-ajf" firstAttribute="height" secondItem="bp8-hH-ymk" secondAttribute="height" multiplier="0.5" id="qce-jk-dGx"/>
-                            <constraint firstItem="UfE-av-kOp" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="sWA-BJ-hI1"/>
+                            <constraint firstItem="wxp-Ej-qUP" firstAttribute="leading" secondItem="bp8-hH-ymk" secondAttribute="leading" id="0C0-aO-dqH"/>
+                            <constraint firstItem="GTm-it-ed1" firstAttribute="top" secondItem="bp8-hH-ymk" secondAttribute="top" constant="20" id="5hN-Bs-rFC"/>
+                            <constraint firstItem="GTm-it-ed1" firstAttribute="leading" secondItem="bp8-hH-ymk" secondAttribute="leading" constant="20" id="bcE-Cy-WKN"/>
+                            <constraint firstItem="bp8-hH-ymk" firstAttribute="bottom" secondItem="GTm-it-ed1" secondAttribute="bottom" constant="20" id="llU-Pz-DKM"/>
+                            <constraint firstItem="wxp-Ej-qUP" firstAttribute="bottom" secondItem="bp8-hH-ymk" secondAttribute="bottom" id="nPx-6S-4gk"/>
+                            <constraint firstItem="bp8-hH-ymk" firstAttribute="top" secondItem="wxp-Ej-qUP" secondAttribute="top" id="sbO-Wo-I0e"/>
+                            <constraint firstItem="bp8-hH-ymk" firstAttribute="trailing" secondItem="wxp-Ej-qUP" secondAttribute="trailing" id="y9I-uN-pGC"/>
+                            <constraint firstItem="bp8-hH-ymk" firstAttribute="trailing" secondItem="GTm-it-ed1" secondAttribute="trailing" constant="20" id="ykc-uh-9uW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fK6-2n-daR"/>
                     <connections>
                         <outlet property="backButton" destination="cXi-DO-Rbn" id="5Fc-hS-q1K"/>
+                        <outlet property="bgView" destination="GTm-it-ed1" id="JRc-Tt-KOa"/>
                         <outlet property="nextButton" destination="kcm-Of-QvW" id="ysa-RO-g5i"/>
                         <outlet property="pageLabel" destination="n6e-dy-M2w" id="BCY-gp-ml3"/>
                         <outlet property="questionLabel" destination="lCt-s3-vqG" id="gf8-XM-WYs"/>
                         <outlet property="textView" destination="iy7-k7-ajf" id="XOD-sU-dCU"/>
-                        <outletCollection property="options" destination="K0D-eo-GWA" collectionClass="NSMutableArray" id="M53-rM-iq9"/>
-                        <outletCollection property="options" destination="4gm-9v-lMa" collectionClass="NSMutableArray" id="Yhf-bK-EzW"/>
-                        <outletCollection property="options" destination="e4q-jx-nMw" collectionClass="NSMutableArray" id="w75-Xt-bnb"/>
-                        <outletCollection property="options" destination="3pd-47-eLA" collectionClass="NSMutableArray" id="GOf-l2-6ti"/>
-                        <outletCollection property="options" destination="55g-iu-pTF" collectionClass="NSMutableArray" id="maD-Pe-cYc"/>
-                        <outletCollection property="options" destination="9hz-KH-oX3" collectionClass="NSMutableArray" id="mBS-Me-fOF"/>
-                        <outletCollection property="options" destination="osi-0Q-2By" collectionClass="NSMutableArray" id="Kvv-fM-Vqn"/>
+                        <outletCollection property="options" destination="K0D-eo-GWA" collectionClass="NSMutableArray" id="UMK-Rg-18G"/>
+                        <outletCollection property="options" destination="4gm-9v-lMa" collectionClass="NSMutableArray" id="o6C-BA-Lfb"/>
+                        <outletCollection property="options" destination="e4q-jx-nMw" collectionClass="NSMutableArray" id="TVp-PZ-iCT"/>
+                        <outletCollection property="options" destination="3pd-47-eLA" collectionClass="NSMutableArray" id="z02-SA-mfc"/>
+                        <outletCollection property="options" destination="55g-iu-pTF" collectionClass="NSMutableArray" id="edN-qF-y7z"/>
+                        <outletCollection property="options" destination="9hz-KH-oX3" collectionClass="NSMutableArray" id="rTe-9b-QY6"/>
+                        <outletCollection property="options" destination="osi-0Q-2By" collectionClass="NSMutableArray" id="FvI-09-llm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUK-Ll-ukr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -211,12 +263,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-C3-X1i">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8IE-5E-oB0">
                                 <rect key="frame" x="20" y="325.5" width="374" height="245"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXL-uU-c8J">
                                         <rect key="frame" x="20" y="18.5" width="334" height="208"/>
-                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Upcoming pages follow a description of a number of situations in which persons with injection phobia can experience anxiety or fear. Read each item and rate on a scale from 0 to 4 how much anxiety you would experience if you actually were in the situation.</string>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -228,7 +283,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90420134080000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" secondItem="XXL-uU-c8J" secondAttribute="height" multiplier="1.17788" id="AsA-o3-92q"/>
                                     <constraint firstItem="XXL-uU-c8J" firstAttribute="leading" secondItem="8IE-5E-oB0" secondAttribute="leading" constant="20" id="RhP-i4-9ES"/>
@@ -238,7 +293,13 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" systemColor="systemBlueColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -272,11 +333,15 @@
                         <viewLayoutGuide key="safeArea" id="Qj2-ck-3s1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="zIz-C3-X1i" firstAttribute="top" secondItem="pdL-L8-Bwy" secondAttribute="top" id="M8o-u4-GLf"/>
                             <constraint firstItem="Qj2-ck-3s1" firstAttribute="trailing" secondItem="8IE-5E-oB0" secondAttribute="trailing" constant="20" id="NA2-SN-QnJ"/>
                             <constraint firstItem="Qj2-ck-3s1" firstAttribute="bottom" secondItem="yKa-lM-oY2" secondAttribute="bottom" constant="20" id="X8i-HZ-52G"/>
+                            <constraint firstItem="Qj2-ck-3s1" firstAttribute="bottom" secondItem="zIz-C3-X1i" secondAttribute="bottom" id="aI3-c2-PdZ"/>
+                            <constraint firstItem="zIz-C3-X1i" firstAttribute="trailing" secondItem="Qj2-ck-3s1" secondAttribute="trailing" id="aq7-Rj-N8m"/>
                             <constraint firstItem="yKa-lM-oY2" firstAttribute="leading" secondItem="Qj2-ck-3s1" secondAttribute="leading" constant="20" id="gyI-DR-OdA"/>
                             <constraint firstItem="8IE-5E-oB0" firstAttribute="leading" secondItem="Qj2-ck-3s1" secondAttribute="leading" constant="20" id="hUY-MD-2zQ"/>
                             <constraint firstItem="8IE-5E-oB0" firstAttribute="centerY" secondItem="pdL-L8-Bwy" secondAttribute="centerY" id="nbH-m7-IvM"/>
+                            <constraint firstItem="zIz-C3-X1i" firstAttribute="leading" secondItem="Qj2-ck-3s1" secondAttribute="leading" id="pxc-QA-LyH"/>
                             <constraint firstItem="Qj2-ck-3s1" firstAttribute="trailing" secondItem="yKa-lM-oY2" secondAttribute="trailing" constant="20" id="xkN-hc-2zv"/>
                             <constraint firstItem="8IE-5E-oB0" firstAttribute="centerX" secondItem="pdL-L8-Bwy" secondAttribute="centerX" id="zXb-hj-2vg"/>
                         </constraints>
@@ -284,6 +349,7 @@
                     <navigationItem key="navigationItem" id="SZB-5c-tZJ"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bgView" destination="8IE-5E-oB0" id="sik-8w-yii"/>
                         <outlet property="cancelButton" destination="aDi-mM-aUP" id="c36-YU-fes"/>
                         <outlet property="startButton" destination="GPY-im-wPR" id="hLd-qm-tIG"/>
                     </connections>
@@ -300,140 +366,172 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xra-w1-XuD">
-                                <rect key="frame" x="20" y="278" width="374" height="250"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="K3o-Kr-PoW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqY-4m-CB9">
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2m6-1x-CJG" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <state key="normal" title="0 No Anxiety">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="5ss-bS-Vmy"/>
-                                            <outletCollection property="otherButtons" destination="FIt-LD-sX9" id="O5Y-vc-M9A"/>
-                                            <outletCollection property="otherButtons" destination="3YY-Qc-Ur4" id="PV7-8u-ZuG"/>
-                                            <outletCollection property="otherButtons" destination="RxW-2Q-72N" id="ONB-SW-RUx"/>
-                                            <outletCollection property="otherButtons" destination="zMc-6t-zYn" id="MUV-A8-a9R"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIt-LD-sX9" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="34"/>
-                                        <state key="normal" title="1">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="iBl-VX-CrB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YY-Qc-Ur4" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="108" width="374" height="34"/>
-                                        <state key="normal" title="2">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="mOX-CE-iGI"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RxW-2Q-72N" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="162" width="374" height="34"/>
-                                        <state key="normal" title="3">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="KXQ-lf-CsO"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMc-6t-zYn" customClass="DLRadioButton">
-                                        <rect key="frame" x="0.0" y="216" width="374" height="34"/>
-                                        <state key="normal" title="4 Max Anxiety">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="aot-Wd-pKE"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="3YY-Qc-Ur4" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="AmS-ZD-8zo"/>
-                                    <constraint firstAttribute="trailing" secondItem="RxW-2Q-72N" secondAttribute="trailing" id="CqK-H4-8sb"/>
-                                    <constraint firstAttribute="trailing" secondItem="zMc-6t-zYn" secondAttribute="trailing" id="IbE-PY-kGq"/>
-                                    <constraint firstItem="FIt-LD-sX9" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="KKn-vk-6Zt"/>
-                                    <constraint firstAttribute="trailing" secondItem="2m6-1x-CJG" secondAttribute="trailing" id="NlP-r8-5KY"/>
-                                    <constraint firstAttribute="trailing" secondItem="FIt-LD-sX9" secondAttribute="trailing" id="hSV-1F-9ah"/>
-                                    <constraint firstItem="2m6-1x-CJG" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="hX7-Fv-jZu"/>
-                                    <constraint firstItem="zMc-6t-zYn" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="i9E-5o-k8e"/>
-                                    <constraint firstAttribute="trailing" secondItem="3YY-Qc-Ur4" secondAttribute="trailing" id="pDU-Yf-5ZU"/>
-                                    <constraint firstItem="RxW-2Q-72N" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="sRJ-bA-n1t"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giving a blood sample by having a finger pricked." lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8D-bB-tcy">
-                                <rect key="frame" x="20" y="193" width="374" height="65"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mll-nD-wP5">
-                                <rect key="frame" x="20" y="792" width="374" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LND-9U-Wg6">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
-                                        <state key="normal" title="Back"/>
-                                        <connections>
-                                            <action selector="backTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="qBe-YW-btQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmY-ui-eSX">
-                                        <rect key="frame" x="197" y="0.0" width="177" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giving a blood sample by having a finger pricked." lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8D-bB-tcy">
+                                        <rect key="frame" x="20" y="20" width="334" height="65"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xra-w1-XuD">
+                                        <rect key="frame" x="20" y="105" width="334" height="250"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2m6-1x-CJG" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                                <state key="normal" title="0 No Anxiety">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="5ss-bS-Vmy"/>
+                                                    <outletCollection property="otherButtons" destination="FIt-LD-sX9" id="O5Y-vc-M9A"/>
+                                                    <outletCollection property="otherButtons" destination="3YY-Qc-Ur4" id="PV7-8u-ZuG"/>
+                                                    <outletCollection property="otherButtons" destination="RxW-2Q-72N" id="ONB-SW-RUx"/>
+                                                    <outletCollection property="otherButtons" destination="zMc-6t-zYn" id="MUV-A8-a9R"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIt-LD-sX9" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="54" width="334" height="34"/>
+                                                <state key="normal" title="1">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="iBl-VX-CrB"/>
+                                                    <outletCollection property="otherButtons" destination="3YY-Qc-Ur4" id="li3-RP-phh"/>
+                                                    <outletCollection property="otherButtons" destination="RxW-2Q-72N" id="PSc-BX-WwB"/>
+                                                    <outletCollection property="otherButtons" destination="zMc-6t-zYn" id="IHa-7Y-yXm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YY-Qc-Ur4" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="108" width="334" height="34"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="mOX-CE-iGI"/>
+                                                    <outletCollection property="otherButtons" destination="FIt-LD-sX9" id="gFE-86-bsa"/>
+                                                    <outletCollection property="otherButtons" destination="RxW-2Q-72N" id="iDo-Rd-jCr"/>
+                                                    <outletCollection property="otherButtons" destination="zMc-6t-zYn" id="Ak6-KW-NGt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RxW-2Q-72N" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="162" width="334" height="34"/>
+                                                <state key="normal" title="3">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="KXQ-lf-CsO"/>
+                                                    <outletCollection property="otherButtons" destination="FIt-LD-sX9" id="LgO-Yg-jqY"/>
+                                                    <outletCollection property="otherButtons" destination="3YY-Qc-Ur4" id="4Bj-FZ-syh"/>
+                                                    <outletCollection property="otherButtons" destination="zMc-6t-zYn" id="lbh-6Z-W8m"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMc-6t-zYn" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="216" width="334" height="34"/>
+                                                <state key="normal" title="4 Max Anxiety">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="optionTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="aot-Wd-pKE"/>
+                                                    <outletCollection property="otherButtons" destination="FIt-LD-sX9" id="Fhc-z9-sM7"/>
+                                                    <outletCollection property="otherButtons" destination="3YY-Qc-Ur4" id="hVP-ed-1CE"/>
+                                                    <outletCollection property="otherButtons" destination="RxW-2Q-72N" id="ay2-W3-1kB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="hPi-U9-2PG"/>
+                                            <constraint firstItem="3YY-Qc-Ur4" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="AmS-ZD-8zo"/>
+                                            <constraint firstAttribute="trailing" secondItem="RxW-2Q-72N" secondAttribute="trailing" id="CqK-H4-8sb"/>
+                                            <constraint firstAttribute="trailing" secondItem="zMc-6t-zYn" secondAttribute="trailing" id="IbE-PY-kGq"/>
+                                            <constraint firstItem="FIt-LD-sX9" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="KKn-vk-6Zt"/>
+                                            <constraint firstAttribute="trailing" secondItem="2m6-1x-CJG" secondAttribute="trailing" id="NlP-r8-5KY"/>
+                                            <constraint firstAttribute="trailing" secondItem="FIt-LD-sX9" secondAttribute="trailing" id="hSV-1F-9ah"/>
+                                            <constraint firstItem="2m6-1x-CJG" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="hX7-Fv-jZu"/>
+                                            <constraint firstItem="zMc-6t-zYn" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="i9E-5o-k8e"/>
+                                            <constraint firstAttribute="trailing" secondItem="3YY-Qc-Ur4" secondAttribute="trailing" id="pDU-Yf-5ZU"/>
+                                            <constraint firstItem="RxW-2Q-72N" firstAttribute="leading" secondItem="xra-w1-XuD" secondAttribute="leading" id="sRJ-bA-n1t"/>
                                         </constraints>
-                                        <state key="normal" title="Next"/>
-                                        <connections>
-                                            <action selector="nextTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="Cum-HM-NNA"/>
-                                        </connections>
-                                    </button>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mll-nD-wP5">
+                                        <rect key="frame" x="20" y="708" width="334" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LND-9U-Wg6">
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="qBe-YW-btQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmY-ui-eSX">
+                                                <rect key="frame" x="177" y="0.0" width="157" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="hPi-U9-2PG"/>
+                                                </constraints>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="nextTapped:" destination="kHl-qA-v76" eventType="touchUpInside" id="Cum-HM-NNA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="LND-9U-Wg6" firstAttribute="height" secondItem="YmY-ui-eSX" secondAttribute="height" id="Vap-Rt-Vo5"/>
+                                            <constraint firstAttribute="height" constant="50" id="Xk3-cl-gxg"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uI0-u6-6tz">
+                                        <rect key="frame" x="20" y="667.5" width="334" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90420134080000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="LND-9U-Wg6" firstAttribute="height" secondItem="YmY-ui-eSX" secondAttribute="height" id="Vap-Rt-Vo5"/>
-                                    <constraint firstAttribute="height" constant="50" id="Xk3-cl-gxg"/>
+                                    <constraint firstItem="Y8D-bB-tcy" firstAttribute="leading" secondItem="ZqY-4m-CB9" secondAttribute="leading" constant="20" id="AWT-L3-4as"/>
+                                    <constraint firstItem="mll-nD-wP5" firstAttribute="leading" secondItem="Y8D-bB-tcy" secondAttribute="leading" id="NDN-Bq-7NT"/>
+                                    <constraint firstItem="uI0-u6-6tz" firstAttribute="leading" secondItem="Y8D-bB-tcy" secondAttribute="leading" id="NTR-YB-C4P"/>
+                                    <constraint firstItem="Y8D-bB-tcy" firstAttribute="top" secondItem="ZqY-4m-CB9" secondAttribute="top" constant="20" id="TNn-n0-dna"/>
+                                    <constraint firstItem="mll-nD-wP5" firstAttribute="top" secondItem="uI0-u6-6tz" secondAttribute="bottom" constant="20" id="TNu-Xu-dTB"/>
+                                    <constraint firstItem="mll-nD-wP5" firstAttribute="trailing" secondItem="Y8D-bB-tcy" secondAttribute="trailing" id="b9u-pa-4eO"/>
+                                    <constraint firstAttribute="bottom" secondItem="mll-nD-wP5" secondAttribute="bottom" constant="20" id="bQw-Fh-rod"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y8D-bB-tcy" secondAttribute="trailing" constant="20" id="gdY-AA-Flx"/>
+                                    <constraint firstItem="xra-w1-XuD" firstAttribute="trailing" secondItem="Y8D-bB-tcy" secondAttribute="trailing" id="lJg-LW-R11"/>
+                                    <constraint firstItem="xra-w1-XuD" firstAttribute="top" secondItem="Y8D-bB-tcy" secondAttribute="bottom" constant="20" id="q6T-CX-Wvd"/>
+                                    <constraint firstItem="xra-w1-XuD" firstAttribute="leading" secondItem="Y8D-bB-tcy" secondAttribute="leading" id="qBS-6S-Edg"/>
+                                    <constraint firstItem="uI0-u6-6tz" firstAttribute="trailing" secondItem="Y8D-bB-tcy" secondAttribute="trailing" id="vXB-dj-3sY"/>
                                 </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uI0-u6-6tz">
-                                <rect key="frame" x="20" y="751.5" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="secondaryLabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tSP-7F-Ml1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mll-nD-wP5" firstAttribute="leading" secondItem="tSP-7F-Ml1" secondAttribute="leading" constant="20" id="3J9-Av-2t1"/>
-                            <constraint firstItem="tSP-7F-Ml1" firstAttribute="trailing" secondItem="uI0-u6-6tz" secondAttribute="trailing" constant="20" id="6IB-m5-ICr"/>
-                            <constraint firstItem="tSP-7F-Ml1" firstAttribute="trailing" secondItem="mll-nD-wP5" secondAttribute="trailing" constant="20" id="AB2-it-oz5"/>
-                            <constraint firstItem="tSP-7F-Ml1" firstAttribute="trailing" secondItem="xra-w1-XuD" secondAttribute="trailing" constant="20" id="IsR-gU-rtB"/>
-                            <constraint firstItem="xra-w1-XuD" firstAttribute="top" secondItem="Y8D-bB-tcy" secondAttribute="bottom" constant="20" id="LN7-mA-gHV"/>
-                            <constraint firstItem="mll-nD-wP5" firstAttribute="top" secondItem="uI0-u6-6tz" secondAttribute="bottom" constant="20" id="TsS-79-AHf"/>
-                            <constraint firstItem="tSP-7F-Ml1" firstAttribute="bottom" secondItem="mll-nD-wP5" secondAttribute="bottom" constant="20" id="fVZ-Ef-I2E"/>
-                            <constraint firstItem="xra-w1-XuD" firstAttribute="leading" secondItem="Y8D-bB-tcy" secondAttribute="leading" id="hle-zz-GyF"/>
-                            <constraint firstItem="Y8D-bB-tcy" firstAttribute="leading" secondItem="tSP-7F-Ml1" secondAttribute="leading" constant="20" id="rMj-sl-dhq"/>
-                            <constraint firstItem="tSP-7F-Ml1" firstAttribute="trailing" secondItem="Y8D-bB-tcy" secondAttribute="trailing" constant="20" id="sAQ-hI-UIT"/>
-                            <constraint firstItem="xra-w1-XuD" firstAttribute="centerY" secondItem="5tj-0v-c8B" secondAttribute="centerY" multiplier="0.9" id="tPK-oZ-RWI"/>
-                            <constraint firstItem="uI0-u6-6tz" firstAttribute="leading" secondItem="tSP-7F-Ml1" secondAttribute="leading" constant="20" id="xMT-LI-xJr"/>
+                            <constraint firstItem="tSP-7F-Ml1" firstAttribute="bottom" secondItem="ZqY-4m-CB9" secondAttribute="bottom" constant="20" id="2yr-3Z-0w9"/>
+                            <constraint firstItem="K3o-Kr-PoW" firstAttribute="trailing" secondItem="tSP-7F-Ml1" secondAttribute="trailing" id="5QH-nC-ThE"/>
+                            <constraint firstItem="K3o-Kr-PoW" firstAttribute="top" secondItem="5tj-0v-c8B" secondAttribute="top" id="Pz3-xt-omb"/>
+                            <constraint firstItem="ZqY-4m-CB9" firstAttribute="top" secondItem="tSP-7F-Ml1" secondAttribute="top" constant="20" id="RKD-PW-Nb0"/>
+                            <constraint firstItem="ZqY-4m-CB9" firstAttribute="leading" secondItem="5tj-0v-c8B" secondAttribute="leading" constant="20" id="VAC-9x-2Sl"/>
+                            <constraint firstItem="tSP-7F-Ml1" firstAttribute="trailing" secondItem="ZqY-4m-CB9" secondAttribute="trailing" constant="20" id="iGY-fS-7T0"/>
+                            <constraint firstAttribute="bottom" secondItem="K3o-Kr-PoW" secondAttribute="bottom" id="rRc-pi-V90"/>
+                            <constraint firstItem="K3o-Kr-PoW" firstAttribute="leading" secondItem="tSP-7F-Ml1" secondAttribute="leading" id="yJI-iy-L1U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vt3-QF-Cif"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="LND-9U-Wg6" id="pAS-8M-dwP"/>
+                        <outlet property="bgView" destination="ZqY-4m-CB9" id="hcn-Cn-8GI"/>
                         <outlet property="nextButton" destination="YmY-ui-eSX" id="EqS-pd-zoW"/>
                         <outlet property="pageLabel" destination="uI0-u6-6tz" id="R2X-Jc-YcV"/>
                         <outlet property="questionLabel" destination="Y8D-bB-tcy" id="70m-bb-atd"/>
-                        <outletCollection property="options" destination="2m6-1x-CJG" collectionClass="NSMutableArray" id="Ere-U5-DcU"/>
-                        <outletCollection property="options" destination="FIt-LD-sX9" collectionClass="NSMutableArray" id="tEf-hg-Xwj"/>
-                        <outletCollection property="options" destination="3YY-Qc-Ur4" collectionClass="NSMutableArray" id="0Pl-Fj-Ryd"/>
-                        <outletCollection property="options" destination="RxW-2Q-72N" collectionClass="NSMutableArray" id="6Jk-aY-f7o"/>
-                        <outletCollection property="options" destination="zMc-6t-zYn" collectionClass="NSMutableArray" id="4DL-aQ-Uqj"/>
+                        <outletCollection property="options" destination="2m6-1x-CJG" collectionClass="NSMutableArray" id="cQ3-GY-URC"/>
+                        <outletCollection property="options" destination="FIt-LD-sX9" collectionClass="NSMutableArray" id="xg8-Zc-20d"/>
+                        <outletCollection property="options" destination="3YY-Qc-Ur4" collectionClass="NSMutableArray" id="mGU-WV-BjW"/>
+                        <outletCollection property="options" destination="RxW-2Q-72N" collectionClass="NSMutableArray" id="weE-Pd-Fl6"/>
+                        <outletCollection property="options" destination="zMc-6t-zYn" collectionClass="NSMutableArray" id="xz4-mI-KQQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPL-ka-6i1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -460,6 +558,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="1382" height="1275"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -469,11 +568,11 @@
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

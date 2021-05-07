@@ -26,10 +26,10 @@ class Page{
     
     static func fillARTutorialPages(){
         arTutorialPages.append(Page(heading: "", subheading: "Move the camera to left and right to initialize the space.", imageName: "tutorial0", index: 0))
-        arTutorialPages.append(Page(heading: "", subheading: "Keep moving the camera until the focus square finds a surface.", imageName: "tutorial1", index: 1))
-        arTutorialPages.append(Page(heading: "", subheading: "Tap on the surface to place grid and mascot.", imageName: "tutorial2", index: 2))
-        arTutorialPages.append(Page(heading: "", subheading: "Rescale or reposition the objects.", imageName: "tutorial3", index: 3))
-        arTutorialPages.append(Page(heading: "", subheading: "Select a cell and choose done to log the injection.", imageName: "tutorial4", index: 4))
+//        arTutorialPages.append(Page(heading: "", subheading: "Keep moving the camera until the focus square finds a surface.", imageName: "tutorial1", index: 1))
+        arTutorialPages.append(Page(heading: "", subheading: "Tap on the surface to place grid and mascot.", imageName: "tutorial2", index: 1))
+        arTutorialPages.append(Page(heading: "", subheading: "Rescale or reposition the objects.", imageName: "tutorial3", index: 2))
+        arTutorialPages.append(Page(heading: "", subheading: "Select a cell and choose done to log the injection.", imageName: "tutorial4", index: 3))
     }
     
     static func fillWalkthroughPages(){

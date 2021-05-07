@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var selectedDate : Date?
     var notes : [Note] = []
     
-    var partitionValue : String?
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     enum SegueIdentifier: String {
         case viewDateSegue
@@ -32,12 +32,16 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     override func viewWillAppear(_ animated: Bool) {
         calendar.reloadData()
-        self.navigationController?.navigationBar.isHidden = false
+        calendar.appearance.eventDefaultColor = UIColor(hex: StylingUtilities.buttonColor)
+        calendar.appearance.eventSelectionColor = UIColor(hex: StylingUtilities.buttonColor)
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     
     // MARK: - FSCalendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        tabBarController?.tabBar.isHidden = true
         
         let currentHour = Calendar.current.component(.hour, from: Date())
         let currentMinutes = Calendar.current.component(.minute, from: Date())
@@ -85,7 +89,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         if segue.identifier == SegueIdentifier.viewDateSegue.rawValue {
             notesViewController = segue.destination as? NotesTableViewController
             
-            notesViewController?.partitionValue = partitionValue!            
+            notesViewController?.partitionValue = partitionValue            
             notesViewController?.date = selectedDate!
         }
     }

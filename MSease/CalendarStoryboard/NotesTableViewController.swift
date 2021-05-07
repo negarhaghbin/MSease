@@ -22,7 +22,7 @@ class NotesTableViewController: UIViewController {
         }
     }
     
-    var partitionValue = RealmManager.shared.getPartitionValue()
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     var notificationToken: NotificationToken?
     var injectionNotificationToken: NotificationToken?
@@ -51,6 +51,7 @@ class NotesTableViewController: UIViewController {
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Helpers
@@ -192,7 +193,7 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == sections.notes.rawValue{
             return CGFloat(150)
         }
-        return CGFloat(75)
+        return CGFloat(100)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

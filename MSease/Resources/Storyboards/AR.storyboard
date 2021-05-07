@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ukG-ht-aAJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6se-uD-C15">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -81,7 +82,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-353.62318840579712" y="5.3571428571428568"/>
+            <point key="canvasLocation" x="556.52173913043487" y="5.3571428571428568"/>
         </scene>
         <!--Status View Controller-->
         <scene sceneID="yNM-hV-gZj">
@@ -176,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37l-i9-ehb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-352" y="-402"/>
+            <point key="canvasLocation" x="555" y="-409"/>
         </scene>
         <!--Ar Tutorial View Controller-->
         <scene sceneID="sP5-XN-thl">
@@ -243,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyG-M1-OPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1833" y="-17"/>
+            <point key="canvasLocation" x="436" y="965"/>
         </scene>
         <!--Mascot Selection View Controller-->
         <scene sceneID="4MG-bC-eQt">
@@ -319,7 +320,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8px-rP-7kW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-949" y="398"/>
+            <point key="canvasLocation" x="-9" y="473"/>
         </scene>
         <!--Bottom Container View Controller-->
         <scene sceneID="X2a-aM-Z7K">
@@ -507,29 +508,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkg-NL-O0z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-352.17391304347831" y="464.73214285714283"/>
-        </scene>
-        <!--Test View Controller-->
-        <scene sceneID="ZSR-wJ-wY8">
-            <objects>
-                <viewController id="bYG-c4-2PT" customClass="testViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="C7l-2g-4m3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="T6M-qI-ODM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vHd-CL-GKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-189" y="967"/>
+            <point key="canvasLocation" x="554" y="406"/>
         </scene>
         <!--Post InjectionVC-->
         <scene sceneID="oLN-kL-5bB">
             <objects>
                 <tableViewController id="7Ki-kd-nAQ" customClass="postInjectionVC" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="dJM-lt-4Ol">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <sections>
                             <tableViewSection id="ftx-tg-kaF">
@@ -925,7 +911,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r66-md-Jxi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="19"/>
+            <point key="canvasLocation" x="1452.1739130434785" y="18.75"/>
         </scene>
         <!--Ar Tutorial Page View Controller-->
         <scene sceneID="2DE-cp-KTi">
@@ -933,7 +919,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="u31-NO-yc1" customClass="ArTutorialPageViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zLW-tn-AX2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1833" y="629"/>
+            <point key="canvasLocation" x="436" y="1611"/>
         </scene>
         <!--Ar Tutorial Content View Controller-->
         <scene sceneID="WwU-bD-Fiv">
@@ -974,11 +960,110 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goe-vG-mot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2483" y="629"/>
+            <point key="canvasLocation" x="-214" y="1611"/>
+        </scene>
+        <!--Grid Collection View Controller-->
+        <scene sceneID="dxY-7T-aiA">
+            <objects>
+                <collectionViewController id="s5F-qp-WGY" customClass="GridCollectionViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="tI2-M2-YTN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" sectionInsetReference="safeArea" id="bB4-28-q3K">
+                            <size key="itemSize" width="200" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridSquareViewCell" id="L1Y-el-XDS" customClass="GridCollectionViewCell" customModule="MSease" customModuleProvider="target">
+                                <rect key="frame" x="7.5" y="5" width="399" height="187"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="i51-5f-Lu5">
+                                    <rect key="frame" x="0.0" y="0.0" width="399" height="187"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abdomen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mld-cy-mIl">
+                                            <rect key="frame" x="20" y="14" width="76" height="22.5"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abdomen" translatesAutoresizingMaskIntoConstraints="NO" id="kRv-Bw-7sm">
+                                            <rect key="frame" x="315.5" y="14" width="79.5" height="159"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="kRv-Bw-7sm" secondAttribute="height" multiplier="1:2" id="KY9-pE-8YJ"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="mld-cy-mIl" firstAttribute="top" secondItem="kRv-Bw-7sm" secondAttribute="top" id="K2c-sz-IdP"/>
+                                        <constraint firstItem="kRv-Bw-7sm" firstAttribute="centerY" secondItem="i51-5f-Lu5" secondAttribute="centerY" id="b6R-Dn-V4P"/>
+                                        <constraint firstItem="kRv-Bw-7sm" firstAttribute="height" secondItem="i51-5f-Lu5" secondAttribute="height" multiplier="0.85" id="o44-ft-LKG"/>
+                                        <constraint firstAttribute="trailing" secondItem="kRv-Bw-7sm" secondAttribute="trailing" constant="4" id="yes-bq-xTa"/>
+                                        <constraint firstItem="mld-cy-mIl" firstAttribute="leading" secondItem="i51-5f-Lu5" secondAttribute="leading" constant="20" id="zbK-jG-ORF"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="399" height="187"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="bodyImage" destination="kRv-Bw-7sm" id="mUT-E7-wEv"/>
+                                    <outlet property="textLabel" destination="mld-cy-mIl" id="Wqy-zg-3bQ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="s5F-qp-WGY" id="mG3-Wa-tqR"/>
+                            <outlet property="delegate" destination="s5F-qp-WGY" id="3dk-si-igh"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="KO8-W2-zN1">
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="SpV-Xn-7Cj">
+                            <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                            <connections>
+                                <action selector="goBack:" destination="s5F-qp-WGY" id="eIs-ef-2B2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="ukG-ht-aAJ" kind="show" identifier="showAR" id="vAW-hR-di5"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lsV-OP-LFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-216" y="5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cEK-cm-W4z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6se-uD-C15" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="aY0-Zy-8VK"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7kA-4p-u31">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="s5F-qp-WGY" kind="relationship" relationship="rootViewController" id="GhT-Oa-GFp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IUY-gF-3cw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1003" y="5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="abdomen" width="688" height="1848"/>
         <image name="checkmark" width="200" height="200"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="headache" width="704" height="704"/>
         <image name="intense" width="308" height="307"/>
         <image name="mild" width="316" height="311"/>
@@ -989,6 +1074,9 @@
         <image name="unspeakable" width="319" height="341"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

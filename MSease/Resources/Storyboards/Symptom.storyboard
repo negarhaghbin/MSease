@@ -761,7 +761,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="abdomen" width="515" height="1332"/>
+        <image name="abdomen" width="688" height="1848"/>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="checkmark" width="200" height="200"/>
         <image name="headache" width="704" height="704"/>

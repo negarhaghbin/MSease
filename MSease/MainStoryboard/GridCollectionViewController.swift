@@ -20,8 +20,9 @@ class GridCollectionViewCell: UICollectionViewCell {
     
     func setCellValues(title: String, imageName: String, section: Int){
         self.textLabel.text = title
-        let scaledSize = CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom)
-        self.bodyImage.image = UIImage(named: imageName)!.scaleTo(newSize: scaledSize)
+//        let scaledSize = CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom)
+        self.bodyImage.image = UIImage(named: imageName)!
+//            .scaleTo(newSize: scaledSize)
     }
     
     func initiate(){
@@ -93,19 +94,19 @@ class GridCollectionViewController: UICollectionViewController {
     
     enum gridSections : Int {
         case abdomen = 0
-        case notAbdomen = 1
+        case notAbdomen
     }
     
     enum gridNotAbdomenSectionItems : Int, CaseIterable{
         case leftThigh = 0
-        case rightThigh = 1
-        case leftArm = 2
-        case rightArm = 3
-        case leftButtock = 4
-        case rightButtock = 5
+        case rightThigh
+        case leftArm
+        case rightArm
+        case leftButtock
+        case rightButtock
     }
     
-    var partitionValue = RealmManager.shared.getPartitionValue()
+    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
     private var itemsPerRow: CGFloat = 1
     
@@ -115,8 +116,9 @@ class GridCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-        self.title = "Choose a body part"
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
+//        self.title = "Choose a body part"
         if selectedIndexPath != nil{
             self.collectionView.reloadItems(at: [selectedIndexPath!])
         }

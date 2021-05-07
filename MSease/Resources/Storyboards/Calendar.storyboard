@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eHN-LX-qOs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sxe-fs-qFR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpB-66-kiw" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="NO"/>
@@ -27,29 +27,35 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
-                                        <real key="value" value="17"/>
+                                        <real key="value" value="19"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
-                                        <real key="value" value="14"/>
+                                        <real key="value" value="17"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
-                                        <real key="value" value="17"/>
+                                        <real key="value" value="19"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                        <color key="value" red="0.40943080189999997" green="0.66398513319999997" blue="0.76979631189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                        <color key="value" red="0.40943080189999997" green="0.66398513319999997" blue="0.76979631189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="0.99215686270000003" green="0.7725490196" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.84705882349999995" green="0.54901960780000003" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                        <color key="value" red="0.40943080189999997" green="0.66398513319999997" blue="0.76979631189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.4549019608" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                        <color key="value" red="0.27450980390000002" green="0.56078431370000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
+                                        <real key="value" value="70"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titlePlaceholderColor">
+                                        <color key="value" systemColor="systemGray4Color"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -89,6 +95,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendar" destination="MpB-66-kiw" id="7Nj-jd-N4D"/>
                         <segue destination="aYB-Z0-qRf" kind="show" identifier="viewDateSegue" id="epi-Vr-14D"/>
@@ -96,14 +103,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xh1-AP-Pxn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="137"/>
+            <point key="canvasLocation" x="1786.9565217391305" y="136.60714285714286"/>
         </scene>
         <!--Notes Table View Controller-->
         <scene sceneID="5n8-I7-2M1">
             <objects>
                 <viewController storyboardIdentifier="CalendarNotesVC" id="aYB-Z0-qRf" customClass="NotesTableViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MJE-t5-oYh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjZ-bT-LrF">
@@ -122,7 +129,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SRz-V0-wtp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="notesTableViewCell" rowHeight="150" id="K8J-dT-yDK" customClass="NotesTableViewCell" customModule="MSease" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55.5" width="374" height="150"/>
@@ -134,7 +141,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+  Add a new note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIg-kX-OU0">
                                                     <rect key="frame" x="20" y="64" width="334" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
-                                                    <color key="textColor" red="0.27450980392156865" green="0.5607843137254902" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" red="0.4549019608" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovo-CK-xiq">
@@ -260,11 +267,11 @@
                                 </connections>
                             </tableView>
                             <view hidden="YES" alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFp-cX-mDW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUd-3m-wQz">
-                                <rect key="frame" x="41.5" y="842" width="331" height="505"/>
+                                <rect key="frame" x="41.5" y="896" width="331" height="537.5"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -314,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Xj-pz-jeZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579.7101449275362" y="136.60714285714286"/>
+            <point key="canvasLocation" x="2489.8550724637685" y="136.60714285714286"/>
         </scene>
         <!--Symptom-->
         <scene sceneID="h3E-Gk-KgI">
@@ -331,15 +338,15 @@
             <objects>
                 <viewController id="Mcc-fO-phX" customClass="SymptomsPopupViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JjH-to-KJt">
-                        <rect key="frame" x="0.0" y="0.0" width="331" height="505"/>
+                        <rect key="frame" x="0.0" y="0.0" width="331" height="537.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Rj7-Aj-Y2C">
-                                <rect key="frame" x="66" y="182.5" width="199" height="140"/>
+                                <rect key="frame" x="66" y="199" width="199" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqA-qD-DaO">
                                         <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
-                                        <color key="backgroundColor" red="0.29411764705882354" green="0.6705882352941176" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.4549019608" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="9gP-vU-xPN"/>
                                         </constraints>
@@ -358,7 +365,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xh4-Mv-fTS">
                                         <rect key="frame" x="0.0" y="90" width="199" height="50"/>
-                                        <color key="backgroundColor" red="0.40784313729999999" green="0.66274509800000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.4549019608" green="0.61960784310000006" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                                         <state key="normal" title="Symptom">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
@@ -407,13 +414,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ois-IG-RUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2295" y="137"/>
+            <point key="canvasLocation" x="3205.072463768116" y="136.94196428571428"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="zVy-hh-mBP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sxe-fs-qFR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="h9t-V5-sbT"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HCl-Bo-tPZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eHN-LX-qOs" kind="relationship" relationship="rootViewController" id="xE0-Q1-Of2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mUE-m8-aEy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876.81159420289862" y="136.60714285714286"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wi9-dn-nff"/>
+        <segue reference="AFm-Oe-mIZ"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="secondaryLabelColor">
@@ -427,6 +455,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

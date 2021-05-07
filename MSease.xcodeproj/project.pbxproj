@@ -15,6 +15,10 @@
 		840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E6D25D36E9400AD339E /* RealmManager.swift */; };
 		840CA86D2642DF7C00018481 /* InjectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA86C2642DF7C00018481 /* InjectionTableViewCell.swift */; };
 		840CA870264305B900018481 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA86F264305B700018481 /* Gradient.swift */; };
+		840CA87326445C2D00018481 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA87226445C2A00018481 /* MainTabBarController.swift */; };
+		840CA87626455E4000018481 /* TabbarStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840CA87526455E3F00018481 /* TabbarStoryboard.storyboard */; };
+		840CA87A26456FDE00018481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840CA87926456FDD00018481 /* Assets.xcassets */; };
+		840CA88A2645A5A300018481 /* CenterTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA8892645A5A200018481 /* CenterTabBarButton.swift */; };
 		8414E4D725FFB18E00A84273 /* StylingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414E4D625FFB18E00A84273 /* StylingUtilities.swift */; };
 		841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */; };
 		841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE925F905FB00E4B519 /* Limb.swift */; };
@@ -44,7 +48,6 @@
 		845EC8A52602C1AF00B51D74 /* TopBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EC8A42602C1AF00B51D74 /* TopBarViewController.swift */; };
 		84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F2F25B9DFF200578C37 /* AppDelegate.swift */; };
 		84979F3225B9DFF200578C37 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3125B9DFF200578C37 /* art.scnassets */; };
-		84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3825B9DFF500578C37 /* Assets.xcassets */; };
 		84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */; };
 		84979F4725BA37E200578C37 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4625BA37E200578C37 /* StatusViewController.swift */; };
 		84979F4A25BA3CDC00578C37 /* BCVC+PopoverPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F4925BA3CDC00578C37 /* BCVC+PopoverPresentation.swift */; };
@@ -60,7 +63,6 @@
 		84A0C4EB2620C22C00CE52BD /* postInjectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4EA2620C22C00CE52BD /* postInjectionVC.swift */; };
 		84A0C4EF2624D1EA00CE52BD /* InjectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */; };
 		84A0F4AE263C30C200B8A68A /* tutorial1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84A0F4AD263C30C200B8A68A /* tutorial1.gif */; };
-		84A0F4B1263C4F3F00B8A68A /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0F4B0263C4F3F00B8A68A /* testViewController.swift */; };
 		84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB1E25BE139000A09F67 /* ARUtilities.swift */; };
 		84ACFB2225BE145800A09F67 /* MascotSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */; };
 		84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */; };
@@ -97,7 +99,6 @@
 		84E50A62263AD5BF00917872 /* ARViewController+Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E50A61263AD5BF00917872 /* ARViewController+Grid.swift */; };
 		84E50A6C263B617200917872 /* tutorial0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84E50A6B263B617200917872 /* tutorial0.gif */; };
 		84F5E79125C4482900EED24C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5E79025C4482900EED24C /* Profile.storyboard */; };
-		84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79925C44A7300EED24C /* ProfileViewController.swift */; };
 		84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,10 @@
 		840C1E6D25D36E9400AD339E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		840CA86C2642DF7C00018481 /* InjectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionTableViewCell.swift; sourceTree = "<group>"; };
 		840CA86F264305B700018481 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		840CA87226445C2A00018481 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		840CA87526455E3F00018481 /* TabbarStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabbarStoryboard.storyboard; sourceTree = "<group>"; };
+		840CA87926456FDD00018481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		840CA8892645A5A200018481 /* CenterTabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterTabBarButton.swift; sourceTree = "<group>"; };
 		8414E4D625FFB18E00A84273 /* StylingUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingUtilities.swift; sourceTree = "<group>"; };
 		841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationUI.swift; sourceTree = "<group>"; };
 		841F9EE925F905FB00E4B519 /* Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limb.swift; sourceTree = "<group>"; };
@@ -141,7 +146,6 @@
 		84979F2C25B9DFF200578C37 /* MSease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84979F2F25B9DFF200578C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84979F3125B9DFF200578C37 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		84979F3825B9DFF500578C37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84979F3B25B9DFF500578C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84979F3D25B9DFF500578C37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84979F4625BA37E200578C37 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -158,7 +162,6 @@
 		84A0C4EA2620C22C00CE52BD /* postInjectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postInjectionVC.swift; sourceTree = "<group>"; };
 		84A0C4EE2624D1E900CE52BD /* InjectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionTableViewController.swift; sourceTree = "<group>"; };
 		84A0F4AD263C30C200B8A68A /* tutorial1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tutorial1.gif; sourceTree = "<group>"; };
-		84A0F4B0263C4F3F00B8A68A /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		84ACFB1E25BE139000A09F67 /* ARUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARUtilities.swift; sourceTree = "<group>"; };
 		84ACFB2125BE145800A09F67 /* MascotSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotSelectionViewController.swift; sourceTree = "<group>"; };
 		84ACFB3B25BE2DA500A09F67 /* BCVC+MascotSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BCVC+MascotSelection.swift"; sourceTree = "<group>"; };
@@ -195,7 +198,6 @@
 		84E50A61263AD5BF00917872 /* ARViewController+Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARViewController+Grid.swift"; sourceTree = "<group>"; };
 		84E50A6B263B617200917872 /* tutorial0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = tutorial0.gif; path = Untitled/tutorial0.gif; sourceTree = SOURCE_ROOT; };
 		84F5E79025C4482900EED24C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		84F5E79925C44A7300EED24C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +235,14 @@
 				84BCC8542615F7580097E0A2 /* TSQMquestion.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		840CA8852645821100018481 /* TabBarStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				840CA8892645A5A200018481 /* CenterTabBarButton.swift */,
+			);
+			path = TabBarStoryboard;
 			sourceTree = "<group>";
 		};
 		841F9EF625FA823C00E4B519 /* OnboardingStoryboard */ = {
@@ -303,6 +313,7 @@
 		84979F2E25B9DFF200578C37 /* MSease */ = {
 			isa = PBXGroup;
 			children = (
+				840CA8852645821100018481 /* TabBarStoryboard */,
 				84A0F4B32640608600B8A68A /* SymptomStoryboard */,
 				84A0F4AD263C30C200B8A68A /* tutorial1.gif */,
 				84E50A6B263B617200917872 /* tutorial0.gif */,
@@ -319,7 +330,6 @@
 				84979F2F25B9DFF200578C37 /* AppDelegate.swift */,
 				840C1E6D25D36E9400AD339E /* RealmManager.swift */,
 				843C05E1263083EE00FFFC2D /* NotificationManager.swift */,
-				84A0F4B0263C4F3F00B8A68A /* testViewController.swift */,
 			);
 			path = MSease;
 			sourceTree = "<group>";
@@ -327,10 +337,10 @@
 		84979F4425B9E31200578C37 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				840CA87926456FDD00018481 /* Assets.xcassets */,
 				84D4E72C25E812CC00DB75B4 /* Models */,
 				84979F3125B9DFF200578C37 /* art.scnassets */,
 				84F5E79325C4483500EED24C /* Storyboards */,
-				84979F3825B9DFF500578C37 /* Assets.xcassets */,
 				84979F3D25B9DFF500578C37 /* Info.plist */,
 			);
 			path = Resources;
@@ -381,7 +391,6 @@
 			children = (
 				84AF3E1C25DC84600083E9F0 /* AddNewReminderTableViewCell.swift */,
 				84AF3E0A25DC67300083E9F0 /* AddNewReminderViewController.swift */,
-				84F5E79925C44A7300EED24C /* ProfileViewController.swift */,
 				84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */,
 				84AF3E0225DC3B640083E9F0 /* reminderSettingsViewController.swift */,
 				843C05F026386BDF00FFFC2D /* SettingsTableViewController.swift */,
@@ -396,6 +405,7 @@
 				84BBE21925C0BF700046C24F /* MainViewController.swift */,
 				845EC8A42602C1AF00B51D74 /* TopBarViewController.swift */,
 				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
+				840CA87226445C2A00018481 /* MainTabBarController.swift */,
 			);
 			path = MainStoryboard;
 			sourceTree = "<group>";
@@ -457,6 +467,7 @@
 				84F5E79025C4482900EED24C /* Profile.storyboard */,
 				842D68F425E544BE0056D963 /* Symptom.storyboard */,
 				84BCC84C2614B7440097E0A2 /* TSQM.storyboard */,
+				840CA87526455E3F00018481 /* TabbarStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -562,13 +573,14 @@
 				841F9EF425FA6ADC00E4B519 /* Onboarding.storyboard in Resources */,
 				842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */,
 				84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */,
+				840CA87626455E4000018481 /* TabbarStoryboard.storyboard in Resources */,
 				84BCC84D2614B7440097E0A2 /* TSQM.storyboard in Resources */,
-				84979F3925B9DFF500578C37 /* Assets.xcassets in Resources */,
 				84D4E73225E812E800DB75B4 /* Plane.usdz in Resources */,
 				84D4E73025E812E800DB75B4 /* Robot.usdz in Resources */,
 				84E50A6C263B617200917872 /* tutorial0.gif in Resources */,
 				84F5E79125C4482900EED24C /* Profile.storyboard in Resources */,
 				84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */,
+				840CA87A26456FDE00018481 /* Assets.xcassets in Resources */,
 				84D4E72525E7F1F800DB75B4 /* AR.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,6 +636,7 @@
 			files = (
 				84BBE22825C0E2A80046C24F /* SymptomsPopupViewController.swift in Sources */,
 				843C05D52630597700FFFC2D /* ArTutorialContentViewController.swift in Sources */,
+				840CA87326445C2D00018481 /* MainTabBarController.swift in Sources */,
 				840C1E6925D36BED00AD339E /* Symptom.swift in Sources */,
 				84ACFB3C25BE2DA500A09F67 /* BCVC+MascotSelection.swift in Sources */,
 				845996C725F11AA100AA3233 /* BottomContainerViewController.swift in Sources */,
@@ -674,7 +687,6 @@
 				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,
 				84BBE22B25C10E0C0046C24F /* UIViewExtensions.swift in Sources */,
 				840CA86D2642DF7C00018481 /* InjectionTableViewCell.swift in Sources */,
-				84F5E79A25C44A7300EED24C /* ProfileViewController.swift in Sources */,
 				84979F4F25BA3FE100578C37 /* MascotLoader.swift in Sources */,
 				843C05E2263083EE00FFFC2D /* NotificationManager.swift in Sources */,
 				8499443C25FBCD0000AFB965 /* ConsentViewController.swift in Sources */,
@@ -690,9 +702,9 @@
 				841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */,
 				84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */,
 				8499443F25FBCDD200AFB965 /* SignupLoginViewController.swift in Sources */,
-				84A0F4B1263C4F3F00B8A68A /* testViewController.swift in Sources */,
 				84ACFB1F25BE139000A09F67 /* ARUtilities.swift in Sources */,
 				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
+				840CA88A2645A5A300018481 /* CenterTabBarButton.swift in Sources */,
 				8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */,
 				84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */,
 				8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */,

@@ -28,6 +28,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         let mascot = RealmManager.shared.getMascot()
         mascotLabel.text = mascot
         for mascotCell in mascots!{

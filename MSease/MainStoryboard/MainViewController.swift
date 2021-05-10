@@ -105,6 +105,17 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         navigationController?.setViewControllers([vc], animated: true)
     }
     
+    func setRealm(realm: Realm){
+        RealmManager.shared.setRealm(realm: realm, handler:{ [weak self] in
+            self?.isLoggedIn = true
+            self?.setMascot()
+            self?.blurView.isHidden = true
+            self?.tabBarController?.tabBar.isHidden = false
+            if !RealmManager.shared.hasSignedConsent(){
+                self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
+            }
+        })
+    }
     
     func login(email: String,password: String){
         print("logging in as \(email)")
@@ -113,26 +124,23 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 switch result {
                 case .failure(let error):
                     print("#Login failed: \(error)")
-                    return
+                    if let user = app.currentUser {
+                        var configuration = user.configuration(partitionValue: "user=\(user.id)")
+                        configuration.objectTypes = RealmManager.OBJECT_TYPES
+                        let realm = try! Realm(configuration: configuration)
+                        self.setRealm(realm: realm)
+                    }
                 case .success(let user):
                     print("Login succeeded!")
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
-                    configuration.objectTypes = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self]
+                    configuration.objectTypes = RealmManager.OBJECT_TYPES
                     Realm.asyncOpen(configuration: configuration) { result in
                         DispatchQueue.main.async { [weak self] in
                             switch result {
                             case .failure(let error):
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let realm):
-                                RealmManager.shared.setRealm(realm: realm, handler:{ [weak self] in
-                                    self?.isLoggedIn = true
-                                    self?.setMascot()
-                                    self?.blurView.isHidden = true
-                                    self?.tabBarController?.tabBar.isHidden = false
-                                    if !RealmManager.shared.hasSignedConsent(){
-                                        self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
-                                    }
-                                })
+                                self?.setRealm(realm: realm)
                             }
                         }
                     }

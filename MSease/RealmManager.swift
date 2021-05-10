@@ -8,10 +8,12 @@
 import Foundation
 import RealmSwift
 
+
 class RealmManager{
     static let shared = RealmManager()
     private var realm : Realm?
     let PHASE_DURATION_WEEKS = 4.0
+    static let OBJECT_TYPES = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self]
     
     private init() {
     }
@@ -160,7 +162,7 @@ extension RealmManager{
         }
     }
     
-    func getInjectionsForLimb(limb: Limb)->Results<Injection>{
+    private func getInjectionsForLimb(limb: Limb)->Results<Injection>{
         let name = limb.name
         let result = realm!.objects(Injection.self).filter("limbName == '\(name)'")
         return result

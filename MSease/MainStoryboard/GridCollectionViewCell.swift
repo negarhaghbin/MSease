@@ -17,14 +17,14 @@ class GridCollectionViewCell: UICollectionViewCell {
     var grid2D : [[UIImageView]] = []
     
     // MARK: - Helpers
-    func setCellValues(title: String, imageName: String, section: Int){
-        self.textLabel.text = title
-        self.bodyImage.image = UIImage(named: imageName)!
-    }
-    
     func initiate(){
         self.textLabel.adjustsFontSizeToFitWidth = true
         self.textLabel.minimumScaleFactor = 0.5
+        
+        let selectedLimb = limbs[self.tag]
+        textLabel.text = selectedLimb.name
+        bodyImage.image = UIImage(named: selectedLimb.imageName)!
+        prepareGrid(limbGrid: selectedLimb)
     }
     
     func hideExtraRowsAndCols(hidden:[(x: Int, y: Int)]){
@@ -33,7 +33,30 @@ class GridCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func prepareGrid(limbGrid: Limb){
+    private func removePreviousGrid(){
+        grid2D = []
+        for imageview in contentView.subviews{
+            if let imageview = imageview as? UIImageView{
+                if imageview.image == UIImage(systemName: "square.fill"){
+                    imageview.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    private func createImageView(at point:(i: Int, j: Int), width: Double)->UIImageView{
+        let xVal = Double((0.75+Double(point.j))*width - Double(2*point.j))
+        let yVal = Double((2.25+Double(point.i))*width - Double(point.i))
+        let frame = CGRect(x: xVal, y: yVal, width: width, height: width)
+        let imageView = UIImageView(frame: frame)
+        imageView.image = UIImage(systemName: "square.fill")
+        imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)
+        return imageView
+    }
+    
+    private func prepareGrid(limbGrid: Limb){
+        removePreviousGrid()
+        
         let injectionsOnDates = RealmManager.shared.getRecentInjectionsForLimb(limb: limbGrid)
         
         var cells : [(x: Int, y: Int, color: String)] = []
@@ -56,13 +79,7 @@ class GridCollectionViewCell: UICollectionViewCell {
         for i in 0..<limbGrid.numberOfRows{
             grid2D.append([])
             for j in 0..<limbGrid.numberOfCols{
-                let xVal = Double((0.75+Double(j))*width! - Double(2*j))
-                let yVal = Double((2.25+Double(i))*width! - Double(i))
-                let frame = CGRect(x: xVal, y: yVal, width: width!, height: width!)
-                let imageView = UIImageView(frame: frame)
-                imageView.image = UIImage(systemName: "square.fill")
-                imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)
-                
+                let imageView = createImageView(at:(i: i, j: j), width: width!)
                 
                 let temp = cells.filter({ pair in
                     return (pair.x == i) && (pair.y == j)
@@ -75,6 +92,7 @@ class GridCollectionViewCell: UICollectionViewCell {
                 self.contentView.addSubview(imageView)
             }
         }
+        
         hideExtraRowsAndCols(hidden: Array(limbGrid.hiddenCells))
     }
 }

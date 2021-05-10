@@ -45,7 +45,7 @@ class GridCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
         UIApplication.shared.isIdleTimerDisabled = false
-//        collectionView.reloadData()
+        
         if selectedIndexPath != nil{
             self.collectionView.reloadItems(at: [selectedIndexPath!])
         }
@@ -79,20 +79,13 @@ class GridCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> GridCollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridSquareViewCellIdentifier, for: indexPath) as! GridCollectionViewCell
         
+        var limbIndex = 0
+        for i in 0..<indexPath.section{
+            limbIndex += collectionView.numberOfItems(inSection: i)
+        }
+        limbIndex += indexPath.row
+        cell.tag = limbIndex
         cell.initiate()
-        
-        if indexPath.section == gridSections.abdomen.rawValue{
-            let abdomen = Limb.getLimb(name: limb.abdomen.rawValue)
-            cell.setCellValues(title: abdomen.name, imageName: abdomen.imageName, section: gridSections.abdomen.rawValue)
-            cell.prepareGrid(limbGrid: abdomen)
-        }
-        else{
-            // limbs in previous sections = 1
-            let limbInCell = limbs[indexPath.row+1]
-            cell.setCellValues(title: limbInCell.name, imageName: limbInCell.imageName, section: gridSections.notAbdomen.rawValue)
-            cell.prepareGrid(limbGrid: limbInCell)
-        }
-    
         return cell
     }
     

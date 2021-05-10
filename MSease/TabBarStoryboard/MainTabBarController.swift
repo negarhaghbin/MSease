@@ -51,14 +51,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         bgView = UIView(frame: CGRect.init(x: itemWidth * itemIndex, y: -itemWidth/2, width: itemWidth, height: itemWidth))
         bgView!.layer.cornerRadius = bgView!.frame.size.width/2
         bgView!.clipsToBounds = true
-//        bgView!.backgroundColor = bgColor
-//        bgView
+        bgView!.isUserInteractionEnabled = true
+        bgView!.backgroundColor = bgColor
         
         let newSize = CGSize(width: bgView!.frame.size.width-30.0, height: bgView!.frame.size.height-30.0)
         let image = UIImage(named: "syringe-white2")?
             .scaleTo(newSize: newSize )
         let imageView = UIImageView(image: image)
-//        imageView.UserInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         
         bgView!.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false

@@ -157,11 +157,8 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == sections.injections.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.injectionsTableViewCell.rawValue, for: indexPath) as! InjectionTableViewCell
-            cell.limbLabel.text = injections![indexPath.row].limbName
-            cell.timeLabel.text = injections![indexPath.row].time
-            if injections![indexPath.row].painScale > 0{
-                cell.imageview.image = UIImage(named: painScale[injections![indexPath.row].painScale-1])
-            }
+            cell.tag = indexPath.row
+            cell.initiate(injections: injections!)
             
             return cell
         }

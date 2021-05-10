@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class InjectionTableViewCell: UITableViewCell {
 
@@ -22,6 +23,17 @@ class InjectionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func initiate(injections: Results<Injection>){
+        limbLabel.text = injections[tag].limbName
+        timeLabel.text = injections[tag].time
+        if injections[tag].painScale > 0{
+            imageview.image = UIImage(named: painScale[injections[tag].painScale-1])
+        }
+        else{
+            imageview.image = UIImage()
+        }
     }
 
 }

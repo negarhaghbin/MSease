@@ -45,10 +45,10 @@ class GridCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
         UIApplication.shared.isIdleTimerDisabled = false
-        
-        if selectedIndexPath != nil{
-            self.collectionView.reloadItems(at: [selectedIndexPath!])
-        }
+        collectionView.reloadData()
+//        if selectedIndexPath != nil{
+//            self.collectionView.reloadItems(at: [selectedIndexPath!])
+//        }
     }
     
     // MARK: - UICollectionViewDataSource

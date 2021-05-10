@@ -26,7 +26,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         prominentTabBar.prominentButtonCallback = prominentTabTaped
         
         createCenterButton(bgColor: UIColor(hex: StylingUtilities.buttonColor)!)
-        // Do any additional setup after loading the view.
     }
     
     
@@ -36,8 +35,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         switch tabBar.selectedItem{
         case tabBar.items![tabIndex.injection.rawValue]:
             bgView?.backgroundColor = UIColor(hex: StylingUtilities.circleColor)
-        case tabBar.items![tabIndex.settings.rawValue]:
-            print("settings")
         default:
             print("default")
         }
@@ -54,12 +51,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         bgView = UIView(frame: CGRect.init(x: itemWidth * itemIndex, y: -itemWidth/2, width: itemWidth, height: itemWidth))
         bgView!.layer.cornerRadius = bgView!.frame.size.width/2
         bgView!.clipsToBounds = true
-        bgView!.backgroundColor = bgColor
+//        bgView!.backgroundColor = bgColor
+//        bgView
         
         let newSize = CGSize(width: bgView!.frame.size.width-30.0, height: bgView!.frame.size.height-30.0)
         let image = UIImage(named: "syringe-white2")?
             .scaleTo(newSize: newSize )
         let imageView = UIImageView(image: image)
+//        imageView.UserInteractionEnabled = true
         
         bgView!.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false

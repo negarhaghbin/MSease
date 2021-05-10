@@ -1,9 +1,8 @@
 //
 //  MainViewController.swift
-//  ARKitInteraction
+//  MSease
 //
 //  Created by Negar on 2021-01-25.
-//  Copyright © 2021 Apple. All rights reserved.
 //
 
 import UIKit

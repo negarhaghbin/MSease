@@ -1026,9 +1026,6 @@
                     <navigationItem key="navigationItem" id="KO8-W2-zN1">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="SpV-Xn-7Cj">
                             <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
-                            <connections>
-                                <action selector="goBack:" destination="s5F-qp-WGY" id="eIs-ef-2B2"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

@@ -56,7 +56,7 @@ class ARViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view is loading")
+//        print("view is loading")
         focusSquare = FocusEntity(on: arview, style: .classic(color: .yellow))
         setupCoachingOverlay()
         
@@ -86,7 +86,7 @@ class ARViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear")
+//        print("view did appear")
         UIApplication.shared.isIdleTimerDisabled = true
         resetTracking()
         
@@ -95,20 +95,20 @@ class ARViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("view will disappear")
+//        print("view will disappear")
         super.viewWillDisappear(animated)
         arview.session.pause()
     }
     
-    deinit{
-//        focusSquare?.destroy()
-        print("deiniting")
-        arview.session.delegate = nil
-        arview.scene.anchors.removeAll()
-        arview.removeFromSuperview()
-//        arview.window?.resignKey()
-        arview = nil
-    }
+//    deinit{
+////        focusSquare?.destroy()
+//        print("deiniting")
+//        arview.session.delegate = nil
+//        arview.scene.anchors.removeAll()
+//        arview.removeFromSuperview()
+////        arview.window?.resignKey()
+//        arview = nil
+//    }
     
     // MARK: - Tutorial
     
@@ -128,7 +128,6 @@ class ARViewController: UIViewController {
         arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 //        print(view.subviews.count)
 //        statusViewController.scheduleMessage("Tap to place grid.", inSeconds: 7.5, messageType: .mascotSelection)
-        arview.scene.addAnchor(anchor)
     }
     
     func restartExperience() {
@@ -178,9 +177,10 @@ class ARViewController: UIViewController {
                 parentEntity.addChild(loadedMascots[selectedMascotIndex])
             }
         }
-            placeGrid(hidden: hidden)
-            arview.installGestures([.all], for: parentEntity)
-            anchor.addChild(parentEntity)
+        placeGrid(hidden: hidden)
+        arview.installGestures([.all], for: parentEntity)
+        anchor.addChild(parentEntity)
+        arview.scene.addAnchor(anchor)
     }
     
     // MARK: - Actions

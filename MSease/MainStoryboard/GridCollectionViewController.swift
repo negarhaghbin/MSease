@@ -1,88 +1,14 @@
 //
 //  GridCollectionViewController.swift
-//  ARKitInteraction
+//  MSease
 //
 //  Created by Negar on 2021-01-25.
-//  Copyright © 2021 Apple. All rights reserved.
 //
 
 import UIKit
 
 private let sectionInsets = UIEdgeInsets(top: 5.0, left: 4.0, bottom: 5.0, right: 4.0)
 var cgsize : CGSize? = nil
-
-class GridCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var bodyImage: UIImageView!
-    @IBOutlet weak var textLabel: UILabel!
-    
-    var grid2D : [[UIImageView]] = []
-    
-    func setCellValues(title: String, imageName: String, section: Int){
-        self.textLabel.text = title
-//        let scaledSize = CGSize(width: cgsize!.width*0.4, height: cgsize!.height-sectionInsets.top-sectionInsets.bottom)
-        self.bodyImage.image = UIImage(named: imageName)!
-//            .scaleTo(newSize: scaledSize)
-    }
-    
-    func initiate(){
-        self.textLabel.adjustsFontSizeToFitWidth = true
-        self.textLabel.minimumScaleFactor = 0.5
-    }
-    
-    func hideExtraRowsAndCols(hidden:[(x: Int, y: Int)]){
-        for block in hidden{
-            self.grid2D[block.x][block.y].isHidden = true
-        }
-    }
-    
-    func prepareGrid(limbGrid: Limb){
-        let injectionsOnDates = RealmManager.shared.getRecentInjectionsForLimb(limb: limbGrid)
-        
-//        print(injectionsOnDates.count)
-        var cells : [(x: Int, y: Int, color: String)] = []
-        
-        for (i,injections) in injectionsOnDates.enumerated(){
-            for injection in injections{
-                cells.append((x: injection.selectedCellX, y: injection.selectedCellY, color:StylingUtilities.InjectionCodes[i].colorCode))
-            }
-            
-        }
-        
-        let width : Double?
-        if limbGrid.name == "Abdomen"{
-            width = Double(self.frame.width/20)
-        }
-        else{
-            width = Double(self.frame.width/10)
-        }
-        
-        for i in 0..<limbGrid.numberOfRows{
-            grid2D.append([])
-            for j in 0..<limbGrid.numberOfCols{
-                let xVal = Double((0.75+Double(j))*width! - Double(2*j))
-                let yVal = Double((2.25+Double(i))*width! - Double(i))
-                let frame = CGRect(x: xVal, y: yVal, width: width!, height: width!)
-                let imageView = UIImageView(frame: frame)
-                imageView.image = UIImage(systemName: "square.fill")
-                imageView.tintColor = UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)
-                
-                
-                let temp = cells.filter({ pair in
-                    return (pair.x == i) && (pair.y == j)
-                })
-                if temp.count>0{
-                    imageView.tintColor = UIColor(hex: temp[0].color)
-                }
-                
-                grid2D[i].append(imageView)
-                self.contentView.addSubview(imageView)
-            }
-        }
-        hideExtraRowsAndCols(hidden: Array(limbGrid.hiddenCells))
-    }
-    
-}
 
 class GridCollectionViewController: UICollectionViewController {
     
@@ -119,15 +45,10 @@ class GridCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
         UIApplication.shared.isIdleTimerDisabled = false
-//        self.title = "Choose a body part"
+//        collectionView.reloadData()
         if selectedIndexPath != nil{
             self.collectionView.reloadItems(at: [selectedIndexPath!])
         }
-    }
-
-    // MARK: - Actions
-    @IBAction func goBack(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - UICollectionViewDataSource

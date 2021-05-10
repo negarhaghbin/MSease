@@ -19,6 +19,7 @@
 		840CA87626455E4000018481 /* TabbarStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840CA87526455E3F00018481 /* TabbarStoryboard.storyboard */; };
 		840CA87A26456FDE00018481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840CA87926456FDD00018481 /* Assets.xcassets */; };
 		840CA88A2645A5A300018481 /* CenterTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA8892645A5A200018481 /* CenterTabBarButton.swift */; };
+		840CA89726494FEE00018481 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CA89626494FED00018481 /* GridCollectionViewCell.swift */; };
 		8414E4D725FFB18E00A84273 /* StylingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414E4D625FFB18E00A84273 /* StylingUtilities.swift */; };
 		841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */; };
 		841F9EEA25F905FB00E4B519 /* Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F9EE925F905FB00E4B519 /* Limb.swift */; };
@@ -116,6 +117,7 @@
 		840CA87526455E3F00018481 /* TabbarStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabbarStoryboard.storyboard; sourceTree = "<group>"; };
 		840CA87926456FDD00018481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		840CA8892645A5A200018481 /* CenterTabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterTabBarButton.swift; sourceTree = "<group>"; };
+		840CA89626494FED00018481 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
 		8414E4D625FFB18E00A84273 /* StylingUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingUtilities.swift; sourceTree = "<group>"; };
 		841F9EE525F708CD00E4B519 /* ConfirmationUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationUI.swift; sourceTree = "<group>"; };
 		841F9EE925F905FB00E4B519 /* Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limb.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				840CA8892645A5A200018481 /* CenterTabBarButton.swift */,
+				840CA87226445C2A00018481 /* MainTabBarController.swift */,
 			);
 			path = TabBarStoryboard;
 			sourceTree = "<group>";
@@ -400,9 +403,9 @@
 		84AF3E1025DC68720083E9F0 /* MainStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				84BBE21925C0BF700046C24F /* MainViewController.swift */,
+				840CA89626494FED00018481 /* GridCollectionViewCell.swift */,
 				84BBE21825C0BF700046C24F /* GridCollectionViewController.swift */,
-				840CA87226445C2A00018481 /* MainTabBarController.swift */,
+				84BBE21925C0BF700046C24F /* MainViewController.swift */,
 			);
 			path = MainStoryboard;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				840C1E5C25D3159700AD339E /* SymptomsCollectionViewCell.swift in Sources */,
 				843C05F126386BE000FFFC2D /* SettingsTableViewController.swift in Sources */,
 				842D8025260CB83800A73C98 /* UIImageExtensions.swift in Sources */,
+				840CA89726494FEE00018481 /* GridCollectionViewCell.swift in Sources */,
 				840C1E6E25D36E9400AD339E /* RealmManager.swift in Sources */,
 				84BBE22525C0D9FA0046C24F /* CalendarViewController.swift in Sources */,
 				84BBE22B25C10E0C0046C24F /* UIViewExtensions.swift in Sources */,

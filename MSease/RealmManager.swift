@@ -25,7 +25,7 @@ class RealmManager{
         return App(id: "mseaseapp-wrhfs")
     }
     
-    func setRealm(realm: Realm, handler: ()->()){
+    func setRealm(realm: Realm, handler: @escaping()->()){
         self.realm = realm
         handler()
     }
@@ -40,6 +40,10 @@ class RealmManager{
     
     func getUsername() -> String {
         return UserDefaults.standard.string(forKey: "email")!
+    }
+    
+    func getUser()->User{
+        return realm!.objects(User.self).first!
     }
 }
 
@@ -230,9 +234,9 @@ extension RealmManager{
         }
     }
     
-    func hasSignedConsent(realm: Realm) -> Bool {
-        let user = realm.objects(User.self).first
-        return user?.hasSignedConsent ?? false
+    func hasSignedConsent() -> Bool {
+        let user = realm!.objects(User.self).first
+        return user!.hasSignedConsent
     }
     
     func saveCredentials(email: String, password: String){
@@ -255,7 +259,10 @@ extension RealmManager{
                     let onboardingVC = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
                     RealmManager.shared.removeCredentials()
                     onboardingVC.walkthroughPageViewController?.currentIndex = walkthroughPages.count - 1
-                    vc.navigationController?.setViewControllers([onboardingVC], animated: true)
+//                    vc.navigationController?.popViewController(animated: true)
+                    vc.tabBarController?.selectedIndex = 0
+                    let homeVCNavigationController = vc.tabBarController?.selectedViewController as! UINavigationController
+                    homeVCNavigationController.setViewControllers([onboardingVC], animated: true)
                     
                     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                 }
@@ -268,7 +275,7 @@ extension RealmManager{
     func acceptConsent(){
         let user = realm!.objects(User.self).first
         try! realm!.write{
-            user?.hasSignedConsent = true
+            user!.hasSignedConsent = true
         }
     }
     

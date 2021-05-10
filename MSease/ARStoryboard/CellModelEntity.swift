@@ -6,8 +6,6 @@
 //
 
 
-
-// FIXME: Not showing grid when initializing with this class
 import Foundation
 import RealityKit
 import UIKit
@@ -19,7 +17,7 @@ class CellModelEntity: Entity, HasModel, HasCollision{
         self.components[ModelComponent] = ModelComponent(
             mesh: .generateBox(width: 0.03, height: 0.002, depth: 0.03),
             materials: [SimpleMaterial(
-                color: color,
+                            color: color.withAlphaComponent(0.8),
                 isMetallic: false)
             ]
         )

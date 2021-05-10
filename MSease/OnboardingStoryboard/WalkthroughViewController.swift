@@ -28,7 +28,10 @@ class WalkthroughViewController: UIViewController, pageViewControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        pageControl.numberOfPages = walkthroughPages.count
+        pageControl.currentPageIndicatorTintColor = UIColor(hex: StylingUtilities.buttonColor)
     }
     
     // MARK: - walkthroughPageViewControllerDelegate

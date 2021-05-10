@@ -101,8 +101,6 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         bodyImage.image = UIImage(named: injectedLimb.imageName)!
         prepareGrid(limbGrid: injectedLimb)
         
-        // FIXME : -hidden or not?
-        //self.navigationController?.navigationBar.isHidden = false
     }
     
     

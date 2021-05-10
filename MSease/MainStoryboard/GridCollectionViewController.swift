@@ -118,6 +118,7 @@ class GridCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
+        UIApplication.shared.isIdleTimerDisabled = false
 //        self.title = "Choose a body part"
         if selectedIndexPath != nil{
             self.collectionView.reloadItems(at: [selectedIndexPath!])

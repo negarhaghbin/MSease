@@ -101,7 +101,7 @@ class ARViewController: UIViewController {
     }
     
     deinit{
-        focusSquare?.destroy()
+//        focusSquare?.destroy()
         print("deiniting")
         arview.session.delegate = nil
         arview.scene.anchors.removeAll()

@@ -30,6 +30,12 @@ class StylingUtilities{
         view.layer.borderColor = UIColor(hex: StylingUtilities.borderColor)?.cgColor
     }
     
+    static func styleTextFieldView(_ view: UIView){
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
     static func styleFilledButton(_ button: UIButton){
         button.backgroundColor = UIColor.init(hex: buttonColor)
         if !button.isEnabled{
@@ -41,6 +47,7 @@ class StylingUtilities{
     }
     
     static func styleHollowdButton(_ button: UIButton){
+        button.backgroundColor = UIColor(hex: StylingUtilities.backgroundColor)
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.cornerRadius = 10.0

@@ -66,8 +66,6 @@ class postInjectionVC: UITableViewController, UITextViewDelegate {
         symptomsCollectionView.reloadData()
         reactionsCollectionView.reloadData()
         
-        // FIXME : -hidden or not?
-        //self.navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Note Text View

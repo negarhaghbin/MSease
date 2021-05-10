@@ -45,6 +45,7 @@ class TSQMViewController: UIViewController {
         toolbar.setItems([doneButton], animated: true)
         textView.inputAccessoryView = toolbar
         StylingUtilities.styleQuestionnaireView(bgView)
+        StylingUtilities.styleTextFieldView(textView)
     }
     
     override func viewWillAppear(_ animated: Bool) {

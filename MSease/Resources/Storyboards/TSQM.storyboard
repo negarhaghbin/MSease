@@ -151,7 +151,7 @@
                                         </constraints>
                                     </stackView>
                                     <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Explain..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iy7-k7-ajf">
-                                        <rect key="frame" x="20" y="170" width="334" height="428"/>
+                                        <rect key="frame" x="20" y="170" width="334" height="350"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="placeholderTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -207,7 +207,7 @@
                                     <constraint firstItem="lCt-s3-vqG" firstAttribute="top" secondItem="GTm-it-ed1" secondAttribute="top" constant="20" id="dn7-Ug-uif"/>
                                     <constraint firstItem="iy7-k7-ajf" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="eWA-cB-uiT"/>
                                     <constraint firstItem="n6e-dy-M2w" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="m1a-uL-abQ"/>
-                                    <constraint firstItem="iy7-k7-ajf" firstAttribute="height" secondItem="GTm-it-ed1" secondAttribute="height" multiplier="0.55" id="mop-vQ-Rag"/>
+                                    <constraint firstItem="iy7-k7-ajf" firstAttribute="height" secondItem="GTm-it-ed1" secondAttribute="height" multiplier="0.45" id="mop-vQ-Rag"/>
                                 </constraints>
                             </view>
                         </subviews>

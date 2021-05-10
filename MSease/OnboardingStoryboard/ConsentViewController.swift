@@ -15,19 +15,10 @@ class ConsentViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     
-    // MARK: - Variables
-    var userRealm: Realm?
-    /*{
-        didSet{
-            if userRealm != nil{
-                RealmManager.shared.setRealm(realm: userRealm!)
-            }
-        }
-    }*/
-    
     // MARK: - ViewController
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
         StylingUtilities.styleFilledButton(acceptButton)
         StylingUtilities.styleHollowdButton(cancelButton)
     }

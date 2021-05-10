@@ -17,6 +17,8 @@ class SignupLoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var bgView: UIView!
+    
     // MARK: - Variables
     var isLoggingIn : Bool?
     
@@ -31,6 +33,8 @@ class SignupLoginViewController: UIViewController {
             return passwordTextField.text
         }
     }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +54,7 @@ class SignupLoginViewController: UIViewController {
     }
     
     func setUpElements(){
-//        errorLabel.alpha = 0
-        self.navigationController?.navigationBar.isHidden = true
-//        StylingUtilities.styleTextField(emailTextField)
-//        StylingUtilities.styleTextField(passwordTextField)
+        StylingUtilities.styleQuestionnaireView(bgView)
         StylingUtilities.styleFilledButton(signupLoginButton)
         setLoading(false)
         if isLoggingIn!{
@@ -102,20 +103,12 @@ class SignupLoginViewController: UIViewController {
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let userRealm):
                                 RealmManager.shared.setRealm(realm: userRealm, handler:{
-                                    if RealmManager.shared.hasSignedConsent(realm: userRealm){
-                                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                        let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
-    //                                    homeVC.userRealm = userRealm
-                                        
+                                    if RealmManager.shared.hasSignedConsent(){
                                         self?.scheduleReminders()
-                                        self?.navigationController?.setViewControllers([homeVC], animated: true)
+                                        self?.goToViewController(storyboardID: "Main", viewcontrollerID: "home")
                                     }
                                     else{
-                                        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-                                        let destination = storyboard.instantiateViewController(withIdentifier: "consentVC") as! ConsentViewController
-                                        destination.userRealm = userRealm
-
-                                        self?.navigationController?.setViewControllers([destination], animated: true)
+                                        self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
                                     }
                                 })
                                 
@@ -127,6 +120,14 @@ class SignupLoginViewController: UIViewController {
             }
         }
     }
+    
+    func goToViewController(storyboardID: String, viewcontrollerID: String){
+        let storyboard = UIStoryboard(name: storyboardID, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: viewcontrollerID)
+        navigationController?.setViewControllers([vc], animated: true)
+    }
+    
+    // MARK: - Actions
     
     @IBAction func signUpLoginButtonTapped(_ sender: Any) {
         if isLoggingIn!{

@@ -29,7 +29,6 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
             refreshUI()
         }
     }
-//    var cgsize : CGSize? = nil
 
     var selectedImages : [String] = [] // names, TODO: fill it in picking images
     var isNewNote : Bool?
@@ -65,6 +64,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         selectedImages = Array(note!.images)
         symptomsCollectionView.reloadData()
         self.navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - UIDatePickerView

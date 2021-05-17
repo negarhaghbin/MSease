@@ -74,6 +74,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         calendar.pagingEnabled = true
         calendar.scope = .week
         calendar.scrollDirection = .horizontal
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.select(calendar.today)
     }
     

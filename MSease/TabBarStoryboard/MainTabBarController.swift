@@ -20,29 +20,24 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     let mainButtonIndex = 2
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = UIColor(hex: StylingUtilities.buttonColor)
+        UITabBar.appearance().tintColor = StylingUtilities.buttonColor
         delegate = self
         let prominentTabBar = self.tabBar as! CenterTabBarButton
         prominentTabBar.prominentButtonCallback = prominentTabTaped
         
-        createCenterButton(bgColor: UIColor(hex: StylingUtilities.buttonColor)!)
+        createCenterButton(bgColor: StylingUtilities.buttonColor!)
     }
     
     
     // MARK: - UITabBarControllerDelegate
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        bgView?.backgroundColor = UIColor(hex: StylingUtilities.buttonColor)
-        switch tabBar.selectedItem{
-        case tabBar.items![tabIndex.injection.rawValue]:
-            bgView?.backgroundColor = UIColor(hex: StylingUtilities.circleColor)
-        default:
-            print("default")
-        }
+        bgView?.backgroundColor = StylingUtilities.buttonColor
     }
     
     // MARK: - Helpers
     func prominentTabTaped() {
         selectedIndex = (tabBar.items?.count ?? 0)/2
+        bgView?.backgroundColor = UIColor(hex: StylingUtilities.circleColor)
     }
     
     private func createCenterButton(bgColor: UIColor) {

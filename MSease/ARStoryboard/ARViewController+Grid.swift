@@ -37,6 +37,15 @@ extension ARViewController{
         completionHandler(hidden)
     }
     
+    func removeGrid(){
+        for cellRow in cells{
+            for cell in cellRow{
+                parentEntity.removeChild(cell)
+            }
+        }
+    }
+    
+    
     func placeGrid(hidden: [(x: Int, y: Int)]){
         
         for (i,cellRow) in cells.enumerated(){

@@ -21,7 +21,6 @@ class ProfileTableViewController: UITableViewController{
     
     // MARK: - Variables
     lazy var partitionValue = RealmManager.shared.getPartitionValue()
-    lazy var nameText = RealmManager.shared.getUsername()
     
     struct cell {
         static let generalData = IndexPath(row:0, section: 2)
@@ -40,7 +39,7 @@ class ProfileTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         updateForms()
-        nameLabel.text = nameText
+        nameLabel.text = RealmManager.shared.getUsername()
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
     }

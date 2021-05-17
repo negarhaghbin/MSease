@@ -34,9 +34,9 @@
                                 </connections>
                             </arView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hp-LN-NCy">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="aiR-eq-pRA"/>
+                                    <constraint firstAttribute="height" constant="140" id="aiR-eq-pRA"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="Z6y-fS-yKR" kind="embed" id="1Nr-hP-Mhn"/>
@@ -53,7 +53,7 @@
                         <viewLayoutGuide key="safeArea" id="aYO-lR-kg2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1hp-LN-NCy" firstAttribute="top" secondItem="JeY-OG-Yel" secondAttribute="top" id="1Qy-M5-jQu"/>
+                            <constraint firstItem="1hp-LN-NCy" firstAttribute="top" secondItem="aYO-lR-kg2" secondAttribute="top" id="1Qy-M5-jQu"/>
                             <constraint firstAttribute="trailing" secondItem="E3L-sH-DK6" secondAttribute="trailing" id="IrW-xI-DIz"/>
                             <constraint firstItem="OnR-v6-MHp" firstAttribute="top" secondItem="JeY-OG-Yel" secondAttribute="top" id="MbU-a5-dii"/>
                             <constraint firstAttribute="trailing" secondItem="1hp-LN-NCy" secondAttribute="trailing" id="R6J-NP-tI0"/>
@@ -89,22 +89,22 @@
             <objects>
                 <viewController id="Z6y-fS-yKR" customClass="StatusViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qkp-AK-jBy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-7E-EtB" userLabel="Message Panel">
-                                <rect key="frame" x="16" y="44" width="175" height="58"/>
+                                <rect key="frame" x="16" y="44" width="175" height="48"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zhI-Q1-WPq">
-                                    <rect key="frame" x="0.0" y="0.0" width="175" height="58"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="48"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqs-O2-dqA">
-                                            <rect key="frame" x="0.0" y="0.0" width="175" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="48"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="yJl-LO-75O">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="58"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" text="Tracking status" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqO-YU-M7B" userLabel="Messages label">
-                                                        <rect key="frame" x="16" y="8" width="143" height="42"/>
+                                                        <rect key="frame" x="16" y="16" width="143" height="16"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <nil key="textColor"/>
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -112,9 +112,9 @@
                                                     </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="tqO-YU-M7B" firstAttribute="centerY" secondItem="yJl-LO-75O" secondAttribute="centerY" id="I7A-rC-IH4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="tqO-YU-M7B" secondAttribute="bottom" constant="16" id="YvG-dS-4oq"/>
                                                     <constraint firstAttribute="trailing" secondItem="tqO-YU-M7B" secondAttribute="trailing" constant="16" id="cnv-DF-K47"/>
-                                                    <constraint firstItem="tqO-YU-M7B" firstAttribute="top" secondItem="yJl-LO-75O" secondAttribute="top" constant="8" id="xKE-Eh-Ci5"/>
+                                                    <constraint firstItem="tqO-YU-M7B" firstAttribute="top" secondItem="yJl-LO-75O" secondAttribute="top" constant="16" id="xKE-Eh-Ci5"/>
                                                     <constraint firstItem="tqO-YU-M7B" firstAttribute="leading" secondItem="yJl-LO-75O" secondAttribute="leading" constant="16" id="znt-nh-Z49"/>
                                                 </constraints>
                                             </view>
@@ -139,7 +139,7 @@
                                 <blurEffect style="light"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
@@ -157,12 +157,28 @@
                                     <action selector="restartExperience:" destination="Z6y-fS-yKR" eventType="touchUpInside" id="SQJ-Ry-wwN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vB-ny-MOk" userLabel="info">
+                                <rect key="frame" x="370" y="93" width="44" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="76t-2P-ku1"/>
+                                    <constraint firstAttribute="height" constant="49" id="9mD-av-Ivo"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="12"/>
+                                <state key="normal" image="info.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="showInfo:" destination="Z6y-fS-yKR" eventType="touchUpInside" id="Zls-Fc-YpZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="poB-TJ-GLb"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="poB-TJ-GLb" firstAttribute="top" secondItem="ued-nx-ooI" secondAttribute="top" id="1gp-pf-Rb4"/>
-                            <constraint firstItem="OLT-7E-EtB" firstAttribute="height" secondItem="poB-TJ-GLb" secondAttribute="height" constant="-28" id="OCx-xF-sD2"/>
+                            <constraint firstItem="5vB-ny-MOk" firstAttribute="top" secondItem="ued-nx-ooI" secondAttribute="bottom" id="5wE-dD-qda"/>
+                            <constraint firstItem="5vB-ny-MOk" firstAttribute="trailing" secondItem="ued-nx-ooI" secondAttribute="trailing" id="FFX-8S-zgj"/>
                             <constraint firstItem="OLT-7E-EtB" firstAttribute="leading" secondItem="poB-TJ-GLb" secondAttribute="leading" constant="16" id="QeO-pH-cji"/>
                             <constraint firstItem="OLT-7E-EtB" firstAttribute="top" secondItem="poB-TJ-GLb" secondAttribute="top" id="Ytt-tK-SfW"/>
                             <constraint firstItem="OLT-7E-EtB" firstAttribute="centerX" secondItem="poB-TJ-GLb" secondAttribute="centerX" multiplier="0.5" id="nyk-Yo-rGC"/>
@@ -1062,6 +1078,7 @@
         <image name="checkmark" width="200" height="200"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="headache" width="704" height="704"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="intense" width="308" height="307"/>
         <image name="mild" width="316" height="311"/>
         <image name="moderate" width="322" height="316"/>

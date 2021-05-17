@@ -32,8 +32,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     override func viewWillAppear(_ animated: Bool) {
         calendar.reloadData()
-        calendar.appearance.eventDefaultColor = UIColor(hex: StylingUtilities.buttonColor)
-        calendar.appearance.eventSelectionColor = UIColor(hex: StylingUtilities.buttonColor)
+        calendar.appearance.eventDefaultColor = StylingUtilities.buttonColor
+        calendar.appearance.eventSelectionColor = StylingUtilities.buttonColor
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
     }

@@ -124,7 +124,7 @@ class TSQMViewController: UIViewController {
             }
             
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            nextButton.backgroundColor = StylingUtilities.buttonColor
             selectedAnswer = answer
         }
     }
@@ -146,7 +146,7 @@ class TSQMViewController: UIViewController {
     
     @IBAction func optionTapped(_ sender: DLRadioButton) {
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+        nextButton.backgroundColor = StylingUtilities.buttonColor
         selectedAnswer = sender.titleLabel?.text
     }
     
@@ -176,7 +176,7 @@ class TSQMViewController: UIViewController {
 extension TSQMViewController:UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+        nextButton.backgroundColor = StylingUtilities.buttonColor
         selectedAnswer = textView.text
     }
     

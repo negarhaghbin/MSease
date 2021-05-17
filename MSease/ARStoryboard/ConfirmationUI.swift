@@ -9,23 +9,19 @@ import UIKit
 
 extension ARViewController{
     func showConfirmationUI(){
-        for child in children{
-            if let childVC = child as? BottomContainerViewController{
-                childVC.addMascotButtonEffectView.isHidden = true
-                childVC.exitEffectView.isHidden = true
-                childVC.doneEffectView.isHidden = false
-            }
-        }
+        let bottomViewController = children.lazy.compactMap({ $0 as? BottomContainerViewController }).first!
+        
+        bottomViewController.addMascotButtonEffectView.isHidden = true
+        bottomViewController.exitEffectView.isHidden = true
+        bottomViewController.doneEffectView.isHidden = false
     }
     
     func hideConfirmationUI(){
-        for child in children{
-            if let childVC = child as? BottomContainerViewController{
-                childVC.addMascotButtonEffectView.isHidden = false
-                childVC.exitEffectView.isHidden = false
-                childVC.doneEffectView.isHidden = true
-            }
-        }
+        let bottomViewController = children.lazy.compactMap({ $0 as? BottomContainerViewController }).first!
+        
+        bottomViewController.addMascotButtonEffectView.isHidden = false
+        bottomViewController.exitEffectView.isHidden = false
+        bottomViewController.doneEffectView.isHidden = true
     }
     
 

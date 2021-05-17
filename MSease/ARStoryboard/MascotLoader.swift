@@ -14,7 +14,7 @@ extension ARViewController {
     
     func loadMascots() {
         var cancellable : AnyCancellable? = nil
-        isLoading = true
+//        isLoading = true
         
         cancellable = ModelEntity
             .loadModelAsync(named: mascotNames[0].name)

@@ -9,6 +9,14 @@ import UIKit
 
 class BottomContainerViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var addMascotButton: UIButton!
+    
+    @IBOutlet weak var addMascotButtonEffectView: UIVisualEffectView!
+    @IBOutlet weak var exitEffectView: UIVisualEffectView!
+    @IBOutlet weak var doneEffectView: UIVisualEffectView!
+    
     // MARK: - Variables
     enum SegueIdentifier: String {
         case showMascots
@@ -27,15 +35,6 @@ class BottomContainerViewController: UIViewController {
 //    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     var partitionValue: String?
     
-    // MARK: - IBOutlets
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var addMascotButton: UIButton!
-    
-    @IBOutlet weak var addMascotButtonEffectView: UIVisualEffectView!
-    @IBOutlet weak var exitEffectView: UIVisualEffectView!
-    @IBOutlet weak var doneEffectView: UIVisualEffectView!
-    
-    
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +45,7 @@ class BottomContainerViewController: UIViewController {
     // MARK: - Actions
     @IBAction func showMascotSelectionViewController() {
         if let parentVC = parent as? ARViewController{
-            guard !addMascotButton.isHidden && !parentVC.isLoading else { return }
+            guard !addMascotButton.isHidden else { return }
             parentVC.statusViewController.cancelScheduledMessage(for: .contentPlacement)
             performSegue(withIdentifier: SegueIdentifier.showMascots.rawValue, sender: addMascotButton)
         }

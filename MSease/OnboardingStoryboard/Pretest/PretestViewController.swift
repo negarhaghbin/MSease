@@ -55,7 +55,7 @@ class PretestViewController: UIViewController {
         selectedAnswer = (sender.titleLabel?.text)!
         self.view.endEditing(true)
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+        nextButton.backgroundColor = StylingUtilities.buttonColor
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -117,7 +117,7 @@ class PretestViewController: UIViewController {
                 }
             }
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            nextButton.backgroundColor = StylingUtilities.buttonColor
             selectedAnswer = answer
         }
     }
@@ -134,7 +134,7 @@ class PretestViewController: UIViewController {
                 }
             }
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            nextButton.backgroundColor = StylingUtilities.buttonColor
             selectedAnswer = answer
         }
     }
@@ -146,7 +146,7 @@ class PretestViewController: UIViewController {
         else{
             datePicker.date = getDateFromString(answer)
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            nextButton.backgroundColor = StylingUtilities.buttonColor
             selectedAnswer = answer
         }
     }

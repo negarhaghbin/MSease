@@ -72,7 +72,7 @@ class InjectionPhobiaViewController: UIViewController {
                 }
             }
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+            nextButton.backgroundColor = StylingUtilities.buttonColor
             selectedAnswer = answer
         }
     }
@@ -94,7 +94,7 @@ class InjectionPhobiaViewController: UIViewController {
     
     @IBAction func optionTapped(_ sender: DLRadioButton) {
         nextButton.isEnabled = true
-        nextButton.backgroundColor = UIColor.init(hex: StylingUtilities.buttonColor)
+        nextButton.backgroundColor = StylingUtilities.buttonColor
         selectedAnswer = sender.titleLabel?.text
     }
     

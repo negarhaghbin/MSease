@@ -39,7 +39,7 @@ class ArTutorialViewController: UIViewController {
     
     @IBAction func skipButtonTapped(sender: UIButton){
         dismiss(animated: true)
-        updateUI()
+//        updateUI()
     }
     
     
@@ -49,7 +49,7 @@ class ArTutorialViewController: UIViewController {
         StylingUtilities.styleHollowdButton(skipButton)
         
         pageControl.numberOfPages = arTutorialPages.count
-        pageControl.currentPageIndicatorTintColor = UIColor(hex: StylingUtilities.buttonColor)
+        pageControl.currentPageIndicatorTintColor = StylingUtilities.buttonColor
     }
     
     func updateUI(){

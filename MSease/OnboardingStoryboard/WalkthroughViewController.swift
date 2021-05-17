@@ -31,7 +31,7 @@ class WalkthroughViewController: UIViewController, pageViewControllerDelegate {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = true
         pageControl.numberOfPages = walkthroughPages.count
-        pageControl.currentPageIndicatorTintColor = UIColor(hex: StylingUtilities.buttonColor)
+        pageControl.currentPageIndicatorTintColor = StylingUtilities.buttonColor
     }
     
     // MARK: - walkthroughPageViewControllerDelegate

@@ -15,12 +15,15 @@ class ConsentViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     
+    @IBOutlet weak var upperView: UIView!
+    
     // MARK: - ViewController
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = true
         StylingUtilities.styleFilledButton(acceptButton)
         StylingUtilities.styleHollowdButton(cancelButton)
+        upperView.backgroundColor = StylingUtilities.buttonColor
     }
     
     // MARK: - Actions

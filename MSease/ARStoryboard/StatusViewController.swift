@@ -103,6 +103,11 @@ class StatusViewController: UIViewController {
         restartExperienceHandler()
     }
     
+    @IBAction private func showInfo(_ sender: UIButton) {
+        let parentVC = parent as! ARViewController
+        parentVC.presentTutorial()
+    }
+    
     // MARK: - Panel Visibility
     
     private func setMessageHidden(_ hide: Bool, animated: Bool) {

@@ -11,7 +11,7 @@ import UIKit
 class StylingUtilities{
     static let backgroundColor = "#F8F8F8FF"
     static let circleColor = "#D88C84FF"
-    static let buttonColor = "#749E98FF"//"#61A5C2FF"
+    static let buttonColor = UIColor(hex: "#749E98FF")
     static let borderColor = "#687794FF"
     
     enum PainColorCode : String{
@@ -37,7 +37,7 @@ class StylingUtilities{
     }
     
     static func styleFilledButton(_ button: UIButton){
-        button.backgroundColor = UIColor.init(hex: buttonColor)
+        button.backgroundColor = buttonColor
         if !button.isEnabled{
             button.backgroundColor = UIColor.gray
         }

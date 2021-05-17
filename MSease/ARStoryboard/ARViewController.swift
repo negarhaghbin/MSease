@@ -21,7 +21,7 @@ class ARViewController: UIViewController {
     // MARK: - Variables
     lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
-    let anchor = AnchorEntity(plane: .any, minimumBounds: [0.1, 0.1])
+    let anchor = AnchorEntity(plane: .any, minimumBounds: [0.05, 0.05])
     let coachingOverlay = ARCoachingOverlayView()
     var focusSquare : FocusEntity?
     
@@ -34,7 +34,7 @@ class ARViewController: UIViewController {
     var currentTappedCellIndices : (Int, Int)?
     
     var loadedMascots : [ModelEntity] = []
-    var isLoading = false
+//    var isLoading = false
     var isRestartAvailable = true
     
     var selectedLimbName : String?
@@ -71,17 +71,20 @@ class ARViewController: UIViewController {
                 }
             }
         }
-
-        statusViewController.restartExperienceHandler = { [unowned self] in
-            self.restartExperience()
+        if isNewToAR(){
+            UserDefaults.standard.set(true, forKey: "isARAlreadyLaunchedOnce")
+            presentTutorial()
         }
         
-        presentTutorial()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = true
+        
+        statusViewController.restartExperienceHandler = { [unowned self] in
+            self.restartExperience()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,20 +98,9 @@ class ARViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        print("view will disappear")
         super.viewWillDisappear(animated)
         arview.session.pause()
     }
-    
-//    deinit{
-////        focusSquare?.destroy()
-//        print("deiniting")
-//        arview.session.delegate = nil
-//        arview.scene.anchors.removeAll()
-//        arview.removeFromSuperview()
-////        arview.window?.resignKey()
-//        arview = nil
-//    }
     
     // MARK: - Tutorial
     
@@ -120,18 +112,52 @@ class ARViewController: UIViewController {
 
     // MARK: - Helper
     
+    func isNewToAR()->Bool{
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "isARAlreadyLaunchedOnce") != nil{
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
     func resetTracking() {
-//        loadedMascot = nil
+        if let index = currentTappedCellIndices {
+            deselectCell(
+                cell: tappedCells[index.0][index.1],
+                index: index)
+            hideConfirmationUI()
+        }
+        
+        removeObjects(completion: {
+            cells = []
+            tappedCells = []
+        })
+        
+        
         arview.automaticallyConfigureSession = false
+        if ARFaceTrackingConfiguration.isSupported{
+            if !(selectedLimbName == limb.leftThigh.rawValue || selectedLimbName == limb.rightThigh.rawValue){
+                let configuration = ARFaceTrackingConfiguration()
+                configuration.isWorldTrackingEnabled = true
+                configuration.maximumNumberOfTrackedFaces = 0
+                arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+                return
+            }
+        }
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
+        
+//        arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 //        print(view.subviews.count)
 //        statusViewController.scheduleMessage("Tap to place grid.", inSeconds: 7.5, messageType: .mascotSelection)
     }
     
     func restartExperience() {
-        guard isRestartAvailable, !isLoading else { return }
+        guard isRestartAvailable else { return }
         isRestartAvailable = false
 
         statusViewController.cancelAllScheduledMessages()
@@ -159,7 +185,7 @@ class ARViewController: UIViewController {
         
         bottomViewController.addMascotButton.isEnabled = !display
         
-        isRestartAvailable = !display
+//        isRestartAvailable = !display
     }
     
     func isShowingObjects() -> Bool{
@@ -169,6 +195,19 @@ class ARViewController: UIViewController {
             }
         }
         return false
+    }
+    
+    func removeObjects(completion: ()->()){
+        if loadedMascots.count != 0{
+            if selectedMascotIndex != -1{
+                parentEntity.removeChild(loadedMascots[selectedMascotIndex])
+            }
+        }
+        removeGrid()
+        arview.installGestures([.all], for: parentEntity)
+        anchor.removeChild(parentEntity)
+        arview.scene.removeAnchor(anchor)
+        completion()
     }
     
     func placeObjects(hidden: [(x: Int, y: Int)]){

@@ -55,6 +55,14 @@ extension Date{
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
+    
+    func getWholeDate() -> (startDate:Date, endDate: Date) {
+        var startDate = self
+        var length = TimeInterval()
+        _ = Calendar.current.dateInterval(of: .day, start: &startDate, interval: &length, for: startDate)
+        let endDate = startDate.addingTimeInterval(length)
+        return (startDate,endDate)
+    }
 }
 
 func getDateFromString(_ dateString:String)->Date{

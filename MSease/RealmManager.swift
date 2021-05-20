@@ -47,6 +47,7 @@ class RealmManager{
     func getUser()->User{
         return realm!.objects(User.self).first!
     }
+    
 }
 
 

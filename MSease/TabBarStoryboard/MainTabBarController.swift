@@ -50,7 +50,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         bgView!.backgroundColor = bgColor
         
         let newSize = CGSize(width: bgView!.frame.size.width-30.0, height: bgView!.frame.size.height-30.0)
-        let image = UIImage(named: "syringe-white2")?
+        let image = UIImage(named: "syringe")?
             .scaleTo(newSize: newSize )
         let imageView = UIImageView(image: image)
         imageView.isUserInteractionEnabled = true

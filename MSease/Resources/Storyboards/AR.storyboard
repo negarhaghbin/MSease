@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -907,7 +906,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="jL5-fQ-ZY2">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="EoG-IT-Wda">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="EoG-IT-Wda">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="7Ki-kd-nAQ" id="H3g-xs-y6j"/>
                             </connections>
@@ -1039,11 +1038,7 @@
                             <outlet property="delegate" destination="s5F-qp-WGY" id="3dk-si-igh"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="KO8-W2-zN1">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="SpV-Xn-7Cj">
-                            <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="KO8-W2-zN1"/>
                     <connections>
                         <segue destination="ukG-ht-aAJ" kind="show" identifier="showAR" id="vAW-hR-di5"/>
                     </connections>
@@ -1076,7 +1071,6 @@
     <resources>
         <image name="abdomen" width="688" height="1848"/>
         <image name="checkmark" width="200" height="200"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="headache" width="704" height="704"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="intense" width="308" height="307"/>

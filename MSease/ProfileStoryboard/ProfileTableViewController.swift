@@ -141,7 +141,7 @@ extension ProfileTableViewController : MFMailComposeViewControllerDelegate{
         
         if let _ = error{
             self.alertMessage.title = "Error"
-            self.alertMessage.message = "\(error)"
+            self.alertMessage.message = "\(String(describing: error))"
         }
         else{
             switch result {

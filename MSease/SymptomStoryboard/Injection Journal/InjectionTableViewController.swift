@@ -225,7 +225,8 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     
     
     // FIXME: For big screens
-    func prepareGrid(limbGrid: Limb){
+    private func prepareGrid(limbGrid: Limb){
+        removePreviousGrid()
         let width : Double?
         if limbGrid.name == "Abdomen"{
             width = Double(limbCell.contentView.frame.width/20)
@@ -259,7 +260,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         hideExtraRowsAndCols(hidden: Array(limbGrid.hiddenCells))
     }
     
-    func removePreviousGrid(){
+    private func removePreviousGrid(){
         for subview in limbCell.contentView.subviews{
             let imageSubview = subview as! UIImageView
             if imageSubview.image == UIImage(systemName: "square.fill"){
@@ -267,7 +268,6 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
             }
         }
         grid2D = []
-        selectedCell = nil
     }
     
     // MARK: - Navigation
@@ -357,9 +357,9 @@ extension InjectionTableViewController: UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedLimbName = limbs[pickerView.selectedRow(inComponent: 0)].name
         titleLabel.text = selectedLimbName
-        removePreviousGrid()
         let injectedLimb = Limb.getLimb(name: selectedLimbName)
         bodyImage.image = UIImage(named: injectedLimb.imageName)!
+        selectedCell = nil
         prepareGrid(limbGrid: injectedLimb)
         tableView.reloadData()
     }

@@ -252,7 +252,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Kcc-Xd-zcN">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="X6C-1m-q2n">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="X6C-1m-q2n">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="mtD-pi-Bui" id="0BT-AE-Oz6"/>
                             </connections>
@@ -732,7 +732,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="r40-EV-4N4">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="plain" systemItem="save" id="Tse-Qi-ge3">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="save" id="Tse-Qi-ge3">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="zUH-gJ-JqY" id="ZOX-MJ-KJ6"/>
                             </connections>

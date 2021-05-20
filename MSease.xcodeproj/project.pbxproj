@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5D21C20DC123E92BD7DCEDF6 /* Pods_MSease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5985A3334A06593A80337851 /* Pods_MSease.framework */; };
+		84021AD62655337F00D44022 /* HealthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84021AD52655337F00D44022 /* HealthTableViewCell.swift */; };
+		84021ADA26553E4E00D44022 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84021AD926553E4E00D44022 /* HealthKit.framework */; };
+		84021ADD2655C72700D44022 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84021ADC2655C72700D44022 /* Step.swift */; };
 		8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */; };
 		8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407F6A125D9B0420015666A /* NotesTableViewCell.swift */; };
 		840C1E5C25D3159700AD339E /* SymptomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */; };
@@ -41,7 +44,6 @@
 		843C05F126386BE000FFFC2D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05F026386BDF00FFFC2D /* SettingsTableViewController.swift */; };
 		843C05F4263890F500FFFC2D /* MascotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05F3263890F400FFFC2D /* MascotTableViewCell.swift */; };
 		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
-		8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
 		8448884B25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */; };
 		845996C325F0325F00AA3233 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 845996C225F0325F00AA3233 /* FocusEntity */; };
@@ -106,6 +108,10 @@
 		29CE2308B856F91845E34F83 /* Pods-MSease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.release.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.release.xcconfig"; sourceTree = "<group>"; };
 		44A4552385A1D8D2E8ED9AB0 /* Pods-MSease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.debug.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.debug.xcconfig"; sourceTree = "<group>"; };
 		5985A3334A06593A80337851 /* Pods_MSease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84021AD52655337F00D44022 /* HealthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCell.swift; sourceTree = "<group>"; };
+		84021AD826553E4E00D44022 /* MSease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MSease.entitlements; sourceTree = "<group>"; };
+		84021AD926553E4E00D44022 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		84021ADC2655C72700D44022 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		8407F6A125D9B0420015666A /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -139,7 +145,6 @@
 		843C05F026386BDF00FFFC2D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		843C05F3263890F400FFFC2D /* MascotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotTableViewCell.swift; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
-		8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionReusableView.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		845996C625F11AA100AA3233 /* BottomContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainerViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845996C325F0325F00AA3233 /* FocusEntity in Frameworks */,
+				84021ADA26553E4E00D44022 /* HealthKit.framework in Frameworks */,
 				5D21C20DC123E92BD7DCEDF6 /* Pods_MSease.framework in Frameworks */,
 				843C05AC262EF15000FFFC2D /* GameController.framework in Frameworks */,
 			);
@@ -218,10 +224,21 @@
 		5D9BB03B6F3DF6062BC62427 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84021AD926553E4E00D44022 /* HealthKit.framework */,
 				843C05AB262EF15000FFFC2D /* GameController.framework */,
 				5985A3334A06593A80337851 /* Pods_MSease.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84021AD42655334900D44022 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				8407F6A125D9B0420015666A /* NotesTableViewCell.swift */,
+				840CA86C2642DF7C00018481 /* InjectionTableViewCell.swift */,
+				84021AD52655337F00D44022 /* HealthTableViewCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		840C1E6B25D36E1C00AD339E /* Objects */ = {
@@ -289,6 +306,7 @@
 				841F9EEF25F9B56B00E4B519 /* Injection.swift */,
 				84BCC857261685E20097E0A2 /* TSQM.swift */,
 				84BCC864261CC4C70097E0A2 /* InjectionPhobiaForm.swift */,
+				84021ADC2655C72700D44022 /* Step.swift */,
 			);
 			path = "Realm Objects";
 			sourceTree = "<group>";
@@ -314,6 +332,7 @@
 		84979F2E25B9DFF200578C37 /* MSease */ = {
 			isa = PBXGroup;
 			children = (
+				84021AD826553E4E00D44022 /* MSease.entitlements */,
 				840CA8852645821100018481 /* TabBarStoryboard */,
 				84A0F4B32640608600B8A68A /* SymptomStoryboard */,
 				84A0F4AD263C30C200B8A68A /* tutorial1.gif */,
@@ -366,6 +385,11 @@
 		84A0F4B32640608600B8A68A /* SymptomStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */,
+				8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */,
+				8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */,
+				84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */,
+				84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */,
 				84A0C4ED2624D19900CE52BD /* Injection Journal */,
 			);
 			path = SymptomStoryboard;
@@ -475,19 +499,12 @@
 		84F5E79625C44A2C00EED24C /* CalendarStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				84021AD42655334900D44022 /* cells */,
 				84BBE22425C0D9FA0046C24F /* CalendarViewController.swift */,
 				84BBE22725C0E2A80046C24F /* SymptomsPopupViewController.swift */,
-				840C1E5B25D3159700AD339E /* SymptomsCollectionViewCell.swift */,
-				8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */,
-				8448884425D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift */,
-				8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */,
 				8407F69E25D9AF0A0015666A /* NotesTableViewController.swift */,
-				8407F6A125D9B0420015666A /* NotesTableViewCell.swift */,
-				84AF3DFB25DACB6C0083E9F0 /* PhotosCollectionView.swift */,
-				84D4E71B25E6D49200DB75B4 /* PhotoCollectionView.swift */,
 				84D4E71E25E6E9B200DB75B4 /* FullscreenImageViewController.swift */,
 				84D4E72125E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift */,
-				840CA86C2642DF7C00018481 /* InjectionTableViewCell.swift */,
 			);
 			path = CalendarStoryboard;
 			sourceTree = "<group>";
@@ -666,13 +683,13 @@
 				843C05D12630594900FFFC2D /* ArTutorialPageViewController.swift in Sources */,
 				843C05E52631A3C600FFFC2D /* CellModelEntity.swift in Sources */,
 				84ACFB4225BE2EC400A09F67 /* ARViewController+CoachingOverlay.swift in Sources */,
+				84021ADD2655C72700D44022 /* Step.swift in Sources */,
 				84BCC858261685E20097E0A2 /* TSQM.swift in Sources */,
 				8499442A25FB272300AFB965 /* WalkthroughViewController.swift in Sources */,
 				843C05D8263059AF00FFFC2D /* ArTutorialViewController.swift in Sources */,
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
 				84BCC862261CC19B0097E0A2 /* InjectionPhobia.swift in Sources */,
 				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
-				8448884525D6C6C900F5FBBA /* SymptomsCollectionReusableView.swift in Sources */,
 				84BCC83526122D2D0097E0A2 /* PretestViewController.swift in Sources */,
 				841F9EFC25FA97C100E4B519 /* WalkthroughPageViewController.swift in Sources */,
 				84D4E72925E7F6AB00DB75B4 /* ARViewController.swift in Sources */,
@@ -706,6 +723,7 @@
 				84BBE21B25C0BF700046C24F /* MainViewController.swift in Sources */,
 				840CA88A2645A5A300018481 /* CenterTabBarButton.swift in Sources */,
 				8427EA2625FFB7B1003E6FAA /* ValidationUtilities.swift in Sources */,
+				84021AD62655337F00D44022 /* HealthTableViewCell.swift in Sources */,
 				84D4E72225E72D7900DB75B4 /* MiniSymptomsCollectionViewCell.swift in Sources */,
 				8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */,
 			);
@@ -847,6 +865,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MSease/MSease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
@@ -868,6 +887,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MSease/MSease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;

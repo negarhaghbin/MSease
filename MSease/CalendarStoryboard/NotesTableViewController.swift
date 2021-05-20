@@ -14,6 +14,7 @@ class NotesTableViewController: UIViewController {
     enum cellIdentifier: String{
         case notesTableViewCell
         case injectionsTableViewCell
+        case healthTableCell
     }
     
     var date : Date?{
@@ -32,9 +33,11 @@ class NotesTableViewController: UIViewController {
     
     enum sections: Int, CaseIterable {
         case addNew = 0
+        case health
         case injections
         case notes
     }
+    
 
     deinit {
         notificationToken?.invalidate()
@@ -43,7 +46,6 @@ class NotesTableViewController: UIViewController {
     
     
     // MARK: - IBOutlet
-    @IBOutlet weak var titleDateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var symptomsView : UIView!
     @IBOutlet weak var shadowView: UIView!
@@ -52,6 +54,10 @@ class NotesTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadRows(at: [IndexPath(row: 0, section: sections.health.rawValue)], with: .automatic)
     }
     
     // MARK: - Helpers
@@ -80,7 +86,10 @@ class NotesTableViewController: UIViewController {
         self.title = date!.getUSFormat()
         notes = RealmManager.shared.getNotes(for: date!)
         injections = RealmManager.shared.getInjections(for: date!)
-
+        Step.askAuthorization(completion: {
+            Step.getSteps(date: date!)
+        })
+        
         notificationToken = notes!.observe { [weak self] (changes) in
             self!.updateTable(changes: changes, section: sections.notes.rawValue)
         }
@@ -159,6 +168,14 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.injectionsTableViewCell.rawValue, for: indexPath) as! InjectionTableViewCell
             cell.tag = indexPath.row
             cell.initiate(injections: injections!)
+            
+            return cell
+        }
+        else if indexPath.section == sections.health.rawValue{
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.healthTableCell.rawValue, for: indexPath) as! HealthTableViewCell
+            cell.tag = indexPath.row
+            
+            cell.initiate(count: Step.counter)
             
             return cell
         }

@@ -86,9 +86,6 @@ class NotesTableViewController: UIViewController {
         self.title = date!.getUSFormat()
         notes = RealmManager.shared.getNotes(for: date!)
         injections = RealmManager.shared.getInjections(for: date!)
-        askAuthorization(completion: {
-            getSteps(date: date!)
-        })
         
         notificationToken = notes!.observe { [weak self] (changes) in
             self!.updateTable(changes: changes, section: sections.notes.rawValue)

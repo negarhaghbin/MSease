@@ -112,6 +112,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             self?.setMascot()
             self?.blurView.isHidden = true
             self?.tabBarController?.tabBar.isHidden = false
+            askHealthAuthorizationAndUpdate()
             if !RealmManager.shared.hasSignedConsent(){
                 self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
             }

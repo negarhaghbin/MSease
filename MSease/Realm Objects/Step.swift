@@ -31,7 +31,7 @@ class Step: Object {
     }
 }
     
-    func getSteps(date: Date){
+    func updateSteps(){
         guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
             fatalError("*** Unable to get the step count type ***")
         }
@@ -41,10 +41,13 @@ class Step: Object {
                 print("not authorized: \(error)")
                 return
             }
-            
-            getStepsCount(date: date){ steps in
-                DispatchQueue.main.async {
-                    RealmManager.shared.updateDB(date: date, steps: Int(steps))
+            let today = Date()
+            let beginDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+            for date in dateRange(begin: beginDate, end: today){
+                getStepsCount(date: date){ steps in
+                    DispatchQueue.main.async {
+                        RealmManager.shared.updateDB(date: date, steps: Int(steps))
+                    }
                 }
             }
             completionHandler()
@@ -53,7 +56,7 @@ class Step: Object {
         healthStore.execute(query)
     }
     
-    func askAuthorization(completion: () -> ()){
+    func askHealthAuthorizationAndUpdate(){
         if HKHealthStore.isHealthDataAvailable() {
             let stepsCount = HKObjectType.quantityType(forIdentifier: .stepCount)!
 
@@ -61,13 +64,15 @@ class Step: Object {
                     if error != nil {
                         print("HealthKit permission denied.")
                         print(error ?? "")
-                    }  
+                    }
+                    else{
+                        updateSteps()
+                    }
                 }
             }
             else{
                 print("health not available")
             }
-            completion()
         }
     
     func getStepsCount(date: Date, completion: @escaping (Double) -> Void) {

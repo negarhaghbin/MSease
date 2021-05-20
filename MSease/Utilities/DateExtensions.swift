@@ -65,13 +65,14 @@ extension Date{
     }
 }
 
-func getDateFromString(_ dateString:String)->Date{
+func getDateFromString(_ dateString:String, style: DateFormatter.Style = .medium)->Date{
     let formatter = DateFormatter()
-    formatter.dateStyle = .medium
+    formatter.dateStyle = style
     formatter.timeStyle = .none
     formatter.locale = Locale(identifier: "en_US")
     return formatter.date(from: dateString)!
 }
+
 
 func getTimeFromString(_ time: String)->(h: Int, m:Int){
     var index = time.firstIndex(of: ":")!
@@ -114,6 +115,16 @@ func timeIntervalToWeeks(timeInterval: TimeInterval)->Double{
     let days = hours / 24.0
     let weeks = days / 7.0
     return weeks
+}
+
+func dateRange(begin: Date, end: Date)->[Date]{
+    var date = begin
+    var result : [Date] = []
+    while date <= end {
+        result.append(date)
+        date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+    }
+    return result
 }
 
 

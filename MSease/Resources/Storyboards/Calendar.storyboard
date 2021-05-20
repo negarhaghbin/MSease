@@ -248,7 +248,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvT-PQ-6q6">
-                                                    <rect key="frame" x="37" y="11" width="34.5" height="18.5"/>
+                                                    <rect key="frame" x="42" y="11" width="34.5" height="18.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
@@ -265,7 +265,7 @@
                                                 <constraint firstItem="giE-OX-Ahi" firstAttribute="leading" secondItem="xC8-Br-Pg1" secondAttribute="leading" id="Bz6-tX-U8G"/>
                                                 <constraint firstItem="S9w-Z7-c1l" firstAttribute="centerY" secondItem="xC8-Br-Pg1" secondAttribute="centerY" id="P9e-Sy-fjs"/>
                                                 <constraint firstItem="S9w-Z7-c1l" firstAttribute="leading" secondItem="xC8-Br-Pg1" secondAttribute="trailing" constant="5" id="Uqv-hm-ERe"/>
-                                                <constraint firstItem="JvT-PQ-6q6" firstAttribute="leading" secondItem="giE-OX-Ahi" secondAttribute="trailing" id="ium-YE-WN6"/>
+                                                <constraint firstItem="JvT-PQ-6q6" firstAttribute="leading" secondItem="giE-OX-Ahi" secondAttribute="trailing" constant="5" id="ium-YE-WN6"/>
                                                 <constraint firstItem="giE-OX-Ahi" firstAttribute="top" secondItem="QAh-my-vsp" secondAttribute="top" constant="10" id="uC7-N2-drY"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="xC8-Br-Pg1" secondAttribute="bottom" constant="10" id="uc8-zR-mVc"/>
                                             </constraints>

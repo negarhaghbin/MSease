@@ -13,7 +13,7 @@ class RealmManager{
     static let shared = RealmManager()
     private var realm : Realm?
     let PHASE_DURATION_WEEKS = 4.0
-    static let OBJECT_TYPES = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self]
+    static let OBJECT_TYPES = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self, Step.self]
     
     private init() {
     }
@@ -46,6 +46,30 @@ class RealmManager{
     
     func getUser()->User{
         return realm!.objects(User.self).first!
+    }
+    
+    // MARK: - Step
+    
+    func updateDB(date: Date, steps: Int){
+        if let oldSteps = getSteps(date: date){
+            try! realm!.write{
+                oldSteps.count = steps
+            }
+        }else{
+            addStep(Step(date: date.getUSFormat(), count: steps, partition: getPartitionValue()))
+        }
+    }
+    
+    func getSteps(date: Date)->Step?{
+        let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
+        return realm!.objects(Step.self).filter(predicate).first
+    }
+    
+    func addStep(_ step: Step){
+        try! realm!.write {
+            realm!.add(step)
+        }
+        
     }
     
 }

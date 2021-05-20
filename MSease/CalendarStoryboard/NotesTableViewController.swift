@@ -86,8 +86,8 @@ class NotesTableViewController: UIViewController {
         self.title = date!.getUSFormat()
         notes = RealmManager.shared.getNotes(for: date!)
         injections = RealmManager.shared.getInjections(for: date!)
-        Step.askAuthorization(completion: {
-            Step.getSteps(date: date!)
+        askAuthorization(completion: {
+            getSteps(date: date!)
         })
         
         notificationToken = notes!.observe { [weak self] (changes) in
@@ -175,7 +175,7 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.healthTableCell.rawValue, for: indexPath) as! HealthTableViewCell
             cell.tag = indexPath.row
             
-            cell.initiate(count: Step.counter)
+            cell.initiate(count: RealmManager.shared.getSteps(date: date!)?.count ?? -1)
             
             return cell
         }

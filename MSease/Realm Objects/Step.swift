@@ -5,14 +5,33 @@
 //  Created by Negar on 2021-05-19.
 //
 
+import RealmSwift
 import HealthKit
 
 let healthStore = HKHealthStore()
 
-class Step{
+class Step: Object {
+    @objc dynamic var count : Int = 0
+    @objc dynamic var date : String = ""
+    
+    @objc dynamic var _id: ObjectId = ObjectId.generate()
+    @objc dynamic var _partition : String = ""
+    
     static var counter = 0
     
-    class func getSteps(date: Date){
+    override static func primaryKey() -> String? {
+      return "_id"
+    }
+    
+    convenience init(date: String, count: Int, partition: String) {
+        self.init()
+        self.date = date
+        self.count = count
+        self._partition = partition
+    }
+}
+    
+    func getSteps(date: Date){
         guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
             fatalError("*** Unable to get the step count type ***")
         }
@@ -24,7 +43,9 @@ class Step{
             }
             
             getStepsCount(date: date){ steps in
-                Step.counter = Int(steps)
+                DispatchQueue.main.async {
+                    RealmManager.shared.updateDB(date: date, steps: Int(steps))
+                }
             }
             completionHandler()
         }
@@ -32,7 +53,7 @@ class Step{
         healthStore.execute(query)
     }
     
-    class func askAuthorization(completion: () -> ()){
+    func askAuthorization(completion: () -> ()){
         if HKHealthStore.isHealthDataAvailable() {
             let stepsCount = HKObjectType.quantityType(forIdentifier: .stepCount)!
 
@@ -49,7 +70,7 @@ class Step{
             completion()
         }
     
-    private class func getStepsCount(date: Date, completion: @escaping (Double) -> Void) {
+    func getStepsCount(date: Date, completion: @escaping (Double) -> Void) {
             let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
             let (start, end) = date.getWholeDate()
 
@@ -66,4 +87,4 @@ class Step{
             healthStore.execute(query)
         }
     
-}
+

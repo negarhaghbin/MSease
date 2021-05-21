@@ -179,7 +179,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
                 return CGFloat(50)
             }
             if indexPath.row == 1{
-                return limbPicker.isHidden ? CGFloat(0) : CGFloat(200)
+                return limbPicker.isHidden ? CGFloat(0) : CGFloat(limbCell.contentView.frame.width*0.5)
             }
             else{
                 return titleLabel.text == "Abdomen" ? CGFloat(170) : CGFloat(250)

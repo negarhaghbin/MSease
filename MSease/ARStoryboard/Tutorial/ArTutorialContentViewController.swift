@@ -22,7 +22,7 @@ class ArTutorialContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLable.text = descriptionText
-//        imageView.loadGif(name: imageName)
+        imageView.loadGif(name: imageName)
     }
     
 

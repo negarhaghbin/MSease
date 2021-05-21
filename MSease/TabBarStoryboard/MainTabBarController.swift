@@ -42,7 +42,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     private func createCenterButton(bgColor: UIColor) {
         let itemIndex:CGFloat = 2.0
-        let itemWidth = tabBar.frame.width / CGFloat(tabBar.items!.count)
+        let itemWidth:CGFloat = 75.0
+//            tabBar.frame.width / CGFloat(tabBar.items!.count)
+//        print(itemWidth)
         bgView = UIView(frame: CGRect.init(x: itemWidth * itemIndex, y: -itemWidth/2, width: itemWidth, height: itemWidth))
         bgView!.layer.cornerRadius = bgView!.frame.size.width/2
         bgView!.clipsToBounds = true

@@ -12,9 +12,18 @@ class SymptomsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var checkmarkImage: UIImageView!
     
-    func initiate(){
+    func initiate(symptom: Symptom){
         self.name.adjustsFontSizeToFitWidth = true
         self.name.minimumScaleFactor = 0.5
+        
+        self.image.image = UIImage(named: symptom.imageName)
+        self.name.text = symptom.name
+        if selectedSymptomNames.contains(symptom.name){
+            self.checkmarkImage.isHidden = false
+        }
+        else{
+            self.checkmarkImage.isHidden = true
+        }
     }
     
     func add(to symptoms: [String])->[String]{

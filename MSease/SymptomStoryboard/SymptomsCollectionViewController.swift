@@ -24,13 +24,20 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         case SymptomsCollection = "symptomCollectionCell"
     }
     
+    enum sections : Int{
+        case symptoms = 0
+        case time
+        case note
+        case photo
+    }
+    
     var note : Note?{
         didSet{
             refreshUI()
         }
     }
 
-    var selectedImages : [String] = [] // names, TODO: fill it in picking images
+    var selectedImages : [String] = [] // names, TODO: fill it in view will appear. (starts with an empty array)
     var isNewNote : Bool?
     
     lazy var partitionValue = RealmManager.shared.getPartitionValue()
@@ -108,18 +115,18 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath == IndexPath(row: 0, section: 0) {
+        if indexPath == IndexPath(row: 0, section: sections.symptoms.rawValue) {
             return CGFloat(150.0)
         }
-        else if indexPath == IndexPath(row: 1, section: 1) {
+        else if indexPath == IndexPath(row: 1, section: sections.time.rawValue) {
             let height:CGFloat = timePicker.isHidden ? 0.0 : 200.0
             return height
         }
-        else if indexPath == IndexPath(row: 0, section: 2) {
+        else if indexPath == IndexPath(row: 0, section: sections.note.rawValue) {
             return CGFloat(170.0)
         }
-        else if indexPath == IndexPath(row: 0, section: 3) {
-            return CGFloat(240.0)
+        else if indexPath == IndexPath(row: 0, section: sections.photo.rawValue) {
+            return CGFloat(120.0)
         }
         return CGFloat(46.0)
     }
@@ -146,6 +153,7 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.photoCollectionView{
+//            print(selectedImages.count)
             return selectedImages.count+1
         }
         else if collectionView == self.symptomsCollectionView{
@@ -170,14 +178,8 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
         }
         else if collectionView == self.symptomsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid.SymptomsCollection.rawValue, for: indexPath) as! SymptomsCollectionViewCell
-            cell.image.image = UIImage(named: symptoms[indexPath.row].imageName)
-            cell.name.text = symptoms[indexPath.row].name
-            if selectedSymptomNames.contains(symptoms[indexPath.row].name){
-                cell.checkmarkImage.isHidden = false
-            }
-            else{
-                cell.checkmarkImage.isHidden = true
-            }
+            cell.tag = indexPath.row
+            cell.initiate(symptom: symptoms[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
@@ -222,38 +224,34 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
     }
 }
 
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension SymptomsCollectionViewController : UICollectionViewDelegateFlowLayout{
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let leftSectionInset = CGFloat(2)
-//          let itemsPerRow = round(view.frame.width/150.0)
-//          let paddingSpace = 2 * leftSectionInset * (itemsPerRow + 1)
-//          let availableWidth = view.frame.width - paddingSpace
-//          let widthPerItem = availableWidth / itemsPerRow
-//          cgsize=CGSize(width: widthPerItem, height: widthPerItem)
-//      return cgsize!
-//    }
-}
-
-
-
-
 // MARK: - Image Picker Delegate
 extension SymptomsCollectionViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.imageURL] as? NSURL{
-            selectedImages.append("\(image)")
-            photoCollectionView.reloadData()
-            tableView.reloadData()
+        var selectedImageFromPicker : UIImage?
+        
+        if let editedImage = info[.editedImage] as? UIImage{
+            selectedImageFromPicker = editedImage
         }
-        picker.dismiss(animated: true, completion: nil)
+        else if let originalImage = info[.originalImage] as? UIImage{
+            selectedImageFromPicker = originalImage
+        }
+        
+        
+//        if let selectedImage = selectedImageFromPicker{
+//            selectedImages.append("\(selectedImage.)")
+//        }
+        if let image = info[.imageURL] as? NSURL{
+//            print("image: \(image)")
+            selectedImages.append("\(image)")
+        }
+        picker.dismiss(animated: true , completion: {
+            self.photoCollectionView.reloadData()
+//            self.tableView.reloadSections([sections.photo.rawValue], with: .automatic)
+        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true)
     }
 }
 

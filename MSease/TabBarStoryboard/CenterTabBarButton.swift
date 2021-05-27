@@ -16,8 +16,7 @@ class CenterTabBarButton: UITabBar {
             return super.hitTest(point, with: event)
         }
         
-        let middleWidth:CGFloat = 75.0
-//            bounds.width/CGFloat(items.count)
+        let middleWidth:CGFloat = bounds.width/CGFloat(items.count)
         let middleRect = CGRect(x: middleWidth * 2.0, y: -middleWidth/2, width: middleWidth, height: middleWidth)
         if !isHidden && middleRect.contains(point) {
             prominentButtonCallback?()

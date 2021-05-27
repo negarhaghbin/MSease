@@ -179,10 +179,10 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
                 return CGFloat(50)
             }
             if indexPath.row == 1{
-                return limbPicker.isHidden ? CGFloat(0) : CGFloat(limbCell.contentView.frame.width*0.5)
+                return limbPicker.isHidden ? CGFloat(0) : CGFloat(150)
             }
             else{
-                return titleLabel.text == "Abdomen" ? CGFloat(170) : CGFloat(250)
+                return titleLabel.text == "Abdomen" ? CGFloat(limbCell.contentView.frame.width*0.35) : CGFloat(limbCell.contentView.frame.width*0.5)
             }
         }
         else if indexPath.section == sections.painScale.rawValue{
@@ -224,7 +224,6 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     }
     
     
-    // FIXME: For big screens
     private func prepareGrid(limbGrid: Limb){
         removePreviousGrid()
         let width : Double?
@@ -239,7 +238,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
             grid2D.append([])
             for j in 0..<limbGrid.numberOfCols{
                 let xVal = Double((0.75+Double(j))*width! - Double(2*j))
-                let yVal = Double((2.25+Double(i))*width! - Double(i))
+                let yVal = Double((0.5 + Double(i))*width! - Double(i))
                 let frame = CGRect(x: xVal, y: yVal, width: width!, height: width!)
                 let imageView = UIImageView(frame: frame)
                 imageView.image = UIImage(systemName: "square.fill")

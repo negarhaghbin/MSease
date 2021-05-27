@@ -183,7 +183,12 @@ extension MainViewController : UNUserNotificationCenterDelegate{
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.banner,.sound])
+        if #available(iOS 14.0, *) {
+            completionHandler([.banner,.sound])
+        } else {
+            completionHandler([.sound])
+            // Fallback on earlier versions
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

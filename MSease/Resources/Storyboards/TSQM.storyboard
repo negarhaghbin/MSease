@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,19 +22,20 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTm-it-ed1">
-                                <rect key="frame" x="20" y="99" width="374" height="698"/>
+                                <rect key="frame" x="20" y="155" width="374" height="586.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How satisfied or dissatisfied are you with the ability of the medication to prevent or treat your condition?" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCt-s3-vqG">
-                                        <rect key="frame" x="20" y="20" width="334" height="130"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCt-s3-vqG">
+                                        <rect key="frame" x="10" y="10" width="354" height="156"/>
+                                        <string key="text">How satisfied or dissatisfied are you with the ability of the medication to prevent or treat your condition?How satisfied or dissatisfied are you with the ability of the medication to prevent or treat your condition?</string>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-av-kOp">
-                                        <rect key="frame" x="20" y="170" width="334" height="358"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UfE-av-kOp">
+                                        <rect key="frame" x="10" y="186" width="354" height="300"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0D-eo-GWA" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="38.5"/>
                                                 <state key="normal" title="3 Extremely satisfied">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -48,7 +50,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gm-9v-lMa" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="54" width="334" height="34"/>
+                                                <rect key="frame" x="0.0" y="43.5" width="354" height="38.5"/>
                                                 <state key="normal" title="2">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -63,7 +65,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4q-jx-nMw" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="108" width="334" height="34"/>
+                                                <rect key="frame" x="0.0" y="87" width="354" height="38.5"/>
                                                 <state key="normal" title="1">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -78,7 +80,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pd-47-eLA" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="162" width="334" height="34"/>
+                                                <rect key="frame" x="0.0" y="130.5" width="354" height="38.5"/>
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -93,7 +95,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55g-iu-pTF" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="216" width="334" height="34"/>
+                                                <rect key="frame" x="0.0" y="174" width="354" height="38.5"/>
                                                 <state key="normal" title="-1">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -108,7 +110,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-KH-oX3" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="270" width="334" height="34"/>
+                                                <rect key="frame" x="0.0" y="217.5" width="354" height="38.5"/>
                                                 <state key="normal" title="-2">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -123,7 +125,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osi-0Q-2By" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="324" width="334" height="34"/>
+                                                <rect key="frame" x="0.0" y="261" width="354" height="39"/>
                                                 <state key="normal" title="-3 Extremely dissatisfied">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -157,7 +159,7 @@
                                         </constraints>
                                     </stackView>
                                     <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Explain..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iy7-k7-ajf">
-                                        <rect key="frame" x="20" y="170" width="334" height="300"/>
+                                        <rect key="frame" x="10" y="186" width="354" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="dB4-KW-6YR"/>
@@ -167,23 +169,23 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6e-dy-M2w">
-                                        <rect key="frame" x="20" y="548" width="334" height="60"/>
+                                        <rect key="frame" x="10" y="496" width="354" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-nr-fsr">
-                                        <rect key="frame" x="20" y="628" width="334" height="50"/>
+                                        <rect key="frame" x="10" y="526.5" width="354" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-DO-Rbn">
-                                                <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
                                                 <state key="normal" title="Back"/>
                                                 <connections>
                                                     <action selector="backTapped:" destination="IZV-51-Xx2" eventType="touchUpInside" id="0Fu-7w-gPe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcm-Of-QvW">
-                                                <rect key="frame" x="177" y="0.0" width="157" height="50"/>
+                                                <rect key="frame" x="187" y="0.0" width="167" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Zhd-aF-nGC"/>
                                                 </constraints>
@@ -199,26 +201,25 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.9042013408332471" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="QuestionnairesBGColor"/>
                                 <constraints>
                                     <constraint firstItem="iy7-k7-ajf" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="0cP-EA-XFI"/>
                                     <constraint firstItem="UfE-av-kOp" firstAttribute="top" secondItem="lCt-s3-vqG" secondAttribute="bottom" constant="20" id="1Qg-nJ-t7l"/>
-                                    <constraint firstItem="UTJ-nr-fsr" firstAttribute="top" secondItem="n6e-dy-M2w" secondAttribute="bottom" constant="20" id="1rD-we-1TD"/>
+                                    <constraint firstItem="UTJ-nr-fsr" firstAttribute="top" secondItem="n6e-dy-M2w" secondAttribute="bottom" constant="10" id="1rD-we-1TD"/>
                                     <constraint firstItem="n6e-dy-M2w" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="2Ij-9Z-p2X"/>
-                                    <constraint firstItem="n6e-dy-M2w" firstAttribute="top" secondItem="UfE-av-kOp" secondAttribute="bottom" constant="20" id="8kB-fZ-UMQ"/>
+                                    <constraint firstItem="n6e-dy-M2w" firstAttribute="top" secondItem="UfE-av-kOp" secondAttribute="bottom" constant="10" id="8kB-fZ-UMQ"/>
                                     <constraint firstItem="UfE-av-kOp" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="FFd-UV-ytV"/>
-                                    <constraint firstItem="lCt-s3-vqG" firstAttribute="leading" secondItem="GTm-it-ed1" secondAttribute="leading" constant="20" id="T1Y-IK-7hr"/>
-                                    <constraint firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" constant="20" id="UyR-xa-PPq"/>
+                                    <constraint firstItem="lCt-s3-vqG" firstAttribute="leading" secondItem="GTm-it-ed1" secondAttribute="leading" constant="10" id="T1Y-IK-7hr"/>
+                                    <constraint firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" constant="10" id="UyR-xa-PPq"/>
                                     <constraint firstItem="UfE-av-kOp" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="XHk-fb-o1Z"/>
-                                    <constraint firstItem="n6e-dy-M2w" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iy7-k7-ajf" secondAttribute="bottom" constant="20" id="Y8s-Lz-Gw4"/>
+                                    <constraint firstItem="n6e-dy-M2w" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iy7-k7-ajf" secondAttribute="bottom" constant="10" id="Y8s-Lz-Gw4"/>
                                     <constraint firstItem="UTJ-nr-fsr" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="YME-27-KKq"/>
                                     <constraint firstItem="UTJ-nr-fsr" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="b25-hx-MsV"/>
                                     <constraint firstItem="iy7-k7-ajf" firstAttribute="top" secondItem="lCt-s3-vqG" secondAttribute="bottom" constant="20" id="cSR-MW-raW"/>
-                                    <constraint firstAttribute="bottom" secondItem="UTJ-nr-fsr" secondAttribute="bottom" constant="20" id="dep-gX-VSv"/>
-                                    <constraint firstItem="lCt-s3-vqG" firstAttribute="top" secondItem="GTm-it-ed1" secondAttribute="top" constant="20" id="dn7-Ug-uif"/>
+                                    <constraint firstAttribute="bottom" secondItem="UTJ-nr-fsr" secondAttribute="bottom" constant="10" id="dep-gX-VSv"/>
+                                    <constraint firstItem="lCt-s3-vqG" firstAttribute="top" secondItem="GTm-it-ed1" secondAttribute="top" constant="10" id="dn7-Ug-uif"/>
                                     <constraint firstItem="iy7-k7-ajf" firstAttribute="leading" secondItem="lCt-s3-vqG" secondAttribute="leading" id="eWA-cB-uiT"/>
                                     <constraint firstItem="n6e-dy-M2w" firstAttribute="trailing" secondItem="lCt-s3-vqG" secondAttribute="trailing" id="m1a-uL-abQ"/>
-                                    <constraint firstItem="UfE-av-kOp" firstAttribute="centerY" secondItem="GTm-it-ed1" secondAttribute="centerY" id="wZi-jm-QUH"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -295,7 +296,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90420134080000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="QuestionnairesBGColor"/>
                                 <constraints>
                                     <constraint firstItem="R5c-az-JmJ" firstAttribute="leading" secondItem="XXL-uU-c8J" secondAttribute="leading" id="Dwm-Bb-3qZ"/>
                                     <constraint firstItem="R5c-az-JmJ" firstAttribute="top" secondItem="XXL-uU-c8J" secondAttribute="bottomMargin" constant="20" id="OPJ-K9-alu"/>
@@ -508,7 +509,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90420134080000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="QuestionnairesBGColor"/>
                                 <constraints>
                                     <constraint firstItem="Y8D-bB-tcy" firstAttribute="leading" secondItem="ZqY-4m-CB9" secondAttribute="leading" constant="20" id="AWT-L3-4as"/>
                                     <constraint firstItem="xra-w1-XuD" firstAttribute="centerY" secondItem="ZqY-4m-CB9" secondAttribute="centerY" id="B9X-up-EyS"/>
@@ -579,6 +580,9 @@
     </scenes>
     <resources>
         <image name="bg" width="1382" height="1275"/>
+        <namedColor name="QuestionnairesBGColor">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -38,6 +38,7 @@ class ARViewController: UIViewController {
     var isRestartAvailable = true
     
     var selectedLimbName : String?
+    var cellsWithInjections : [(x: Int, y: Int, color: String)] = []
     var injection : Injection?{
         didSet{
             navigationController?.isNavigationBarHidden = true

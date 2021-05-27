@@ -16,6 +16,7 @@ class GridCollectionViewController: UICollectionViewController {
     private let GridSquareViewCellIdentifier = "GridSquareViewCell"
     
     var selectedLimbName : String?
+    var cellsWithPrevInjections : [(x: Int, y: Int, color: String)] = []
     var selectedIndexPath : IndexPath?
     
     enum gridSections : Int {
@@ -60,6 +61,10 @@ class GridCollectionViewController: UICollectionViewController {
         else{
             selectedLimbName = limbs[indexPath.row + 1].name
         }
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? GridCollectionViewCell{
+            cellsWithPrevInjections = cell.prevInjectionCells
+        }
         performSegue(withIdentifier: "showAR", sender: nil)
     }
     
@@ -94,6 +99,7 @@ class GridCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ARViewController{
             vc.selectedLimbName = selectedLimbName
+            vc.cellsWithInjections = cellsWithPrevInjections
         }
     }
 

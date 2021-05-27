@@ -110,7 +110,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         if injection?.note == "Add a note..."{
             textView.text = ""
         }
-        textView.textColor = UIColor(named: "Label Color")
+        textView.textColor = UIColor.label
     }
     
     // MARK: - Actions

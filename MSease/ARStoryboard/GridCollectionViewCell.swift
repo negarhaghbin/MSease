@@ -16,10 +16,13 @@ class GridCollectionViewCell: UICollectionViewCell {
     // MARK: - Variables
     var grid2D : [[UIImageView]] = []
     
+    var prevInjectionCells : [(x: Int, y: Int, color: String)] = []
+    
     // MARK: - Helpers
     func initiate(){
         self.textLabel.adjustsFontSizeToFitWidth = true
         self.textLabel.minimumScaleFactor = 0.5
+        prevInjectionCells = []
         
         let selectedLimb = limbs[self.tag]
         textLabel.text = selectedLimb.name
@@ -44,6 +47,21 @@ class GridCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private func fillPrevInjectionCells(limbGrid: Limb, completion: ()->()){
+        let injectionsOnDates = RealmManager.shared.getRecentInjectionsForLimb(limb: limbGrid)
+        
+//        var cells : [(x: Int, y: Int, color: String)] = []
+        
+        for (i,injections) in injectionsOnDates.enumerated(){
+            for injection in injections{
+                prevInjectionCells.append((x: injection.selectedCellX, y: injection.selectedCellY, color:StylingUtilities.InjectionCodes[i].colorCode))
+            }
+            
+        }
+        
+        completion()
+    }
+    
     private func createImageView(at point:(i: Int, j: Int), width: Double)->UIImageView{
         let xVal = Double((0.75+Double(point.j))*width - Double(2*point.j))
         let yVal = Double((2.25+Double(point.i))*width - Double(point.i))
@@ -56,43 +74,33 @@ class GridCollectionViewCell: UICollectionViewCell {
     
     private func prepareGrid(limbGrid: Limb){
         removePreviousGrid()
-        
-        let injectionsOnDates = RealmManager.shared.getRecentInjectionsForLimb(limb: limbGrid)
-        
-        var cells : [(x: Int, y: Int, color: String)] = []
-        
-        for (i,injections) in injectionsOnDates.enumerated(){
-            for injection in injections{
-                cells.append((x: injection.selectedCellX, y: injection.selectedCellY, color:StylingUtilities.InjectionCodes[i].colorCode))
+        fillPrevInjectionCells(limbGrid: limbGrid, completion: {
+            let width : Double?
+            if limbGrid.name == "Abdomen"{
+                width = Double(self.frame.width/20)
+            }
+            else{
+                width = Double(self.frame.width/10)
             }
             
-        }
-        
-        let width : Double?
-        if limbGrid.name == "Abdomen"{
-            width = Double(self.frame.width/20)
-        }
-        else{
-            width = Double(self.frame.width/10)
-        }
-        
-        for i in 0..<limbGrid.numberOfRows{
-            grid2D.append([])
-            for j in 0..<limbGrid.numberOfCols{
-                let imageView = createImageView(at:(i: i, j: j), width: width!)
-                
-                let temp = cells.filter({ pair in
-                    return (pair.x == i) && (pair.y == j)
-                })
-                if temp.count>0{
-                    imageView.tintColor = UIColor(hex: temp[0].color)
+            for i in 0..<limbGrid.numberOfRows{
+                grid2D.append([])
+                for j in 0..<limbGrid.numberOfCols{
+                    let imageView = createImageView(at:(i: i, j: j), width: width!)
+                    
+                    let cellWithRecentInjection = prevInjectionCells.filter({ pair in
+                        return (pair.x == i) && (pair.y == j)
+                    })
+                    if cellWithRecentInjection.count>0{
+                        imageView.tintColor = UIColor(hex: cellWithRecentInjection[0].color)
+                    }
+                    
+                    grid2D[i].append(imageView)
+                    self.contentView.addSubview(imageView)
                 }
-                
-                grid2D[i].append(imageView)
-                self.contentView.addSubview(imageView)
             }
-        }
-        
-        hideExtraRowsAndCols(hidden: Array(limbGrid.hiddenCells))
+            
+            hideExtraRowsAndCols(hidden: Array(limbGrid.hiddenCells))
+        })
     }
 }

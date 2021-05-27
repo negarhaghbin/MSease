@@ -85,7 +85,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         if isNewNote!{
             textView.text = ""
         }
-        textView.textColor = UIColor(named: "Label Color")
+        textView.textColor = UIColor.label
     }
     
     // MARK: - Actions

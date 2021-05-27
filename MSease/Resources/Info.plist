@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Access is needed to take photos for symptoms' journal.</string>
+	<string>Access is needed to take photos for symptoms&apos; journal.</string>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>We use healthkit to show your activity data.</string>
 	<key>NSHealthShareUsageDescription</key>

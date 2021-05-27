@@ -17,9 +17,16 @@ extension ARViewController{
         let hidden : [(x: Int, y: Int)] = Array(limb.hiddenCells)
         
         for i in 0..<row{
-            for _ in 0..<col{
+            for j in 0..<col{
+                var model = CellModelEntity(color: UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)!)
+                let cellWithRecentInjection = cellsWithInjections.filter({ pair in
+                    return (pair.x == i) && (pair.y == j)
+                })
                 
-                let model = CellModelEntity(color: UIColor(hex: StylingUtilities.InjectionCodes[StylingUtilities.InjectionCodes.count-1].colorCode)!)
+                if cellWithRecentInjection.count>0{
+                    model = CellModelEntity(color: UIColor(hex: cellWithRecentInjection[0].color)!)
+                }
+                
                 if cells.count-1 < i{
                     cells.append([])
                 }

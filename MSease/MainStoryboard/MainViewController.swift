@@ -24,7 +24,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     var selectedDate = Date()
     var isLoggedIn = false
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
 
     // MARK: - View Controller
@@ -113,7 +113,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             self?.blurView.isHidden = true
             self?.tabBarController?.tabBar.isHidden = false
             askHealthAuthorizationAndUpdate()
-            if !RealmManager.shared.hasSignedConsent(){
+            if !RealmManager.shared.hasSignedConsent(realmA: realm){
                 self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
             }
         })
@@ -156,7 +156,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? SymptomsCollectionViewController{
             destinationVC.isNewNote = true
-            destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, images: [], symptoms: [], partition: partitionValue)
+            destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, images: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
         }
     }
 

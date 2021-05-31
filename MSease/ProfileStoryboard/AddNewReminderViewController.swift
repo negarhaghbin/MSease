@@ -49,7 +49,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
 //    var notificationToken: NotificationToken?
 
@@ -143,7 +143,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             sat: repeatDays[5],
                             sun: repeatDays[6],
                             time: timeLabel.text!,
-                            message: textView.text, partition: partitionValue)
+                            message: textView.text, partition: RealmManager.shared.getPartitionValue())
         
         print(getTimeFromString(timeLabel.text!))
         if isNewReminder{

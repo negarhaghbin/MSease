@@ -33,7 +33,7 @@ class SymptomsPopupViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Symptom", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "editInjection") as! InjectionTableViewController
         let notesVC = parent as! NotesTableViewController
-        vc.partitionValue = notesVC.partitionValue
+//        vc.partitionValue = notesVC.partitionValue
         vc.isNewInjection = true
         vc.date = notesVC.date
         self.navigationController?.pushViewController(vc, animated: true)
@@ -56,9 +56,9 @@ class SymptomsPopupViewController: UIViewController {
         let notesVC = parent as! NotesTableViewController
         
         if let symptomsVC = segue.destination as? SymptomsCollectionViewController{
-            symptomsVC.partitionValue = notesVC.partitionValue
+//            symptomsVC.partitionValue = notesVC.partitionValue
             symptomsVC.isNewNote = true
-            symptomsVC.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [], partition: notesVC.partitionValue)
+            symptomsVC.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
         }
         
     }

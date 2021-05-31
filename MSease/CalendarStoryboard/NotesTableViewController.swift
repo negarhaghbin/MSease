@@ -23,7 +23,7 @@ class NotesTableViewController: UIViewController {
         }
     }
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     var notificationToken: NotificationToken?
     var injectionNotificationToken: NotificationToken?
@@ -102,7 +102,7 @@ class NotesTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editNote" {
             let vc = segue.destination as? SymptomsCollectionViewController
-            vc!.partitionValue = partitionValue
+//            vc!.partitionValue = RealmManager.shared.getPartitionValue()
             vc!.note = notes![selectedRow]
             vc!.isNewNote = false
             
@@ -222,7 +222,7 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
             let storyboard = UIStoryboard(name: "Symptom", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "editInjection") as! InjectionTableViewController
             vc.title = "Edit injection"
-            vc.partitionValue = partitionValue
+//            vc.partitionValue = RealmManager.shared.getPartitionValue()
             vc.injection = injections![selectedRow]
             vc.isNewInjection = false
             self.navigationController?.pushViewController(vc, animated: true)

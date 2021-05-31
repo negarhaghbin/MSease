@@ -57,7 +57,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     // MARK: - View Controllers
     override func viewDidLoad() {
@@ -117,7 +117,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!
         if injection == nil {
-            injection = Injection(limbName: titleLabel.text!, selectedCellX: selectedCell!.x, selectedCellY: selectedCell!.y, hasUsedAR: false, date: date, partition: partitionValue)
+            injection = Injection(limbName: titleLabel.text!, selectedCellX: selectedCell!.x, selectedCellY: selectedCell!.y, hasUsedAR: false, date: date, partition: RealmManager.shared.getPartitionValue())
             RealmManager.shared.addInjection(newInjection: injection!)
         }
         else{

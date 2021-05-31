@@ -19,7 +19,7 @@ class ARViewController: UIViewController {
     @IBOutlet weak var bottomContainerView: UIView!
     
     // MARK: - Variables
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     let anchor = AnchorEntity(plane: .any, minimumBounds: [0.05, 0.05])
     let coachingOverlay = ARCoachingOverlayView()
@@ -94,8 +94,8 @@ class ARViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = true
         resetTracking()
         
-        let bottomViewController = children.lazy.compactMap({ $0 as? BottomContainerViewController }).first!
-        bottomViewController.partitionValue = partitionValue
+//        let bottomViewController = children.lazy.compactMap({ $0 as? BottomContainerViewController }).first!
+//        bottomViewController.partitionValue = RealmManager.shared.getPartitionValue()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

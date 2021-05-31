@@ -29,7 +29,11 @@ class RealmManager{
     
     func setRealm(realm: Realm, handler: @escaping()->()){
         self.realm = realm
-        handler()
+        print("here")
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            handler()
+//        }
+        
     }
     
     func getPartitionValue()->String{
@@ -255,8 +259,8 @@ extension RealmManager{
         }
     }
     
-    func hasSignedConsent() -> Bool {
-        let user = realm!.objects(User.self).first
+    func hasSignedConsent(realmA: Realm) -> Bool {
+        let user = realmA.objects(User.self).first
         return user!.hasSignedConsent
     }
     

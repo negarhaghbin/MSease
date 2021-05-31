@@ -49,7 +49,7 @@ class reminderSettingsViewController: UIViewController {
     var selectedReminder : Reminder? = Reminder()
     var isNewReminder = true
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
     var notificationToken: NotificationToken?
     var reminders = RealmManager.shared.getReminders()
@@ -117,7 +117,7 @@ class reminderSettingsViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AddNewReminderViewController{
-            vc.partitionValue = partitionValue
+//            vc.partitionValue = RealmManager.shared.getPartitionValue()
             vc.reminder = selectedReminder
             vc.isNewReminder = isNewReminder
         }

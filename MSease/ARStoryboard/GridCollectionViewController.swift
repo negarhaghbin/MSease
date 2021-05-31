@@ -33,7 +33,7 @@ class GridCollectionViewController: UICollectionViewController {
         case rightButtock
     }
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
     private var itemsPerRow: CGFloat = 1
     

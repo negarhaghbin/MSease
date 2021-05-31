@@ -36,7 +36,7 @@ class postInjectionVC: UITableViewController, UITextViewDelegate {
     
     var selectedPain : Int = 0
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     // MARK: - View Controllers
     override func viewDidLoad() {

@@ -40,7 +40,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     var selectedImages : [String] = [] // names, TODO: fill it in view will appear. (starts with an empty array)
     var isNewNote : Bool?
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     // MARK: - View Controllers
     override func viewDidLoad() {
@@ -91,7 +91,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!
-        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptomNames, partition: partitionValue)
+        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptomNames, partition: RealmManager.shared.getPartitionValue())
         
         if isNewNote!{
             RealmManager.shared.addNote(newNote: note)

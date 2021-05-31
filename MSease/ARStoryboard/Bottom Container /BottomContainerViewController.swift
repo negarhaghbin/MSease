@@ -33,7 +33,7 @@ class BottomContainerViewController: UIViewController {
     var mascotsViewController: MascotSelectionViewController?
     
 //    lazy var partitionValue = RealmManager.shared.getPartitionValue()
-    var partitionValue: String?
+//    var partitionValue: String?
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -67,7 +67,8 @@ class BottomContainerViewController: UIViewController {
         let injection = Injection(limbName: parentVC.selectedLimbName!,
                                   selectedCellX: parentVC.currentTappedCellIndices!.0,
                                   selectedCellY: parentVC.currentTappedCellIndices!.1,
-                                  date: Date(), partition: parentVC.partitionValue)
+                                  date: Date(), partition: RealmManager.shared.getPartitionValue())
+//        parentVC.partitionValue)
 
         RealmManager.shared.addInjection(newInjection: injection)
         if parentVC.selectedMascotIndex == -1{

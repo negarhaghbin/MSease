@@ -27,7 +27,7 @@ class InjectionTableViewCell: UITableViewCell {
     
     func initiate(injections: Results<Injection>){
         limbLabel.text = injections[tag].limbName
-        timeLabel.text = injections[tag].time
+        timeLabel.text = convertToAMPM(oldTime: injections[tag].time) 
         if injections[tag].painScale > 0{
             imageview.image = UIImage(named: painScale[injections[tag].painScale-1])
         }

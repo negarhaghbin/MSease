@@ -102,8 +102,9 @@ class SignupLoginViewController: UIViewController {
                             case .failure(let error):
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let userRealm):
+                                print(userRealm)
                                 RealmManager.shared.setRealm(realm: userRealm, handler:{
-                                    if RealmManager.shared.hasSignedConsent(){
+                                    if RealmManager.shared.hasSignedConsent(realmA: userRealm){
                                         self?.scheduleReminders()
                                         self?.goToViewController(storyboardID: "Main", viewcontrollerID: "home")
                                     }

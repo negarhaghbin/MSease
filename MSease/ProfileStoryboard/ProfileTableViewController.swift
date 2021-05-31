@@ -20,7 +20,7 @@ class ProfileTableViewController: UITableViewController{
     @IBOutlet weak var nameLabel: UILabel!
     
     // MARK: - Variables
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     struct cell {
         static let generalData = IndexPath(row:0, section: 2)

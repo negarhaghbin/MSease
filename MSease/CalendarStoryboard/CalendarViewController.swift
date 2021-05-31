@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var selectedDate : Date?
     var notes : [Note] = []
     
-    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
     
     enum SegueIdentifier: String {
         case viewDateSegue
@@ -89,7 +89,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         if segue.identifier == SegueIdentifier.viewDateSegue.rawValue {
             notesViewController = segue.destination as? NotesTableViewController
             
-            notesViewController?.partitionValue = partitionValue            
+//            notesViewController?.partitionValue = RealmManager.shared.getPartitionValue()
             notesViewController?.date = selectedDate!
         }
     }

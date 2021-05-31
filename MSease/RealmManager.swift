@@ -96,11 +96,6 @@ extension RealmManager{
         let predicate = NSPredicate(format: "date = %@", date.getUSFormat())
         let result = realm!.objects(Note.self).filter(predicate).sorted(byKeyPath: "time", ascending: false)
         
-            /*.sorted(by: [
-                SortDescriptor(keyPath: "ampm", ascending: false),
-                SortDescriptor(keyPath: "time", ascending: false)
-            ])*/
-        
 //        var photos : [String] = []
 //        for note in result{
 //            photos = getNoteImages(noteId: note._id)

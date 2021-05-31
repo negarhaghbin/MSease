@@ -30,7 +30,7 @@ class Injection: Object{
         self.selectedCellY = selectedCellY
         self.hasUsedAR = hasUsedAR!
         self.date = date?.getUSFormat() ?? Date().getUSFormat()
-        self.time = date?.getTime() ?? Date().getTime()
+        self.time = date?.getTimeInDay() ?? Date().getTimeInDay()
         self._partition = partition
     }
     

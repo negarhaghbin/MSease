@@ -189,7 +189,7 @@ extension NotesTableViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.collectionView.addGestureRecognizer(tapGestureRecognizer)
                     
                 cell.contentLabel.text = notes![indexPath.row].textContent
-                cell.timeLabel.text = notes![indexPath.row].time
+                cell.timeLabel.text = convertToAMPM(oldTime: notes![indexPath.row].time)
                 cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             }
             return cell

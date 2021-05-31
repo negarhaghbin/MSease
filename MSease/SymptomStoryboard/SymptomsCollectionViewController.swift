@@ -60,9 +60,9 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        timeLabel.text = note!.time
+        timeLabel.text = convertToAMPM(oldTime: note!.time)
         
-        let time = getTimeFromString(note!.time)
+        let time = getTimeFromTimeInDayString(note!.time)
         var date = getDateFromString(note!.date)
         date = date.setTime(h: time.h, m: time.m)
         timePicker.date = date

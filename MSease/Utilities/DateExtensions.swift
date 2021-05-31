@@ -26,6 +26,16 @@ extension Date{
 //        return "\(self.):\(minutes) \(formatter.string(from: self))"
     }
     
+    func getTimeInDay()->String{
+//        let calendar = Calendar.current
+//        let hour = calendar.component(.hour, from: self)
+//        let minutes = calendar.component(.minute, from: self)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: self)
+//        return "\(self.):\(minutes) \(formatter.string(from: self))"
+    }
+    
     func getMonth()->String{
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM"
@@ -56,6 +66,7 @@ extension Date{
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
     
+    /// returns the start of a date and the end of the date
     func getWholeDate() -> (startDate:Date, endDate: Date) {
         var startDate = self
         var length = TimeInterval()
@@ -104,10 +115,36 @@ func getTimeFromString(_ time: String)->(h: Int, m:Int){
     return (h: hourInt, m:Int(minute)!)
 }
 
-func changeTimeTo24hourFormat(oldTime: String)->String{
-    let timeTuple = getTimeFromString(oldTime)
-    return "\(timeTuple.h):\(timeTuple.m)"
+func getTimeFromTimeInDayString(_ time: String)->(h: Int, m:Int){
+    var index = time.firstIndex(of: ":")!
+    let hour = Int(time[..<index])!
+    index = time.index(after: index)
+    let minute = Int(time[index...])!
+    return (h: hour, m: minute)
 }
+
+func convertToAMPM(oldTime: String)->String{
+    var index = oldTime.firstIndex(of: ":")!
+    var hour = Int(oldTime[..<index])!
+    index = oldTime.index(after: index)
+    let minute = oldTime[index...]
+    var result = ""
+    
+    if hour < 12{
+        result = "\(hour):\(minute) AM"
+        if hour == 0{
+            result = "12:\(minute) AM"
+        }
+    }
+    else{
+        hour -= 12
+        result = "\(hour):\(minute) PM"
+    }
+    
+    return result
+}
+
+
 
 func timeIntervalToWeeks(timeInterval: TimeInterval)->Double{
     let minutes = timeInterval / 60.0

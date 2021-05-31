@@ -21,7 +21,7 @@ class Note: Object{
         self.init()
         self.textContent = textContent
         self.date = date?.getUSFormat() ?? Date().getUSFormat()
-        self.time = date?.getTime() ?? Date().getTime()
+        self.time = date?.getTimeInDay() ?? Date().getTimeInDay()
         self.images.append(objectsIn: images)
         self.symptomNames.append(objectsIn: symptoms)
         self._partition = partition

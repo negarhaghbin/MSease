@@ -271,7 +271,7 @@
             </objects>
             <point key="canvasLocation" x="823" y="75"/>
         </scene>
-        <!--Fullscreen Image View Controller-->
+        <!--Title-->
         <scene sceneID="3Z3-xl-h86">
             <objects>
                 <viewController storyboardIdentifier="FullScreenImageVC" id="d9O-ZF-EhW" customClass="FullscreenImageViewController" customModule="MSease" customModuleProvider="target" sceneMemberID="viewController">
@@ -292,6 +292,14 @@
                             <constraint firstItem="e0N-Oi-PIF" firstAttribute="trailing" secondItem="zue-q7-LNy" secondAttribute="trailing" id="vik-EC-aGU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="8sk-Rj-qjj">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="trash" id="u7O-hI-GfL">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="deleteImage:" destination="d9O-ZF-EhW" id="W9Q-uW-M0K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="e0N-Oi-PIF" id="mnl-dz-bzl"/>
                     </connections>
@@ -775,6 +783,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -14,21 +14,21 @@ class Note: Object{
     @objc dynamic var _id: ObjectId = ObjectId.generate()
     @objc dynamic var _partition : String = ""
     
-    var images : List<String> = List()
+    var imageURLs : List<String> = List()
     var symptomNames : List<String> = List()
     
-    convenience init(textContent: String, date: Date?, images: [String], symptoms: [String], partition: String){
+    convenience init(textContent: String, date: Date?, imageURLs: [String], symptoms: [String], partition: String){
         self.init()
         self.textContent = textContent
         self.date = date?.getUSFormat() ?? Date().getUSFormat()
         self.time = date?.getTimeInDay() ?? Date().getTimeInDay()
-        self.images.append(objectsIn: images)
+        self.imageURLs.append(objectsIn: imageURLs)
         self.symptomNames.append(objectsIn: symptoms)
         self._partition = partition
     }
     
     func getImages()->[String]{
-        return Array(images)
+        return Array(imageURLs)
     }
     
     func getSymptoms()->[String]{

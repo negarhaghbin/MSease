@@ -13,7 +13,7 @@ class RealmManager{
     static let shared = RealmManager()
     private var realm : Realm?
     let PHASE_DURATION_WEEKS = 4.0
-    static let OBJECT_TYPES = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self, Step.self]
+    static let OBJECT_TYPES = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self, Step.self, Image.self]
     
     private init() {
     }
@@ -120,7 +120,8 @@ extension RealmManager{
             oldNote?.textContent = newNote.textContent
             oldNote?.date = newNote.date
             oldNote?.time = newNote.time
-            oldNote?.images = newNote.images
+            oldNote?.imageURLs.removeAll()
+            oldNote?.imageURLs.append(objectsIn: newNote.imageURLs)
             oldNote?.symptomNames.removeAll()
             oldNote?.symptomNames.append(objectsIn: newNote.symptomNames)
         }
@@ -129,6 +130,35 @@ extension RealmManager{
     func removeNote(note: Note){
         try! realm!.write {
             realm!.delete(note)
+        }
+    }
+    
+    func addImage(newImage: Image){
+        try! realm!.write{
+            realm!.add(newImage)
+        }
+    }
+    
+    func getImageThumbnail(id: String) -> UIImage{
+        do {
+            let _id = try ObjectId(string: id)
+            let image = realm!.object(ofType: Image.self, forPrimaryKey: _id)
+            return UIImage(data: (image?.thumbNail)!)!
+        } catch{
+            print("###error: object id \(id) cannot be made.")
+            return UIImage()
+        }
+    }
+    
+    func deleteImage(imageName: String){
+        do {
+            let _id = try ObjectId(string: imageName)
+            let image = realm!.object(ofType: Image.self, forPrimaryKey: _id)
+            try! realm!.write {
+                realm!.delete(image!)
+            }
+        } catch{
+            print("Error: object id \(imageName) cannot be deleted.")
         }
     }
 }

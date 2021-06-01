@@ -104,6 +104,7 @@ class NotesTableViewController: UIViewController {
             let vc = segue.destination as? SymptomsCollectionViewController
 //            vc!.partitionValue = RealmManager.shared.getPartitionValue()
             vc!.note = notes![selectedRow]
+            vc!.selectedImages = notes![selectedRow].getImages()
             vc!.isNewNote = false
             
         }

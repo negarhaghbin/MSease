@@ -68,10 +68,11 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         timePicker.date = date
         
         textView.text = note?.textContent
-        selectedImages = Array(note!.images)
         symptomsCollectionView.reloadData()
         self.navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = true
+        
+        photoCollectionView.reloadData()
     }
     
     // MARK: - UIDatePickerView
@@ -91,7 +92,8 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!
-        let note = Note(textContent: content, date: timePicker.date, images: selectedImages, symptoms: selectedSymptomNames, partition: RealmManager.shared.getPartitionValue())
+        print("selected Images:\(selectedImages)")
+        let note = Note(textContent: content, date: timePicker.date, imageURLs: selectedImages, symptoms: selectedSymptomNames, partition: RealmManager.shared.getPartitionValue())
         
         if isNewNote!{
             RealmManager.shared.addNote(newNote: note)
@@ -169,10 +171,10 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
                 cell.imageView.image = UIImage(systemName: "camera.fill")
             }
             else{
-    //            print("photo")
-                let url = URL(string: selectedImages[indexPath.row-1])
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                cell.imageView.image = UIImage(data: data!)
+                print("photo")
+                let imageThubmNail = RealmManager.shared.getImageThumbnail(id: selectedImages[indexPath.row-1])
+//                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                cell.imageView.image = imageThubmNail
             }
             return cell
         }
@@ -207,7 +209,8 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
             else{
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Symptom", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "FullScreenImageVC") as! FullscreenImageViewController
-                vc.imageViewURL = URL(string: selectedImages[indexPath.row-1])
+                vc.imageName = selectedImages[indexPath.row-1]
+                vc.selectedImages = selectedImages
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -227,23 +230,29 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
 // MARK: - Image Picker Delegate
 extension SymptomsCollectionViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var selectedImageFromPicker : UIImage?
         
-        if let editedImage = info[.editedImage] as? UIImage{
-            selectedImageFromPicker = editedImage
+//        if let editedImage = info[.editedImage] as? UIImage{
+//            selectedImageFromPicker = editedImage
+//        }
+//        else
+        if let originalImage = info[.originalImage] as? UIImage{
+            print((originalImage.jpegData(compressionQuality: 1.0))!)
+            
+            let imageObject = Image(image: (originalImage.jpegData(compressionQuality: 1.0))!, thumbNail: (originalImage.jpegData(compressionQuality: 0.1))!)
+            
+            RealmManager.shared.addImage(newImage: imageObject)
+            selectedImages.append(imageObject._id.stringValue)
         }
-        else if let originalImage = info[.originalImage] as? UIImage{
-            selectedImageFromPicker = originalImage
-        }
+        
         
         
 //        if let selectedImage = selectedImageFromPicker{
 //            selectedImages.append("\(selectedImage.)")
 //        }
-        if let image = info[.imageURL] as? NSURL{
+//        if let image = info[.imageURL] as? NSURL{
 //            print("image: \(image)")
-            selectedImages.append("\(image)")
-        }
+        
+//        }
         picker.dismiss(animated: true , completion: {
             self.photoCollectionView.reloadData()
 //            self.tableView.reloadSections([sections.photo.rawValue], with: .automatic)

@@ -58,7 +58,7 @@ class SymptomsPopupViewController: UIViewController {
         if let symptomsVC = segue.destination as? SymptomsCollectionViewController{
 //            symptomsVC.partitionValue = notesVC.partitionValue
             symptomsVC.isNewNote = true
-            symptomsVC.note = Note(textContent: "Add a note...", date: notesVC.date, images: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
+            symptomsVC.note = Note(textContent: "Add a note...", date: notesVC.date, imageURLs: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
         }
         
     }

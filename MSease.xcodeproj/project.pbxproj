@@ -49,6 +49,7 @@
 		8448884B25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */; };
 		845996C325F0325F00AA3233 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 845996C225F0325F00AA3233 /* FocusEntity */; };
 		845996C725F11AA100AA3233 /* BottomContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845996C625F11AA100AA3233 /* BottomContainerViewController.swift */; };
+		84732F7226653BF5002D0B5B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84732F7126653BF5002D0B5B /* Image.swift */; };
 		847ECE482656FEF9002D904C /* tutorial0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 847ECE472656FEF9002D904C /* tutorial0.gif */; };
 		84979F3025B9DFF200578C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84979F2F25B9DFF200578C37 /* AppDelegate.swift */; };
 		84979F3225B9DFF200578C37 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 84979F3125B9DFF200578C37 /* art.scnassets */; };
@@ -150,6 +151,7 @@
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8448884A25D7014100F5FBBA /* NotePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		845996C625F11AA100AA3233 /* BottomContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainerViewController.swift; sourceTree = "<group>"; };
+		84732F7126653BF5002D0B5B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		847ECE472656FEF9002D904C /* tutorial0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = tutorial0.gif; path = Untitled/tutorial0.gif; sourceTree = SOURCE_ROOT; };
 		84979F2C25B9DFF200578C37 /* MSease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84979F2F25B9DFF200578C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				84BCC857261685E20097E0A2 /* TSQM.swift */,
 				84BCC864261CC4C70097E0A2 /* InjectionPhobiaForm.swift */,
 				84021ADC2655C72700D44022 /* Step.swift */,
+				84732F7126653BF5002D0B5B /* Image.swift */,
 			);
 			path = "Realm Objects";
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				841F9EF825FA826600E4B519 /* WalkthroughContentViewController.swift in Sources */,
 				8407F69F25D9AF0A0015666A /* NotesTableViewController.swift in Sources */,
 				84D4E71C25E6D49200DB75B4 /* PhotoCollectionView.swift in Sources */,
+				84732F7226653BF5002D0B5B /* Image.swift in Sources */,
 				841F9EE625F708CD00E4B519 /* ConfirmationUI.swift in Sources */,
 				84E50A62263AD5BF00917872 /* ARViewController+Grid.swift in Sources */,
 				84A0C4EF2624D1EA00CE52BD /* InjectionTableViewController.swift in Sources */,

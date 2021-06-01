@@ -138,7 +138,7 @@ class ARViewController: UIViewController {
         
         
         arview.automaticallyConfigureSession = false
-        if ARFaceTrackingConfiguration.isSupported{
+        /*if ARFaceTrackingConfiguration.isSupported{
             if !(selectedLimbName == limb.leftThigh.rawValue || selectedLimbName == limb.rightThigh.rawValue){
                 let configuration = ARFaceTrackingConfiguration()
                 configuration.isWorldTrackingEnabled = true
@@ -146,7 +146,7 @@ class ARViewController: UIViewController {
                 arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
                 return
             }
-        }
+        }*/
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         arview.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])

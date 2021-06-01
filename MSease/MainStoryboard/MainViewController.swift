@@ -156,7 +156,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? SymptomsCollectionViewController{
             destinationVC.isNewNote = true
-            destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, images: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
+            destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, imageURLs: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
         }
     }
 

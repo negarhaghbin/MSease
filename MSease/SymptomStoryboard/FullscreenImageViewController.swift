@@ -48,8 +48,8 @@ class FullscreenImageViewController: UIViewController {
         let alertController = UIAlertController(title: "Are you sure?", message: "This image will be deleted.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
             _ -> Void in
-            // FIXME: delete images from aws too
-//            app.currentUser?.functions.deleteImage([AnyBSON(self.imageName!)]) { (_) in
+
+            app.currentUser?.functions.deleteImage([AnyBSON(self.imageName!)]) { (_) in
                 DispatchQueue.main.async {
                     self.removeImage()
                     self.navigationController?.popViewController(animated: true)
@@ -57,7 +57,7 @@ class FullscreenImageViewController: UIViewController {
                     vc.selectedImages = self.selectedImages!
                     
                 }
-//            }
+            }
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alertController, animated: true)

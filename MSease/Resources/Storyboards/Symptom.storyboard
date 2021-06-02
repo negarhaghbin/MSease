@@ -253,6 +253,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Kcc-Xd-zcN">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="jW4-K1-xRz">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="mtD-pi-Bui" id="Pss-RE-6fB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="X6C-1m-q2n">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="mtD-pi-Bui" id="0BT-AE-Oz6"/>

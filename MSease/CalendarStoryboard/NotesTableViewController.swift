@@ -102,18 +102,13 @@ class NotesTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editNote" {
             let vc = segue.destination as? SymptomsCollectionViewController
-//            vc!.partitionValue = RealmManager.shared.getPartitionValue()
             vc!.note = notes![selectedRow]
-            vc!.selectedImages = notes![selectedRow].getImages()
+            
+//            vc!.selectedImages = notes![selectedRow].getImageNames()
+            
             vc!.isNewNote = false
             
         }
-        /*else if segue.identifier == "editInjection" {
-            let vc = segue.destination as? InjectionTableViewController
-            vc!.partitionValue = partitionValue
-            vc!.injection = injections![selectedRow]
-            vc!.isNewInjection = false
-        }*/
     }
     
 

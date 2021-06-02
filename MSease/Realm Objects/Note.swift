@@ -17,17 +17,22 @@ class Note: Object{
     var imageURLs : List<String> = List()
     var symptomNames : List<String> = List()
     
-    convenience init(textContent: String, date: Date?, imageURLs: [String], symptoms: [String], partition: String){
+    convenience init(textContent: String, date: Date?, imageURLs: [String], symptoms: [String], partition: String, hasBucket: Bool = true){
         self.init()
+        if hasBucket{
+            app.currentUser?.functions.createNoteBucket([AnyBSON(_id.stringValue)])
+        }
+        
         self.textContent = textContent
         self.date = date?.getUSFormat() ?? Date().getUSFormat()
         self.time = date?.getTimeInDay() ?? Date().getTimeInDay()
         self.imageURLs.append(objectsIn: imageURLs)
         self.symptomNames.append(objectsIn: symptoms)
         self._partition = partition
+        
     }
     
-    func getImages()->[String]{
+    func getImageNames()->[String]{
         return Array(imageURLs)
     }
     

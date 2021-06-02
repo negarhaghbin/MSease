@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 var selectedSymptomNames : [String] = []
+var selectedImages : [String] = []
 
 class SymptomsCollectionViewController: UITableViewController, UITextViewDelegate, UIPickerViewDelegate {
     
@@ -37,7 +39,6 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         }
     }
 
-    var selectedImages : [String] = [] // names, TODO: fill it in view will appear. (starts with an empty array)
     var isNewNote : Bool?
     
 //    lazy var partitionValue = RealmManager.shared.getPartitionValue()
@@ -60,6 +61,12 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        textView.text = note!.textContent
         timeLabel.text = convertToAMPM(oldTime: note!.time)
         
         let time = getTimeFromTimeInDayString(note!.time)
@@ -67,11 +74,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         date = date.setTime(h: time.h, m: time.m)
         timePicker.date = date
         
-        textView.text = note?.textContent
         symptomsCollectionView.reloadData()
-        self.navigationController?.navigationBar.isHidden = false
-        tabBarController?.tabBar.isHidden = true
-        
         photoCollectionView.reloadData()
     }
     
@@ -92,18 +95,28 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         let content = (textView.text == "Add a note..." ? "" : textView.text)!
-        print("selected Images:\(selectedImages)")
-        let note = Note(textContent: content, date: timePicker.date, imageURLs: selectedImages, symptoms: selectedSymptomNames, partition: RealmManager.shared.getPartitionValue())
         
+        let note = Note(textContent: content, date: timePicker.date, imageURLs: selectedImages, symptoms: selectedSymptomNames, partition: RealmManager.shared.getPartitionValue(), hasBucket: false)
+        
+        note._id = self.note!._id
         if isNewNote!{
             RealmManager.shared.addNote(newNote: note)
         }
         else{
-            note._id = self.note!._id
             RealmManager.shared.editNote(newNote: note)
         }
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        if isNewNote!{
+            app.currentUser?.functions.deleteNoteBucket([AnyBSON(note!._id.stringValue)]) { (_) in
+            }
+        }
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     
@@ -137,6 +150,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     func refreshUI(){
         self.title = note!.date
         selectedSymptomNames = note!.getSymptoms()
+        selectedImages = note!.getImageNames()
     }
     
     @objc func dismissKeyboard(){
@@ -155,7 +169,6 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.photoCollectionView{
-//            print(selectedImages.count)
             return selectedImages.count+1
         }
         else if collectionView == self.symptomsCollectionView{
@@ -171,9 +184,7 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
                 cell.imageView.image = UIImage(systemName: "camera.fill")
             }
             else{
-                print("photo")
                 let imageThubmNail = RealmManager.shared.getImageThumbnail(id: selectedImages[indexPath.row-1])
-//                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 cell.imageView.image = imageThubmNail
             }
             return cell
@@ -209,8 +220,7 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
             else{
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Symptom", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "FullScreenImageVC") as! FullscreenImageViewController
-                vc.imageName = selectedImages[indexPath.row-1]
-                vc.selectedImages = selectedImages
+                vc.imageInfo = (imageName: selectedImages[indexPath.row-1], bucketName: note!._id.stringValue)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -231,31 +241,16 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
 extension SymptomsCollectionViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-//        if let editedImage = info[.editedImage] as? UIImage{
-//            selectedImageFromPicker = editedImage
-//        }
-//        else
         if let originalImage = info[.originalImage] as? UIImage{
-            print((originalImage.jpegData(compressionQuality: 1.0))!)
             
-            let imageObject = Image(image: (originalImage.jpegData(compressionQuality: 1.0))!, thumbNail: (originalImage.jpegData(compressionQuality: 0.1))!)
+            let imageObject = Image(image: (originalImage.jpegData(compressionQuality: 1.0))!, thumbNail: (originalImage.jpegData(compressionQuality: 0.1))!, referencingNoteID: (note?._id.stringValue)!)
             
             RealmManager.shared.addImage(newImage: imageObject)
             selectedImages.append(imageObject._id.stringValue)
         }
         
-        
-        
-//        if let selectedImage = selectedImageFromPicker{
-//            selectedImages.append("\(selectedImage.)")
-//        }
-//        if let image = info[.imageURL] as? NSURL{
-//            print("image: \(image)")
-        
-//        }
         picker.dismiss(animated: true , completion: {
             self.photoCollectionView.reloadData()
-//            self.tableView.reloadSections([sections.photo.rawValue], with: .automatic)
         })
     }
     

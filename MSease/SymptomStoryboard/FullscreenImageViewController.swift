@@ -12,9 +12,9 @@ class FullscreenImageViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    var imageName : String?{
+    var imageInfo : (imageName: String, bucketName: String)?{
         didSet{
-            app.currentUser?.functions.getImage([AnyBSON(imageName!)]){ [self]
+            app.currentUser?.functions.getImage([AnyBSON(imageInfo!.imageName), AnyBSON(imageInfo!.bucketName)]){ [self]
                 data, error in
                 let binaryData = Data(base64Encoded: (data?.binaryValue)!)
                 imageUI = UIImage(data: binaryData!)
@@ -25,12 +25,6 @@ class FullscreenImageViewController: UIViewController {
     var imageUI : UIImage?{
         didSet{
             refreshUI()
-        }
-    }
-    
-    var selectedImages: [String]?{
-        didSet{
-            print(selectedImages)
         }
     }
     
@@ -49,12 +43,10 @@ class FullscreenImageViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
             _ -> Void in
 
-            app.currentUser?.functions.deleteImage([AnyBSON(self.imageName!)]) { (_) in
+            app.currentUser?.functions.deleteImage([AnyBSON(self.imageInfo!.imageName), AnyBSON(self.imageInfo!.bucketName)]) { (_) in
                 DispatchQueue.main.async {
                     self.removeImage()
                     self.navigationController?.popViewController(animated: true)
-                    let vc = self.navigationController?.topViewController as! SymptomsCollectionViewController
-                    vc.selectedImages = self.selectedImages!
                     
                 }
             }
@@ -64,9 +56,9 @@ class FullscreenImageViewController: UIViewController {
     }
     
     func removeImage(){
-        RealmManager.shared.deleteImage(imageName: imageName!)
-        let index = selectedImages!.firstIndex(of: imageName!)
-        selectedImages?.remove(at: index!)
+        RealmManager.shared.deleteImage(imageName: imageInfo!.imageName)
+        let index = selectedImages.firstIndex(of: imageInfo!.imageName)
+        selectedImages.remove(at: index!)
     }
 
     /*

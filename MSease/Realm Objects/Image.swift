@@ -20,14 +20,12 @@ class Image: Object {
         return "_id"
     }
     
-    convenience init(image: Data, thumbNail: Data){
+    convenience init(image: Data, thumbNail: Data, referencingNoteID: String){
         self.init()
-        print("*****")
-        print(image)
         self.image = image
         self.thumbNail = thumbNail
-        self.imageURL = "https://msease.s3.amazonaws.com/\(_id)"
-//        self.referencingNoteID = referencingNoteID
+        self.imageURL = "https://\(referencingNoteID).s3.amazonaws.com/\(_id)"
+        self.referencingNoteID = referencingNoteID
         self._partition = RealmManager.shared.getPartitionValue()
     }
 }

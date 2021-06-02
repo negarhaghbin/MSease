@@ -127,10 +127,25 @@ extension RealmManager{
         }
     }
     
-    func removeNote(note: Note){
-        try! realm!.write {
-            realm!.delete(note)
+    private func deleteImagesInBucket(imageNames: [String], bucketName: String, completion: ()->()){
+        for image in imageNames{
+            app.currentUser?.functions.deleteImage([AnyBSON(image), AnyBSON(bucketName)])
         }
+        completion()
+    }
+    
+    func removeNote(note: Note){
+        deleteImagesInBucket(imageNames: note.getImageNames(), bucketName: note._id.stringValue, completion: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                app.currentUser?.functions.deleteNoteBucket([AnyBSON(note._id.stringValue)]) { (_) in
+                    DispatchQueue.main.async {
+                        try! self.realm!.write {
+                            self.realm!.delete(note)
+                        }
+                    }
+                }
+            }
+        })
     }
     
     func addImage(newImage: Image){

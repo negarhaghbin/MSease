@@ -137,7 +137,9 @@ func convertToAMPM(oldTime: String)->String{
         }
     }
     else{
-        hour -= 12
+        if hour != 12{
+            hour -= 12
+        }
         result = "\(hour):\(minute) PM"
     }
     

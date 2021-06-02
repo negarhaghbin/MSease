@@ -129,7 +129,11 @@ extension RealmManager{
     
     private func deleteImagesInBucket(imageNames: [String], bucketName: String, completion: ()->()){
         for image in imageNames{
-            app.currentUser?.functions.deleteImage([AnyBSON(image), AnyBSON(bucketName)])
+            app.currentUser?.functions.deleteImage([AnyBSON(image), AnyBSON(bucketName)]){ (_) in
+                DispatchQueue.main.async {
+                    self.deleteImage(imageName: image)
+                }
+            }
         }
         completion()
     }

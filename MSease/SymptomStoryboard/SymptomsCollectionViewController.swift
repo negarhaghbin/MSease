@@ -242,8 +242,7 @@ extension SymptomsCollectionViewController : UIImagePickerControllerDelegate, UI
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let originalImage = info[.originalImage] as? UIImage{
-            
-            let imageObject = Image(image: (originalImage.jpegData(compressionQuality: 1.0))!, thumbNail: (originalImage.jpegData(compressionQuality: 0.1))!, referencingNoteID: (note?._id.stringValue)!)
+            let imageObject = Image(image: (originalImage.jpegData(compressionQuality: 1.0))!, thumbNail: (originalImage.jpegData(compressionQuality: 0.1))!, referencingNoteID: (note!._id))
             
             RealmManager.shared.addImage(newImage: imageObject)
             selectedImages.append(imageObject._id.stringValue)

@@ -30,6 +30,7 @@ class FullscreenImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.image =  RealmManager.shared.getImageThumbnail(id: imageInfo!.imageName)
     }
     
     func refreshUI() {

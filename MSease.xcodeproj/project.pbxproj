@@ -100,7 +100,6 @@
 		84D4E73125E812E800DB75B4 /* Drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72E25E812E700DB75B4 /* Drummer.usdz */; };
 		84D4E73225E812E800DB75B4 /* Plane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 84D4E72F25E812E700DB75B4 /* Plane.usdz */; };
 		84E50A62263AD5BF00917872 /* ARViewController+Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E50A61263AD5BF00917872 /* ARViewController+Grid.swift */; };
-		84E50A6C263B617200917872 /* tutorial0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84E50A6B263B617200917872 /* tutorial0.gif */; };
 		84F5E79125C4482900EED24C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5E79025C4482900EED24C /* Profile.storyboard */; };
 		84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -598,7 +597,6 @@
 				84BCC84D2614B7440097E0A2 /* TSQM.storyboard in Resources */,
 				84D4E73225E812E800DB75B4 /* Plane.usdz in Resources */,
 				84D4E73025E812E800DB75B4 /* Robot.usdz in Resources */,
-				84E50A6C263B617200917872 /* tutorial0.gif in Resources */,
 				84F5E79125C4482900EED24C /* Profile.storyboard in Resources */,
 				84BBE21525C0BEC60046C24F /* Main.storyboard in Resources */,
 				840CA87A26456FDE00018481 /* Assets.xcassets in Resources */,

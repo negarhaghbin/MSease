@@ -19,6 +19,9 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet var calendar : FSCalendar!
     @IBOutlet weak var mascotImage: UIImageView!
     
+    @IBOutlet weak var symptomsView : UIView!
+    @IBOutlet weak var shadowView: UIView!
+    
     // MARK: - Variables
     let notificationCenter = UNUserNotificationCenter.current()
     var selectedDate = Date()
@@ -151,9 +154,16 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         }
     }
     
+    // MARK: - Actions
+    @IBAction func log(_ sender: Any){
+        shadowView.isHidden = false
+        symptomsView.animShow()
+    }
+    
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        addSymptom
         if let destinationVC = segue.destination as? SymptomsCollectionViewController{
             destinationVC.isNewNote = true
             destinationVC.note = Note(textContent: "Add a note...", date: selectedDate, imageURLs: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())

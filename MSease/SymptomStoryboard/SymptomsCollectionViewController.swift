@@ -215,6 +215,9 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
                     picker.sourceType = .photoLibrary
                     self.present(picker, animated: true)
                 })
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (result : UIAlertAction) -> Void in
+                    alert.dismiss(animated: true)
+                })
                 present(alert, animated: true)
             }
             else{

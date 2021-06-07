@@ -48,11 +48,17 @@ class reminderSettingsViewController: UIViewController {
     let cellIdentifier = "reminderSettingsCell"
     var selectedReminder : Reminder? = Reminder()
     var isNewReminder = true
+    var isShowingTabbar : Bool? = true{
+        didSet{
+            navigationController?.navigationBar.isHidden = isShowingTabbar!
+            tabBarController?.tabBar.isHidden = !isShowingTabbar!
+        }
+    }
     
 //    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
     var notificationToken: NotificationToken?
-    var reminders = RealmManager.shared.getReminders()
+    lazy var reminders = RealmManager.shared.getReminders()
     
     let notificationCenter = UNUserNotificationCenter.current()
 
@@ -68,8 +74,8 @@ class reminderSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         initSetup(title: "Reminders")
-        navigationController?.navigationBar.isHidden = false
-        tabBarController?.tabBar.isHidden = true
+        navigationController?.navigationBar.isHidden = isShowingTabbar!
+        tabBarController?.tabBar.isHidden = !isShowingTabbar!
     }
     
     

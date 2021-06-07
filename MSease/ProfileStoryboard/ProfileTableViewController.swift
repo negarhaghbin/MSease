@@ -27,6 +27,7 @@ class ProfileTableViewController: UITableViewController{
         static let ipQuestionnaire = IndexPath(row:1, section: 2)
         static let technicalSupport = IndexPath(row:1, section: 3)
         static let signout = IndexPath(row:0, section: 4)
+        static let reminders = IndexPath(row: 0, section: 1)
     }
     
     
@@ -64,6 +65,13 @@ class ProfileTableViewController: UITableViewController{
             let vc = storyboard.instantiateViewController(withIdentifier: "injectionPhobiaVC")
             present(vc, animated: true)
         }
+        else if indexPath == cell.reminders{
+            let storyboard = UIStoryboard(name: "Reminders", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "reminderList") as! reminderSettingsViewController
+            vc.isShowingTabbar = false
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

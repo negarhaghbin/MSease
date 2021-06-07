@@ -78,6 +78,8 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         styleButtons()
+        self.navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         
         selectedPain = injection?.painScale
         PISelectedSymptomNames = injection?.getSymptoms() ?? []

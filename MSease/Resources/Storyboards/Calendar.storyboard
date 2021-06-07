@@ -72,10 +72,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Journal" id="P05-yD-Tcc">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="1rq-AW-t2q">
-                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large"/>
+                        <barButtonItem key="rightBarButtonItem" title="Today" id="wg5-QK-3ad">
                             <connections>
-                                <action selector="goBack:" destination="eHN-LX-qOs" id="axo-c3-gF6"/>
+                                <action selector="goToToday:" destination="eHN-LX-qOs" id="z9q-YG-0WB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -450,7 +449,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="flame" catalog="system" width="108" height="128"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="secondaryLabelColor">

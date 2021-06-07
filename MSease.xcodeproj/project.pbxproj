@@ -46,6 +46,7 @@
 		84403A2A265FD4BA008A193F /* logo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84403A29265FD4BA008A193F /* logo-2.png */; };
 		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
+		8452CE57266ED395004DA9D0 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8452CE56266ED395004DA9D0 /* Reminders.storyboard */; };
 		845996C325F0325F00AA3233 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 845996C225F0325F00AA3233 /* FocusEntity */; };
 		845996C725F11AA100AA3233 /* BottomContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845996C625F11AA100AA3233 /* BottomContainerViewController.swift */; };
 		84732F7226653BF5002D0B5B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84732F7126653BF5002D0B5B /* Image.swift */; };
@@ -147,6 +148,7 @@
 		84403A29265FD4BA008A193F /* logo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-2.png"; path = "Resources/Assets.xcassets/logo-2.imageset/logo-2.png"; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		8452CE56266ED395004DA9D0 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
 		845996C625F11AA100AA3233 /* BottomContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainerViewController.swift; sourceTree = "<group>"; };
 		84732F7126653BF5002D0B5B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		847ECE472656FEF9002D904C /* tutorial0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = tutorial0.gif; path = Untitled/tutorial0.gif; sourceTree = SOURCE_ROOT; };
@@ -492,6 +494,7 @@
 				84BBE21425C0BEC60046C24F /* Main.storyboard */,
 				841F9EF325FA6ADC00E4B519 /* Onboarding.storyboard */,
 				84F5E79025C4482900EED24C /* Profile.storyboard */,
+				8452CE56266ED395004DA9D0 /* Reminders.storyboard */,
 				842D68F425E544BE0056D963 /* Symptom.storyboard */,
 				84BCC84C2614B7440097E0A2 /* TSQM.storyboard */,
 				840CA87526455E3F00018481 /* TabbarStoryboard.storyboard */,
@@ -590,6 +593,7 @@
 				84979F3225B9DFF200578C37 /* art.scnassets in Resources */,
 				84403A2A265FD4BA008A193F /* logo-2.png in Resources */,
 				841F9EF425FA6ADC00E4B519 /* Onboarding.storyboard in Resources */,
+				8452CE57266ED395004DA9D0 /* Reminders.storyboard in Resources */,
 				842D68F525E544BE0056D963 /* Symptom.storyboard in Resources */,
 				847ECE482656FEF9002D904C /* tutorial0.gif in Resources */,
 				84979F3C25B9DFF500578C37 /* LaunchScreen.storyboard in Resources */,
@@ -869,7 +873,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MSease/MSease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = MSease/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
@@ -892,7 +896,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MSease/MSease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = MSease/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;

@@ -66,6 +66,8 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         if isNewReminder{
             self.title = "Add a new reminder"
         }
@@ -145,7 +147,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             time: timeLabel.text!,
                             message: textView.text, partition: RealmManager.shared.getPartitionValue())
         
-        print(getTimeFromString(timeLabel.text!))
+//        print(getTimeFromString(timeLabel.text!))
         if isNewReminder{
             RealmManager.shared.addReminder(newReminder: reminder!)
             reminderId = reminder!._id

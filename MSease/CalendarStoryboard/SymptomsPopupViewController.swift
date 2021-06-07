@@ -32,33 +32,45 @@ class SymptomsPopupViewController: UIViewController {
         dismissPopup()
         let storyboard = UIStoryboard(name: "Symptom", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "editInjection") as! InjectionTableViewController
-        let notesVC = parent as! NotesTableViewController
-//        vc.partitionValue = notesVC.partitionValue
         vc.isNewInjection = true
-        vc.date = notesVC.date
+        if let notesVC = parent as? NotesTableViewController{
+            vc.date = notesVC.date
+        }
+        else if let parentVC = parent as? MainViewController{
+            vc.date = parentVC.selectedDate
+        }
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Helper
     func dismissPopup(){
-        let notesVC = parent as! NotesTableViewController
-        notesVC.symptomsView.animHide()
-        notesVC.shadowView.isHidden = true
+        if let parentVC = parent as? NotesTableViewController{
+            parentVC.symptomsView.animHide()
+            parentVC.shadowView.isHidden = true
+        }
+        else if let parentVC = parent as? MainViewController{
+            parentVC.symptomsView.animHide()
+            parentVC.shadowView.isHidden = true
+        }
     }
     
     
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         dismissPopup()
-        let notesVC = parent as! NotesTableViewController
+        var date : Date?
+        if let notesVC = parent as? NotesTableViewController{
+           date = notesVC.date
+        }
+        else if let parentVC = parent as? MainViewController{
+            date = parentVC.selectedDate
+        }
         
         if let symptomsVC = segue.destination as? SymptomsCollectionViewController{
-//            symptomsVC.partitionValue = notesVC.partitionValue
             symptomsVC.isNewNote = true
-            symptomsVC.note = Note(textContent: "Add a note...", date: notesVC.date, imageURLs: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
+            symptomsVC.note = Note(textContent: "Add a note...", date: date, imageURLs: [], symptoms: [], partition: RealmManager.shared.getPartitionValue())
         }
         
     }

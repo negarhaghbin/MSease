@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XJy-gE-SGe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XJy-gE-SGe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,10 +20,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="ZrT-Id-mQx" kind="relationship" relationship="viewControllers" id="N3f-9M-OFv"/>
-                        <segue destination="KCw-IB-2GE" kind="relationship" relationship="viewControllers" id="hO3-LQ-eob"/>
-                        <segue destination="oSO-0k-Jr1" kind="relationship" relationship="viewControllers" id="uWf-TV-oEq"/>
-                        <segue destination="ZuO-s6-ppG" kind="relationship" relationship="viewControllers" id="s4p-mt-RKq"/>
-                        <segue destination="1sD-Cw-Kb9" kind="relationship" relationship="viewControllers" id="Lyo-vI-Hw0"/>
+                        <segue destination="ZuO-s6-ppG" kind="relationship" relationship="viewControllers" id="2xr-0X-PRY"/>
+                        <segue destination="oSO-0k-Jr1" kind="relationship" relationship="viewControllers" id="rdY-F8-Vag"/>
+                        <segue destination="KCw-IB-2GE" kind="relationship" relationship="viewControllers" id="I0r-1K-h2J"/>
+                        <segue destination="1sD-Cw-Kb9" kind="relationship" relationship="viewControllers" id="35s-ER-MeR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9B-qX-E7W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -40,16 +41,16 @@
             </objects>
             <point key="canvasLocation" x="-1192" y="250"/>
         </scene>
-        <!--Main-->
+        <!--Reminders-->
         <scene sceneID="O7H-Tb-5gF">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="KCw-IB-2GE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Insight" id="6fU-B0-llI"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IxC-x1-iCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Reminders" id="KCw-IB-2GE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="6fU-B0-llI"/>
                     <navigationItem key="navigationItem" id="KB1-t0-URp"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IxC-x1-iCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1008" y="250"/>
+            <point key="canvasLocation" x="-688" y="250"/>
         </scene>
         <!--AR-->
         <scene sceneID="VZf-L7-lpc">
@@ -71,16 +72,16 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tS7-mC-gzI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-695" y="250"/>
+            <point key="canvasLocation" x="-988" y="250"/>
         </scene>
         <!--Profile-->
         <scene sceneID="pkf-jA-muG">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TzJ-Lb-FX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Profile" id="1sD-Cw-Kb9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="person.crop.circle.fill" catalog="system" id="U8Z-C7-5vv"/>
                     <navigationItem key="navigationItem" id="q46-yH-SOr"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TzJ-Lb-FX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-545" y="250"/>
         </scene>

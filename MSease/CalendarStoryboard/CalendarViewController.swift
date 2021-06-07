@@ -34,7 +34,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendar.reloadData()
         calendar.appearance.eventDefaultColor = StylingUtilities.buttonColor
         calendar.appearance.eventSelectionColor = StylingUtilities.buttonColor
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
     }
     
@@ -80,8 +80,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     
     // MARK: - IBActions
-    @IBAction func goBack(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+    @IBAction func goToToday(_ sender: Any) {
+        calendar.setCurrentPage(Date(), animated: true)
     }
     
     // MARK: - Navigation

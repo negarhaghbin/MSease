@@ -52,6 +52,25 @@ class RealmManager{
         return realm!.objects(User.self).first!
     }
     
+    func setProfilePicture(profilePictureData: Data){
+        let user = getUser()
+        try! realm!.write{
+            user.profilePicture = profilePictureData
+        }
+    }
+    
+    func getProfilePicture()->Data?{
+        let user = getUser()
+        return user.profilePicture
+    }
+    
+    func removeProfilePicture(){
+        let user = getUser()
+        try! realm!.write{
+            user.profilePicture = nil
+        }
+    }
+    
     // MARK: - Step
     
     func updateDB(date: Date, steps: Int){

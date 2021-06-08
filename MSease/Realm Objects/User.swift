@@ -11,6 +11,7 @@ class User: Object {
     @objc dynamic var _id: String = ""
     @objc dynamic var _partition: String = ""
     @objc dynamic var name: String = ""
+    @objc dynamic var profilePicture: Data? = nil
     @objc dynamic var hasSignedConsent: Bool = false
     
     @objc dynamic var gender: String = ""

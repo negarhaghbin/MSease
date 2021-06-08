@@ -18,6 +18,7 @@ class ProfileTableViewController: UITableViewController{
     @IBOutlet weak var ipCell: UITableViewCell!
     @IBOutlet weak var generalCell: UITableViewCell!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - Variables
 //    lazy var partitionValue = RealmManager.shared.getPartitionValue()
@@ -43,8 +44,41 @@ class ProfileTableViewController: UITableViewController{
         nameLabel.text = RealmManager.shared.getUsername()
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
+        
+        if let imageData = RealmManager.shared.getProfilePicture(){
+            imageView.image = UIImage(data: imageData)
+        } else{
+            imageView.image = UIImage(systemName: "person.circle.fill")
+        }
+        
     }
     
+    // MARK: - Actions
+    @IBAction func pictureTapped(_ sender: UITapGestureRecognizer) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+
+        let alert = UIAlertController(title: nil, message: "Choose an action", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Take photo", style: .default) { (result : UIAlertAction) -> Void in
+            picker.sourceType = .camera
+            self.present(picker, animated: true)
+          })
+        alert.addAction(UIAlertAction(title: "Photo library", style: .default) { (result : UIAlertAction) -> Void in
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Remove photo", style: .destructive) { (result : UIAlertAction) -> Void in
+            RealmManager.shared.removeProfilePicture()
+            self.imageView.image = UIImage(systemName: "person.circle.fill")
+            alert.dismiss(animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (result : UIAlertAction) -> Void in
+            alert.dismiss(animated: true)
+        })
+        present(alert, animated: true)
+    }
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -178,6 +212,26 @@ extension ProfileTableViewController : MFMailComposeViewControllerDelegate{
             }
         })
         return
+    }
+}
+
+// MARK: - Image Picker Delegate
+extension ProfileTableViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editedImage = info[.editedImage] as? UIImage{
+            let imageData = editedImage.jpegData(compressionQuality: 0.05)!
+            
+            RealmManager.shared.setProfilePicture(profilePictureData: imageData)
+        }
+        
+        picker.dismiss(animated: true , completion: {
+            self.imageView.image = info[.editedImage] as! UIImage
+        })
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
 }
 

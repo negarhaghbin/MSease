@@ -60,14 +60,14 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TBh-U4-rof">
-                                <rect key="frame" x="0.0" y="520" width="165" height="159"/>
+                                <rect key="frame" x="0.0" y="522.5" width="165" height="159"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="165" id="GA4-on-fRB"/>
                                     <constraint firstAttribute="width" secondItem="TBh-U4-rof" secondAttribute="height" multiplier="55:53" id="LrG-SY-a3w"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xk7-Il-A3Z">
-                                <rect key="frame" x="20.5" y="384" width="373" height="128"/>
+                                <rect key="frame" x="20.5" y="382" width="373" height="132.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treatment in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-tg-k7V">
                                         <rect key="frame" x="139.5" y="0.0" width="94" height="22.5"/>
@@ -75,14 +75,14 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Va-TR-NIq">
-                                        <rect key="frame" x="132.5" y="32.5" width="108" height="45.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Va-TR-NIq">
+                                        <rect key="frame" x="161.5" y="32.5" width="50" height="50"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="35"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-YW-WY1">
-                                        <rect key="frame" x="102.5" y="88" width="168" height="40"/>
+                                        <rect key="frame" x="102.5" y="92.5" width="168" height="40"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="F5U-qb-GmG"/>
@@ -177,6 +177,7 @@
                         <outlet property="calendar" destination="caK-Cr-g3m" id="S4y-w8-MT2"/>
                         <outlet property="loadingIndicator" destination="DV3-aS-EqM" id="tml-t8-GFi"/>
                         <outlet property="logSymptomsButton" destination="m4c-YW-WY1" id="OB1-CL-gs9"/>
+                        <outlet property="mainText" destination="7Va-TR-NIq" id="lLI-SR-8Bz"/>
                         <outlet property="mascotImage" destination="TBh-U4-rof" id="gtI-4n-sMz"/>
                         <outlet property="shadowView" destination="h7i-SL-SWG" id="FFf-NK-hjJ"/>
                         <outlet property="symptomsView" destination="a6M-RK-Uh4" id="w0c-h2-j2h"/>

@@ -59,7 +59,11 @@ class ProfileTableViewController: UITableViewController{
         picker.allowsEditing = true
         picker.delegate = self
 
-        let alert = UIAlertController(title: nil, message: "Choose an action", preferredStyle: .actionSheet)
+        var alert = UIAlertController(title: nil, message: "Choose an action", preferredStyle: .actionSheet)
+        
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            alert = UIAlertController(title: nil, message: "Choose an action", preferredStyle: .alert)
+        }
         
         alert.addAction(UIAlertAction(title: "Take photo", style: .default) { (result : UIAlertAction) -> Void in
             picker.sourceType = .camera
@@ -77,6 +81,8 @@ class ProfileTableViewController: UITableViewController{
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (result : UIAlertAction) -> Void in
             alert.dismiss(animated: true)
         })
+        
+//        alert.popoverPresentationController?.sourceView = view
         present(alert, animated: true)
     }
     

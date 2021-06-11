@@ -479,7 +479,7 @@ extension RealmManager{
         }
         
         let dateOfLastTSQM = getTSQMDate(of: version-1)
-        if timeIntervalToWeeks(timeInterval: (Date() - dateOfLastTSQM) ) < PHASE_DURATION_WEEKS{
+        if timeIntervalToPeriodOfTime(timeInterval: (Date() - dateOfLastTSQM)).weeks < PHASE_DURATION_WEEKS{
             return true
         }
         else{

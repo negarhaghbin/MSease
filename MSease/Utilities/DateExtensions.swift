@@ -105,6 +105,9 @@ func getTimeFromString(_ time: String)->(h: Int, m:Int){
         if hourInt == 12{
             hourInt -= 12
         }
+//        else{
+//            hourInt -= 1 
+//        }
     }
     
 //    var dateComponents = Calendar.current.dateComponents([.minute, .hour], from: Date())
@@ -148,12 +151,12 @@ func convertToAMPM(oldTime: String)->String{
 
 
 
-func timeIntervalToWeeks(timeInterval: TimeInterval)->Double{
+func timeIntervalToPeriodOfTime(timeInterval: TimeInterval)->(hours: Double, weeks: Double){
     let minutes = timeInterval / 60.0
     let hours = minutes / 60.0
     let days = hours / 24.0
     let weeks = days / 7.0
-    return weeks
+    return (hours: hours, weeks: weeks)
 }
 
 func dateRange(begin: Date, end: Date)->[Date]{

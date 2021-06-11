@@ -18,6 +18,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var calendar : FSCalendar!
     @IBOutlet weak var mascotImage: UIImageView!
+    @IBOutlet weak var mainText: UILabel!
     
     @IBOutlet weak var symptomsView : UIView!
     @IBOutlet weak var shadowView: UIView!
@@ -45,6 +46,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         tabBarController?.tabBar.isHidden = !isLoggedIn
         if isLoggedIn{
             setMascot()
+            setMainText()
         }
     }
     
@@ -88,6 +90,34 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
     
     // MARK: - Helpers
+    func setMainText(){
+        notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+                var nextTriggerDates: [Date] = []
+                for request in result {
+                    if let trigger = request.trigger as? UNCalendarNotificationTrigger,
+                        let triggerDate = trigger.nextTriggerDate(){
+                        /*nextTriggerDates.append(
+                            DateFormatter.localizedString(
+                                                    from: triggerDate,
+                                                    dateStyle: .short,
+                                                    timeStyle: .short))*/
+                        nextTriggerDates.append(triggerDate)
+                    }
+                }
+            print(result)
+            var hours = "_"
+                if let nextTriggerDate = nextTriggerDates.min() {
+                    let remainingTime = nextTriggerDate - Date()
+                    hours = String(format: "%.1f", timeIntervalToPeriodOfTime(timeInterval: remainingTime).hours)
+                }
+            
+            DispatchQueue.main.async {
+                self.mainText.text = "\(hours) hours"
+                print("\(hours) hours")
+            }
+        })
+    }
+    
     func isNewUser()->Bool{
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "isAppAlreadyLaunchedOnce") != nil{
@@ -113,6 +143,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         RealmManager.shared.setRealm(realm: realm, handler:{ [weak self] in
             self?.isLoggedIn = true
             self?.setMascot()
+            self?.setMainText()
             self?.blurView.isHidden = true
             self?.tabBarController?.tabBar.isHidden = false
             askHealthAuthorizationAndUpdate()

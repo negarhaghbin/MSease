@@ -96,7 +96,7 @@ class SignupLoginViewController: UIViewController {
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
                     configuration.objectTypes = RealmManager.OBJECT_TYPES
                     Realm.asyncOpen(configuration: configuration) { [weak self](result) in
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                             self!.setLoading(false)
                             switch result {
                             case .failure(let error):

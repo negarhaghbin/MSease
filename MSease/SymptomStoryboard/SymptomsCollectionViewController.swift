@@ -205,7 +205,11 @@ extension SymptomsCollectionViewController : UICollectionViewDelegate, UICollect
                 picker.allowsEditing = true
                 picker.delegate = self
 
-                let alert = UIAlertController(title: nil, message: "Choose a source", preferredStyle: .actionSheet)
+                var alert = UIAlertController(title: nil, message: "Choose a source", preferredStyle: .actionSheet)
+                
+                if (UIDevice.current.userInterfaceIdiom == .pad) {
+                    alert = UIAlertController(title: nil, message: "Choose a source", preferredStyle: .alert)
+                }
 
                 alert.addAction(UIAlertAction(title: "Camera", style: .default) { (result : UIAlertAction) -> Void in
                     picker.sourceType = .camera

@@ -281,6 +281,11 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
         // weekday = 1, sunday
         
         //i = 6, weekday = 1
+        
+        for i in 0...6{
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: [id+"\(i)"])
+        }
+        
         var triggerRepeat = Calendar.current.dateComponents([.weekday, .hour, .minute], from: Date())
         triggerRepeat.hour = time.h
         triggerRepeat.minute = time.m
@@ -301,10 +306,5 @@ extension AddNewReminderViewController : UNUserNotificationCenterDelegate{
                 notificationCenter.add(request)
             }
         }
-        
-        /*notificationCenter.getPendingNotificationRequests(completionHandler: { result in
-            print(result)
-        })*/
-        
     }
 }

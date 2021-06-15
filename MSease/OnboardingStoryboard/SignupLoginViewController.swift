@@ -91,18 +91,22 @@ class SignupLoginViewController: UIViewController {
                     return
                 case .success(let user):
                     print("Login succeeded!")
+                    print(user.id)
                     RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
                     self.setLoading(true)
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
                     configuration.objectTypes = RealmManager.OBJECT_TYPES
+//                    sleep(5)
                     Realm.asyncOpen(configuration: configuration) { [weak self](result) in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                             self!.setLoading(false)
                             switch result {
                             case .failure(let error):
                                 fatalError("Failed to open realm: \(error)")
                             case .success(let userRealm):
                                 RealmManager.shared.setRealm(realm: userRealm, handler:{
+                                    /*if !self!.isLoggingIn!{
+                                        RealmManager.shared.addUser(newUser: User(id: app.currentUser!.id, email: (self?.email!)!))
+                                    }*/
                                     if RealmManager.shared.hasSignedConsent(realmA: userRealm){
                                         self?.scheduleReminders()
                                         self?.goToViewController(storyboardID: "Main", viewcontrollerID: "home")
@@ -114,7 +118,6 @@ class SignupLoginViewController: UIViewController {
                                 
                                 
                             }
-                        }
                     }
                 }
             }
@@ -144,9 +147,10 @@ class SignupLoginViewController: UIViewController {
                         return
                     }
                     print("Signup successful!")
-
                     self!.errorLabel.text = "Signup successful! Signing in..."
-                    self!.login()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        self!.login()
+                    }
                 }
             })
         }

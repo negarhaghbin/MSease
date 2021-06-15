@@ -21,12 +21,16 @@ class ProfileTableViewController: UITableViewController{
     @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - Variables
-//    lazy var partitionValue = RealmManager.shared.getPartitionValue()
+    enum email : String {
+        case Medical = "medicalsupport@ap-lab.ca"
+        case Technical = "nbeanm@gmail.com"
+    }
     
     struct cell {
         static let generalData = IndexPath(row:0, section: 2)
         static let ipQuestionnaire = IndexPath(row:1, section: 2)
         static let technicalSupport = IndexPath(row:1, section: 3)
+        static let medicalSupport = IndexPath(row:0, section: 3)
         static let signout = IndexPath(row:0, section: 4)
         static let reminders = IndexPath(row: 0, section: 1)
     }
@@ -92,7 +96,10 @@ class ProfileTableViewController: UITableViewController{
             RealmManager.shared.logOut(vc: self)
         }
         else if indexPath == cell.technicalSupport{
-            showMailComposer()
+            showMailComposer(type: .Technical)
+        }
+        else if indexPath == cell.medicalSupport{
+            showMailComposer(type: .Medical)
         }
         else if indexPath == cell.generalData{
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
@@ -149,14 +156,14 @@ class ProfileTableViewController: UITableViewController{
         }
     }
     
-    func showMailComposer(){
+    func showMailComposer(type: email){
         guard MFMailComposeViewController.canSendMail() else{
             return
         }
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
-        composer.setToRecipients(["nbeanm@gmail.com"])
-        composer.setSubject("technical support needed!")
+        composer.setToRecipients([type.rawValue])
+        composer.setSubject("\(type) support needed!")
         
         present(composer, animated: true)
     }
@@ -210,8 +217,6 @@ extension ProfileTableViewController : MFMailComposeViewControllerDelegate{
 
                 alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
                     self.dismiss(animated: true)
-                    self.alertMessage.title = ""
-                    self.alertMessage.message = ""
                 }))
 
                 self.present(alert, animated: true)

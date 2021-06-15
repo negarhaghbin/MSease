@@ -151,12 +151,12 @@ func convertToAMPM(oldTime: String)->String{
 
 
 
-func timeIntervalToPeriodOfTime(timeInterval: TimeInterval)->(hours: Double, weeks: Double){
+func timeIntervalToPeriodOfTime(timeInterval: TimeInterval)->(days: Double, weeks: Double){
     let minutes = timeInterval / 60.0
     let hours = minutes / 60.0
     let days = hours / 24.0
     let weeks = days / 7.0
-    return (hours: hours, weeks: weeks)
+    return (days: days, weeks: weeks)
 }
 
 func dateRange(begin: Date, end: Date)->[Date]{

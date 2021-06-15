@@ -26,6 +26,13 @@ class User: Object {
         return "_id"
     }
     
+    convenience init(id: String, email: String){
+        self.init()
+        self._id = id
+        self._partition = "user=\(id)"
+        self.name = email
+    }
+    
     func getPretestData()->(gender: String, birthday: String, typeOfMS: String, diagnosisDate: String, treatmentBeginningDate: String){
         return (gender: gender, birthday: birthday, typeOfMS: typeOfMS, diagnosisDate: diagnosisDate, treatmentBeginningDate: treatmentBeginningDate)
     }

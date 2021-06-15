@@ -104,16 +104,22 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                         nextTriggerDates.append(triggerDate)
                     }
                 }
-            print(result)
-            var hours = "_"
+                var mainText = "Today"
                 if let nextTriggerDate = nextTriggerDates.min() {
                     let remainingTime = nextTriggerDate - Date()
-                    hours = String(format: "%.1f", timeIntervalToPeriodOfTime(timeInterval: remainingTime).hours)
+                    if nextTriggerDate.getUSFormat() != Date().getUSFormat(){
+                        let days = Int(timeIntervalToPeriodOfTime(timeInterval: remainingTime).days)
+                        if days == 0{
+                            mainText = "Tomorrow"
+                        }
+                        else{
+                            mainText = "\(days) days"
+                        }
+                    }
                 }
             
             DispatchQueue.main.async {
-                self.mainText.text = "\(hours) hours"
-                print("\(hours) hours")
+                self.mainText.text = mainText
             }
         })
     }

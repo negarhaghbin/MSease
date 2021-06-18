@@ -96,7 +96,7 @@ class SignupLoginViewController: UIViewController {
                     self.setLoading(true)
                     var configuration = user.configuration(partitionValue: "user=\(user.id)")
                     configuration.objectTypes = RealmManager.OBJECT_TYPES
-//                    sleep(5)
+//                    sleep(15)
                     Realm.asyncOpen(configuration: configuration) { [weak self](result) in
                             self!.setLoading(false)
                             switch result {
@@ -148,9 +148,9 @@ class SignupLoginViewController: UIViewController {
                     }
                     print("Signup successful!")
                     self!.errorLabel.text = "Signup successful! Signing in..."
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                         self!.login()
-                    }
+//                    }
                 }
             })
         }

@@ -44,6 +44,7 @@
 		843C05F126386BE000FFFC2D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05F026386BDF00FFFC2D /* SettingsTableViewController.swift */; };
 		843C05F4263890F500FFFC2D /* MascotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05F3263890F400FFFC2D /* MascotTableViewCell.swift */; };
 		84403A2A265FD4BA008A193F /* logo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84403A29265FD4BA008A193F /* logo-2.png */; };
+		8442202F267CDAFC001781F0 /* onboardingReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */; };
 		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
 		8452CE57266ED395004DA9D0 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8452CE56266ED395004DA9D0 /* Reminders.storyboard */; };
@@ -146,6 +147,7 @@
 		843C05F026386BDF00FFFC2D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		843C05F3263890F400FFFC2D /* MascotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotTableViewCell.swift; sourceTree = "<group>"; };
 		84403A29265FD4BA008A193F /* logo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-2.png"; path = "Resources/Assets.xcassets/logo-2.imageset/logo-2.png"; sourceTree = "<group>"; };
+		8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onboardingReminderViewController.swift; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8452CE56266ED395004DA9D0 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				841F9EF725FA826600E4B519 /* WalkthroughContentViewController.swift */,
 				841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */,
 				8499442925FB272300AFB965 /* WalkthroughViewController.swift */,
+				8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */,
 			);
 			path = OnboardingStoryboard;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				8499442A25FB272300AFB965 /* WalkthroughViewController.swift in Sources */,
 				843C05D8263059AF00FFFC2D /* ArTutorialViewController.swift in Sources */,
 				84AF3E2025DCBDB90083E9F0 /* Reminder.swift in Sources */,
+				8442202F267CDAFC001781F0 /* onboardingReminderViewController.swift in Sources */,
 				84BCC862261CC19B0097E0A2 /* InjectionPhobia.swift in Sources */,
 				84D4E71F25E6E9B200DB75B4 /* FullscreenImageViewController.swift in Sources */,
 				84BCC83526122D2D0097E0A2 /* PretestViewController.swift in Sources */,

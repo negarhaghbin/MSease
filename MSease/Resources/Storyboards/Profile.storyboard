@@ -52,14 +52,15 @@
                                                         <outletCollection property="gestureRecognizers" destination="wLt-UT-v2i" appends="YES" id="AYT-oc-SOe"/>
                                                     </connections>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKW-Qt-fJ1">
-                                                    <rect key="frame" x="120" y="37" width="49" height="26"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKW-Qt-fJ1">
+                                                    <rect key="frame" x="120" y="37" width="234" height="26"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="GKW-Qt-fJ1" secondAttribute="trailing" constant="20" id="17i-L5-zKv"/>
                                                 <constraint firstItem="GKW-Qt-fJ1" firstAttribute="leading" secondItem="WFa-Pd-WbL" secondAttribute="trailing" multiplier="1.2" id="FWu-Sl-4MS"/>
                                                 <constraint firstItem="WFa-Pd-WbL" firstAttribute="leading" secondItem="gey-X9-s81" secondAttribute="leading" constant="20" id="IMv-sZ-DZF"/>
                                                 <constraint firstItem="GKW-Qt-fJ1" firstAttribute="centerY" secondItem="WFa-Pd-WbL" secondAttribute="centerY" id="Tb7-pu-pVb"/>

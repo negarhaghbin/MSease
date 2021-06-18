@@ -67,9 +67,9 @@ class PretestViewController: UIViewController {
                 dismiss(animated: true)
             }
             else{
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
-                self.navigationController?.setViewControllers([homeVC], animated: true)
+                let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                let setReminderVC = storyboard.instantiateViewController(withIdentifier: "setReminder") as! onboardingReminderViewController
+                self.navigationController?.setViewControllers([setReminderVC], animated: true)
             }
             /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController

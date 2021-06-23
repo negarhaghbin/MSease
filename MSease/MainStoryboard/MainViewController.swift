@@ -117,6 +117,9 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                         }
                     }
                 }
+                else{
+                    mainText = "_ days"
+                }
             
             DispatchQueue.main.async {
                 self.mainText.text = mainText
@@ -153,7 +156,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             self?.blurView.isHidden = true
             self?.tabBarController?.tabBar.isHidden = false
             askHealthAuthorizationAndUpdate()
-            if !RealmManager.shared.hasSignedConsent(realmA: realm){
+            if !RealmManager.shared.hasSignedConsent(){
                 self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
             }
         })

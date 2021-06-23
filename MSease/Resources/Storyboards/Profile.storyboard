@@ -600,11 +600,11 @@
             </objects>
             <point key="canvasLocation" x="1490" y="954"/>
         </scene>
-        <!--Settings-->
+        <!--Profile-->
         <scene sceneID="BiC-mI-bzs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KhD-hs-QX2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="person.crop.circle" catalog="system" id="ZtH-7N-v6q"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle" catalog="system" id="ZtH-7N-v6q"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qV2-7y-TiY">

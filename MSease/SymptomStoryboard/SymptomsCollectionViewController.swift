@@ -58,6 +58,14 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        textView.text = note!.textContent
+        timeLabel.text = convertToAMPM(oldTime: note!.time)
+        
+        let time = getTimeFromTimeInDayString(note!.time)
+        var date = getDateFromString(note!.date)
+        date = date.setTime(h: time.h, m: time.m)
+        timePicker.date = date
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,14 +74,6 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        textView.text = note!.textContent
-        timeLabel.text = convertToAMPM(oldTime: note!.time)
-        
-        let time = getTimeFromTimeInDayString(note!.time)
-        var date = getDateFromString(note!.date)
-        date = date.setTime(h: time.h, m: time.m)
-        timePicker.date = date
-        
         symptomsCollectionView.reloadData()
         photoCollectionView.reloadData()
     }

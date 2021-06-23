@@ -327,8 +327,8 @@ extension RealmManager{
         }
     }
     
-    func hasSignedConsent(realmA: Realm) -> Bool {
-        let user = realmA.objects(User.self).first
+    func hasSignedConsent() -> Bool {
+        let user = realm!.objects(User.self).first
         return user!.hasSignedConsent
     }
     

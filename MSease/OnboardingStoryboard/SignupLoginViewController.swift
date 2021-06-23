@@ -78,6 +78,40 @@ class SignupLoginViewController: UIViewController {
         signupLoginButton.isEnabled = !loading
     }
     
+    func onRealmOpened(_ realm: Realm){
+        RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
+        RealmManager.shared.setRealm(realm: realm, handler:{
+            /*if !self!.isLoggingIn!{
+                RealmManager.shared.addUser(newUser: User(id: app.currentUser!.id, email: (self?.email!)!))
+            }*/
+            if RealmManager.shared.hasSignedConsent(){
+                self.scheduleReminders()
+                self.goToViewController(storyboardID: "Main", viewcontrollerID: "home")
+            }
+            else{
+                self.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
+            }
+        })
+    }
+    
+    func onLogin(){
+        let user = app.currentUser!
+        let partitionValue = "user=\(user.id)"
+        var configuration = user.configuration(partitionValue: partitionValue)
+        configuration.objectTypes = RealmManager.OBJECT_TYPES
+        self.setLoading(true)
+        
+        Realm.asyncOpen(configuration: configuration) { result in
+            self.setLoading(false)
+            switch result {
+            case .failure(let error):
+                fatalError("Failed to open realm: \(error)")
+            case .success(let userRealm):
+                self.onRealmOpened(userRealm)
+            }
+        }
+    }
+    
     func login(){
         print("Log in as user: \(email!)")
         setLoading(true)
@@ -92,33 +126,7 @@ class SignupLoginViewController: UIViewController {
                 case .success(let user):
                     print("Login succeeded!")
                     print(user.id)
-                    RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
-                    self.setLoading(true)
-                    var configuration = user.configuration(partitionValue: "user=\(user.id)")
-                    configuration.objectTypes = RealmManager.OBJECT_TYPES
-//                    sleep(15)
-                    Realm.asyncOpen(configuration: configuration) { [weak self](result) in
-                            self!.setLoading(false)
-                            switch result {
-                            case .failure(let error):
-                                fatalError("Failed to open realm: \(error)")
-                            case .success(let userRealm):
-                                RealmManager.shared.setRealm(realm: userRealm, handler:{
-                                    /*if !self!.isLoggingIn!{
-                                        RealmManager.shared.addUser(newUser: User(id: app.currentUser!.id, email: (self?.email!)!))
-                                    }*/
-                                    if RealmManager.shared.hasSignedConsent(realmA: userRealm){
-                                        self?.scheduleReminders()
-                                        self?.goToViewController(storyboardID: "Main", viewcontrollerID: "home")
-                                    }
-                                    else{
-                                        self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
-                                    }
-                                })
-                                
-                                
-                            }
-                    }
+                    self.onLogin()
                 }
             }
         }
@@ -129,6 +137,7 @@ class SignupLoginViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: viewcontrollerID)
         navigationController?.setViewControllers([vc], animated: true)
     }
+    
     
     // MARK: - Actions
     
@@ -148,9 +157,7 @@ class SignupLoginViewController: UIViewController {
                     }
                     print("Signup successful!")
                     self!.errorLabel.text = "Signup successful! Signing in..."
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                        self!.login()
-//                    }
+                    self!.login()
                 }
             })
         }

@@ -45,6 +45,7 @@
 		843C05F4263890F500FFFC2D /* MascotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C05F3263890F400FFFC2D /* MascotTableViewCell.swift */; };
 		84403A2A265FD4BA008A193F /* logo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84403A29265FD4BA008A193F /* logo-2.png */; };
 		8442202F267CDAFC001781F0 /* onboardingReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */; };
+		844220312683CBA5001781F0 /* OnboardingReminderDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844220302683CBA5001781F0 /* OnboardingReminderDayViewController.swift */; };
 		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
 		8452CE57266ED395004DA9D0 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8452CE56266ED395004DA9D0 /* Reminders.storyboard */; };
@@ -148,6 +149,7 @@
 		843C05F3263890F400FFFC2D /* MascotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotTableViewCell.swift; sourceTree = "<group>"; };
 		84403A29265FD4BA008A193F /* logo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-2.png"; path = "Resources/Assets.xcassets/logo-2.imageset/logo-2.png"; sourceTree = "<group>"; };
 		8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onboardingReminderViewController.swift; sourceTree = "<group>"; };
+		844220302683CBA5001781F0 /* OnboardingReminderDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingReminderDayViewController.swift; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8452CE56266ED395004DA9D0 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				841F9EFB25FA97C000E4B519 /* WalkthroughPageViewController.swift */,
 				8499442925FB272300AFB965 /* WalkthroughViewController.swift */,
 				8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */,
+				844220302683CBA5001781F0 /* OnboardingReminderDayViewController.swift */,
 			);
 			path = OnboardingStoryboard;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				84979F4A25BA3CDC00578C37 /* BCVC+PopoverPresentation.swift in Sources */,
 				84A0C4E3261F836300CE52BD /* PretestQuestions.swift in Sources */,
 				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,
+				844220312683CBA5001781F0 /* OnboardingReminderDayViewController.swift in Sources */,
 				840CA870264305B900018481 /* Gradient.swift in Sources */,
 				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
 				841F9EFF25FA981900E4B519 /* Page.swift in Sources */,

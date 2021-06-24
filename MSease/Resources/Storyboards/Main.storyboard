@@ -180,6 +180,7 @@
                         <outlet property="mainText" destination="7Va-TR-NIq" id="lLI-SR-8Bz"/>
                         <outlet property="mascotImage" destination="TBh-U4-rof" id="gtI-4n-sMz"/>
                         <outlet property="shadowView" destination="h7i-SL-SWG" id="FFf-NK-hjJ"/>
+                        <outlet property="submainText" destination="h0f-tg-k7V" id="V4T-ah-Ra7"/>
                         <outlet property="symptomsView" destination="a6M-RK-Uh4" id="w0c-h2-j2h"/>
                     </connections>
                 </viewController>

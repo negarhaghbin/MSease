@@ -68,7 +68,7 @@ class PretestViewController: UIViewController {
             }
             else{
                 let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-                let setReminderVC = storyboard.instantiateViewController(withIdentifier: "setReminder") as! onboardingReminderViewController
+                let setReminderVC = storyboard.instantiateViewController(withIdentifier: "setReminderDay") as! OnboardingReminderDayViewController
                 self.navigationController?.setViewControllers([setReminderVC], animated: true)
             }
             /*let storyboard = UIStoryboard(name: "Main", bundle: nil)

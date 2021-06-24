@@ -18,6 +18,8 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var calendar : FSCalendar!
     @IBOutlet weak var mascotImage: UIImageView!
+    
+    @IBOutlet weak var submainText: UILabel!
     @IBOutlet weak var mainText: UILabel!
     
     @IBOutlet weak var symptomsView : UIView!
@@ -105,24 +107,32 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                     }
                 }
                 var mainText = "Today"
+                var submainText = "Treatment"
                 if let nextTriggerDate = nextTriggerDates.min() {
-                    let remainingTime = nextTriggerDate - Date()
-                    if nextTriggerDate.getUSFormat() != Date().getUSFormat(){
-                        let days = Int(timeIntervalToPeriodOfTime(timeInterval: remainingTime).days)
+                    let days = numberOfDaysBetween(Date(), and: nextTriggerDate) - 1
                         if days == 0{
+                            submainText = "Treatment"
+                            mainText = "Today"
+                        }
+                        
+                        else if days == 1{
+                            submainText = "Treatment"
                             mainText = "Tomorrow"
                         }
+                        
                         else{
+                            submainText = "Treatment in"
                             mainText = "\(days) days"
                         }
-                    }
                 }
                 else{
+                    submainText = "Treatment in"
                     mainText = "_ days"
                 }
             
             DispatchQueue.main.async {
                 self.mainText.text = mainText
+                self.submainText.text = submainText
             }
         })
     }

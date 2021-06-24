@@ -18,7 +18,8 @@ class onboardingReminderViewController: UIViewController {
     @IBOutlet weak var bgView: UIView!
     
     // MARK: - Variables
-    var selectedAnswer = ""
+    var selectedDays : [Bool]?
+    var selectedAnswer = Date().getTime()
     let notificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - View Controller
@@ -43,13 +44,13 @@ class onboardingReminderViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any){
         let reminder = Reminder(name: "Reminder",
-                            mon: true,
-                            tue: true,
-                            wed: true,
-                            thu: true,
-                            fri: true,
-                            sat: true,
-                            sun: true,
+                                mon: selectedDays![0],
+                                tue: selectedDays![1],
+                                wed: selectedDays![2],
+                                thu: selectedDays![3],
+                                fri: selectedDays![4],
+                                sat: selectedDays![5],
+                                sun: selectedDays![6],
                             time: selectedAnswer,
                             message: "Have you done your treatment today?", partition: RealmManager.shared.getPartitionValue())
         

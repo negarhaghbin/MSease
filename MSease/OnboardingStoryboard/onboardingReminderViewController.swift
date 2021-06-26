@@ -14,7 +14,7 @@ class onboardingReminderViewController: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var bgView: UIView!
     
     // MARK: - Variables
@@ -32,7 +32,7 @@ class onboardingReminderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         StylingUtilities.styleFilledButton(nextButton)
-        StylingUtilities.styleHollowdButton(cancelButton)
+        StylingUtilities.styleHollowdButton(backButton)
         StylingUtilities.styleQuestionnaireView(bgView)
     }
     
@@ -61,8 +61,8 @@ class onboardingReminderViewController: UIViewController {
         goToMainVC()
     }
     
-    @IBAction func cancelButtonTapped(_ sender: Any){
-        goToMainVC()
+    @IBAction func backButtonTapped(_ sender: Any){
+        navigationController?.popViewController(animated: true)
     }
     
 
@@ -110,19 +110,20 @@ extension onboardingReminderViewController : UNUserNotificationCenterDelegate{
         triggerRepeat.minute = time.m
         
         for i in 0...6{
-            if (0...5).contains(i){
-                triggerRepeat.weekday = i + 2
-            }
-            else if i == 6{
-                triggerRepeat.weekday = 1
-            }
-                
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
+            if selectedDays![i]{
+                if (0...5).contains(i){
+                    triggerRepeat.weekday = i + 2
+                }
+                else if i == 6{
+                    triggerRepeat.weekday = 1
+                }
+                    
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerRepeat, repeats: true)
 
-            let request = UNNotificationRequest(identifier: id+"\(i)", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: id+"\(i)", content: content, trigger: trigger)
 
-            notificationCenter.add(request)
-            
+                notificationCenter.add(request)
+            }
         }
     }
 }

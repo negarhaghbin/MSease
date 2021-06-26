@@ -21,6 +21,8 @@ class SignupLoginViewController: UIViewController {
     
     // MARK: - Variables
     var isLoggingIn : Bool?
+    var notificationToken: NotificationToken?
+    var user : Results<User>?
     
     var email: String? {
         get {
@@ -45,11 +47,43 @@ class SignupLoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+    // MARK: - Initialization
+    deinit {
+        notificationToken?.invalidate()
+    }
+    
     // MARK: - Helpers
     func scheduleReminders(){
         let reminders = RealmManager.shared.getReminders()
         for reminder in reminders{
             scheduleNotification(reminder: reminder)
+        }
+    }
+    
+    func onUserAddedToRealm(){
+        self.setLoading(false)
+        if RealmManager.shared.hasSignedConsent(){
+            scheduleReminders()
+            goToViewController(storyboardID: "Main", viewcontrollerID: "home")
+        }
+        else{
+            goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
+        }
+    }
+    
+    func setUserObserver(){
+        notificationToken = user!.observe { [weak self] (changes) in
+            switch changes {
+            case .initial:
+                print("initial")
+                if self!.user!.count > 0{
+                    self!.onUserAddedToRealm()
+                }
+            case .update(_, _, _, _):
+                self!.onUserAddedToRealm()
+            case .error(let error):
+                fatalError("\(error)")
+            }
         }
     }
     
@@ -79,18 +113,13 @@ class SignupLoginViewController: UIViewController {
     }
     
     func onRealmOpened(_ realm: Realm){
+        user = realm.objects(User.self)
+        setUserObserver()
         RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
         RealmManager.shared.setRealm(realm: realm, handler:{
             /*if !self!.isLoggingIn!{
                 RealmManager.shared.addUser(newUser: User(id: app.currentUser!.id, email: (self?.email!)!))
             }*/
-            if RealmManager.shared.hasSignedConsent(){
-                self.scheduleReminders()
-                self.goToViewController(storyboardID: "Main", viewcontrollerID: "home")
-            }
-            else{
-                self.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
-            }
         })
     }
     
@@ -102,7 +131,6 @@ class SignupLoginViewController: UIViewController {
         self.setLoading(true)
         
         Realm.asyncOpen(configuration: configuration) { result in
-            self.setLoading(false)
             switch result {
             case .failure(let error):
                 fatalError("Failed to open realm: \(error)")

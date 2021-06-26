@@ -25,7 +25,22 @@ class reminderSettingsTableViewCell: UITableViewCell {
         self.activationSwitch.isHidden = !isReminderInstance
         
         if isReminderInstance{
-            self.activationSwitch.isOn = reminder!.isOn
+            
+            let current = UNUserNotificationCenter.current()
+
+            current.getNotificationSettings(completionHandler: { (settings) in
+                if settings.authorizationStatus == .authorized {
+                    DispatchQueue.main.async {
+                        self.activationSwitch.isOn = reminder!.isOn
+                    }
+                }
+                else{
+                    DispatchQueue.main.async {
+                        self.activationSwitch.isOn = false
+                    }
+                }
+            })
+            
             self.activationSwitch.tag = row!
             
             self.reminderNameLabel.text = reminder!.name
@@ -105,11 +120,43 @@ class reminderSettingsViewController: UIViewController {
         }
     }
     
+    private func presentSettingsAlert() {
+        let alertController = UIAlertController(title: "Notifications are disabled",
+                                                message: "You need to enable it from settings first.",
+                                                preferredStyle: .alert)
+            
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (alertAction) in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings)
+            }
+        }
+            
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+            
+        present(alertController, animated: true)
+    }
+    
     // MARK: - IBActions
     @IBAction func switchTapped(_ sender: UISwitch) {
         RealmManager.shared.changeReminderState(reminder: reminders[sender.tag], state: sender.isOn)
         if sender.isOn{
-            scheduleNotification(reminder: reminders[sender.tag])
+            let current = UNUserNotificationCenter.current()
+
+            current.getNotificationSettings(completionHandler: { (settings) in
+                if settings.authorizationStatus == .authorized {
+                    DispatchQueue.main.async {
+                        scheduleNotification(reminder: self.reminders[sender.tag])
+                    }
+                }
+                else{
+                    DispatchQueue.main.async {
+                        sender.isOn = false
+                        self.presentSettingsAlert()
+                    }
+                }
+            })  
         }
         else{
             for i in 0...6{
@@ -178,12 +225,27 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
         if indexPath.section == 1{
             selectedReminder = reminders[indexPath.row]
             isNewReminder = false
+            performSegue(withIdentifier: "showReminderEditor", sender: nil)
         }
         else{
-            selectedReminder = Reminder()
-            isNewReminder = true
+            let current = UNUserNotificationCenter.current()
+
+            current.getNotificationSettings(completionHandler: { (settings) in
+                if settings.authorizationStatus == .authorized {
+                    self.selectedReminder = Reminder()
+                    self.isNewReminder = true
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "showReminderEditor", sender: nil)
+                    }
+                }
+                else{
+                    DispatchQueue.main.async {
+                        self.presentSettingsAlert()
+                    }
+                }
+            })
+            
         }
-        performSegue(withIdentifier: "showReminderEditor", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

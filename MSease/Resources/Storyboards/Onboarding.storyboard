@@ -706,9 +706,9 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPQ-MK-IjS">
                                                 <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
-                                                <state key="normal" title="Skip"/>
+                                                <state key="normal" title="Back"/>
                                                 <connections>
-                                                    <action selector="cancelButtonTapped:" destination="rTb-0U-SjE" eventType="touchUpInside" id="TNP-R2-SAq"/>
+                                                    <action selector="backButtonTapped:" destination="rTb-0U-SjE" eventType="touchUpInside" id="3gY-4C-pgi"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MH0-1q-Ga2">
@@ -756,8 +756,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="G5H-iw-aAt"/>
                     <connections>
+                        <outlet property="backButton" destination="RPQ-MK-IjS" id="UqC-GE-ygq"/>
                         <outlet property="bgView" destination="Vn2-VS-QcW" id="GgV-8t-Ha9"/>
-                        <outlet property="cancelButton" destination="RPQ-MK-IjS" id="AIw-Pc-ye5"/>
                         <outlet property="nextButton" destination="MH0-1q-Ga2" id="cb9-Ea-M4b"/>
                         <outlet property="timePicker" destination="2Zk-Id-zc6" id="h4L-r0-zc5"/>
                         <outlet property="titleLabel" destination="SSN-mh-k5D" id="YUe-tc-hiy"/>

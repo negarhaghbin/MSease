@@ -77,7 +77,10 @@ extension Date{
 }
 
 func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {
-    return dateRange(begin: from, end: to).count
+    let beginDate = from.advanced(by: TimeInterval(-4*60*60))
+    var endDate = to.setTime(h: 00, m: 00)
+    endDate = endDate.advanced(by: TimeInterval(-4*60*60))
+    return dateRange(begin: beginDate, end: endDate).count
 }
 
 func getDateFromString(_ dateString:String, style: DateFormatter.Style = .medium)->Date{

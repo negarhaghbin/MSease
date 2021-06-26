@@ -27,6 +27,8 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     // MARK: - Variables
     let notificationCenter = UNUserNotificationCenter.current()
+    var notificationToken: NotificationToken?
+    lazy var reminders = RealmManager.shared.getReminders()
     var selectedDate = Date()
     var isLoggedIn = false
     
@@ -40,7 +42,6 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         StylingUtilities.styleView(self.view)
         StylingUtilities.styleFilledButton(logSymptomsButton)
         setupCalendar()
-        UNUserNotificationCenter.current().delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,12 +50,12 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         if isLoggedIn{
             setMascot()
             setMainText()
+            setMainTextObserver()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if !isNewUser(){
-            requestNotificationPermission()
             if !isLoggedIn{
                 if RealmManager.shared.hasCredentials(){
                         login(
@@ -72,6 +73,11 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             
         }
         
+    }
+    
+    // MARK: - Initialization
+    deinit {
+        notificationToken?.invalidate()
     }
     
     
@@ -92,17 +98,27 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     }
     
     // MARK: - Helpers
+    
+    func setMainTextObserver() {
+        notificationToken = reminders.observe { [weak self] (changes) in
+            switch changes {
+            case .initial:
+                self!.setMainText()
+            case .update(_, _, _, _):
+                self!.setMainText()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+    }
+    
     func setMainText(){
         notificationCenter.getPendingNotificationRequests(completionHandler: { result in
+            print(result)
                 var nextTriggerDates: [Date] = []
                 for request in result {
                     if let trigger = request.trigger as? UNCalendarNotificationTrigger,
                         let triggerDate = trigger.nextTriggerDate(){
-                        /*nextTriggerDates.append(
-                            DateFormatter.localizedString(
-                                                    from: triggerDate,
-                                                    dateStyle: .short,
-                                                    timeStyle: .short))*/
                         nextTriggerDates.append(triggerDate)
                     }
                 }
@@ -220,46 +236,4 @@ class MainViewController: UIViewController, FSCalendarDelegate {
         }
     }
 
-}
-
-// MARK: - Push Notifications
-
-extension MainViewController : UNUserNotificationCenterDelegate{
-    
-    func requestNotificationPermission(){
-        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { _, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            else{
-                let snoozeAction = UNNotificationAction(identifier: notificationAction.snooze.rawValue, title: "Snooze for 1 hour", options: UNNotificationActionOptions(rawValue: 0))
-                
-                
-                let snoozableCategory = UNNotificationCategory(identifier: notificationCategory.snoozable.rawValue, actions: [snoozeAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-                
-                self.notificationCenter.setNotificationCategories([snoozableCategory])
-            }
-        }
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        if #available(iOS 14.0, *) {
-            completionHandler([.banner,.sound])
-        } else {
-            completionHandler([.sound])
-            // Fallback on earlier versions
-        }
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-          switch response.actionIdentifier {
-          case notificationAction.snooze.rawValue:
-            response.notification.snoozeNotification(notificationContent: response.notification.request.content)
-          default:
-             break
-          }
-          completionHandler()
-    }
-    
 }

@@ -12,9 +12,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     var bgView : UIView?
     enum tabIndex : Int{
         case home = 0
-        case insight
-        case injection
         case calendar
+        case injection
+        case reminders
         case settings
     }
     let mainButtonIndex = 2
@@ -32,7 +32,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: - UITabBarControllerDelegate
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         bgView?.backgroundColor = StylingUtilities.buttonColor
+        if viewController == viewControllers![tabIndex.reminders.rawValue]{
+            let navVC = viewController as! UINavigationController
+            let vc = navVC.topViewController as! reminderSettingsViewController
+            vc.tableView?.reloadData()
+        }
     }
+    
     
     // MARK: - Helpers
     func prominentTabTaped() {

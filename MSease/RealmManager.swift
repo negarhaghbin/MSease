@@ -29,11 +29,7 @@ class RealmManager{
     
     func setRealm(realm: Realm, handler: @escaping()->()){
         self.realm = realm
-        print("here")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            handler()
-//        }
-        
+        handler()
     }
     
     func getPartitionValue()->String{
@@ -53,10 +49,16 @@ class RealmManager{
     }
     
     func addProfile(email: String, handler: @escaping()->()){
-        let profile = Profile(email: email)
-        try! realm!.write{
-            realm!.add(profile)
+        if let _ = realm!.objects(Profile.self).first{
+            
         }
+        else{
+            let profile = Profile(email: email)
+            try! realm!.write{
+                realm!.add(profile)
+            }
+        }
+        
         
         handler()
     }

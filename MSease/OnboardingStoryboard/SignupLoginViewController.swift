@@ -156,7 +156,6 @@ class SignupLoginViewController: UIViewController {
                     return
                 case .success(let user):
                     print("Login succeeded!")
-                    print(user.id)
                     self.onLogin()
                 }
             }

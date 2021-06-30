@@ -126,7 +126,6 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 var submainText = "Treatment"
                 if let nextTriggerDate = nextTriggerDates.min() {
                     let days = numberOfDaysFromToday(nextTriggerDate)
-                    print(days)
                     if Calendar.current.isDateInToday(nextTriggerDate){
                         submainText = "Treatment"
                         mainText = "Today"
@@ -195,7 +194,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    print("#Login failed: \(error)")
+                    print("Login failed: \(error)")
                     if let user = app.currentUser {
                         var configuration = user.configuration(partitionValue: "user=\(user.id)")
                         configuration.objectTypes = RealmManager.OBJECT_TYPES

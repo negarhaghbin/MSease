@@ -147,7 +147,6 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
                             time: timeLabel.text!,
                             message: textView.text, partition: RealmManager.shared.getPartitionValue())
         
-//        print(getTimeFromString(timeLabel.text!))
         if isNewReminder{
             RealmManager.shared.addReminder(newReminder: reminder!)
             reminderId = reminder!._id

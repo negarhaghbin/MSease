@@ -73,7 +73,7 @@ class reminderSettingsViewController: UIViewController {
 //    lazy var partitionValue = RealmManager.shared.getPartitionValue()
 
     var notificationToken: NotificationToken?
-    lazy var reminders = RealmManager.shared.getReminders()
+    var reminders : Results<Reminder>?
     
     let notificationCenter = UNUserNotificationCenter.current()
 
@@ -88,6 +88,7 @@ class reminderSettingsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        reminders = RealmManager.shared.getReminders()
         initSetup(title: "Reminders")
         navigationController?.navigationBar.isHidden = isShowingTabbar!
         tabBarController?.tabBar.isHidden = !isShowingTabbar!
@@ -99,7 +100,7 @@ class reminderSettingsViewController: UIViewController {
         
         self.title = title
 
-        notificationToken = reminders.observe { [weak self] (changes) in
+        notificationToken = reminders!.observe { [weak self] (changes) in
             guard let tableView = self?.tableView else { return }
             switch changes {
             case .initial:
@@ -140,14 +141,14 @@ class reminderSettingsViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func switchTapped(_ sender: UISwitch) {
-        RealmManager.shared.changeReminderState(reminder: reminders[sender.tag], state: sender.isOn)
+        RealmManager.shared.changeReminderState(reminder: reminders![sender.tag], state: sender.isOn)
         if sender.isOn{
             let current = UNUserNotificationCenter.current()
 
             current.getNotificationSettings(completionHandler: { (settings) in
                 if settings.authorizationStatus == .authorized {
                     DispatchQueue.main.async {
-                        scheduleNotification(reminder: self.reminders[sender.tag])
+                        scheduleNotification(reminder: self.reminders![sender.tag])
                     }
                 }
                 else{
@@ -160,7 +161,7 @@ class reminderSettingsViewController: UIViewController {
         }
         else{
             for i in 0...6{
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminders[sender.tag]._id.stringValue+"\(i)"])
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminders![sender.tag]._id.stringValue+"\(i)"])
             }
         }
     }
@@ -193,7 +194,7 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 1{
-            if reminders.count == 0{
+            if reminders!.count == 0{
                 return "You have no reminders."
             }
         }
@@ -205,7 +206,7 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
             return 1
         }
         else{
-            return reminders.count
+            return reminders!.count
         }
         
     }
@@ -216,14 +217,14 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
             cell!.setup(isReminderInstance: false)
         }
         else if indexPath.section == 1{
-            cell!.setup(isReminderInstance: true, reminder: reminders[indexPath.row], row: indexPath.row)
+            cell!.setup(isReminderInstance: true, reminder: reminders![indexPath.row], row: indexPath.row)
         }
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath.section == 1{
-            selectedReminder = reminders[indexPath.row]
+            selectedReminder = reminders![indexPath.row]
             isNewReminder = false
             performSegue(withIdentifier: "showReminderEditor", sender: nil)
         }
@@ -251,9 +252,9 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             for i in 0...6{
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminders[indexPath.row]._id.stringValue+"\(i)"])
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reminders![indexPath.row]._id.stringValue+"\(i)"])
             }
-            RealmManager.shared.removeReminder(reminder: reminders[indexPath.row])
+            RealmManager.shared.removeReminder(reminder: reminders![indexPath.row])
         }
     }
     

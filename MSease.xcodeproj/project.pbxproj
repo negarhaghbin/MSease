@@ -46,6 +46,8 @@
 		84403A2A265FD4BA008A193F /* logo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84403A29265FD4BA008A193F /* logo-2.png */; };
 		8442202F267CDAFC001781F0 /* onboardingReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */; };
 		844220312683CBA5001781F0 /* OnboardingReminderDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844220302683CBA5001781F0 /* OnboardingReminderDayViewController.swift */; };
+		84422075268B5331001781F0 /* MSeaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84422074268B5331001781F0 /* MSeaseTests.swift */; };
+		8442207D268BEA73001781F0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442207C268BEA72001781F0 /* Profile.swift */; };
 		8448884225D6C48200F5FBBA /* SymptomsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */; };
 		8448884825D6E13900F5FBBA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448884725D6E13900F5FBBA /* Note.swift */; };
 		8452CE57266ED395004DA9D0 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8452CE56266ED395004DA9D0 /* Reminders.storyboard */; };
@@ -107,6 +109,16 @@
 		84F5E79D25C44BEA00EED24C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5E79C25C44BEA00EED24C /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		84422077268B5332001781F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84979F2425B9DFF200578C37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84979F2B25B9DFF200578C37;
+			remoteInfo = MSease;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		29CE2308B856F91845E34F83 /* Pods-MSease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.release.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.release.xcconfig"; sourceTree = "<group>"; };
 		44A4552385A1D8D2E8ED9AB0 /* Pods-MSease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSease.debug.xcconfig"; path = "Target Support Files/Pods-MSease/Pods-MSease.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +162,10 @@
 		84403A29265FD4BA008A193F /* logo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-2.png"; path = "Resources/Assets.xcassets/logo-2.imageset/logo-2.png"; sourceTree = "<group>"; };
 		8442202E267CDAFC001781F0 /* onboardingReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onboardingReminderViewController.swift; sourceTree = "<group>"; };
 		844220302683CBA5001781F0 /* OnboardingReminderDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingReminderDayViewController.swift; sourceTree = "<group>"; };
+		84422072268B5331001781F0 /* MSeaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSeaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84422074268B5331001781F0 /* MSeaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSeaseTests.swift; sourceTree = "<group>"; };
+		84422076268B5332001781F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8442207C268BEA72001781F0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		8448884125D6C48200F5FBBA /* SymptomsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsCollectionViewController.swift; sourceTree = "<group>"; };
 		8448884725D6E13900F5FBBA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8452CE56266ED395004DA9D0 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
@@ -214,6 +230,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8442206F268B5331001781F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84979F2925B9DFF200578C37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,6 +318,15 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
+		84422073268B5331001781F0 /* MSeaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				84422074268B5331001781F0 /* MSeaseTests.swift */,
+				84422076268B5332001781F0 /* Info.plist */,
+			);
+			path = MSeaseTests;
+			sourceTree = "<group>";
+		};
 		845996CC25F12A5700AA3233 /* Bottom Container  */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +349,7 @@
 				84BCC864261CC4C70097E0A2 /* InjectionPhobiaForm.swift */,
 				84021ADC2655C72700D44022 /* Step.swift */,
 				84732F7126653BF5002D0B5B /* Image.swift */,
+				8442207C268BEA72001781F0 /* Profile.swift */,
 			);
 			path = "Realm Objects";
 			sourceTree = "<group>";
@@ -325,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				84979F2E25B9DFF200578C37 /* MSease */,
+				84422073268B5331001781F0 /* MSeaseTests */,
 				84979F2D25B9DFF200578C37 /* Products */,
 				AC14FAEF5471E8FF75A12B90 /* Pods */,
 				5D9BB03B6F3DF6062BC62427 /* Frameworks */,
@@ -335,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				84979F2C25B9DFF200578C37 /* MSease.app */,
+				84422072268B5331001781F0 /* MSeaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -532,6 +567,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		84422071268B5331001781F0 /* MSeaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8442207B268B5332001781F0 /* Build configuration list for PBXNativeTarget "MSeaseTests" */;
+			buildPhases = (
+				8442206E268B5331001781F0 /* Sources */,
+				8442206F268B5331001781F0 /* Frameworks */,
+				84422070268B5331001781F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84422078268B5332001781F0 /* PBXTargetDependency */,
+			);
+			name = MSeaseTests;
+			productName = MSeaseTests;
+			productReference = 84422072268B5331001781F0 /* MSeaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		84979F2B25B9DFF200578C37 /* MSease */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84979F4025B9DFF500578C37 /* Build configuration list for PBXNativeTarget "MSease" */;
@@ -560,9 +613,13 @@
 		84979F2425B9DFF200578C37 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					84422071268B5331001781F0 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 84979F2B25B9DFF200578C37;
+					};
 					84979F2B25B9DFF200578C37 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -585,11 +642,19 @@
 			projectRoot = "";
 			targets = (
 				84979F2B25B9DFF200578C37 /* MSease */,
+				84422071268B5331001781F0 /* MSeaseTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		84422070268B5331001781F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84979F2A25B9DFF200578C37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -659,6 +724,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8442206E268B5331001781F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84422075268B5331001781F0 /* MSeaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84979F2825B9DFF200578C37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -727,6 +800,7 @@
 				84BCC8552615F7580097E0A2 /* TSQMquestion.swift in Sources */,
 				844220312683CBA5001781F0 /* OnboardingReminderDayViewController.swift in Sources */,
 				840CA870264305B900018481 /* Gradient.swift in Sources */,
+				8442207D268BEA73001781F0 /* Profile.swift in Sources */,
 				8407F6A225D9B0420015666A /* NotesTableViewCell.swift in Sources */,
 				841F9EFF25FA981900E4B519 /* Page.swift in Sources */,
 				84BCC865261CC4C70097E0A2 /* InjectionPhobiaForm.swift in Sources */,
@@ -745,6 +819,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		84422078268B5332001781F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84979F2B25B9DFF200578C37 /* MSease */;
+			targetProxy = 84422077268B5332001781F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		84979F3A25B9DFF500578C37 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -757,6 +839,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		84422079268B5332001781F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				INFOPLIST_FILE = MSeaseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.negar.learningTest.MSeaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSease.app/MSease";
+			};
+			name = Debug;
+		};
+		8442207A268B5332001781F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3BH49U8WFP;
+				INFOPLIST_FILE = MSeaseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.negar.learningTest.MSeaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MSease.app/MSease";
+			};
+			name = Release;
+		};
 		84979F3E25B9DFF500578C37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -881,7 +1005,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MSease/MSease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = MSease/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
@@ -905,7 +1029,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MSease/MSease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3BH49U8WFP;
 				INFOPLIST_FILE = MSease/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
@@ -924,6 +1048,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8442207B268B5332001781F0 /* Build configuration list for PBXNativeTarget "MSeaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84422079268B5332001781F0 /* Debug */,
+				8442207A268B5332001781F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		84979F2725B9DFF200578C37 /* Build configuration list for PBXProject "MSease" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

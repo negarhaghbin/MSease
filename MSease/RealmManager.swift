@@ -13,7 +13,7 @@ class RealmManager{
     static let shared = RealmManager()
     private var realm : Realm?
     let PHASE_DURATION_WEEKS = 4.0
-    static let OBJECT_TYPES = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self, Step.self, Image.self]
+    static let OBJECT_TYPES = [User.self, Reminder.self, Note.self, Injection.self, TSQM.self, InjectionPhobiaForm.self, Step.self, Image.self, Profile.self]
     
     private init() {
     }
@@ -48,24 +48,33 @@ class RealmManager{
         return UserDefaults.standard.string(forKey: "email")!
     }
     
-    func getUser()->User{
-        return realm!.objects(User.self).first!
+    func getProfile()->Profile{
+        return realm!.objects(Profile.self).first!
+    }
+    
+    func addProfile(email: String, handler: @escaping()->()){
+        let profile = Profile(email: email)
+        try! realm!.write{
+            realm!.add(profile)
+        }
+        
+        handler()
     }
     
     func setProfilePicture(profilePictureData: Data){
-        let user = getUser()
+        let profile = getProfile()
         try! realm!.write{
-            user.profilePicture = profilePictureData
+            profile.profilePicture = profilePictureData
         }
     }
     
     func getProfilePicture()->Data?{
-        let user = getUser()
-        return user.profilePicture
+        let profile = getProfile()
+        return profile.profilePicture
     }
     
     func removeProfilePicture(){
-        let user = getUser()
+        let user = getProfile()
         try! realm!.write{
             user.profilePicture = nil
         }
@@ -328,8 +337,8 @@ extension RealmManager{
     }
     
     func hasSignedConsent() -> Bool {
-        let user = realm!.objects(User.self).first
-        return user!.hasSignedConsent
+        let profile = getProfile()
+        return profile.hasSignedConsent
     }
     
     func saveCredentials(email: String, password: String){
@@ -366,40 +375,37 @@ extension RealmManager{
     }
     
     func acceptConsent(){
-        let user = realm!.objects(User.self).first
+        let profile = getProfile()
         try! realm!.write{
-            user!.hasSignedConsent = true
+            profile.hasSignedConsent = true
         }
     }
     
     // MARK: - Pretest Questionnaire
     func submitPretestData(answers: [String]){
-        let user = realm!.objects(User.self).first
+        let profile = getProfile()
         try! realm!.write{
-            user?.gender = answers[0]
-            user?.birthday = answers[1]
-            user?.typeOfMS = answers[2]
-            user?.diagnosisDate = answers[3]
-            user?.treatmentBeginningDate = answers[4]
+            profile.gender = answers[0]
+            profile.birthday = answers[1]
+            profile.typeOfMS = answers[2]
+            profile.diagnosisDate = answers[3]
+            profile.treatmentBeginningDate = answers[4]
         }
     }
     
     func getPretestData()->[String]{
-        let pretestData = realm?.objects(User.self).first?.getPretestData()
-        
-        guard let _ = pretestData else {
-            return["", "", "", "", ""]
-        }
-        return [pretestData!.gender,
-                pretestData!.birthday,
-                pretestData!.typeOfMS,
-                pretestData!.diagnosisDate,
-                pretestData!.treatmentBeginningDate]
+        let pretestData = getProfile().getPretestData()
+         
+        return [pretestData.gender,
+                pretestData.birthday,
+                pretestData.typeOfMS,
+                pretestData.diagnosisDate,
+                pretestData.treatmentBeginningDate]
     }
     
     func hasGeneralData()->Bool{
-        let user = realm?.objects(User.self).first
-        if user?.birthday == ""{
+        let profile = getProfile()
+        if profile.birthday == ""{
             return false
         }
         else{
@@ -538,18 +544,13 @@ extension RealmManager{
 // MARK: Mascot
 extension RealmManager{
     func setMascot(name mascot: String){
-        let user = realm!.objects(User.self).first
+        let profile = getProfile()
         try! realm!.write{
-            user?.mascot = mascot
+            profile.mascot = mascot
         }
     }
     
     func getMascot()->String{
-        if let mascot = realm!.objects(User.self).first?.mascot{
-            return mascot
-        }
-        else{
-            return "Drummer"
-        }
+        return getProfile().mascot
     }
 }

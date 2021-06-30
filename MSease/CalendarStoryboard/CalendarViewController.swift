@@ -38,6 +38,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         tabBarController?.tabBar.isHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        askHealthAuthorizationAndUpdate()
+    }
+    
     
     // MARK: - FSCalendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

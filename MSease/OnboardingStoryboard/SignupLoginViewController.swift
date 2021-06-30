@@ -60,7 +60,7 @@ class SignupLoginViewController: UIViewController {
         }
     }
     
-    func onUserAddedToRealm(){
+    func onProfileAddedToRealm(){
         self.setLoading(false)
         if RealmManager.shared.hasSignedConsent(){
             scheduleReminders()
@@ -71,7 +71,7 @@ class SignupLoginViewController: UIViewController {
         }
     }
     
-    func setUserObserver(){
+    /*func setUserObserver(){
         notificationToken = user!.observe { [weak self] (changes) in
             switch changes {
             case .initial:
@@ -85,7 +85,7 @@ class SignupLoginViewController: UIViewController {
                 fatalError("\(error)")
             }
         }
-    }
+    }*/
     
     func setUpElements(){
         StylingUtilities.styleQuestionnaireView(bgView)
@@ -113,10 +113,13 @@ class SignupLoginViewController: UIViewController {
     }
     
     func onRealmOpened(_ realm: Realm){
-        user = realm.objects(User.self)
-        setUserObserver()
+//        user = realm.objects(User.self)
+//        setUserObserver()
         RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
         RealmManager.shared.setRealm(realm: realm, handler:{
+            RealmManager.shared.addProfile(email: self.email!, handler:{
+                self.onProfileAddedToRealm()
+            })
             /*if !self!.isLoggingIn!{
                 RealmManager.shared.addUser(newUser: User(id: app.currentUser!.id, email: (self?.email!)!))
             }*/

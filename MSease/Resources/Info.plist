@@ -23,15 +23,15 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Access is needed to take photos for symptoms' journal.</string>
+	<string>The app uses camera for using AR-based injections and adding photos to notes.</string>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>We use healthkit to show your activity data.</string>
+	<string>Allow access to steps to view them in your calendar.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>We use healthkit to show your activity data.</string>
+	<string>Allow access to steps to view them in your calendar.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>We use healthkit to gather activity data.</string>
+	<string>Allow access to steps to view them in your calendar.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Access is needed to add photos to the note from Photo Library.</string>
+	<string>Allow access to photos to upload photos from your library.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

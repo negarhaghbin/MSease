@@ -42,16 +42,6 @@ extension Date{
         return formatter.string(from: self)
     }
     
-    func setTime(h: Int, m: Int)->Date{
-        var hour = h
-        if h == 24{
-            hour -= 12
-        }
-        var date = Calendar.current.date(bySetting: .hour, value: hour, of: self)!
-        date = Calendar.current.date(bySetting: .minute, value: m, of: date)!
-        return date
-    }
-    
     func printFullTime(){
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: Date())
@@ -76,11 +66,14 @@ extension Date{
     }
 }
 
-func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {
-    let beginDate = from.advanced(by: TimeInterval(-4*60*60))
-    var endDate = to.setTime(h: 00, m: 00)
-    endDate = endDate.advanced(by: TimeInterval(-4*60*60))
-    return dateRange(begin: beginDate, end: endDate).count
+func numberOfDaysFromToday(_ date: Date) -> Int {
+    var result = 0
+    var tempDate = date.advanced(by: -4*60*60)
+    while !Calendar.current.isDateInToday(tempDate){
+        result += 1
+        tempDate = Calendar.current.date(byAdding: .day, value: -1, to: tempDate)!
+    }
+    return result
 }
 
 func getDateFromString(_ dateString:String, style: DateFormatter.Style = .medium)->Date{

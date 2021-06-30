@@ -100,7 +100,7 @@ class AddNewReminderViewController: UITableViewController, UITextViewDelegate {
         
         timeLabel.text = reminder?.time == "" ? Date().getTime() : reminder?.time
         let time = getTimeFromString(timeLabel.text!)
-        timePicker.date = Date().setTime(h: time.h, m: time.m)
+        timePicker.date = Calendar.current.date(bySettingHour: time.h, minute: time.m, second: 0, of: Date())!
         
         tableView.reloadData()
     }

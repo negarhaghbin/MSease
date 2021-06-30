@@ -94,7 +94,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
-        selectedDate = selectedDate.setTime(h: Calendar.current.component(.hour, from: Date()), m: Calendar.current.component(.minute, from: Date()))
+        selectedDate = Calendar.current.date(bySettingHour: Calendar.current.component(.hour, from: Date()), minute: Calendar.current.component(.minute, from: Date()), second: 0, of: selectedDate)!
     }
     
     // MARK: - Helpers
@@ -114,7 +114,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
     
     func setMainText(){
         notificationCenter.getPendingNotificationRequests(completionHandler: { result in
-            print(result)
+//            print(result)
                 var nextTriggerDates: [Date] = []
                 for request in result {
                     if let trigger = request.trigger as? UNCalendarNotificationTrigger,
@@ -125,21 +125,22 @@ class MainViewController: UIViewController, FSCalendarDelegate {
                 var mainText = "Today"
                 var submainText = "Treatment"
                 if let nextTriggerDate = nextTriggerDates.min() {
-                    let days = numberOfDaysBetween(Date(), and: nextTriggerDate) - 1
-                        if days == 0{
-                            submainText = "Treatment"
-                            mainText = "Today"
-                        }
+                    let days = numberOfDaysFromToday(nextTriggerDate)
+                    print(days)
+                    if Calendar.current.isDateInToday(nextTriggerDate){
+                        submainText = "Treatment"
+                        mainText = "Today"
+                    }
                         
-                        else if days == 1{
-                            submainText = "Treatment"
-                            mainText = "Tomorrow"
-                        }
+                    else if Calendar.current.isDateInTomorrow(nextTriggerDate){
+                        submainText = "Treatment"
+                        mainText = "Tomorrow"
+                    }
                         
-                        else{
-                            submainText = "Treatment in"
-                            mainText = "\(days) days"
-                        }
+                    else{
+                        submainText = "Treatment in"
+                        mainText = "\(days) days"
+                    }
                 }
                 else{
                     submainText = "Treatment in"
@@ -181,7 +182,7 @@ class MainViewController: UIViewController, FSCalendarDelegate {
             self?.setMainText()
             self?.blurView.isHidden = true
             self?.tabBarController?.tabBar.isHidden = false
-            askHealthAuthorizationAndUpdate()
+//            askHealthAuthorizationAndUpdate()
             if !RealmManager.shared.hasSignedConsent(){
                 self?.goToViewController(storyboardID: "Onboarding", viewcontrollerID: "consentVC")
             }

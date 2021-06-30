@@ -64,7 +64,7 @@ class SymptomsCollectionViewController: UITableViewController, UITextViewDelegat
         
         let time = getTimeFromTimeInDayString(note!.time)
         var date = getDateFromString(note!.date)
-        date = date.setTime(h: time.h, m: time.m)
+        date = Calendar.current.date(bySettingHour: time.h, minute: time.m, second: 0, of: date)!
         timePicker.date = date
     }
     

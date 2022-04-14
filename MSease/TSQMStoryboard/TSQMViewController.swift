@@ -55,7 +55,7 @@ class TSQMViewController: UIViewController {
 
     // MARK: - Helpers
     func setupUI(){
-        self.navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
         questionLabel.text = TSQMquestions[pageNumber].question
         nextButton.isEnabled = false
         

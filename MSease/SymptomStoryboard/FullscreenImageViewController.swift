@@ -14,7 +14,7 @@ class FullscreenImageViewController: UIViewController {
     
     var imageInfo : (imageName: String, bucketName: String)?{
         didSet{
-            app.currentUser?.functions.getImage([AnyBSON(imageInfo!.imageName), AnyBSON(imageInfo!.bucketName)]){ [self]
+            app.currentUser?.functions.getImage([AnyBSON(imageInfo!.imageName), AnyBSON(imageInfo!.bucketName)]){ [unowned self]
                 data, error in
                 if let binaryValue = data?.binaryValue{
                     let binaryData = Data(base64Encoded: binaryValue)

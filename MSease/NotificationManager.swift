@@ -59,7 +59,7 @@ extension UNNotification {
         content.sound = .default
         content.categoryIdentifier = notificationCategory.snoozable.rawValue
 
-        let identifier = self.request.identifier
+        let identifier = request.identifier
 //        UUID().uuidString
         let calendar = Calendar.current
         let date = calendar.date(byAdding: .hour, value: 1, to: Date())

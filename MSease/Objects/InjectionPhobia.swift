@@ -9,19 +9,12 @@ import Foundation
 
 var IPquestions : [IPquestion] = []
 
-class IPquestion{
+struct IPquestion{
     var number : Int = 0
     var question : String = ""
     var options : [String] = ["0 No Anxiety", "1","2","3","4 Max Anxiety"]
     
-    convenience init(number: Int, question: String) {
-        self.init()
-        self.number = number
-        self.question = question
-        self.options = ["0 No Anxiety", "1","2","3","4 Max Anxiety"]
-    }
-    
-    class func fillTable(){
+    static func fillTable(){
         IPquestions.append(IPquestion(number: 1, question: "Giving a blood sample by having a finger pricked."))
         
         IPquestions.append(IPquestion(number: 2, question: "Having a shot in the upper arm."))

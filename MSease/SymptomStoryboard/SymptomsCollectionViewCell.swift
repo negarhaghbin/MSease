@@ -8,45 +8,37 @@
 import UIKit
 
 class SymptomsCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var checkmarkImage: UIImageView!
     
-    func initiate(symptom: Symptom){
-        self.name.adjustsFontSizeToFitWidth = true
-        self.name.minimumScaleFactor = 0.5
+    // MARK: - Helpers
+    
+    func initiate(symptom: Symptom) {
+        name.adjustsFontSizeToFitWidth = true
+        name.minimumScaleFactor = 0.5
         
-        self.image.image = UIImage(named: symptom.imageName)
-        self.name.text = symptom.name
-        if selectedSymptomNames.contains(symptom.name){
-            self.checkmarkImage.isHidden = false
-        }
-        else{
-            self.checkmarkImage.isHidden = true
-        }
+        image.image = UIImage(named: symptom.imageName)
+        name.text = symptom.name
+        checkmarkImage.isHidden = !selectedSymptomNames.contains(symptom.name)
     }
     
-    func add(to symptoms: [String])->[String]{
+    func add(to symptoms: [String]) -> [String] {
         var result = symptoms
-        self.checkmarkImage.isHidden = false
-        result.append(self.name.text!)
+        checkmarkImage.isHidden = false
+        result.append(name.text!)
         return result
     }
     
-    func remove(from symptoms: [String])->[String]{
+    func remove(from symptoms: [String]) -> [String] {
         var result = symptoms
-        self.checkmarkImage.isHidden = true
-        let index = result.lastIndex(of: self.name.text!)
+        checkmarkImage.isHidden = true
+        let index = result.lastIndex(of: name.text!)
         result.remove(at: index!)
         return result
     }
     
 }
-    
-    /*func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeader, for: indexPath) as? SymptomsCollectionReusableView{
-                sectionHeader.sectionHeaderlabel.text = SymptomCollectionHeader[indexPath.section]
-                return sectionHeader
-            }
-            return UICollectionReusableView()
-    }*/

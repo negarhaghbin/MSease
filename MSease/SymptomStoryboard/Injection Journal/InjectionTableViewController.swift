@@ -42,7 +42,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     var isNewInjection: Bool?
     var date : Date?{
         didSet{
-            self.title = date?.getUSFormat()
+            title = date?.getUSFormat()
         }
     }
     var selectedPain : Int?
@@ -78,7 +78,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         styleButtons()
-        self.navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = true
         
         selectedPain = injection?.painScale
@@ -128,8 +128,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
         
         RealmManager.shared.addPostInjectionData(injection: injection!, painScale: selectedPain ?? 0, note: content, symptoms: PISelectedSymptomNames, reactions: PISelectedReactionNames)
         
-//        self.navigationController?.popToRootViewController(animated: true)
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func painButtonTapped(_ sender: UIButton) {
@@ -221,7 +220,7 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
     
     func hideExtraRowsAndCols(hidden:[(x: Int, y: Int)]){
         for block in hidden{
-            self.grid2D[block.x][block.y].isHidden = true
+            grid2D[block.x][block.y].isHidden = true
         }
     }
     
@@ -282,17 +281,17 @@ class InjectionTableViewController: UITableViewController, UITextViewDelegate {
 extension InjectionTableViewController : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.reactionsCollectionView{
+        if collectionView == reactionsCollectionView{
             return reactions.count
         }
-        else if collectionView == self.symptomsCollectionView{
+        else if collectionView == symptomsCollectionView{
             return symptoms.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.reactionsCollectionView{
+        if collectionView == reactionsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid.ReactionsCollection.rawValue, for: indexPath) as! SymptomsCollectionViewCell
             cell.image.image = UIImage(named: reactions[indexPath.row].imageName)
             cell.name.text = reactions[indexPath.row].name
@@ -304,7 +303,7 @@ extension InjectionTableViewController : UICollectionViewDelegate, UICollectionV
             }
             return cell
         }
-        else if collectionView == self.symptomsCollectionView{
+        else if collectionView == symptomsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid.SymptomsCollection.rawValue, for: indexPath) as! SymptomsCollectionViewCell
             cell.image.image = UIImage(named: symptoms[indexPath.row].imageName)
             cell.name.text = symptoms[indexPath.row].name
@@ -320,7 +319,7 @@ extension InjectionTableViewController : UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.reactionsCollectionView{
+        if collectionView == reactionsCollectionView{
             if let cell = collectionView.cellForItem(at: indexPath) as? SymptomsCollectionViewCell{
                 if cell.checkmarkImage.isHidden{
                     PISelectedReactionNames = cell.add(to: PISelectedReactionNames)
@@ -330,7 +329,7 @@ extension InjectionTableViewController : UICollectionViewDelegate, UICollectionV
                 }
             }
         }
-        else if collectionView == self.symptomsCollectionView{
+        else if collectionView == symptomsCollectionView{
             if let cell = collectionView.cellForItem(at: indexPath) as? SymptomsCollectionViewCell{
                 if cell.checkmarkImage.isHidden{
                     PISelectedSymptomNames = cell.add(to: PISelectedSymptomNames)

@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 
-class RealmManager{
+final class RealmManager{
     static let shared = RealmManager()
     private var realm : Realm?
     let PHASE_DURATION_WEEKS = 4.0

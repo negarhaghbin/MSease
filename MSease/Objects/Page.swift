@@ -9,20 +9,20 @@ import Foundation
 
 var walkthroughPages : [Page] = []
 var arTutorialPages : [Page] = []
-class Page{
+struct Page{
     var heading : String?
     var subheading : String?
     var imageName : String?
     
     var index : Int?
     
-    convenience init(heading: String, subheading: String, imageName: String, index: Int) {
-        self.init()
-        self.heading = heading
-        self.subheading = subheading
-        self.imageName = imageName
-        self.index = index
-    }
+//    convenience init(heading: String, subheading: String, imageName: String, index: Int) {
+//        self.init()
+//        self.heading = heading
+//        self.subheading = subheading
+//        self.imageName = imageName
+//        self.index = index
+//    }
     
     static func fillARTutorialPages(){
         arTutorialPages.append(Page(heading: "", subheading: "Move the camera to left and right to initialize the space.", imageName: "tutorial0", index: 0))

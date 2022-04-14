@@ -9,15 +9,9 @@ var symptoms : [Symptom] = []
 var reactions : [Symptom] = []
 var painScale = ["nopain", "mild", "moderate", "intense", "unspeakable"]
 
-class Symptom{
+struct Symptom{
     var name = ""
     var imageName = ""
-    
-    convenience init(name: String, imageName: String){
-        self.init()
-        self.name = name
-        self.imageName = imageName
-    }
     
     static func fillSymptomsTable(){
         symptoms.append(Symptom(name: "Headache", imageName: "headache"))

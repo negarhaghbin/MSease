@@ -82,7 +82,9 @@ class GridCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> GridCollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridSquareViewCellIdentifier, for: indexPath) as! GridCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridSquareViewCellIdentifier, for: indexPath) as? GridCollectionViewCell else{
+            return GridCollectionViewCell()
+        }
         
         var limbIndex = 0
         for i in 0..<indexPath.section{

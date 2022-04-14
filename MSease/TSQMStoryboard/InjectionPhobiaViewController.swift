@@ -100,8 +100,7 @@ class InjectionPhobiaViewController: UIViewController {
     
     @IBAction func backTapped(_ sender: Any) {
         if pageNumber == 0{
-            self.navigationController?.popViewController(animated: true)
-//            dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         }
         else{
             pageNumber = pageNumber - 1

@@ -25,7 +25,7 @@ class IPIntroViewController: UIViewController {
         StylingUtilities.styleHollowdButton(cancelButton)
         StylingUtilities.styleQuestionnaireView(bgView)
         
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: - Actions

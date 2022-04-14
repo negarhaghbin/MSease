@@ -17,17 +17,17 @@ enum Pretest: Int {
     case treatmentDate
 }
 
-class pretestQuestion{
+struct pretestQuestion{
     var number : Int = 0
     var question : String = ""
     
-    convenience init(number: Int, question: String) {
-        self.init()
-        self.number = number
-        self.question = question
-    }
+//    convenience init(number: Int, question: String) {
+//        self.init()
+//        self.number = number
+//        self.question = question
+//    }
     
-    class func fillTable(){
+    static func fillTable(){
         pretestQuestions.append(pretestQuestion(number: 1, question: "What is your gender identity?"))
         
         pretestQuestions.append(pretestQuestion(number: 2, question: "When were you born?"))

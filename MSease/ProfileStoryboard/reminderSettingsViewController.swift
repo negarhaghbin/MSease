@@ -212,14 +212,16 @@ extension reminderSettingsViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? reminderSettingsTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? reminderSettingsTableViewCell else{
+            return UITableViewCell()
+        }
         if indexPath.section == 0{
-            cell!.setup(isReminderInstance: false)
+            cell.setup(isReminderInstance: false)
         }
         else if indexPath.section == 1{
-            cell!.setup(isReminderInstance: true, reminder: reminders![indexPath.row], row: indexPath.row)
+            cell.setup(isReminderInstance: true, reminder: reminders![indexPath.row], row: indexPath.row)
         }
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

@@ -17,7 +17,7 @@ enum limb : String{
     case rightButtock = "Right Buttock"
 }
 
-class Limb{
+struct Limb{
     var name : String = ""
     var imageName : String = ""
     var numberOfRows = 0
@@ -25,14 +25,14 @@ class Limb{
     
     var hiddenCells : [(x: Int, y: Int)] = []
     
-    convenience init(name: String, imageName: String, numberOfRows: Int, numberOfCols: Int, hiddenCells: [(x: Int, y: Int)]) {
-        self.init()
-        self.name = name
-        self.imageName = imageName
-        self.numberOfRows = numberOfRows
-        self.numberOfCols = numberOfCols
-        self.hiddenCells = hiddenCells
-    }
+//    convenience init(name: String, imageName: String, numberOfRows: Int, numberOfCols: Int, hiddenCells: [(x: Int, y: Int)]) {
+//        self.init()
+//        self.name = name
+//        self.imageName = imageName
+//        self.numberOfRows = numberOfRows
+//        self.numberOfCols = numberOfCols
+//        self.hiddenCells = hiddenCells
+//    }
     
     func add(){
         limbs.append(self)

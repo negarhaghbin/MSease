@@ -53,7 +53,7 @@ class PretestViewController: UIViewController {
     
     @IBAction func optionsTapped(_ sender: DLRadioButton) {
         selectedAnswer = (sender.titleLabel?.text)!
-        self.view.endEditing(true)
+        view.endEditing(true)
         nextButton.isEnabled = true
         nextButton.backgroundColor = StylingUtilities.buttonColor
     }
@@ -69,7 +69,7 @@ class PretestViewController: UIViewController {
             else{
                 let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
                 let setReminderVC = storyboard.instantiateViewController(withIdentifier: "setReminderDay") as! OnboardingReminderDayViewController
-                self.navigationController?.setViewControllers([setReminderVC], animated: true)
+                navigationController?.setViewControllers([setReminderVC], animated: true)
             }
             /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = storyboard.instantiateViewController(withIdentifier: "home") as! MainViewController
@@ -94,7 +94,7 @@ class PretestViewController: UIViewController {
                 dismiss(animated: true)
             }
             else{
-                self.navigationController?.popViewController(animated: true)
+                navigationController?.popViewController(animated: true)
             }
         }
         else{

@@ -61,7 +61,7 @@ class SignupLoginViewController: UIViewController {
     }
     
     func onProfileAddedToRealm(){
-        self.setLoading(false)
+        setLoading(false)
         if RealmManager.shared.hasSignedConsent(){
             scheduleReminders()
             goToViewController(storyboardID: "Main", viewcontrollerID: "home")
@@ -115,9 +115,10 @@ class SignupLoginViewController: UIViewController {
     func onRealmOpened(_ realm: Realm){
 //        user = realm.objects(User.self)
 //        setUserObserver()
-        RealmManager.shared.saveCredentials(email: self.email!, password: self.password!)
+        RealmManager.shared.saveCredentials(email: email!, password: password!)
         RealmManager.shared.setRealm(realm: realm, handler:{
             RealmManager.shared.addProfile(email: self.email!, handler:{
+                [unowned self] in
                 self.onProfileAddedToRealm()
             })
             /*if !self!.isLoggingIn!{
@@ -131,7 +132,7 @@ class SignupLoginViewController: UIViewController {
         let partitionValue = "user=\(user.id)"
         var configuration = user.configuration(partitionValue: partitionValue)
         configuration.objectTypes = RealmManager.OBJECT_TYPES
-        self.setLoading(true)
+        setLoading(true)
         
         Realm.asyncOpen(configuration: configuration) { result in
             switch result {
@@ -148,15 +149,16 @@ class SignupLoginViewController: UIViewController {
         setLoading(true)
         app.login(credentials: Credentials.emailPassword(email: email!, password: password!)) { result in
             DispatchQueue.main.async {
-                self.setLoading(false)
+                [unowned self] in
+                setLoading(false)
                 switch result {
                 case .failure(let error):
                     print("Login failed: \(error)")
-                    self.errorLabel.text = "Login failed: \(error.localizedDescription)"
+                    errorLabel.text = "Login failed: \(error.localizedDescription)"
                     return
-                case .success(let user):
+                case .success( _):
                     print("Login succeeded!")
-                    self.onLogin()
+                    onLogin()
                 }
             }
         }
@@ -177,17 +179,17 @@ class SignupLoginViewController: UIViewController {
         }
         else{
             setLoading(true)
-            app.emailPasswordAuth.registerUser(email: email!, password: password!, completion: { [weak self](error) in
+            app.emailPasswordAuth.registerUser(email: email!, password: password!, completion: { [unowned self](error) in
                 DispatchQueue.main.async {
-                    self!.setLoading(false)
+                    setLoading(false)
                     guard error == nil else {
                         print("Signup failed: \(error!)")
-                        self!.errorLabel.text = "Signup failed: \(error!.localizedDescription)"
+                        errorLabel.text = "Signup failed: \(error!.localizedDescription)"
                         return
                     }
                     print("Signup successful!")
-                    self!.errorLabel.text = "Signup successful! Signing in..."
-                    self!.login()
+                    errorLabel.text = "Signup successful! Signing in..."
+                    login()
                 }
             })
         }

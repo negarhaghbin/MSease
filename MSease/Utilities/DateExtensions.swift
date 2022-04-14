@@ -27,13 +27,9 @@ extension Date{
     }
     
     func getTimeInDay()->String{
-//        let calendar = Calendar.current
-//        let hour = calendar.component(.hour, from: self)
-//        let minutes = calendar.component(.minute, from: self)
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: self)
-//        return "\(self.):\(minutes) \(formatter.string(from: self))"
     }
     
     func getMonth()->String{
